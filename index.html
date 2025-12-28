@@ -561,7 +561,7 @@
             <p class="menu-label">Bülten Aboneliği</p>
 
             <!-- TODO: form is not working -->
-            <form action="">
+            <!-- <form action="">
               <div class="field">
                 <div class="control has-icons-left has-icons-right">
                   <input class="input" type="email" placeholder="Email girişi" value="">
@@ -589,6 +589,31 @@
                   <button class="button is-primary is-rounded">Abone Ol</button>
                 </div>
               </div>
+            </form> -->
+
+            <form id="newsletter-form">
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    type="email"
+                    id="newsletter-email"
+                    placeholder="E-posta adresiniz"
+                    required
+                  />
+                  <span class="icon is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <button class="button is-primary is-fullwidth" type="submit">
+                  Abone Ol
+                </button>
+              </div>
+
+              <p id="newsletter-message" class="help"></p>
             </form>
           </aside>
         </div>
@@ -631,6 +656,7 @@
 
   <!-- Scripts -->
   <script src="./js/main.js"></script>
+  <script src="./js/newsletter.js"></script>
 
 </body>
 </html>
