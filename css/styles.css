@@ -3,6 +3,10 @@
   --color-primary: #04d1b2;
 }
 
+.navbar.is-fixed-top {
+  box-shadow: 0 0 10px black;
+}
+
 .faq-content {
   transition: all 0.3s ease;
 }
@@ -19,11 +23,15 @@
   background-image: linear-gradient(92deg, #37525E 20%, #89A3B3 100%);
 }
 
-.menu-list a:hover,
+.menu-list li:hover a, 
 #features .card:hover .icon,
 #faq .card:hover .card-header,
 #faq .card:hover .card-header-title {
   color: var(--color-primary);
+}
+
+.menu-list li:hover {
+  background-color: rgba(255, 255, 255, 0.05);;
 }
 
 @media screen and (max-width: 1023px) {
