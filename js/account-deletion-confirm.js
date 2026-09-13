@@ -54,8 +54,7 @@ async function confirm() {
       show(
         '<p class="title is-5">Onaylanamadı</p>' +
           "<p>" +
-          (data.error ||
-            "Bu bağlantı geçersiz veya süresi dolmuş olabilir.") +
+          (data.error || "Bu bağlantı geçersiz veya süresi dolmuş olabilir.") +
           " " +
           'Dilerseniz <a href="/hesap-silme.html">silme talebini yeniden ' +
           "oluşturabilirsiniz</a>.</p>",
@@ -69,7 +68,7 @@ async function confirm() {
         "<p>" +
         (data.message ||
           "Hesap silme talebiniz onaylandı. Hesabınız 30 gün içinde kalıcı " +
-          "olarak silinecektir.") +
+            "olarak silinecektir.") +
         "</p>",
       "success",
     );
