@@ -141,6 +141,9 @@ vite.config.ts.timestamp-*
 # Agent instructions — not shipped in this public repo
 CLAUDE.md
 
+# Claude Code per-machine permission approvals (absolute local paths)
+.claude/
+
 # Eleventy build output
 _site/
 
