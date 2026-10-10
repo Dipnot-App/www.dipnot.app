@@ -21,6 +21,7 @@ terse — the commit message and PR body carry the full reasoning.
   channels". **Madde 13:** dropped "dalış merkezi başvuruları", an
   undefined term that implied centres could apply to join, which
   Madde 5 rules out.
+  ([#153](https://github.com/Dipnot-App/www.dipnot.app/pull/153))
 - **Legal / competition** — Updated
   [`yarisma-kosullari.html`](yarisma-kosullari.html) (Son Güncelleme
   10 Ekim 2026) with Nev's new calendar and prize. **Madde 4:** voting
