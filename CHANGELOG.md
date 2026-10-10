@@ -8,6 +8,21 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **Legal / competition** — Updated
+  [`yarisma-kosullari.html`](yarisma-kosullari.html) (Son Güncelleme
+  10 Ekim 2026) with Nev's new calendar and prize. **Madde 4:** voting
+  opens 10 Ekim 2026 00:00 (was 15 Eylül), closes 31 Aralık 2026 23:59
+  TSİ (was 15 Aralık), winner announced 15 Ocak 2027 (was 5 Ocak; also
+  Madde 8). **Madde 5:** the candidate-list freeze date follows the new
+  start, 10 Ekim. **Madde 7:** the 10.000 TL diver.com.tr discount is
+  replaced by a **Shearwater Peregrine dive computer (690 €)**; the
+  badge and certificate stay (Nev chose replacing only the discount over
+  replacing the whole list). **Madde 6 tie rule:** a device can't be
+  split, so the old "split the discount equally" no longer works. Nev
+  chose **every tied winner gets the full prize set, including a
+  Peregrine each**, over one device plus an equivalent-value prize for
+  the others, and over going back to "Dipnot decides" (rejected in #121
+  as the weakest if challenged). `sitemap.xml` `lastmod` bumped.
 - **Brand assets** — Favicons are round again, at Nev's request, and
   **diverge from canon**. The canonical web icons in
   `dna_core_docs/assets/app-icon/` (adopted earlier today) are an
