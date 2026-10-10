@@ -13,8 +13,10 @@ terse — the commit message and PR body carry the full reasoning.
   10 Ekim 2026) with Nev's new calendar and prize. **Madde 4:** voting
   opens 10 Ekim 2026 00:00 (was 15 Eylül), closes 31 Aralık 2026 23:59
   TSİ (was 15 Aralık), winner announced 15 Ocak 2027 (was 5 Ocak; also
-  Madde 8). **Madde 5:** the candidate-list freeze date follows the new
-  start, 10 Ekim. **Madde 7:** the 10.000 TL diver.com.tr discount is
+  Madde 8). **Madde 5:** the candidate list stays frozen at TSSF's
+  **15 Eylül 2026** register (Nev; the imported list is that
+  snapshot). The sentence no longer calls it "the date voting
+  started", since voting now opens 10 Ekim. **Madde 7:** the 10.000 TL diver.com.tr discount is
   replaced by a **Shearwater Peregrine dive computer (690 €)**; the
   badge and certificate stay (Nev chose replacing only the discount over
   replacing the whole list). **Madde 6 tie rule:** a device can't be
