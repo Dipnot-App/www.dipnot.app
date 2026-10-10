@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "description": "Dipnot landing page — static site, built with Eleventy.",
+  "engines": {
+    "node": "^24"
+  },
   "scripts": {
     "build": "eleventy",
     "build:og": "node scripts/build-og.js",
