@@ -6,6 +6,14 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-10
+
+- **Deps** — `npm audit fix` (non-breaking, lockfile only) to clear
+  the one critical advisory that fails the `--audit-level=critical`
+  gate: `proxy-addr` 2.0.7 → 2.0.8 (IP spoofing via IPv4-mapped IPv6,
+  dev-only via `@lhci/cli` → `express`). Also pulls `sharp` 0.35.5,
+  superseding Dependabot #141.
+
 ## 2026-05-13
 
 - **SEO** — Added a proper 1200×630 social-preview master at
