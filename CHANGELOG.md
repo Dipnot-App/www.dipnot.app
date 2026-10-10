@@ -8,6 +8,21 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **Brand assets** — Re-exported every logo copy from the new
+  `dna_core_docs` artwork
+  ([dna_core_docs#176](https://github.com/Dipnot-App/dna_core_docs/pull/176)).
+  The 9 `img/logos/*.svg` are copied byte-for-byte from
+  `assets/logo/` (now 2160-unit coordinates), and the 9 PNGs are
+  re-rendered from them at 708 px with `rsvg-convert`. The favicon set in
+  `img/icons/` is copied from `assets/app-icon/` and renamed to the
+  existing filenames, so no references change. **Visible change:**
+  the old icons were a full-bleed transparent circle; the canonical
+  web icons are an opaque Sky Captain square tile with the mark
+  inside 1/6 clear space, per that README. `img/og/og-default.png` is
+  **held**: mobile has asked core-docs to switch the OG default to
+  Option B, so it is re-exported once that is decided.
+- **Repo** — `.gitignore` now ignores `.claude/` (per-machine Claude
+  Code permission approvals), matching `dna_core_docs`.
 - **Runtime** — Adopted the project's Node 24 rule
   (`dna_core_docs` → `development-rules/code-quality.md`): new
   [`.nvmrc`](.nvmrc) `24.20.0`, `engines.node: ^24` in
