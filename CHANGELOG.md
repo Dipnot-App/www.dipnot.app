@@ -8,6 +8,18 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **OG test pages (temporary)** — Added unlinked, `noindex`
+  `og-test/default.html` (`og-default` + `og-square`) and
+  `og-test/horizontal.html` (`og-horizontal`, `summary_large_image`)
+  with PNGs in `img/og-test/`, on core-docs' ask, so Nev can test the
+  new OG set on real clients
+  ([dna_core_docs#185](https://github.com/Dipnot-App/dna_core_docs/issues/185)).
+  Standalone HTML, not the base layout, so its default og/twitter tags
+  can't interfere. Not in the sitemap, not blocked in `robots.txt`
+  (crawlers must reach them). `og-test/` is in `.prettierignore`
+  because Prettier lowercases the doctype and `html-validate` rejects
+  that. Remove the pages, images and ignore line when #185 closes.
+  Landing's own default OG tags move to the new set separately.
 - **Legal / competition** — Wording fixes to
   [`yarisma-kosullari.html`](yarisma-kosullari.html), same-day so Son
   Güncelleme stays 10 Ekim 2026. **Madde 6:** dropped "tek" from the

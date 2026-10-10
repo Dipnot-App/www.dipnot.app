@@ -12,3 +12,7 @@ package-lock.json
 sitemap.xml
 *.svg
 img/
+
+# Temporary OG test pages (dna_core_docs#185); prettier lowercases the
+# doctype, html-validate wants it uppercase. Remove with the pages.
+og-test/
