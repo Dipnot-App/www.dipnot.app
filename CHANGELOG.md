@@ -12,7 +12,7 @@ terse — the commit message and PR body carry the full reasoning.
   (`dna_core_docs` → `development-rules/code-quality.md`): new
   [`.nvmrc`](.nvmrc) `24.20.0`, `engines.node: ^24` in
   [`package.json`](package.json), and CI reads `node-version-file:
-  .nvmrc` instead of a hardcoded `22`. Landing was the last repo
+.nvmrc` instead of a hardcoded `22`. Landing was the last repo
   without it, and the gap had already bitten: `html-validate` 11
   needs `fs.globSync` (Node 22+), so `check:html` crashed on a Node
   20 local shell while CI on 22 stayed green.
