@@ -8,6 +8,21 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **Runtime** — Adopted the project's Node 24 rule
+  (`dna_core_docs` → `development-rules/code-quality.md`): new
+  [`.nvmrc`](.nvmrc) `24.20.0`, `engines.node: ^24` in
+  [`package.json`](package.json), and CI reads `node-version-file:
+.nvmrc` instead of a hardcoded `22`. Landing was the last repo
+  without it, and the gap had already bitten: `html-validate` 11
+  needs `fs.globSync` (Node 22+), so `check:html` crashed on a Node
+  20 local shell while CI on 22 stayed green.
+- **Docs** — Swept the 14 stale `core_docs` references in this file
+  after the local `core_docs` → `dna_core_docs` rename (2026-09-14).
+  One pointed at the inbox, which moved to `dna_communication` on
+  2026-09-13, and was repointed there rather than renamed. Every
+  rewritten path was checked against the filesystem. Entry text is
+  unchanged; only paths move, per `dna_core_docs`'s 2026-09-14
+  ruling that historical entries are swept.
 - **Deps** — `npm audit fix` (non-breaking, lockfile only) to clear
   the one critical advisory that fails the `--audit-level=critical`
   gate: `proxy-addr` 2.0.7 → 2.0.8 (IP spoofing via IPv4-mapped IPv6,
@@ -25,7 +40,7 @@ terse — the commit message and PR body carry the full reasoning.
   [`npm run build:og`](package.json) for re-running when the logo
   master changes; introduces `sharp` as a devDep. Closes
   [#72](https://github.com/Dipnot-App/www.dipnot.app/issues/72).
-  Mirror to `core_docs/assets/og/` requested via inbox.
+  Mirror to `dna_core_docs/assets/og/` requested via inbox.
 - **Assets** — Moved the six favicon files from the repo root into
   [`img/icons/`](img/icons/) and updated references in
   [`_includes/layouts/base.njk`](_includes/layouts/base.njk),
@@ -47,7 +62,7 @@ terse — the commit message and PR body carry the full reasoning.
   the Tailwind plugin), and a [`.prettierignore`](.prettierignore)
   covering `_site/`, `node_modules`, `package-lock.json`, `.claude/`,
   `*.njk` (Nunjucks — no built-in Prettier parser), `sitemap.xml`,
-  `*.svg`, and `img/`. Closes the first half of the `core_docs`
+  `*.svg`, and `img/`. Closes the first half of the `dna_core_docs`
   2026-04-24 code-quality-gaps ask (formatter + audit script);
   Dependabot was already wired via
   [`.github/dependabot.yml`](.github/dependabot.yml). No repo-wide
@@ -86,9 +101,9 @@ terse — the commit message and PR body carry the full reasoning.
   KVKK art. 9 cross-border framing from the contact-form snippet —
   processing is now inside EU/EEA, matching the `eur3` Firebase entry
   pattern. Snippets pulled verbatim from the registry at
-  [`core_docs/data-processors.md`](../core_docs/data-processors.md).
+  [`dna_core_docs/data-processors.md`](../dna_core_docs/data-processors.md).
   Bumped `Son Güncelleme` / `Last updated` to 2026-04-24 in both
-  files. Closes the `core_docs` 2026-04-21 Phase D ask.
+  files. Closes the `dna_core_docs` 2026-04-21 Phase D ask.
 - **Issue infra** — Provisioned the status axis (`status:triage`,
   `status:blocked`, `status:wontfix`, `status:good-first-issue`) by
   renaming the bare `blocked` label to `status:blocked` and adding
@@ -99,10 +114,10 @@ terse — the commit message and PR body carry the full reasoning.
   and [`.github/ISSUE_TEMPLATE/feature_request.md`](.github/ISSUE_TEMPLATE/feature_request.md)
   with `status:triage` front-matter so new issues auto-tag for triage.
   Landing's diverged `type:` / `priority:` / `area:` taxonomy
-  (finer-grained than the `core_docs` canonical — `p0..p3` vs.
+  (finer-grained than the `dna_core_docs` canonical — `p0..p3` vs.
   `high/medium/low`, and landing-specific areas `a11y`, `seo`,
   `privacy`, `ci`, `brand`) is preserved as intentional drift;
-  variance to be formalized in `core_docs/development-rules/issues.md`
+  variance to be formalized in `dna_core_docs/development-rules/issues.md`
   (ask queued).
 
 ## 2026-04-21
@@ -114,11 +129,11 @@ terse — the commit message and PR body carry the full reasoning.
   until their own backlogs are cleared (tracked under epic
   [#32](https://github.com/Dipnot-App/www.dipnot.app/issues/32)).
 - **Brand assets** — Audited every brand-logo reference against the
-  [asset-naming rule](../core_docs/product-design/logo.md#naming-rule)
-  ratified in `core_docs` on 2026-04-20. Result: **0 renames needed.**
+  [asset-naming rule](../dna_core_docs/product-design/logo.md#naming-rule)
+  ratified in `dna_core_docs` on 2026-04-20. Result: **0 renames needed.**
   [`img/logos/`](img/logos/) already carries all 9 master filenames
   (6 solo + 3 composed) as both SVG and PNG exports, matching
-  [`core_docs/assets/logo/`](../core_docs/assets/logo/). All
+  [`dna_core_docs/assets/logo/`](../dna_core_docs/assets/logo/). All
   references in code ([`_includes/partials/nav.njk`](_includes/partials/nav.njk),
   [`_includes/partials/footer.njk`](_includes/partials/footer.njk),
   [`brand-book.html`](brand-book.html)) already use the master names
@@ -130,7 +145,7 @@ terse — the commit message and PR body carry the full reasoning.
   per the rule's exception clause.
 - **Privacy policy** — Mirrored the Expo (Push + OTA Updates) and
   Google Analytics US-servers additions from
-  [`core_docs/data-processors.md`](../core_docs/data-processors.md)
+  [`dna_core_docs/data-processors.md`](../dna_core_docs/data-processors.md)
   into [`gizlilik-politikasi.html`](gizlilik-politikasi.html) (TR,
   authoritative) and [`privacy-policy.html`](privacy-policy.html) (EN
   mirror). Expo entry now covers OTA launch-time pings to
@@ -153,8 +168,8 @@ class="navbar-burger">` (nav.njk → swapped to `<button>`);
   and `.text-lead` (18 px) helper classes in [`css/styles.css`](css/styles.css)
   for the canonical type-scale tokens Bulma doesn't cover (Bulma jumps
   16 → 20 with no 18 step). Completes the Inter adoption ask from
-  `core_docs/communication/to-landing.md` (2026-04-19). Spec:
-  [`core_docs/product-design/typography.md`](../core_docs/product-design/typography.md).
+  `dna_communication/to-landing.md` (2026-04-19). Spec:
+  [`dna_core_docs/product-design/typography.md`](../dna_core_docs/product-design/typography.md).
   Closes [#52](https://github.com/Dipnot-App/www.dipnot.app/issues/52).
   Landed via [PR #58](https://github.com/Dipnot-App/www.dipnot.app/pull/58).
 - **Repo hygiene** — Added `.DS_Store` + `**/.DS_Store` to
@@ -168,6 +183,6 @@ class="navbar-burger">` (nav.njk → swapped to `<button>`);
   preconnect hints) and overrode Bulma's default font stack in
   [`css/styles.css`](css/styles.css) so body, headings, `.title`, and
   `.subtitle` all pick up Inter. Cross-surface font ratified in
-  [`core_docs/product-design/typography.md`](../core_docs/product-design/typography.md)
-  (landed via core_docs PR #67 / issue #18). Landed via
+  [`dna_core_docs/product-design/typography.md`](../dna_core_docs/product-design/typography.md)
+  (landed via dna_core_docs PR #67 / issue #18). Landed via
   [PR #50](https://github.com/Dipnot-App/www.dipnot.app/pull/50).
