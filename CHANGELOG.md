@@ -8,6 +8,20 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **Legal / competition** — Wording fixes to
+  [`yarisma-kosullari.html`](yarisma-kosullari.html), same-day so Son
+  Güncelleme stays 10 Ekim 2026. **Madde 6:** dropped "tek" from the
+  winner rule, which contradicted the tie rule below it. **Madde 8:**
+  Dipnot now contacts the winner _before_ the 15 Ocak announcement
+  (was after); a centre that doesn't answer within **7 days** of the
+  first attempt loses the win to the next-highest. No clause for an
+  unreached chain past 15 Ocak (Nev: centres are reachable). The
+  announcement drops Facebook: Instagram + in-app only. **Madde 11:**
+  changes are announced in-app and on Instagram, no longer "the Madde 8
+  channels". **Madde 13:** dropped "dalış merkezi başvuruları", an
+  undefined term that implied centres could apply to join, which
+  Madde 5 rules out.
+  ([#153](https://github.com/Dipnot-App/www.dipnot.app/pull/153))
 - **Legal / competition** — Updated
   [`yarisma-kosullari.html`](yarisma-kosullari.html) (Son Güncelleme
   10 Ekim 2026) with Nev's new calendar and prize. **Madde 4:** voting
