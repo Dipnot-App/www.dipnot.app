@@ -8,6 +8,16 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-10
 
+- **Brand assets** — Favicons are round again, at Nev's request, and
+  **diverge from canon**. The canonical web icons in
+  `dna_core_docs/assets/app-icon/` (adopted earlier today) are an
+  opaque square Sky Captain tile; landing goes back to the pre-10-09
+  look: a full-bleed Sky Captain disc with transparent corners, and
+  the teal mark at 88 % so its ring sits just inside the disc edge.
+  Source: [`img/icons/icon-round.svg`](img/icons/icon-round.svg),
+  which reuses the `logo.svg` master's two paths unchanged. Rendered
+  with `rsvg-convert` at 16/32/48/180/192/512; `favicon.ico` packs
+  16/32/48 as PNG entries. The variance has been reported to core-docs.
 - **Brand assets** — Re-exported every logo copy from the new
   `dna_core_docs` artwork
   ([dna_core_docs#176](https://github.com/Dipnot-App/dna_core_docs/pull/176)).
