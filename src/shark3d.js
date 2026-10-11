@@ -191,7 +191,8 @@ export async function mount(
   bite.play();
   bite.paused = true; // its time is set per frame: one bite per pass
   bite.setEffectiveWeight(0);
-  const BITE = 1.3; // seconds the single open-and-close takes
+  const BITE_AT = 3; // jaws start working before it arrives
+  const BITE = 2.2; // two open-and-close snaps
 
   // A second shark far back in the dark, always circling
   const circler = cloneSkinned(model);
@@ -291,6 +292,52 @@ export async function mount(
   let at = Number.isFinite(aParam) ? aParam : -4;
   let running = true;
   let ready = false;
+  let heading = -0.15;
+  let bank = 0;
+  const ATTACK_END = 14;
+  const hw = (d) =>
+    Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
+  // World position of the attacker at attack time `t` (camera looks −Z)
+  const attackAt = (t) => {
+    const y = 1.15 + Math.sin(t * 0.5) * 0.12;
+    const P = (xr, d) => ({ x: xr * hw(d), z: -d });
+    const bez = (a, b, c, k) => ({
+      x: (1 - k) ** 2 * a.x + 2 * (1 - k) * k * b.x + k * k * c.x,
+      z: (1 - k) ** 2 * a.z + 2 * (1 - k) * k * b.z + k * k * c.z,
+    });
+    const start = P(0.45, FAR);
+    const near = P(0.22, NEAR + 2.6);
+    const bitten = { x: near.x - 0.15, z: near.z + 0.5 };
+    const swing = { x: bitten.x - 1.6, z: bitten.z + 0.7 };
+    const away = { x: bitten.x - 3.6, z: bitten.z - 1.8 };
+    const gone = P(-2.6, NEAR + 7);
+    let p;
+    if (t < 3.6) {
+      const k = Math.min(1, t / 3.6);
+      const kk = k * k * (2 - k);
+      p = {
+        x: MathUtils.lerp(start.x, near.x, kk),
+        z: MathUtils.lerp(start.z, near.z, kk),
+      };
+    } else if (t < 5.2) {
+      const k = (t - 3.6) / 1.6;
+      p = {
+        x: MathUtils.lerp(near.x, bitten.x, k),
+        z: MathUtils.lerp(near.z, bitten.z, ease(k)),
+      };
+    } else if (t < 8) {
+      p = bez(bitten, swing, away, ease((t - 5.2) / 2.8));
+    } else if (t < ATTACK_END) {
+      const k = (t - 8) / (ATTACK_END - 8);
+      p = {
+        x: MathUtils.lerp(away.x, gone.x, k),
+        z: MathUtils.lerp(away.z, gone.z, k),
+      };
+    } else {
+      p = start;
+    }
+    return { x: p.x, y, z: p.z };
+  };
 
   const frame = () => {
     if (!running) return;
@@ -299,69 +346,53 @@ export async function mount(
 
     const halfW = (d) =>
       Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
-    // The attack, every 30 s. x is in units of the visible half-width at
-    // that depth, so it reads the same on every screen size.
-    // 0–1.2 out of the fog · 1.2–4 rushes at us · 4–5.3 one bite ·
-    // 5.3–6.3 thinks better of it, veers left · 6.3–13 cruises off left ·
-    // 13–30 gone
-    let z;
-    let xr; // -1 = left edge, 0 = centre, 1 = right edge
-    let yaw; // 0 = facing us, -π/2 = facing left
-    let swimRate;
-    if (t < 1.2) {
-      const k = t / 1.2;
-      z = MathUtils.lerp(FAR, FAR - 3, k);
-      xr = 0.45;
-      yaw = -0.12;
-      swimRate = 1.6;
-    } else if (t < 4) {
-      const k = (t - 1.2) / 2.8;
-      z = MathUtils.lerp(FAR - 3, NEAR + 2.4, k * k * (2 - k)); // fast, then braking
-      xr = MathUtils.lerp(0.45, 0.2, k);
-      yaw = -0.12;
-      swimRate = 1.9;
-    } else if (t < 4 + BITE) {
-      const k = (t - 4) / BITE;
-      z = MathUtils.lerp(NEAR + 2.4, NEAR + 1.8, Math.sin(k * Math.PI * 0.5));
-      xr = 0.2;
-      yaw = -0.12 - k * 0.08;
-      swimRate = 0.6;
-    } else if (t < 6.3) {
-      const k = (t - 4 - BITE) / (6.3 - 4 - BITE);
-      z = MathUtils.lerp(NEAR + 1.8, NEAR + 3, k);
-      xr = MathUtils.lerp(0.2, 0.05, k);
-      yaw = MathUtils.lerp(-0.2, -1.4, ease(k));
-      swimRate = 1.3;
-    } else if (t < 13) {
-      const k = (t - 6.3) / 6.7;
-      z = MathUtils.lerp(NEAR + 3, NEAR + 5, k);
-      xr = MathUtils.lerp(0.05, -2.4, k);
-      yaw = -1.45;
-      swimRate = 0.65;
+    // The attack, every 30 s (first after 15 s). Positions come from a
+    // path; the heading follows the direction of travel with a little
+    // lag and the body banks into the turn, so it swims an arc instead
+    // of rotating in place.
+    //   0–1 out of the fog · 1–3.6 rushes at us · 3–5.2 two snaps of the
+    //   jaws (start before it arrives) · 5.2–8 arcs away to the left ·
+    //   8–14 cruises off the left edge · 14–30 gone
+    const at3 = attackAt(t);
+    const ahead = attackAt(Math.min(t + 0.25, ATTACK_END));
+    const z = -at3.z;
+    if (t < ATTACK_END) {
+      const want = Math.atan2(ahead.x - at3.x, ahead.z - at3.z);
+      const prev = heading;
+      heading +=
+        Math.atan2(Math.sin(want - heading), Math.cos(want - heading)) *
+        Math.min(1, dt * 4 || 1);
+      const turnRate = dt ? (heading - prev) / dt : 0;
+      bank +=
+        (MathUtils.clamp(-turnRate * 0.35, -0.5, 0.5) - bank) *
+        Math.min(1, dt * 3 || 1);
     } else {
-      z = FAR;
-      xr = 0.45;
-      yaw = -0.12;
-      swimRate = 0.5;
+      heading = -0.15;
+      bank = 0;
     }
-    rig.position.set(xr * halfW(z), 1.15 + Math.sin(t * 0.5) * 0.12, -z);
-    rig.rotation.y = yaw + Math.sin(t * 0.4) * 0.04;
-    rig.rotation.x = Math.sin(t * 0.27) * 0.03;
-    fadeShark(t < 1.2 ? ease(t / 1.2) : t >= 13 ? 0 : 1);
+    rig.position.set(at3.x, at3.y, at3.z);
+    rig.rotation.set(Math.sin(t * 0.27) * 0.03, heading, bank, "YXZ");
+    fadeShark(t < 1 ? ease(t) : t >= ATTACK_END ? 0 : 1);
 
-    // exactly one open-and-close of the jaws, then back to swimming
-    const inBite = t >= 4 && t < 4 + BITE;
-    const bw = inBite ? Math.min(1, (t - 4) / 0.15, (4 + BITE - t) / 0.15) : 0;
-    bite.time = inBite ? ((t - 4) / BITE) * bite.getClip().duration : 0;
+    // two snaps of the jaws, then back to swimming
+    const inBite = t >= BITE_AT && t < BITE_AT + BITE;
+    const bw = inBite
+      ? Math.min(1, (t - BITE_AT) / 0.15, (BITE_AT + BITE - t) / 0.15)
+      : 0;
+    const dur = bite.getClip().duration;
+    bite.time = inBite ? (((t - BITE_AT) / BITE) * 2 * dur) % dur : 0;
     bite.setEffectiveWeight(bw);
     swim.setEffectiveWeight(1 - bw);
-    swim.timeScale = swimRate;
+    swim.timeScale = t < 3.6 ? 1.9 : t < 8 ? 1.25 : 0.65;
     mixer.update(dt);
 
-    // The circler: far back, slightly left of centre, low, always there
-    circleFade = Math.min(1, circleFade + dt / 3);
-    circleRig.position.set(0, 0.9, -15);
+    // The circler leaves the stage while the attacker is on it, so the two
+    // never overlap: out by the time the attack starts, back after it ends
+    const circleWant = t >= ATTACK_END + 1 && t < LOOP - 2.5 ? 1 : 0;
+    circleFade += MathUtils.clamp(circleWant - circleFade, -dt / 2.2, dt / 2.5);
     fadeCircler(ease(circleFade));
+    // The circler: far back, slightly left of centre, low, always there
+    circleRig.position.set(0, 0.9, -15);
     circleMixer.update(dt);
 
     // Anglerfish: its own 37 s cycle, drifting left → right low behind
@@ -387,7 +418,9 @@ export async function mount(
 
     // eyes fade in only when the shark is close enough to matter
     eyeMat.opacity =
-      t >= 13 ? 0 : MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
+      t >= ATTACK_END
+        ? 0
+        : MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
 
     renderer.render(scene, camera);
     if (!ready) {
