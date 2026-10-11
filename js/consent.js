@@ -55,11 +55,15 @@
     });
   };
 
-  const show = () => {
+  // Focus moves into the banner only when the visitor reopens it; on a
+  // first visit it must not steal focus from the page.
+  const show = (focus) => {
     banner.hidden = false;
-    banner
-      .querySelector('[data-consent="denied"]')
-      .focus({ preventScroll: true });
+    if (focus) {
+      banner
+        .querySelector('[data-consent="denied"]')
+        .focus({ preventScroll: true });
+    }
   };
   const hide = () => {
     banner.hidden = true;
@@ -80,10 +84,10 @@
   });
 
   document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-consent-open]")) show();
+    if (e.target.closest("[data-consent-open]")) show(true);
   });
 
   const choice = read();
   if (choice === "granted") loadGa();
-  else if (choice !== "denied") show();
+  else if (choice !== "denied") show(false);
 })();
