@@ -3173,7 +3173,8 @@ main.container > .section {
   color: oklch(0.7 0.06 210);
 }
 .dn-nf__row--main {
-  align-items: baseline;
+  /* depth and time share a top line */
+  align-items: flex-start;
   margin: 0.15rem 0 0.35rem;
   color: oklch(0.92 0.12 200);
 }
@@ -3189,10 +3190,44 @@ main.container > .section {
   font-size: 0.32em;
   letter-spacing: 0;
 }
+/* DSEG7 Classic (SIL OFL 1.1, fonts/DSEG-LICENSE.txt): 7-segment LCD
+   digits for the dive time, 404 only */
+@font-face {
+  font-family: "DSEG7";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/dseg7-classic-bold.woff2") format("woff2");
+}
 .dn-nf__time {
-  font-size: 1.75rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  position: relative;
+  /* nudged so the segment tops line up with the depth digits */
+  margin-top: 0.55rem;
+  font:
+    700 1.6rem / 1 "DSEG7",
+    ui-monospace,
+    monospace;
+  letter-spacing: 0.04em;
+}
+/* unlit segments behind the digits, like a real LCD */
+.dn-nf__ghost {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+}
+.dn-nf__ndl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.dn-nf__deco {
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  background: oklch(0.72 0.19 28);
+  color: oklch(0.13 0.015 240);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  /* off-beat with the ascend alarm */
+  animation: dn-nf-blink 1s steps(2, start) 0.5s infinite;
 }
 .dn-nf__alarm {
   color: oklch(0.72 0.19 28);
@@ -3441,6 +3476,7 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
 @media (prefers-reduced-motion: reduce) {
   .dn-nf__computer,
   .dn-nf__alarm,
+  .dn-nf__deco,
   .dn-abyss__swim,
   .dn-abyss__bob,
   .dn-abyss__lure,
