@@ -6,6 +6,40 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-11
+
+- **Release 2.0.0: landing redesign ("Dalış")** — The landing is
+  rebuilt from the ground up; `package.json` goes `1.0.0` → `2.0.0`.
+  The previous site is tagged **`v1.0.0`** (`9b4ec4a`, the 2026-10-10
+  deploy); `v2.0.0` is tagged once this deploy completes.
+  - **Design system** — own `dn-` component layer in
+    [`css/styles.css`](css/styles.css) on canon OKLCH tokens. Retires the
+    `#04d1b2` accent drift for the ratified teal `#338596` / `#6ad0e3`.
+    Liquid-glass surfaces (frost; refraction in Chromium; solid fallback
+    for reduced transparency) over a fixed "ocean" that deepens as the
+    page scrolls. Bulma stays loaded only for the legal pages' content.
+  - **Motion** — GSAP 3.13 + ScrollTrigger + SplitText from cdnjs, SRI
+    pinned in [`_data/site.json`](_data/site.json), driven by
+    [`js/motion.js`](js/motion.js) on the home page only. Everything is
+    visible without JS; `prefers-reduced-motion` gets a static page.
+  - **3D iPhones** — [`_includes/macros/iphone.njk`](_includes/macros/iphone.njk)
+    renders real app screenshots (`img-src/screens/` → `npm run
+build:images` → `img/opt/`, AVIF + WebP) in a CSS 3D frame. Status
+    bars normalized to 14:00 / full battery. Replaces the baked
+    deviceframes PNGs; first-load images drop from ~3.5 MB to ~0.4 MB.
+  - **Home page** — hero with two phones and ambient bubbles; about;
+    bento features; a pinned "Nasıl çalışır?" whose phone follows the
+    steps (App Store → sign-in → feed); glass FAQ on `<details>`;
+    contact; download CTA. Nav is a floating glass bar; footer keeps the
+    newsletter form only. Theme is applied before first paint.
+  - **Copy** — claims aligned with the app (no interest picker, the
+    feed is chronological): "Kaydet, sonra oku", "Hesabını oluştur".
+    One address form ("sen") on the home page, nav, footer and 404;
+    legal pages stay formal. FAQ cadence: almost daily, usually 5–6
+    articles a week. Category labels come from the app itself.
+  - **Sub-pages** keep their content and pick up the new shell, header
+    and a glass reading panel.
+
 ## 2026-10-10
 
 - **OG test pages (temporary)** — Added unlinked, `noindex`
