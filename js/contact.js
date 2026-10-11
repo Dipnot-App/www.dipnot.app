@@ -7,6 +7,7 @@
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("contact-feedback");
   const button = form.querySelector("button[type=submit]");
+  const OFFLINE = "Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar dene.";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -46,14 +47,18 @@
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Bir hata oluştu");
+        // Server messages are already Turkish; show them as-is
+        const fail = new Error(data.error || OFFLINE);
+        fail.fromServer = true;
+        throw fail;
       }
 
       feedback.textContent = data.message || "Mesajınız iletildi.";
       feedback.classList.add("is-success");
       form.reset();
     } catch (err) {
-      feedback.textContent = err.message;
+      // Network/parse failures would otherwise surface "Failed to fetch"
+      feedback.textContent = err.fromServer ? err.message : OFFLINE;
       feedback.classList.add("is-danger");
     } finally {
       button.classList.remove("is-loading");

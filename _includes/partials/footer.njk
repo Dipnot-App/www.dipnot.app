@@ -36,12 +36,12 @@
       <!-- Newsletter -->
       <section class="dn-newsletter dn-glass" aria-label="Bülten aboneliği">
         <p class="dn-footer__title">Bülten aboneliği</p>
-        <form id="newsletter-form">
+        <form id="newsletter-form" novalidate>
           <div class="dn-newsletter__row">
             <div class="dn-control">
               <i class="fa-solid fa-envelope" aria-hidden="true"></i>
               <label class="dn-sr-only" for="newsletter-email">E-posta adresin</label>
-              <input class="dn-input" type="email" id="newsletter-email" placeholder="E-posta adresin" autocomplete="email" required>
+              <input class="dn-input" type="email" id="newsletter-email" placeholder="E-posta adresin" autocomplete="email" aria-describedby="newsletter-message" required>
             </div>
             <button class="dn-btn dn-btn--primary" type="submit">Abone ol</button>
           </div>
