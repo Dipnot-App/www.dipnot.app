@@ -51,37 +51,20 @@
     });
   }
 
-  // Nav: glass thickens once the page scrolls; hides while scrolling
-  // down, returns on the way up.
+  // Nav: the glass thickens once the page leaves the top. A single
+  // class flip at a threshold — the bar itself never moves, so it can't
+  // jitter against the scroll.
   const nav = document.querySelector("[data-nav]");
 
   if (nav) {
-    let lastY = window.scrollY;
-    let ticking = false;
-
-    const update = () => {
-      const y = window.scrollY;
-      nav.classList.toggle("is-scrolled", y > 24);
-      const menuOpen = sheet && sheet.classList.contains("is-active");
-      nav.classList.toggle(
-        "is-hidden-up",
-        !menuOpen && y > 320 && y > lastY + 4,
-      );
-      if (Math.abs(y - lastY) > 4) lastY = y;
-      ticking = false;
-    };
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(update);
-        }
-      },
-      { passive: true },
-    );
-    update();
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText =
+      "position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(([entry]) => {
+      nav.classList.toggle("is-scrolled", !entry.isIntersecting);
+    }).observe(sentinel);
   }
 
   // Specular sheen: each glass surface tracks the pointer (fine pointers

@@ -20,6 +20,7 @@
   const EASE = "power3.out";
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => gsap.utils.toArray(sel, ctx);
+  const rest = (phone) => phone.dataset.rot.split(",").map(Number);
 
   // Accordion height animation — progressive enhancement over native
   // <details>, independent of the reduced-motion split below because a
@@ -77,20 +78,21 @@
       /* ---------------------------------------------------------------
          Depth — the ocean darkens as the page descends
          --------------------------------------------------------------- */
-      const ocean = $(".dn-ocean");
+      const depth = {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.8,
+      };
       gsap.fromTo(
-        ocean,
-        { "--depth": 0 },
-        {
-          "--depth": 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: document.body,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.8,
-          },
-        },
+        ".dn-ocean__deep",
+        { opacity: 0 },
+        { opacity: 1, ease: "none", scrollTrigger: depth },
+      );
+      gsap.fromTo(
+        ".dn-ocean__rays",
+        { opacity: 0.75 },
+        { opacity: 0.1, ease: "power1.in", scrollTrigger: depth },
       );
 
       /* ---------------------------------------------------------------
@@ -104,6 +106,8 @@
       );
       const visual = $("[data-hero-visual]", hero);
       const chips = $$("[data-chip]", hero);
+      const heroPhone = $("[data-iphone]", hero);
+      const heroTilt = $("[data-iphone-tilt]", hero);
 
       gsap.set(title, { opacity: 1 });
       const titleSplit = SplitText.create(title, {
@@ -133,9 +137,25 @@
         )
         .fromTo(
           visual,
-          { y: 80, scale: 0.92, opacity: 0 },
-          { y: 0, scale: 1, opacity: 1, duration: 1.6, ease: "expo.out" },
-          0.3,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.4, ease: "expo.out" },
+          0.25,
+        )
+        .fromTo(
+          heroPhone,
+          {
+            rotationX: rest(heroPhone)[0] + 18,
+            rotationY: rest(heroPhone)[1] - 50,
+            rotationZ: rest(heroPhone)[2] - 8,
+          },
+          {
+            rotationX: rest(heroPhone)[0],
+            rotationY: rest(heroPhone)[1],
+            rotationZ: rest(heroPhone)[2],
+            duration: 2.2,
+            ease: "expo.out",
+          },
+          0.25,
         )
         .fromTo(
           chips,
@@ -154,8 +174,8 @@
       // the scroll parallax on y)
       chips.forEach((chip, i) => {
         gsap.to(chip, {
-          yPercent: -18,
-          rotation: i % 2 ? 1.5 : -1.5,
+          yPercent: -10,
+          rotation: i % 2 ? 1 : -1,
           duration: 2.6 + i * 0.5,
           ease: "sine.inOut",
           yoyo: true,
@@ -178,6 +198,39 @@
           },
         });
       });
+      gsap.to(heroPhone, {
+        rotationY: () => rest(heroPhone)[1] + 18,
+        rotationX: 0,
+        rotationZ: 0,
+        ease: "none",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      // Pointer: the phone leans toward the cursor (desktop)
+      if (full && heroTilt) {
+        gsap.set(heroTilt, { transformPerspective: 2000 });
+        const tx = gsap.quickTo(heroTilt, "rotationX", {
+          duration: 1.2,
+          ease: EASE,
+        });
+        const ty = gsap.quickTo(heroTilt, "rotationY", {
+          duration: 1.2,
+          ease: EASE,
+        });
+        const onMove = (e) => {
+          tx((e.clientY / window.innerHeight - 0.5) * -8);
+          ty((e.clientX / window.innerWidth - 0.5) * 12);
+        };
+        hero.addEventListener("pointermove", onMove);
+        ctx.add(() => () => hero.removeEventListener("pointermove", onMove));
+      }
+
       if (full) {
         gsap.to($(".dn-hero__copy", hero), {
           y: 90,
@@ -244,41 +297,43 @@
       /* ---------------------------------------------------------------
          About — the phone rises out of the depth; its feed scrolls
          --------------------------------------------------------------- */
-      const device = $("[data-device]");
-      if (device) {
-        gsap.fromTo(
-          device,
-          {
-            y: 140,
-            rotateX: 22,
-            scale: 0.88,
-            opacity: 0,
-            transformPerspective: 1400,
-          },
-          {
-            y: 0,
-            rotateX: 0,
-            scale: 1,
-            opacity: 1,
-            ease: "none",
+      const aboutPhone = $("[data-about-stage] [data-iphone]");
+      if (aboutPhone) {
+        const [rx, ry, rz] = rest(aboutPhone);
+        gsap
+          .timeline({
             scrollTrigger: {
               trigger: "#about",
-              start: "top 92%",
-              end: "center 62%",
+              start: "top 95%",
+              end: "bottom 35%",
               scrub: 1,
             },
-          },
-        );
-        gsap.to($("[data-device-screen]"), {
-          yPercent: -12,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#about",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
+          })
+          .fromTo(
+            aboutPhone,
+            {
+              y: 160,
+              opacity: 0,
+              rotationX: rx + 30,
+              rotationY: ry + 45,
+              rotationZ: rz - 6,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              rotationX: rx,
+              rotationY: ry,
+              rotationZ: rz,
+              ease: "power2.out",
+              duration: 1,
+            },
+          )
+          .to(aboutPhone, {
+            rotationY: ry - 14,
+            y: -30,
+            ease: "none",
+            duration: 0.8,
+          });
       }
 
       /* ---------------------------------------------------------------
@@ -331,6 +386,7 @@
                 start: "center center",
                 end: "+=130%",
                 pin: true,
+                anticipatePin: 1,
                 scrub: 1,
               }
             : {

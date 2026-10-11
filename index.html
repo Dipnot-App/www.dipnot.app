@@ -28,6 +28,8 @@ categories:
   - { label: "Yurttaş Bilimi", icon: "flask" }
 ---
 
+{% from "macros/iphone.njk" import iphone %}
+
 <!-- HERO -->
 <section class="dn-hero" aria-labelledby="hero-title">
   <div class="dn-container dn-hero__grid">
@@ -51,32 +53,12 @@ categories:
     </div>
 
     <div class="dn-hero__visual" data-hero data-hero-visual>
-      <div class="dn-hero__phones" data-parallax="-12">
-        <picture>
-          <source
-            type="image/avif"
-            srcset="
-              /img/opt/hero-phones-640.avif 640w,
-              /img/opt/hero-phones-941.avif 941w
-            "
-            sizes="(min-width: 1024px) 560px, 92vw"
-          />
-          <source
-            type="image/webp"
-            srcset="
-              /img/opt/hero-phones-640.webp 640w,
-              /img/opt/hero-phones-941.webp 941w
-            "
-            sizes="(min-width: 1024px) 560px, 92vw"
-          />
-          <img
-            src="/img/deviceframes-hero.png"
-            alt="Dipnot uygulamasının makale akışı ve giriş ekranı"
-            width="941"
-            height="800"
-            fetchpriority="high"
-          />
-        </picture>
+      <div class="dn-iphone-stage">
+        <div class="dn-iphone-tilt" data-iphone-tilt data-parallax="-10">
+          {{ iphone("about-screen", "Dipnot uygulamasında kategorilere göre
+          makale akışı", rot="8,-26,5", inset=true, eager=true) }}
+        </div>
+        <div class="dn-iphone-shadow" aria-hidden="true"></div>
       </div>
 
       <div
@@ -121,37 +103,10 @@ categories:
     <div class="dn-container dn-split">
       <div class="dn-about__visual">
         <div class="dn-about__halo" aria-hidden="true"></div>
-        <div class="dn-device" data-device>
-          <div class="dn-device__screen">
-            <div class="dn-device__feed">
-              <picture>
-                <source
-                  type="image/avif"
-                  srcset="
-                    /img/opt/about-screen-450.avif 450w,
-                    /img/opt/about-screen-900.avif 900w
-                  "
-                  sizes="(min-width: 1024px) 340px, 80vw"
-                />
-                <source
-                  type="image/webp"
-                  srcset="
-                    /img/opt/about-screen-450.webp 450w,
-                    /img/opt/about-screen-900.webp 900w
-                  "
-                  sizes="(min-width: 1024px) 340px, 80vw"
-                />
-                <img
-                  src="/img/opt/about-screen-900.webp"
-                  alt="Dipnot uygulamasında kategorilere göre makale akışı"
-                  width="900"
-                  height="1310"
-                  loading="lazy"
-                  data-device-screen
-                />
-              </picture>
-            </div>
-          </div>
+        <div class="dn-iphone-stage" data-about-stage>
+          {{ iphone("about-screen", "Dipnot uygulamasında makale akışı",
+          rot="4,22,-3", inset=true) }}
+          <div class="dn-iphone-shadow" aria-hidden="true"></div>
         </div>
       </div>
 
@@ -518,11 +473,7 @@ categories:
   </section>
 
   <!-- DOWNLOAD — the deep zone starts here -->
-  <section
-    id="download"
-    class="dn-cta dn-deep"
-    aria-labelledby="download-title"
-  >
+  <section id="download" class="dn-cta" aria-labelledby="download-title">
     <div class="dn-container">
       <div class="dn-cta__panel dn-glass dn-glass--refract" data-cta>
         <div class="dn-cta__rays" aria-hidden="true"></div>
