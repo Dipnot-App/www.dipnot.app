@@ -2198,6 +2198,16 @@ main.container .button.is-primary:hover {
 }
 
 /* 404 */
+/* Phone left, text right on desktop; on small screens the text stays
+   first so the way home is above the fold */
+@media (min-width: 1024px) {
+  .dn-hero__grid--flip {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+  .dn-hero__grid--flip .dn-hero__visual {
+    order: -1;
+  }
+}
 .dn-404__code {
   margin: 0 0 0.5rem;
   background: linear-gradient(160deg, var(--dn-teal-bright), var(--dn-teal));
