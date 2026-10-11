@@ -32,8 +32,8 @@
    landing-only motion/type extensions are a landing variance pending
    core-docs ratification.
 
-   Every custom class is prefixed `dn-` so it never collides with Bulma,
-   which stays loaded for the legal pages' .content / .table / forms.
+   Every custom class is prefixed `dn-`. Bulma is gone since v2.0.0; the
+   legal pages' original class names are covered in section 17b.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -82,15 +82,6 @@
   --dn-gutter: clamp(1rem, 4vw, 2rem);
   --dn-section-y: clamp(5rem, 10vw, 9rem);
   --dn-nav-h: 4rem;
-
-  /* Bulma bridge — legal pages keep Bulma components, on brand colors */
-  --bulma-family-primary: var(--dn-font);
-  --bulma-primary-h: 191deg;
-  --bulma-primary-s: 49%;
-  --bulma-primary-l: 39%;
-  --bulma-link-h: 191deg;
-  --bulma-link-s: 49%;
-  --bulma-link-l: 34%;
 }
 
 /* Light theme (canon light tokens, cool water tint) */
@@ -157,9 +148,6 @@
   --dn-bubble-core: oklch(0.85 0.06 205 / 0.05);
   --dn-bubble-rim: oklch(0.92 0.04 200 / 0.6);
   --dn-bubble-rim-soft: oklch(0.85 0.06 205 / 0.15);
-
-  --bulma-link-l: 65%;
-  --bulma-primary-l: 52%;
 }
 
 /* --------------------------------------------------------------------------
@@ -576,6 +564,17 @@ h6,
   height: 1.35rem;
 }
 
+/* Font Awesome loads without blocking paint; reserve each icon's box
+   so buttons don't change width (and wrap) when the font arrives */
+.dn-btn > i[class*="fa-"] {
+  display: inline-block;
+  flex: none;
+  width: 1.25em;
+  text-align: center;
+}
+.dn-btn > i.fa-2x {
+  width: 1em;
+}
 .dn-btn--primary {
   color: oklch(0.99 0 0);
   background: linear-gradient(
@@ -2174,10 +2173,6 @@ main.container > .section > .content {
   background: var(--dn-border);
 }
 .content .table {
-  --bulma-table-color: var(--dn-fg);
-  --bulma-table-cell-heading-color: var(--dn-fg);
-  --bulma-table-cell-border-color: var(--dn-border);
-  --bulma-table-head-cell-color: var(--dn-fg);
   background: transparent;
 }
 
@@ -2286,10 +2281,9 @@ main.container .button.is-primary:hover {
    17b. Legacy page markup without Bulma
    The legal, contact and account pages keep their original Bulma class
    names (and the account-deletion scripts set some of them), but Bulma
-   itself no longer loads there — only brand-book opts in (`bulma: true`)
-   until its rewrite. These rules cover exactly the classes those pages
-   and scripts use.
-   -------------------------------------------------------------------------- */
+   itself no longer loads anywhere (removed in v2.0.0). These rules cover
+   exactly the classes those pages and scripts use.
+   */
 
 /* Page header */
 .hero {
@@ -2503,6 +2497,457 @@ main.container > .section {
   border-right-color: transparent;
   border-radius: 50%;
   animation: dn-spin 0.7s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Brand book (partials/brand-book.njk — marka-kitabi.html + brand-book.html)
+   -------------------------------------------------------------------------- */
+
+.dn-bb-hero {
+  padding: calc(var(--dn-nav-h) + 4rem) 0 1rem;
+}
+.dn-bb-hero .dn-display {
+  font-size: clamp(2.75rem, 5vw + 0.5rem, 5.5rem);
+}
+.dn-bb-hero .dn-lead {
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+.dn-bb-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.dn-bb-hero__note {
+  margin-top: 1rem;
+  color: var(--dn-fg-subtle);
+  font-size: var(--dn-fs-small);
+}
+.dn-bb-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+.dn-bb-toc a {
+  padding: 0.5rem 0.95rem;
+  color: var(--dn-fg-muted);
+  font-size: var(--dn-fs-small);
+  font-weight: 500;
+}
+.dn-bb-toc a:hover {
+  color: var(--dn-fg);
+}
+
+.dn-bb-section {
+  padding-block: clamp(3.5rem, 7vw, 6rem) 0;
+}
+.dn-bb-section:last-child {
+  padding-bottom: var(--dn-section-y);
+}
+.dn-bb-prose {
+  max-width: 46rem;
+  margin-bottom: 1.5rem;
+  color: var(--dn-fg-muted);
+  font-size: var(--dn-fs-lead);
+  line-height: var(--dn-lh-relaxed);
+}
+.dn-bb-sub {
+  margin: 2.5rem 0 1rem;
+}
+
+.dn-bb-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dn-bb-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.dn-bb-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.dn-bb-grid--colors {
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+}
+.dn-bb-grid--assets {
+  grid-template-columns: 1fr 1fr 2fr 2fr;
+}
+
+.dn-bb-tile,
+.dn-bb-swatch {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--dn-radius-3xl);
+}
+.dn-bb-tile__stage {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin: 0.5rem 0.5rem 0;
+  border-radius: calc(var(--dn-radius-3xl) - 0.5rem);
+}
+.dn-bb-tile__stage img {
+  width: 34%;
+  height: auto;
+}
+/* Stages are fixed (not themed): each mark sits on the background it's
+   meant for, in both themes */
+.dn-bb-tile__stage--light {
+  background: oklch(0.97 0.01 210);
+}
+.dn-bb-tile__stage--dark {
+  background: #131b26;
+}
+.dn-bb-tile__stage--plain {
+  background: color-mix(in oklch, var(--dn-fg) 5%, transparent);
+}
+.dn-bb-tile__meta {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.dn-bb-tile__meta p {
+  margin: 0;
+  color: var(--dn-fg-muted);
+  font-size: var(--dn-fs-small);
+  line-height: var(--dn-lh-normal);
+}
+.dn-bb-tile__meta p + p {
+  margin-top: 0.35rem;
+}
+.dn-bb-tile__name,
+.dn-bb-tile__meta .dn-bb-tile__name {
+  margin: 0 0 0.25rem;
+  color: var(--dn-fg);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.dn-bb-tile__name span {
+  margin-left: 0.35rem;
+  color: var(--dn-fg-subtle);
+  font-size: var(--dn-fs-small);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.dn-bb-tile__dl {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem !important;
+}
+.dn-bb-tile__dl a {
+  color: var(--dn-accent-text);
+  font-weight: 600;
+}
+.dn-bb-tile__dl a::before {
+  content: "\2193\00a0";
+}
+.dn-bb-composed {
+  width: calc(100% - 1rem);
+  height: auto;
+  margin: 0.5rem 0.5rem 0;
+  border-radius: calc(var(--dn-radius-3xl) - 0.5rem);
+}
+
+/* Clear-space diagram: the dashed zone is 1/6 of the mark's height */
+.dn-bb-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2rem;
+}
+.dn-bb-clear {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 2rem;
+  border-radius: var(--dn-radius-3xl);
+}
+.dn-bb-clear__zone {
+  padding: 20px; /* 120px mark ÷ 6 */
+  outline: 1.5px dashed var(--dn-accent);
+  outline-offset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    color-mix(in oklch, var(--dn-accent) 14%, transparent) 0 6px,
+    transparent 6px 12px
+  );
+}
+.dn-bb-clear__zone img {
+  display: block;
+  background: var(--dn-glass-solid);
+}
+.dn-bb-clear figcaption {
+  color: var(--dn-accent-text);
+  font-size: var(--dn-fs-small);
+  font-weight: 600;
+}
+
+.dn-bb-table {
+  max-width: 46rem;
+  overflow-x: auto;
+  border-radius: var(--dn-radius-2xl);
+}
+.dn-bb-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--dn-fs-small);
+}
+.dn-bb-table th,
+.dn-bb-table td {
+  padding: 0.8rem 1.1rem;
+  border-bottom: 1px solid var(--dn-border);
+  color: var(--dn-fg);
+  text-align: left;
+}
+.dn-bb-table th {
+  color: var(--dn-fg-subtle);
+  font-weight: 600;
+}
+.dn-bb-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Misuse examples — deliberately wrong renderings of the mark */
+.dn-bb-misuse {
+  position: relative;
+  background: oklch(0.97 0.01 210);
+  overflow: hidden;
+}
+.dn-bb-misuse--1 img {
+  transform: scaleX(1.55) skewX(-8deg);
+}
+.dn-bb-misuse--2 img {
+  filter: hue-rotate(150deg) saturate(2.5);
+}
+.dn-bb-misuse--3 img {
+  filter: drop-shadow(0 6px 6px oklch(0 0 0 / 0.5))
+    drop-shadow(0 0 14px oklch(0.75 0.15 200));
+}
+.dn-bb-misuse--4 {
+  background: oklch(0.6 0.08 210);
+}
+.dn-bb-misuse--5 img {
+  transform: rotate(-28deg) scaleX(-1);
+}
+.dn-bb-misuse--6 {
+  background:
+    linear-gradient(180deg, oklch(1 0 0 / 0.08) 0 18%, transparent 18%)
+      no-repeat,
+    #2e162c;
+}
+.dn-bb-misuse__x {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: oklch(0.58 0.21 27);
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* Color swatches */
+.dn-bb-swatch__chip {
+  height: 7.5rem;
+  margin: 0.5rem 0.5rem 0;
+  border-radius: calc(var(--dn-radius-3xl) - 0.5rem);
+  box-shadow: inset 0 0 0 1px var(--dn-border);
+}
+.dn-bb-values {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0.75rem 0 0;
+}
+.dn-bb-values div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.dn-bb-values dt {
+  color: var(--dn-fg-subtle);
+  font-size: var(--dn-fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.dn-bb-values dd {
+  margin: 0;
+  min-width: 0;
+}
+.dn-bb-copy {
+  max-width: 100%;
+  padding: 0.15rem 0.4rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--dn-radius-sm);
+  background: none;
+  color: var(--dn-fg);
+  font: 500 var(--dn-fs-caption) / 1.4 var(--dn-font);
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: copy;
+}
+.dn-bb-copy:hover {
+  background: color-mix(in oklch, var(--dn-fg) 7%, transparent);
+}
+.dn-bb-copy.is-copied {
+  color: var(--dn-accent-text);
+}
+
+/* Type specimens */
+.dn-bb-specimen {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-radius: var(--dn-radius-3xl);
+}
+.dn-bb-specimen p {
+  margin: 0;
+}
+.dn-bb-specimen__label {
+  color: var(--dn-accent-text);
+  font-size: var(--dn-fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dn-bb-specimen__aa {
+  margin: 0.5rem 0 1rem !important;
+  color: var(--dn-fg);
+  font-size: clamp(4.5rem, 7vw, 6.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.dn-bb-specimen__meta {
+  color: var(--dn-fg-subtle);
+  font-size: var(--dn-fs-small);
+}
+.dn-bb-specimen__sample {
+  margin-top: 1.25rem !important;
+  color: var(--dn-fg);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.dn-bb-specimen__glyphs {
+  margin-top: 0.4rem !important;
+  color: var(--dn-fg-muted);
+  letter-spacing: 0.04em;
+}
+.dn-bb-specimen__weights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-top: 1rem !important;
+  color: var(--dn-fg);
+}
+.dn-bb-specimen__wordmark {
+  width: 100%;
+  height: auto;
+  margin: 0.75rem 0 1rem;
+  border-radius: var(--dn-radius-2xl);
+}
+
+.dn-bb-list {
+  max-width: 46rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--dn-fg-muted);
+  line-height: var(--dn-lh-relaxed);
+}
+.dn-bb-list li + li {
+  margin-top: 0.4rem;
+}
+
+/* Voice and tone */
+.dn-bb-voice {
+  padding: 1.5rem;
+}
+.dn-bb-voice p {
+  margin: 0;
+  color: var(--dn-fg-muted);
+  line-height: var(--dn-lh-normal);
+}
+.dn-bb-voice .dn-bb-tile__name {
+  margin-bottom: 0.4rem;
+}
+.dn-bb-plain {
+  margin-top: 1.25rem;
+  font-size: var(--dn-fs-body);
+}
+
+/* Brand character */
+.dn-bb-quote {
+  max-width: 54rem;
+  margin: 0.5rem 0 1.75rem;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border-radius: var(--dn-radius-3xl);
+}
+.dn-bb-quote__kicker {
+  margin-bottom: 1rem;
+  color: var(--dn-accent-text);
+  font-size: var(--dn-fs-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.dn-bb-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.dn-bb-quote blockquote p {
+  color: var(--dn-fg);
+  font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.75rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+/* Icons + share images */
+.dn-bb-appicon {
+  width: 34%;
+  border-radius: 22%;
+}
+.dn-bb-og {
+  width: calc(100% - 1rem);
+  height: auto;
+  margin: 0.5rem 0.5rem 0;
+  border-radius: calc(var(--dn-radius-3xl) - 0.5rem);
+}
+.dn-bb-end {
+  margin-top: 3rem;
+  font-size: var(--dn-fs-body);
+}
+
+@media (max-width: 1023px) {
+  .dn-bb-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dn-bb-grid--assets {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dn-bb-tile--wide {
+    grid-column: span 2;
+  }
+  .dn-bb-split {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 599px) {
+  .dn-bb-grid--3,
+  .dn-bb-grid--2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Analytics consent banner (partials/consent.njk) */

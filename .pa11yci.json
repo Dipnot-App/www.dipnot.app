@@ -17,6 +17,8 @@
     "http://localhost:8080/iletisim.html",
     "http://localhost:8080/hesap-silme.html",
     "http://localhost:8080/hesap-silme-onayi.html",
-    "http://localhost:8080/404.html"
+    "http://localhost:8080/404.html",
+    "http://localhost:8080/marka-kitabi.html",
+    "http://localhost:8080/brand-book.html"
   ]
 }

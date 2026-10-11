@@ -9,7 +9,9 @@
         "http://localhost:8080/terms-of-use.html",
         "http://localhost:8080/yarisma-kosullari.html",
         "http://localhost:8080/iletisim.html",
-        "http://localhost:8080/hesap-silme.html"
+        "http://localhost:8080/hesap-silme.html",
+        "http://localhost:8080/marka-kitabi.html",
+        "http://localhost:8080/brand-book.html"
       ],
       "numberOfRuns": 3,
       "settings": {

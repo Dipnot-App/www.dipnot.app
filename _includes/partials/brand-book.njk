@@ -1,0 +1,293 @@
+{#- Brand book body, shared by marka-kitabi.html (tr) and brand-book.html
+    (en). Copy lives in _data/brandbook.js; pages set `bbLang`. -#}
+{%- set b = brandbook -%}
+{%- set t = brandbook[bbLang] -%}
+{%- set L = bbLang -%}
+
+<section class="dn-bb-hero" aria-labelledby="bb-title">
+  <div class="dn-container">
+    <p class="dn-eyebrow dn-glass dn-glass--pill">
+      <span class="dn-eyebrow__dot" aria-hidden="true"></span>
+      Dipnot
+    </p>
+    <h1 id="bb-title" class="dn-display">
+      {{ t.title | replace(t.accent, "") | trim }}
+      <span class="dn-accent">{{ t.accent }}</span>
+    </h1>
+    <p class="dn-lead">{{ t.lead }}</p>
+    <div class="dn-bb-hero__actions">
+      <a class="dn-btn dn-btn--primary" href="{{ b.pack }}" download>
+        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        {{ t.download }}
+      </a>
+      <a class="dn-btn dn-glass dn-glass--pill" href="{{ t.other.href }}" hreflang="{{ t.other.lang }}" lang="{{ t.other.lang }}">
+        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        {{ t.other.label }}
+      </a>
+    </div>
+    <p class="dn-bb-hero__note">
+      {{ t.downloadNote }} ·
+      {{ t.reference }}
+      <a class="dn-link" href="{{ b.gingersauce }}" target="_blank" rel="noopener noreferrer">Gingersauce</a>
+    </p>
+
+    <nav class="dn-bb-toc" aria-label="{{ t.toc }}">
+      {%- for key, label in t.sections %}
+      <a class="dn-glass dn-glass--pill" href="#{{ key }}">{{ label }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+</section>
+
+<main id="main" class="dn-main dn-bb">
+  {#- 01 Character #}
+  <section id="character" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">01</p>
+      <h2 class="dn-h2">{{ t.sections.character }}</h2>
+      <figure class="dn-bb-quote dn-glass dn-glass--strong">
+        <p class="dn-bb-quote__kicker">{{ t.character.kicker }}</p>
+        <blockquote><p>{{ t.character.quote }}</p></blockquote>
+      </figure>
+      <p class="dn-bb-prose">{{ t.character.body }}</p>
+    </div>
+  </section>
+
+  {#- 02 Logo #}
+  <section id="logo" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">02</p>
+      <h2 class="dn-h2">{{ t.sections.logo }}</h2>
+      <p class="dn-bb-prose">{{ t.logo.intro }}</p>
+
+      <h3 class="dn-h3 dn-bb-sub">{{ t.logo.solo }}</h3>
+      <ul class="dn-bb-grid dn-bb-grid--3">
+        {%- for m in b.solo %}
+        <li class="dn-bb-tile dn-glass">
+          <div class="dn-bb-tile__stage dn-bb-tile__stage--{{ m.bg }}">
+            <img src="/img/logos/{{ m.file }}.svg" alt="Dipnot {{ m.name }}" width="120" height="120" loading="lazy">
+          </div>
+          <div class="dn-bb-tile__meta">
+            <p class="dn-bb-tile__name">{{ m.name }} <span>{{ m.hex }}</span></p>
+            <p>{{ t.logo.soloUse[m.file] }}</p>
+            <p class="dn-bb-tile__dl">
+              <a href="/img/logos/{{ m.file }}.svg" download>{{ t.logo.svg }}</a>
+              <a href="/img/logos/{{ m.file }}.png" download>{{ t.logo.png }}</a>
+            </p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+
+      <h3 class="dn-h3 dn-bb-sub">{{ t.logo.composed }}</h3>
+      <p class="dn-bb-prose">{{ t.logo.composedNote }}</p>
+      <ul class="dn-bb-grid dn-bb-grid--3">
+        {%- for m in b.composed %}
+        <li class="dn-bb-tile dn-glass">
+          <img class="dn-bb-composed" src="/img/logos/{{ m.file }}.svg" alt="{{ m.name[L] }}" width="200" height="200" loading="lazy">
+          <div class="dn-bb-tile__meta">
+            <p class="dn-bb-tile__name">{{ m.name[L] }}</p>
+            <p class="dn-bb-tile__dl">
+              <a href="/img/logos/{{ m.file }}.svg" download>{{ t.logo.svg }}</a>
+              <a href="/img/logos/{{ m.file }}.png" download>{{ t.logo.png }}</a>
+            </p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {#- 03 Rules #}
+  <section id="rules" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">03</p>
+      <h2 class="dn-h2">{{ t.sections.rules }}</h2>
+      <div class="dn-bb-split">
+        <div>
+          <h3 class="dn-h3">{{ t.rules.clearTitle }}</h3>
+          <p class="dn-bb-prose">{{ t.rules.clear }}</p>
+        </div>
+        <figure class="dn-bb-clear dn-glass" aria-hidden="true">
+          <div class="dn-bb-clear__zone">
+            <img src="/img/logos/logo.svg" alt="" width="120" height="120">
+          </div>
+          <figcaption>{{ t.rules.clearLabel }}</figcaption>
+        </figure>
+      </div>
+
+      <h3 class="dn-h3 dn-bb-sub">{{ t.rules.sizeTitle }}</h3>
+      <p class="dn-bb-prose">{{ t.rules.sizeIntro }}</p>
+      <div class="dn-bb-table dn-glass">
+        <table>
+          <thead>
+            <tr><th scope="col">{{ t.rules.sizeCol[0] }}</th><th scope="col">{{ t.rules.sizeCol[1] }}</th></tr>
+          </thead>
+          <tbody>
+            {%- for s in b.sizes %}
+            <tr><td>{{ s.ctx[L] }}</td><td>{{ s.px }}</td></tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {#- 04 Misuse #}
+  <section id="misuse" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">04</p>
+      <h2 class="dn-h2">{{ t.sections.misuse }}</h2>
+      <p class="dn-bb-prose">{{ t.misuse.intro }}</p>
+      <ul class="dn-bb-grid dn-bb-grid--3">
+        {%- for item in t.misuse.items %}
+        <li class="dn-bb-tile dn-glass">
+          <div class="dn-bb-tile__stage dn-bb-misuse dn-bb-misuse--{{ loop.index }}">
+            <img src="/img/logos/{{ 'logo-white' if loop.index == 6 else 'logo' }}.svg" alt="" width="96" height="96" loading="lazy">
+            <span class="dn-bb-misuse__x" aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+          </div>
+          <div class="dn-bb-tile__meta">
+            <p class="dn-bb-tile__name">{{ item }}</p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {#- 05 Colors #}
+  <section id="colors" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">05</p>
+      <h2 class="dn-h2">{{ t.sections.colors }}</h2>
+      <p class="dn-bb-prose">{{ t.colors.intro }}</p>
+      <ul class="dn-bb-grid dn-bb-grid--colors">
+        {%- for c in b.colors %}
+        <li class="dn-bb-swatch dn-glass">
+          <div class="dn-bb-swatch__chip" style="background: {{ c.hex }}"></div>
+          <div class="dn-bb-tile__meta">
+            <p class="dn-bb-tile__name">{{ c.name }}</p>
+            <p>{{ c.role[L] }}</p>
+            <dl class="dn-bb-values">
+              {%- for k in ["hex", "rgb", "oklch", "cmyk", "pantone"] %}
+              {%- if c[k] %}
+              <div>
+                <dt>{{ "HEX" if k == "hex" else ("RGB" if k == "rgb" else ("OKLCH" if k == "oklch" else ("CMYK" if k == "cmyk" else "Pantone"))) }}</dt>
+                <dd>
+                  <button type="button" class="dn-bb-copy" data-copy="{{ c[k] }}" data-copied="{{ t.colors.copied }}" aria-label="{{ t.colors.copy }}: {{ c[k] }}">{{ c[k] | replace("oklch(", "") | replace(")", "") }}</button>
+                </dd>
+              </div>
+              {%- endif %}
+              {%- endfor %}
+            </dl>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {#- 06 Type #}
+  <section id="type" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">06</p>
+      <h2 class="dn-h2">{{ t.sections.type }}</h2>
+      <p class="dn-bb-prose">{{ t.type.intro }}</p>
+      <div class="dn-bb-grid dn-bb-grid--2">
+        <div class="dn-bb-specimen dn-glass">
+          <p class="dn-bb-specimen__label">{{ t.type.inter }}</p>
+          <p class="dn-bb-specimen__aa" aria-hidden="true">Aa</p>
+          <p class="dn-bb-tile__name">Inter</p>
+          <p class="dn-bb-specimen__meta">{{ t.type.interMeta }}</p>
+          <p class="dn-bb-specimen__sample" lang="tr">{{ t.type.sample }}</p>
+          <p class="dn-bb-specimen__glyphs" lang="tr">{{ t.type.glyphs }}</p>
+          <p class="dn-bb-specimen__weights" aria-hidden="true">
+            <span style="font-weight: 400">Regular</span>
+            <span style="font-weight: 500">Medium</span>
+            <span style="font-weight: 600">Semibold</span>
+            <span style="font-weight: 700">Bold</span>
+          </p>
+        </div>
+        <div class="dn-bb-specimen dn-glass">
+          <p class="dn-bb-specimen__label">{{ t.type.gabarito }}</p>
+          <img class="dn-bb-specimen__wordmark" src="/img/og/og-horizontal.png" alt="Dipnot" width="1200" height="630" loading="lazy">
+          <p class="dn-bb-tile__name">Gabarito</p>
+          <p class="dn-bb-specimen__meta">{{ t.type.gabaritoMeta }}</p>
+        </div>
+      </div>
+      <h3 class="dn-h3 dn-bb-sub">{{ t.type.rulesTitle }}</h3>
+      <ul class="dn-bb-list">
+        {%- for r in t.type.rules %}
+        <li>{{ r }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {#- 07 Voice #}
+  <section id="voice" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">07</p>
+      <h2 class="dn-h2">{{ t.sections.voice }}</h2>
+      <p class="dn-bb-prose">{{ t.voice.intro }}</p>
+      <ul class="dn-bb-grid dn-bb-grid--2">
+        {%- for v in t.voice.items %}
+        <li class="dn-bb-tile dn-bb-voice dn-glass">
+          <p class="dn-bb-tile__name">{{ v.t }}</p>
+          <p>{{ v.d }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+      <h3 class="dn-h3 dn-bb-sub">{{ t.voice.circumflexTitle }}</h3>
+      <p class="dn-bb-prose">{{ t.voice.circumflex }}</p>
+      <div class="dn-bb-table dn-glass">
+        <table>
+          <thead>
+            <tr><th scope="col">{{ t.voice.circumflexCol[0] }}</th><th scope="col">{{ t.voice.circumflexCol[1] }}</th></tr>
+          </thead>
+          <tbody>
+            {%- for row in t.voice.circumflexRows %}
+            <tr><td lang="tr"><strong>{{ row[0] }}</strong></td><td>{{ row[1] }}</td></tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="dn-bb-prose dn-bb-plain">{{ t.voice.plain }}</p>
+    </div>
+  </section>
+
+  {#- 08 Icons + share images #}
+  <section id="assets" class="dn-section dn-bb-section">
+    <div class="dn-container">
+      <p class="dn-kicker">08</p>
+      <h2 class="dn-h2">{{ t.sections.assets }}</h2>
+      <p class="dn-bb-prose">{{ t.assets.intro }}</p>
+      <div class="dn-bb-grid dn-bb-grid--assets">
+        <figure class="dn-bb-tile dn-glass">
+          <div class="dn-bb-tile__stage dn-bb-tile__stage--plain">
+            <img src="/img/icons/icon-round.svg" alt="" width="120" height="120" loading="lazy">
+          </div>
+          <figcaption class="dn-bb-tile__meta"><p class="dn-bb-tile__name">{{ t.assets.webIcon }}</p></figcaption>
+        </figure>
+        <figure class="dn-bb-tile dn-glass">
+          <div class="dn-bb-tile__stage dn-bb-tile__stage--plain">
+            <img class="dn-bb-appicon" src="/img/logos/logo-teal-on-sky-captain.svg" alt="" width="120" height="120" loading="lazy">
+          </div>
+          <figcaption class="dn-bb-tile__meta"><p class="dn-bb-tile__name">{{ t.assets.appIcon }}</p></figcaption>
+        </figure>
+        <figure class="dn-bb-tile dn-bb-tile--wide dn-glass">
+          <img class="dn-bb-og" src="/img/og/og-default.png" alt="" width="1200" height="630" loading="lazy">
+          <figcaption class="dn-bb-tile__meta"><p class="dn-bb-tile__name">{{ t.assets.ogDefault }}</p></figcaption>
+        </figure>
+        <figure class="dn-bb-tile dn-bb-tile--wide dn-glass">
+          <img class="dn-bb-og" src="/img/og/og-horizontal.png" alt="" width="1200" height="630" loading="lazy">
+          <figcaption class="dn-bb-tile__meta"><p class="dn-bb-tile__name">{{ t.assets.ogWide }}</p></figcaption>
+        </figure>
+      </div>
+
+      <p class="dn-bb-prose dn-bb-end">
+        {{ t.footer }} <a class="dn-link" href="mailto:info@dipnot.app">info@dipnot.app</a>
+      </p>
+    </div>
+  </section>
+</main>
