@@ -72,12 +72,13 @@ async function confirm() {
         "</p>",
       "success",
     );
-  } catch (err) {
+  } catch {
+    // Only network, parse and App Check failures land here (server errors
+    // are handled above), and their raw text is often English, e.g.
+    // "Failed to fetch"
     show(
       '<p class="title is-5">Bir hata oluştu</p>' +
-        "<p>" +
-        (err.message || "Lütfen daha sonra tekrar deneyin.") +
-        "</p>",
+        "<p>Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar deneyin.</p>",
       "danger",
     );
   }

@@ -1,0 +1,135 @@
+---
+layout: base.njk
+lang: en
+title: "Delete your account | Dipnot App"
+description: "Request deletion of your Dipnot account and data. No sign-in needed: request it with your account's email address."
+keywords: "dipnot, delete account, account deletion, data deletion, kvkk"
+pageModule: account-deletion.js
+hreflang:
+  - lang: tr
+    href: "https://dipnot.app/hesap-silme.html"
+  - lang: en
+    href: "https://dipnot.app/en/delete-account.html"
+og:
+  locale: en_US
+  localeAlternate: tr_TR
+  url: "https://dipnot.app/en/delete-account.html"
+  description: "Request deletion of your Dipnot account and data."
+---
+
+<!-- HERO BANNER -->
+<section class="hero has-background-hero">
+  <div class="hero-body">
+    <div class="columns">
+      <div class="column">
+        <p class="title is-size-1 has-text-white mb-5">
+          Delete <span class="has-text-primary">account</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN PAGE -->
+<main id="main" class="container py-6">
+  <section class="section">
+    <div class="content">
+      <h1>Delete your Dipnot account</h1>
+      <p>
+        This page is for deleting your account and related data in the
+        <strong>Dipnot</strong> app (developer:
+        <strong>Dipnot App Team</strong>). Even if you've uninstalled the app or
+        can't sign in, you can request deletion
+        <strong>without signing in</strong> using the form below.
+      </p>
+
+      <h2>How to request deletion</h2>
+      <ol>
+        <li>
+          Enter your account's <strong>email address</strong> in the form below
+          (and a reason, if you like).
+        </li>
+        <li>Click <strong>"Send deletion request"</strong>.</li>
+        <li>
+          Confirm your request with the <strong>confirmation link</strong> we
+          email you. This step stops anyone else from making a request in your
+          name; nothing is processed until you confirm. The email and the page
+          it opens are in Turkish.
+        </li>
+      </ol>
+
+      <h2>Deleting in the app (existing users)</h2>
+      <p>If you can sign in, you can also delete your account in the app:</p>
+      <p>
+        <strong>Ayarlar (Settings) → "Hesabımı Sil" → "Evet, Sil"</strong>
+      </p>
+      <p>
+        This deletes your sign-in identity immediately; your profile data is
+        removed completely within the retention period below.
+      </p>
+
+      <h2>What is deleted, and how long is it kept?</h2>
+      <p>
+        Once your request is confirmed, your account and related personal data
+        (identity details such as name and surname, contact details such as
+        email and phone, and usage data such as articles read, likes and saved
+        content) are permanently deleted or anonymised within
+        <strong>30 days</strong>.
+      </p>
+      <p>
+        Only data we're legally required to keep (for example, commercial
+        records required by law) is retained for the periods the relevant
+        legislation sets. For details on how your data is processed, see our
+        <a href="/privacy-policy.html">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <div class="content">
+      <h2>Account deletion request form</h2>
+      <p>All data is sent encrypted over a secure connection (HTTPS/TLS).</p>
+
+      <form id="deletion-form">
+        <div class="field">
+          <label class="label" for="deletion-email">Your email address</label>
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              type="email"
+              id="deletion-email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            <span class="icon is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="deletion-reason">
+            Reason for deleting <span class="has-text-grey">(optional)</span>
+          </label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              id="deletion-reason"
+              name="reason"
+              rows="3"
+              placeholder="If you like, tell us why you're deleting your account."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <button class="button is-primary" type="submit">
+            Send deletion request
+          </button>
+        </div>
+
+        <p id="deletion-message" class="help mt-3"></p>
+      </form>
+    </div>
+  </section>
+</main>

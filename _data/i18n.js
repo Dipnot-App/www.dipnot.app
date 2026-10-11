@@ -1,0 +1,132 @@
+// Shell strings and per-language URLs (nav, footer, banners, store
+// buttons). Pages pick a language with `lang:` in frontmatter; English
+// pages live under /en/ (2026-10-11), except the legal mirrors and the
+// brand book, which keep their existing root URLs.
+//
+// UI copy rule: Turkish is primary; English mirrors it. Keep the two
+// blocks in lockstep.
+
+module.exports = {
+  tr: {
+    home: "/",
+    url: {
+      privacy: "/gizlilik-politikasi.html",
+      terms: "/kullanim-kosullari.html",
+      competition: "/yarisma-kosullari.html",
+      deletion: "/hesap-silme.html",
+      contact: "/iletisim.html",
+      brand: "/marka-kitabi.html",
+    },
+    skip: "İçeriğe geç",
+    navLabel: "Ana gezinme",
+    nav: {
+      home: "Ana sayfa",
+      about: "Dipnot nedir?",
+      features: "Özellikler",
+      how: "Nasıl çalışır?",
+      faq: "S.S.S.",
+      contact: "İletişim",
+    },
+    theme: "Tema değiştir",
+    settingsLabel: "Dil ve tema",
+    download: "Uygulamayı indir",
+    menuOpen: "Menüyü aç",
+    langSwitch: { short: "EN", label: "English version", lang: "en" },
+    store: { get: "İndir" },
+    footer: {
+      follow:
+        "Dalış dünyasına dair paylaşımlar için bizi sosyal ağlarda takip edebilirsin:",
+      follows: {
+        instagram: "Dipnot'u Instagram'da takip et",
+        facebook: "Dipnot'u Facebook'ta takip et",
+        linkedin: "Dipnot'u LinkedIn'de takip et",
+      },
+      siteMap: "Site haritası",
+      brand: "Marka kitabı",
+      newsletter: "Bülten aboneliği",
+      email: "E-posta adresin",
+      subscribe: "Abone ol",
+      contact: "İletişim",
+      general: "Genel iletişim:",
+      support: "Teknik destek:",
+      madeBy: "tarafından geliştirilmiştir.",
+      madeByPrefix: "Website",
+      legal: {
+        privacy: "Gizlilik politikası",
+        terms: "Kullanım koşulları",
+        competition: "Yarışma koşulları",
+        deletion: "Hesap silme",
+        contact: "İletişim",
+      },
+      cookies: "Çerez tercihleri",
+    },
+    consent: {
+      title: "Çerez tercihin",
+      text: "Siteyi nasıl kullandığını anlamak için, yalnızca izin verirsen Google Analytics çerezleri kullanıyoruz. Ayrıntılar",
+      link: "gizlilik politikasında",
+      deny: "Reddet",
+      accept: "Kabul et",
+    },
+  },
+
+  en: {
+    home: "/en/",
+    url: {
+      privacy: "/privacy-policy.html",
+      terms: "/terms-of-use.html",
+      competition: "/yarisma-kosullari.html",
+      deletion: "/en/delete-account.html",
+      contact: "/en/contact.html",
+      brand: "/brand-book.html",
+    },
+    skip: "Skip to content",
+    navLabel: "Main navigation",
+    nav: {
+      home: "Home",
+      about: "What is Dipnot?",
+      features: "Features",
+      how: "How it works",
+      faq: "FAQ",
+      contact: "Contact",
+    },
+    theme: "Toggle theme",
+    settingsLabel: "Language and theme",
+    download: "Get the app",
+    menuOpen: "Open menu",
+    langSwitch: { short: "TR", label: "Türkçe sürüm", lang: "tr" },
+    store: { get: "Get it on", apple: "Download on the" },
+    footer: {
+      follow: "Follow us for stories from the diving world:",
+      follows: {
+        instagram: "Follow Dipnot on Instagram",
+        facebook: "Follow Dipnot on Facebook",
+        linkedin: "Follow Dipnot on LinkedIn",
+      },
+      siteMap: "Site map",
+      brand: "Brand book",
+      newsletter: "Newsletter",
+      email: "Your email address",
+      subscribe: "Subscribe",
+      contact: "Contact",
+      general: "General enquiries:",
+      support: "Technical support:",
+      madeBy: "",
+      madeByPrefix: "Website by",
+      legal: {
+        privacy: "Privacy policy",
+        terms: "Terms of use",
+        competition: "Competition rules (TR)",
+        deletion: "Delete account",
+        contact: "Contact",
+      },
+      cookies: "Cookie preferences",
+    },
+    consent: {
+      title: "Your cookie choice",
+      text: "To understand how the site is used, we use Google Analytics cookies, only if you allow it. Details in our",
+      link: "privacy policy",
+      deny: "Decline",
+      accept: "Accept",
+    },
+  },
+};

@@ -47,21 +47,22 @@ jobs:
       - name: Wait for server
         run: npx wait-on http://localhost:8080/index.html --timeout 30000
 
+      # Hard gates since v2.0.0 (2026-10-11, epic #34): every page passed
+      # pa11y WCAG2AA and the Lighthouse budgets in .lighthouserc.json.
       - name: Accessibility audit (pa11y)
         run: npm run check:a11y
-        continue-on-error: true
 
       - name: Lighthouse audit
         run: npm run check:lighthouse
-        continue-on-error: true
 
       - name: Broken-link check (lychee)
         uses: lycheeverse/lychee-action@v2
         with:
-          # --base tells lychee how to resolve root-relative paths (/foo → _site/foo).
+          # --root-dir resolves root-relative paths (/foo → _site/foo); it
+          # must be absolute (lychee 0.24 rejects a relative --base).
           # --offline skips external URL fetches (keeps CI deterministic).
-          args: --no-progress --offline --base _site _site
-          fail: false
+          args: --no-progress --offline --root-dir ${{ github.workspace }}/_site _site
+          fail: true
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'

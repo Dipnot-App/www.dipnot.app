@@ -1,19 +1,37 @@
 {
   "title": "Dipnot",
   "baseUrl": "https://dipnot.app",
-  "cssVersion": "260913_1",
-  "jsVersion": "260913_1",
+  "cssVersion": "261011_2",
+  "jsVersion": "261011_2",
   "themeColor": "#338596",
   "author": "Nevcan Uludaş",
   "ogImage": "https://dipnot.app/img/og/og-default.png",
   "cdn": {
-    "bulma": {
-      "href": "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css",
-      "integrity": "sha384-DCY3M8xLkMu6c9IKcKbe+jHKMjelnwC0p+SBaxfHxoBYZWdJF2X400UdBCgATtAB"
-    },
     "fontAwesome": {
       "href": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
       "integrity": "sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
+    },
+    "gsap": {
+      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js",
+      "integrity": "sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc"
+    },
+    "scrollTrigger": {
+      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js",
+      "integrity": "sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh"
+    },
+    "splitText": {
+      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js",
+      "integrity": "sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q"
     }
+  },
+  "twitterImage": "https://dipnot.app/img/og/og-horizontal.png",
+  "analytics": {
+    "enabled": false,
+    "ga4": "G-YSQJLFK4HZ"
+  },
+  "verification": {
+    "google": "",
+    "bing": "",
+    "yandex": ""
   }
 }

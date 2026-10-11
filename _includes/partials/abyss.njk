@@ -1,0 +1,86 @@
+{#- 404 only: deep-sea creatures drifting behind the content. Engravings
+    from public-domain natural-history plates (see scripts/build-abyss.js
+    for sources), used as CSS masks so each theme tints them. Decorative
+    (aria-hidden); transform/opacity only; still with reduced motion. -#}
+<div class="dn-abyss" aria-hidden="true">
+  {#- Real 3D shark (js/shark3d.js) mounts here when WebGL and motion are
+      available; the SVG shark below is the fallback until it renders -#}
+  <div class="dn-shark3d" data-shark3d></div>
+  {#- A giant shark facing us, far back in the dark: a blurred head-on
+      silhouette, open jaws, glowing slit eyes; looms in and fades out -#}
+  <svg class="dn-shark" viewBox="0 0 400 260">
+    <g class="dn-shark__body">
+      <path d="M184 74 L204 -4 L218 74 Z" />
+      <path d="M104 138 L-6 244 L152 166 Z" />
+      <path d="M296 138 L406 244 L248 166 Z" />
+      <path d="M36 114 L108 70 L200 56 L292 70 L364 114 L304 160 L236 196 L200 208 L164 196 L96 160 Z" />
+    </g>
+    <path class="dn-shark__mouth" d="M136 156 Q200 132 264 156 Q236 194 200 202 Q164 194 136 156 Z" />
+    <path class="dn-shark__teeth" d="M138.9 154.6 L141.1 160.4 L145.9 154.6 Z M150.7 151.7 L153.4 160.3 L156.0 151.7 Z M159.5 149.7 L160.9 160.3 L164.9 149.7 Z M170.8 147.8 L172.7 162.5 L176.4 147.8 Z M181.1 146.6 L184.2 163.5 L187.9 146.6 Z M192.0 146.0 L195.2 157.6 L199.6 146.0 Z M200.6 146.0 L204.7 158.0 L206.7 146.0 Z M210.6 146.5 L213.6 161.1 L217.5 146.5 Z M222.8 147.7 L224.5 158.0 L228.1 147.7 Z M233.1 149.4 L236.4 160.2 L239.2 149.4 Z M242.0 151.4 L246.4 159.9 L249.5 151.4 Z M252.1 154.0 L256.6 161.5 L258.7 154.0 Z M142.5 167.7 L144.9 162.1 L149.6 167.7 Z M152.6 176.2 L155.1 167.5 L157.7 176.2 Z M161.8 183.4 L165.3 173.8 L168.4 183.4 Z M176.9 191.3 L180.4 182.3 L183.4 191.3 Z M189.4 196.0 L194.1 185.8 L196.2 196.0 Z M204.5 196.1 L207.6 184.8 L209.4 196.1 Z M217.8 190.7 L220.6 178.3 L224.6 190.7 Z M230.3 184.7 L232.7 174.9 L235.2 184.7 Z M240.9 177.4 L244.2 171.1 L245.8 177.4 Z M250.4 168.4 L254.4 162.8 L256.2 168.4 Z" />
+    {#- Slanted, triangular slit eyes with a bioluminescent glow -#}
+    <g class="dn-shark__eye">
+      <path class="dn-shark__glow" d="M72 107 L112 101 L103 114 Z" />
+      <path class="dn-shark__core" d="M80 107.5 L108 103 L102 110.5 Z" />
+    </g>
+    <g class="dn-shark__eye">
+      <path class="dn-shark__glow" d="M328 107 L288 101 L297 114 Z" />
+      <path class="dn-shark__core" d="M320 107.5 L292 103 L298 110.5 Z" />
+    </g>
+  </svg>
+  {#- Engraved fish disabled for now (Nev, 2026-10-11) — restore by
+      removing this comment wrapper:
+  <div class="dn-abyss__swim dn-abyss__swim--angler">
+    <div class="dn-abyss__bob">
+      <div class="dn-abyss__fish" style="--src: url(/img/abyss/anglerfish.webp); aspect-ratio: 900 / 481"></div>
+      <span class="dn-abyss__lure"></span>
+    </div>
+  </div>
+  <div class="dn-abyss__swim dn-abyss__swim--viper">
+    <div class="dn-abyss__bob"><div class="dn-abyss__fish" style="--src: url(/img/abyss/viperfish.webp); aspect-ratio: 1000 / 310"></div></div>
+  </div>
+  <div class="dn-abyss__swim dn-abyss__swim--fang">
+    <div class="dn-abyss__bob"><div class="dn-abyss__fish" style="--src: url(/img/abyss/fangtooth.webp); aspect-ratio: 900 / 466"></div></div>
+  </div>
+  -#}
+</div>
+<script type="module">
+  // Load the 3D shark only after the page is fully up and the browser is
+  // idle, never with reduced motion, never without WebGL, and never in
+  // automated browsers (software WebGL stalls CI audits past their
+  // timeouts; bots get the SVG shark).
+  const host = document.querySelector("[data-shark3d]");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGL = (() => {
+    try {
+      const c = document.createElement("canvas");
+      return !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch {
+      return false;
+    }
+  })();
+  if (host && !reduce && hasGL && !navigator.webdriver) {
+    const root = document.documentElement;
+    const water = () => getComputedStyle(root).getPropertyValue("--dn-water-mid").trim();
+    const go = async () => {
+      try {
+        const { mount } = await import("/js/shark3d.js?v={{ site.jsVersion }}");
+        const api = await mount(host, {
+          src: "/img/abyss/shark.glb",
+          anglerSrc: "/img/abyss/anglerfish.glb",
+          waterColor: water(),
+          light: root.dataset.theme === "light",
+          onReady: () => root.classList.add("dn-shark3d-on"),
+        });
+        new MutationObserver(() =>
+          api.setTheme(root.dataset.theme === "light", water()),
+        ).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+      } catch (err) {
+        // keep the SVG fallback
+      }
+    };
+    const idle = () =>
+      "requestIdleCallback" in window ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 300);
+    if (document.readyState === "complete") idle();
+    else addEventListener("load", idle, { once: true });
+  }
+</script>

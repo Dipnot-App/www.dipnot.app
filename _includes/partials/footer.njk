@@ -1,165 +1,85 @@
+{%- set t = i18n[lang or "tr"] -%}
+{%- set f = t.footer -%}
 <!-- FOOTER -->
-<footer class="footer mt-6">
-  <div class="container">
-    <div class="columns">
-      <div class="column mb-6">
-        <div class="level">
-          <div class="level-left">
-            <div class="level-item">
-              <figure class="image is-48x48">
-                <img class="is-rounded" src="/img/logos/logo.svg" alt="Dipnot">
-              </figure>
-            </div>
-
-            <div class="level-item">
-              <h4 class="title">Dipnot</h4>
-            </div>
-          </div>
-        </div>
-
-        <p>Dalış dünyasına dair paylaşımlar için bizi sosyal ağlarda takip edin:</p>
-        <div class="buttons are-large mt-5">
-
-          <!-- Instagram social media link -->
-          <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="button is-rounded" title="Instagram" aria-label="Dipnot'u Instagram'da takip et">
-            <span class="icon is-small">
-              <i class="fa-brands fa-instagram"></i>
-            </span>
+<footer class="dn-footer">
+  <div class="dn-container">
+    <div class="dn-footer__grid">
+      <div>
+        <a class="dn-footer__brand" href="{{ t.home }}">
+          <img src="/img/logos/logo.svg" alt="" width="40" height="40">
+          Dipnot
+        </a>
+        <p>{{ f.follow }}</p>
+        <div class="dn-social">
+          <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Instagram" aria-label="{{ f.follows.instagram }}">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
           </a>
-
-          <!-- Facebook social media link -->
-          <a href="https://www.facebook.com/profile.php?id=61568027754102" target="_blank" rel="noopener noreferrer" class="button is-rounded" title="Facebook" aria-label="Dipnot'u Facebook'ta takip et">
-            <span class="icon is-small">
-              <i class="fa-brands fa-facebook"></i>
-            </span>
+          <a href="https://www.facebook.com/profile.php?id=61568027754102" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Facebook" aria-label="{{ f.follows.facebook }}">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
           </a>
-
-          <!-- TODO: add Twitter social media link -->
-          <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="button is-rounded is-hidden" title="X" aria-label="Dipnot'u X'te takip et">
-            <span class="icon is-small">
-              <i class="fa-brands fa-x-twitter"></i>
-            </span>
+          <a href="https://www.linkedin.com/company/dipnotapp" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Linkedin" aria-label="{{ f.follows.linkedin }}">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
           </a>
-
-          <!-- Linkedin social media link -->
-          <a href="https://www.linkedin.com/company/dipnotapp" target="_blank" rel="noopener noreferrer" class="button is-rounded" title="Linkedin" aria-label="Dipnot'u LinkedIn'de takip et">
-            <span class="icon is-small">
-              <i class="fa-brands fa-linkedin"></i>
-            </span>
-          </a>
-
-          <!-- Theorg social media link -->
-          <a href="https://theorg.com/org/dipnot-1" target="_blank" rel="noopener noreferrer" class="button is-rounded is-hidden" title="The Org" aria-label="Dipnot'u The Org'da görüntüle">
-            <span class="icon is-small">
-              <i class="fa-solid fa-sitemap"></i>
-            </span>
-          </a>
-
-          <!-- Stackshare social media link -->
-          <a href="https://stackshare.io/nevcanuludas/dipnot-app" target="_blank" rel="noopener noreferrer" class="button is-rounded is-hidden" title="Stack Share" aria-label="Dipnot'un teknoloji yığınını Stack Share'de görüntüle">
-            <span class="icon is-small">
-              <i class="fa-solid fa-share-nodes"></i>
-            </span>
-          </a>
-
         </div>
       </div>
 
-      <div class="column mb-6">
-        <aside class="menu" aria-label="Site haritası">
-          <p class="menu-label">Site haritası</p>
-          <ul class="menu-list">
-            <li><a href="/" style="background-color: transparent;">Ana sayfa</a></li>
-            <li><a href="/#about" style="background-color: transparent;">Dipnot nedir?</a></li>
-            <li><a href="/#features" style="background-color: transparent;">Özellikler</a></li>
-            <li><a href="/#how-it-works" style="background-color: transparent;">Nasıl çalışır?</a></li>
-            <li><a href="/#faq" style="background-color: transparent;">S.S.S.</a></li>
-            <li><a href="/#contact" style="background-color: transparent;">İletişim</a></li>
-          </ul>
-        </aside>
-      </div>
+      <nav aria-label="{{ f.siteMap }}">
+        <p class="dn-footer__title">{{ f.siteMap }}</p>
+        <ul class="dn-footer__list">
+          <li><a href="{{ t.home }}">{{ t.nav.home }}</a></li>
+          <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+          <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+          <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+          <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+          <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
+        </ul>
+      </nav>
 
       <!-- Newsletter -->
-      <div class="column mb-6">
-        <aside class="menu pr-5" aria-label="Bülten aboneliği">
-          <p class="menu-label">Bülten aboneliği</p>
-
-          <form id="newsletter-form">
-            <div class="field">
-              <div class="control has-icons-left">
-                <input
-                  class="input"
-                  type="email"
-                  id="newsletter-email"
-                  placeholder="E-posta adresiniz"
-                  required
-                />
-                <span class="icon is-left">
-                  <i class="fas fa-envelope"></i>
-                </span>
-              </div>
+      <section class="dn-newsletter dn-glass" aria-label="{{ f.newsletter }}">
+        <p class="dn-footer__title">{{ f.newsletter }}</p>
+        <form id="newsletter-form" novalidate>
+          <div class="dn-newsletter__row">
+            <div class="dn-control">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <label class="dn-sr-only" for="newsletter-email">{{ f.email }}</label>
+              <input class="dn-input" type="email" id="newsletter-email" placeholder="{{ f.email }}" autocomplete="email" aria-describedby="newsletter-message" required>
             </div>
-
-            <div class="field">
-              <button class="button is-primary is-fullwidth" type="submit">
-                Abone ol
-              </button>
-            </div>
-
-            <p id="newsletter-message" class="help"></p>
-          </form>
-        </aside>
-
-        <aside class="menu pr-5 mt-6" aria-label="Uygulama indirme bağlantıları">
-          <p class="menu-label">Uygulamayı indir</p>
-
-          <div class="buttons are-small">
-            <a href="https://play.google.com/store/apps/details?id=com.vacstudio.dipnot" target="_blank" rel="noopener noreferrer" class="button is-light is-inverted is-outlined is-rounded">
-              <img src="/img/svg/google-play.svg" alt="Google Play">
-              <span class="ml-2">Google Play</span>
-            </a>
-            <a href="https://apps.apple.com/app/id6757102330" target="_blank" rel="noopener noreferrer" class="button is-light is-rounded">
-              <img src="/img/svg/app-store.svg" alt="App Store">
-              <span class="ml-2">App Store</span>
-            </a>
+            <button class="dn-btn dn-btn--primary" type="submit">{{ f.subscribe }}</button>
           </div>
-        </aside>
-      </div>
+          <p id="newsletter-message" class="help" role="status" aria-live="polite"></p>
+        </form>
 
-      <div class="column mb-6">
-        <aside class="menu" aria-label="İletişim bilgileri">
-          <p class="menu-label">İletişim</p>
+      </section>
 
-          <address class="mb-4">1. Kısım Mah. Vali Recep Yazıcıoğlu Cad. Doğa Parkı Evleri BC Blok No:15/13 Bahçeşehir, İstanbul, Türkiye.</address>
-
-          <p class="has-text-weight-semibold mt-4">Genel iletişim:</p>
-          <p>
-            <span class="icon mr-2">
-              <i class="fa-solid fa-envelope"></i>
-            </span>
-            <a href="mailto:info@dipnot.app">info@dipnot.app</a>
-          </p>
-
-          <p class="has-text-weight-semibold mt-4">Teknik destek:</p>
-          <p>
-            <span class="icon mr-2">
-              <i class="fa-solid fa-life-ring"></i>
-            </span>
-            <a href="mailto:help@dipnot.app">help@dipnot.app</a>
-          </p>
-
-        </aside>
+      <div class="dn-footer__contact">
+        <p class="dn-footer__title">{{ f.contact }}</p>
+        <address>1. Kısım Mah. Vali Recep Yazıcıoğlu Cad. Doğa Parkı Evleri BC Blok No:15/13 Bahçeşehir, İstanbul, Türkiye.</address>
+        <p>
+          <strong>{{ f.general }}</strong>
+          <a href="mailto:info@dipnot.app">info@dipnot.app</a>
+        </p>
+        <p>
+          <strong>{{ f.support }}</strong>
+          <a href="mailto:help@dipnot.app">help@dipnot.app</a>
+        </p>
       </div>
     </div>
 
-    <hr>
-
-    <div class="columns mt-6">
-      <div class="column has-text-centered">
-        Copyright &copy; 2025&ndash;2026 <span class="mx-4">|</span> <a href="/gizlilik-politikasi.html">Gizlilik politikası</a> <span class="mx-4">|</span> <a href="/kullanim-kosullari.html">Kullanım koşulları</a> <span class="mx-4">|</span> <a href="/hesap-silme.html">Hesap silme</a> <span class="mx-4">|</span> <a href="/iletisim.html">İletişim</a>
-        <br>
-        Website <a href="https://vacstudio.com/" target="_blank" rel="noopener noreferrer">V.A.C. Studio</a> tarafından geliştirilmiştir.
-      </div>
+    <div class="dn-footer__bottom">
+      <p>
+        Copyright &copy; 2025&ndash;2026 &middot; {{ f.madeByPrefix }} <a href="https://vacstudio.com/" target="_blank" rel="noopener noreferrer">V.A.C. Studio</a>{% if f.madeBy %} {{ f.madeBy }}{% else %}.{% endif %}
+      </p>
+      <ul class="dn-footer__legal">
+        <li><a href="{{ t.url.privacy }}">{{ f.legal.privacy }}</a></li>
+        <li><a href="{{ t.url.terms }}">{{ f.legal.terms }}</a></li>
+        <li><a href="{{ t.url.competition }}"{% if (lang or "tr") != "tr" %} hreflang="tr"{% endif %}>{{ f.legal.competition }}</a></li>
+        <li><a href="{{ t.url.deletion }}">{{ f.legal.deletion }}</a></li>
+        <li><a href="{{ t.url.contact }}">{{ f.legal.contact }}</a></li>
+        {%- if site.analytics.enabled %}
+        <li><button type="button" class="dn-linkbtn" data-consent-open>{{ f.cookies }}</button></li>
+        {%- endif %}
+      </ul>
     </div>
   </div>
 </footer>

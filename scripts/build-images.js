@@ -1,0 +1,47 @@
+// Exports the landing's raster images as AVIF + WebP into img/opt/.
+// Run with `npm run build:images` after replacing a source image; the
+// outputs are committed (the Eleventy build only copies them).
+const path = require("path");
+const fs = require("fs/promises");
+const sharp = require("sharp");
+
+// Sources live outside img/ so the full-size originals aren't deployed
+// (Eleventy copies img/ wholesale).
+const SRC = path.resolve(__dirname, "..", "img-src");
+const OUT = path.resolve(__dirname, "..", "img", "opt");
+
+// `extract` (optional) crops the source before resizing.
+const JOBS = [
+  // App screenshots for the 3D iPhone (macros/iphone.njk): full
+  // 1290×2796 iPhone captures, status bar included.
+  ...["feed", "article", "categories", "saved", "signin", "appstore"].map(
+    (name) => ({
+      src: `screens/${name}.png`,
+      name: `screen-${name}`,
+      widths: [450, 640, 900],
+    }),
+  ),
+];
+
+async function main() {
+  await fs.mkdir(OUT, { recursive: true });
+
+  for (const job of JOBS) {
+    for (const width of job.widths) {
+      const base = () => {
+        let img = sharp(path.join(SRC, job.src));
+        if (job.extract) img = img.extract(job.extract);
+        return img.resize({ width, withoutEnlargement: true });
+      };
+      const stem = path.join(OUT, `${job.name}-${width}`);
+      await base().avif({ quality: 55, effort: 6 }).toFile(`${stem}.avif`);
+      await base().webp({ quality: 78, effort: 6 }).toFile(`${stem}.webp`);
+      console.log(`Wrote ${path.relative(OUT, stem)}.{avif,webp}`);
+    }
+  }
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

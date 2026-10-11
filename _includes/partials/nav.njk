@@ -1,73 +1,55 @@
-<!-- NAVIGATION -->
-<nav class="navbar is-fixed-top" aria-label="Ana gezinme">
-  <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item has-text-weight-bold" href="/">
-        <img src="/img/logos/logo.svg" alt="Dipnot">
-        Dipnot
-      </a>
+{%- set t = i18n[lang or "tr"] -%}
+<!-- NAVIGATION — floating liquid-glass bar -->
+<header class="dn-nav" data-nav>
+  <nav class="dn-nav__bar dn-glass dn-glass--pill" aria-label="{{ t.navLabel }}">
+    <a class="dn-nav__brand" href="{{ t.home }}">
+      <img src="/img/logos/logo.svg" alt="" width="32" height="32">
+      Dipnot
+    </a>
 
-      <div class="buttons" style="margin-left: auto">
-        <div class="navbar-item is-hidden-desktop">
-          <button
-            id="theme-toggle-mobile"
-            type="button"
-            class="button is-text"
-            aria-label="Tema değiştir"
-            style="text-decoration: none;"
-          >
-            <span class="icon">
-              <i class="fa-solid fa-moon"></i>
-            </span>
-          </button>
+    <ul class="dn-nav__links">
+      <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+      <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+      <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+      <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+      <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
+    </ul>
+
+    <div class="dn-nav__actions">
+      <span class="dn-nav__divider" aria-hidden="true"></span>
+      <div class="dn-settings" role="group" aria-label="{{ t.settingsLabel }}">
+        <div class="dn-seg" role="group" aria-label="Dil / Language">
+          {%- for code in ["tr", "en"] %}
+          {%- if code == (lang or "tr") %}
+          <span class="dn-seg__item is-active" aria-current="true" lang="{{ code }}">{{ code | upper }}</span>
+          {%- else %}
+          <a class="dn-seg__item" href="{{ hreflang | altUrl(code, i18n[code].home) }}" hreflang="{{ code }}" lang="{{ code }}" aria-label="{{ t.langSwitch.label }}" data-lang-switch="{{ code }}">{{ code | upper }}</a>
+          {%- endif %}
+          {%- endfor %}
         </div>
-
-        <button type="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+        <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="{{ t.theme }}">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
         </button>
       </div>
+      <a href="{{ t.home }}#download" class="dn-btn dn-btn--primary dn-nav__download">{{ t.download }}</a>
+      <button type="button" class="dn-burger" aria-label="{{ t.menuOpen }}" aria-expanded="false" aria-controls="navbar" data-target="navbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
     </div>
+  </nav>
 
-    <div id="navbar" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="/">Ana sayfa</a>
-        <a class="navbar-item" href="/#about">Dipnot nedir?</a>
-        <a class="navbar-item" href="/#features">Özellikler</a>
-        <a class="navbar-item" href="/#how-it-works">Nasıl çalışır?</a>
-        <a class="navbar-item" href="/#faq">S.S.S.</a>
-        <a class="navbar-item" href="/#contact">İletişim</a>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item is-hidden-touch">
-          <button
-            id="theme-toggle"
-            type="button"
-            class="button is-text"
-            aria-label="Tema değiştir"
-            style="text-decoration: none;"
-          >
-            <span class="icon">
-              <i class="fa-solid fa-moon"></i>
-            </span>
-          </button>
-        </div>
-        <div class="navbar-item">
-          <div class="buttons are-small">
-            <a href="https://play.google.com/store/apps/details?id=com.vacstudio.dipnot" target="_blank" rel="noopener noreferrer" class="button is-light is-inverted is-outlined is-rounded">
-              <img src="/img/svg/google-play.svg" alt="Google Play">
-              <span class="ml-2">Google Play</span>
-            </a>
-            <a href="https://apps.apple.com/app/id6757102330" target="_blank" rel="noopener noreferrer" class="button is-light is-rounded">
-              <img src="/img/svg/app-store.svg" alt="App Store">
-              <span class="ml-2">App Store</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Mobile sheet -->
+  <div id="navbar" class="dn-sheet dn-glass dn-glass--strong">
+    <ul>
+      <li><a href="{{ t.home }}">{{ t.nav.home }}</a></li>
+      <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+      <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+      <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+      <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+      <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
+    </ul>
+    {% include "partials/store-buttons.njk" %}
   </div>
-</nav>
+</header>
