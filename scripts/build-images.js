@@ -14,11 +14,13 @@ const OUT = path.resolve(__dirname, "..", "img", "opt");
 const JOBS = [
   // App screenshots for the 3D iPhone (macros/iphone.njk): full
   // 1290×2796 iPhone captures, status bar included.
-  ...["feed", "article", "categories", "saved", "signin"].map((name) => ({
-    src: `screens/${name}.png`,
-    name: `screen-${name}`,
-    widths: [450, 900],
-  })),
+  ...["feed", "article", "categories", "saved", "signin", "appstore"].map(
+    (name) => ({
+      src: `screens/${name}.png`,
+      name: `screen-${name}`,
+      widths: [450, 900],
+    }),
+  ),
 ];
 
 async function main() {

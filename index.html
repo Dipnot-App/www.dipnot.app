@@ -26,6 +26,7 @@ screens:
   categories: { name: "categories", alt: "Dipnot kategoriler ekranı" }
   saved: { name: "saved", alt: "Dipnot kaydedilen makaleler ekranı" }
   signin: { name: "signin", alt: "Dipnot giriş ekranı" }
+  appstore: { name: "appstore", alt: "App Store'da Dipnot uygulama sayfası" }
 ---
 
 {% from "macros/iphone.njk" import iphone %}
@@ -213,7 +214,7 @@ screens:
 
       <div class="dn-how" data-how>
         <div class="dn-how__visual dn-iphone-stage">
-          {{ iphone([screens.signin, screens.categories, screens.feed],
+          {{ iphone([screens.appstore, screens.signin, screens.categories],
           rot="2,16,-2") }}
           <div class="dn-iphone-shadow" aria-hidden="true"></div>
         </div>
