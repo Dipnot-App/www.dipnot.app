@@ -1,50 +1,52 @@
+{%- set t = i18n[lang or "tr"] -%}
+{%- set f = t.footer -%}
 <!-- FOOTER -->
 <footer class="dn-footer">
   <div class="dn-container">
     <div class="dn-footer__grid">
       <div>
-        <a class="dn-footer__brand" href="/">
+        <a class="dn-footer__brand" href="{{ t.home }}">
           <img src="/img/logos/logo.svg" alt="" width="40" height="40">
           Dipnot
         </a>
-        <p>Dalış dünyasına dair paylaşımlar için bizi sosyal ağlarda takip et:</p>
+        <p>{{ f.follow }}</p>
         <div class="dn-social">
-          <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Instagram" aria-label="Dipnot'u Instagram'da takip et">
+          <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Instagram" aria-label="{{ f.follows.instagram }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
           </a>
-          <a href="https://www.facebook.com/profile.php?id=61568027754102" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Facebook" aria-label="Dipnot'u Facebook'ta takip et">
+          <a href="https://www.facebook.com/profile.php?id=61568027754102" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Facebook" aria-label="{{ f.follows.facebook }}">
             <i class="fa-brands fa-facebook" aria-hidden="true"></i>
           </a>
-          <a href="https://www.linkedin.com/company/dipnotapp" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Linkedin" aria-label="Dipnot'u LinkedIn'de takip et">
+          <a href="https://www.linkedin.com/company/dipnotapp" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Linkedin" aria-label="{{ f.follows.linkedin }}">
             <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
           </a>
         </div>
       </div>
 
-      <nav aria-label="Site haritası">
-        <p class="dn-footer__title">Site haritası</p>
+      <nav aria-label="{{ f.siteMap }}">
+        <p class="dn-footer__title">{{ f.siteMap }}</p>
         <ul class="dn-footer__list">
-          <li><a href="/">Ana sayfa</a></li>
-          <li><a href="/#about">Dipnot nedir?</a></li>
-          <li><a href="/#features">Özellikler</a></li>
-          <li><a href="/#how-it-works">Nasıl çalışır?</a></li>
-          <li><a href="/#faq">S.S.S.</a></li>
-          <li><a href="/#contact">İletişim</a></li>
-          <li><a href="/marka-kitabi.html">Marka kitabı</a></li>
+          <li><a href="{{ t.home }}">{{ t.nav.home }}</a></li>
+          <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+          <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+          <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+          <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+          <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
+          <li><a href="{{ t.url.brand }}">{{ f.brand }}</a></li>
         </ul>
       </nav>
 
       <!-- Newsletter -->
-      <section class="dn-newsletter dn-glass" aria-label="Bülten aboneliği">
-        <p class="dn-footer__title">Bülten aboneliği</p>
+      <section class="dn-newsletter dn-glass" aria-label="{{ f.newsletter }}">
+        <p class="dn-footer__title">{{ f.newsletter }}</p>
         <form id="newsletter-form" novalidate>
           <div class="dn-newsletter__row">
             <div class="dn-control">
               <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <label class="dn-sr-only" for="newsletter-email">E-posta adresin</label>
-              <input class="dn-input" type="email" id="newsletter-email" placeholder="E-posta adresin" autocomplete="email" aria-describedby="newsletter-message" required>
+              <label class="dn-sr-only" for="newsletter-email">{{ f.email }}</label>
+              <input class="dn-input" type="email" id="newsletter-email" placeholder="{{ f.email }}" autocomplete="email" aria-describedby="newsletter-message" required>
             </div>
-            <button class="dn-btn dn-btn--primary" type="submit">Abone ol</button>
+            <button class="dn-btn dn-btn--primary" type="submit">{{ f.subscribe }}</button>
           </div>
           <p id="newsletter-message" class="help" role="status" aria-live="polite"></p>
         </form>
@@ -52,14 +54,14 @@
       </section>
 
       <div class="dn-footer__contact">
-        <p class="dn-footer__title">İletişim</p>
+        <p class="dn-footer__title">{{ f.contact }}</p>
         <address>1. Kısım Mah. Vali Recep Yazıcıoğlu Cad. Doğa Parkı Evleri BC Blok No:15/13 Bahçeşehir, İstanbul, Türkiye.</address>
         <p>
-          <strong>Genel iletişim:</strong>
+          <strong>{{ f.general }}</strong>
           <a href="mailto:info@dipnot.app">info@dipnot.app</a>
         </p>
         <p>
-          <strong>Teknik destek:</strong>
+          <strong>{{ f.support }}</strong>
           <a href="mailto:help@dipnot.app">help@dipnot.app</a>
         </p>
       </div>
@@ -67,16 +69,16 @@
 
     <div class="dn-footer__bottom">
       <p>
-        Copyright &copy; 2025&ndash;2026 &middot; Website <a href="https://vacstudio.com/" target="_blank" rel="noopener noreferrer">V.A.C. Studio</a> tarafından geliştirilmiştir.
+        Copyright &copy; 2025&ndash;2026 &middot; {{ f.madeByPrefix }} <a href="https://vacstudio.com/" target="_blank" rel="noopener noreferrer">V.A.C. Studio</a>{% if f.madeBy %} {{ f.madeBy }}{% else %}.{% endif %}
       </p>
       <ul class="dn-footer__legal">
-        <li><a href="/gizlilik-politikasi.html">Gizlilik politikası</a></li>
-        <li><a href="/kullanim-kosullari.html">Kullanım koşulları</a></li>
-        <li><a href="/yarisma-kosullari.html">Yarışma koşulları</a></li>
-        <li><a href="/hesap-silme.html">Hesap silme</a></li>
-        <li><a href="/iletisim.html">İletişim</a></li>
+        <li><a href="{{ t.url.privacy }}">{{ f.legal.privacy }}</a></li>
+        <li><a href="{{ t.url.terms }}">{{ f.legal.terms }}</a></li>
+        <li><a href="{{ t.url.competition }}"{% if (lang or "tr") != "tr" %} hreflang="tr"{% endif %}>{{ f.legal.competition }}</a></li>
+        <li><a href="{{ t.url.deletion }}">{{ f.legal.deletion }}</a></li>
+        <li><a href="{{ t.url.contact }}">{{ f.legal.contact }}</a></li>
         {%- if site.analytics.enabled %}
-        <li><button type="button" class="dn-linkbtn" data-consent-open>Çerez tercihleri</button></li>
+        <li><button type="button" class="dn-linkbtn" data-consent-open>{{ f.cookies }}</button></li>
         {%- endif %}
       </ul>
     </div>

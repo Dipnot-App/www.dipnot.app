@@ -14,7 +14,8 @@ const emailInput = document.getElementById("deletion-email");
 const reasonInput = document.getElementById("deletion-reason");
 const message = document.getElementById("deletion-message");
 const button = form.querySelector("button[type=submit]");
-const OFFLINE = "Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar deneyin.";
+const i18n = window.dnI18n;
+const OFFLINE = i18n.t("offlineFormal");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -49,15 +50,17 @@ form.addEventListener("submit", async (e) => {
       throw fail;
     }
 
-    message.textContent =
-      data.message ||
-      "Onay e-postası gönderildi. Hesabınızın silinmesi için e-postadaki bağlantıya tıklayın.";
+    message.textContent = data.message
+      ? i18n.server(data.message, true)
+      : i18n.t("deletionSent");
     message.classList.add("is-success");
     form.reset();
   } catch (err) {
     // Network, parse and App Check failures would otherwise surface raw
     // (often English) error text
-    message.textContent = err.fromServer ? err.message : OFFLINE;
+    message.textContent = err.fromServer
+      ? i18n.server(err.message, false)
+      : OFFLINE;
     message.classList.add("is-danger");
   } finally {
     button.classList.remove("is-loading");

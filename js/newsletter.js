@@ -10,10 +10,11 @@
   // Turkish copy for everything the browser would otherwise word itself:
   // the form is `novalidate`, so native (browser-language) tooltips never
   // show, and network failures never surface "Failed to fetch".
+  const t = window.dnI18n.t;
   const MSG = {
-    empty: "Lütfen e-posta adresini yaz.",
-    invalid: "Geçerli bir e-posta adresi yaz (ör. ad@ornek.com).",
-    offline: "Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar dene.",
+    empty: t("emailEmpty"),
+    invalid: t("emailInvalid"),
+    offline: t("offline"),
   };
 
   const show = (text, kind) => {
@@ -65,10 +66,13 @@
         throw fail;
       }
 
-      show(data.message, "success");
+      show(window.dnI18n.server(data.message, true), "success");
       emailInput.value = "";
     } catch (err) {
-      show(err.fromServer ? err.message : MSG.offline, "danger");
+      show(
+        err.fromServer ? window.dnI18n.server(err.message, false) : MSG.offline,
+        "danger",
+      );
     } finally {
       button.classList.remove("is-loading");
       button.disabled = false;

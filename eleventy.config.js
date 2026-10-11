@@ -9,6 +9,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy(".nojekyll");
   eleventyConfig.addPassthroughCopy("CNAME");
 
+  // The same page in another language: the page's hreflang entry for
+  // `lang` (as a root-relative path), else that language's home page.
+  eleventyConfig.addFilter("altUrl", (hreflang, lang, fallback) => {
+    const hit = (hreflang || []).find((a) => a.lang === lang);
+    return hit ? hit.href.replace(/^https:\/\/dipnot\.app/, "") : fallback;
+  });
+
   // Preserve .html extensions (don't rewrite to pretty URLs).
   // Existing links, sitemap, and inbound bookmarks all use .html.
   eleventyConfig.addGlobalData("eleventyComputed", {

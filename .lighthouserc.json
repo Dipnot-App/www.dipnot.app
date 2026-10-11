@@ -11,7 +11,10 @@
         "http://localhost:8080/iletisim.html",
         "http://localhost:8080/hesap-silme.html",
         "http://localhost:8080/marka-kitabi.html",
-        "http://localhost:8080/brand-book.html"
+        "http://localhost:8080/brand-book.html",
+        "http://localhost:8080/en/",
+        "http://localhost:8080/en/contact.html",
+        "http://localhost:8080/en/delete-account.html"
       ],
       "numberOfRuns": 3,
       "settings": {

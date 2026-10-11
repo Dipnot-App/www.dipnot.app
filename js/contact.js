@@ -7,31 +7,24 @@
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("contact-feedback");
   const button = form.querySelector("button[type=submit]");
-  const OFFLINE = "Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar dene.";
+  const t = window.dnI18n.t;
+  const OFFLINE = t("offline");
 
   // The form is `novalidate`: these checks replace the browser's own
   // tooltips, which appear in the visitor's browser language. Checked in
   // page order; the first failure is shown and focused.
   const CHECKS = [
-    ["contact-name", (el) => el.value.trim(), "Lütfen adını ve soyadını yaz."],
-    ["contact-email", (el) => el.value.trim(), "Lütfen e-posta adresini yaz."],
-    [
-      "contact-email",
-      (el) => el.checkValidity(),
-      "Geçerli bir e-posta adresi yaz (ör. ad@ornek.com).",
-    ],
-    ["contact-message", (el) => el.value.trim(), "Lütfen mesajını yaz."],
+    ["contact-name", (el) => el.value.trim(), t("nameEmpty")],
+    ["contact-email", (el) => el.value.trim(), t("emailEmpty")],
+    ["contact-email", (el) => el.checkValidity(), t("emailInvalid")],
+    ["contact-message", (el) => el.value.trim(), t("messageEmpty")],
     // Mirrors submitContactForm's 10–2000 rule (maxlength caps the top)
     [
       "contact-message",
       (el) => el.value.trim().length >= 10,
-      "Mesajın en az 10 karakter olmalı.",
+      t("messageShort"),
     ],
-    [
-      "contact-terms",
-      (el) => el.checked,
-      "Göndermek için kullanım koşullarını ve gizlilik politikasını kabul etmelisin.",
-    ],
+    ["contact-terms", (el) => el.checked, t("termsRequired")],
   ];
 
   const clearInvalid = (el) => {
@@ -73,7 +66,7 @@
 
       // Honeypot: if filled, pretend success and skip the network call.
       if (formData.get("website")) {
-        feedback.textContent = "Mesajın iletildi.";
+        feedback.textContent = t("sent");
         feedback.classList.add("is-success");
         form.reset();
         return;
@@ -104,12 +97,17 @@
         throw fail;
       }
 
-      feedback.textContent = data.message || "Mesajın iletildi.";
+      feedback.textContent = window.dnI18n.server(
+        data.message || t("sent"),
+        true,
+      );
       feedback.classList.add("is-success");
       form.reset();
     } catch (err) {
       // Network/parse failures would otherwise surface "Failed to fetch"
-      feedback.textContent = err.fromServer ? err.message : OFFLINE;
+      feedback.textContent = err.fromServer
+        ? window.dnI18n.server(err.message, false)
+        : OFFLINE;
       feedback.classList.add("is-danger");
     } finally {
       button.classList.remove("is-loading");

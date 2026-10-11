@@ -1,0 +1,468 @@
+{#- Home page body, shared by index.html (tr) and en/index.html (en).
+    Copy lives in _data/home.js; the page's `lang` picks the block. -#}
+{%- from "macros/iphone.njk" import iphone -%}
+{%- set L = lang or "tr" -%}
+{%- set h = home[L] -%}
+{%- set t = i18n[L] -%}
+{%- set sc = home.screens[L] -%}
+{#- "pre <accent>accent</accent> post", without a space before punctuation -#}
+
+{%- macro glue(text) -%}
+  {%- if text and ".,!?;:".indexOf(text.charAt(0)) > -1 %}{{ text }}{% elif text %} {{ text }}{% endif -%}
+{%- endmacro -%}
+{%- macro heading(p) -%}
+  {%- if p.pre %}{{ p.pre }} {% endif -%}
+  <span class="dn-accent">{{ p.accent }}</span>{{ glue(p.post) }}
+{%- endmacro -%}
+<!-- HERO -->
+<section class="dn-hero" aria-labelledby="hero-title">
+  {% include "partials/bubbles.njk" %}
+  <div class="dn-container dn-hero__grid">
+    <div class="dn-hero__copy">
+      <p class="dn-eyebrow dn-glass dn-glass--pill" data-hero>
+        <span class="dn-eyebrow__dot" aria-hidden="true"></span>
+        {{ h.eyebrow }}
+      </p>
+
+      <h1 id="hero-title" class="dn-display" data-hero data-hero-title>
+        {{ h.title.pre }} <span class="dn-accent">{{ h.title.accent }}</span>
+        <span class="dn-nowrap">{{ h.title.post }}</span>
+      </h1>
+
+      <p class="dn-lead" data-hero>
+        {{ h.lead }}
+      </p>
+
+      <div data-hero>
+        {% include "partials/store-buttons.njk" %}
+        {%- if h.appNote %}
+        <p class="dn-hero__note">
+          <i class="fa-solid fa-language" aria-hidden="true"></i>
+          {{ h.appNote }}
+        </p>
+        {%- endif %}
+      </div>
+    </div>
+
+    <div class="dn-hero__visual" data-hero data-hero-visual>
+      <div class="dn-iphone-stage">
+        <div class="dn-iphone-tilt" data-iphone-tilt data-parallax="-10">
+          <div class="dn-hero__duo">
+            <div class="dn-hero__back" data-hero-back-scroll>
+              <div class="dn-hero__layer" data-hero-back>
+                {{ iphone([sc.saved], rot="6,-30,4") }}
+              </div>
+            </div>
+            <div class="dn-hero__layer" data-hero-front>
+              {{ iphone([sc.feed], rot="8,-24,4", eager=true) }}
+            </div>
+          </div>
+        </div>
+        <div class="dn-iphone-shadow" aria-hidden="true"></div>
+      </div>
+
+      <div
+        class="dn-chip dn-chip--a dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-30"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-feather-pointed"></i
+        ></span>
+        {{ h.chips[0] }}
+      </div>
+      <div
+        class="dn-chip dn-chip--b dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-55"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-layer-group"></i
+        ></span>
+        {{ h.chips[1] }}
+      </div>
+      <div
+        class="dn-chip dn-chip--c dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-20"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-minimize"></i
+        ></span>
+        {{ h.chips[2] }}
+      </div>
+    </div>
+  </div>
+
+  <a class="dn-scrollcue" href="#about" aria-label="{{ h.scroll }}"></a>
+</section>
+
+<main id="main" class="dn-main">
+  <!-- ABOUT -->
+  <section id="about" class="dn-section" data-anchor="center">
+    <div class="dn-container dn-split">
+      <div class="dn-about__visual">
+        <div class="dn-about__halo" aria-hidden="true"></div>
+        <div class="dn-iphone-stage" data-about-stage data-anchor-target>
+          {{ iphone([sc.article], rot="4,22,-3") }}
+          <div class="dn-iphone-shadow" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="dn-prose">
+        <p class="dn-kicker" data-reveal>01</p>
+        <h2 class="dn-h2" data-split>
+          {{ heading(h.about.title) }}
+        </h2>
+        {%- for para in h.about.body %}
+        <p data-reveal>{{ para }}</p>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="dn-section">
+    <div class="dn-container">
+      <div class="dn-section-head">
+        <p class="dn-kicker" data-reveal>02</p>
+        <h2 class="dn-h2" data-split>{{ h.features.title }}</h2>
+        <p class="dn-lead" data-reveal>
+          {{ h.features.lead }}
+        </p>
+      </div>
+
+      <div class="dn-bento">
+        <article class="dn-tile dn-tile--wide dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-feather-pointed"></i
+          ></span>
+          <i
+            class="fa-solid fa-quote-right dn-tile__mark"
+            aria-hidden="true"
+          ></i>
+          <h3 class="dn-h3">{{ h.features.curated.t }}</h3>
+          <p>{{ h.features.curated.d }}</p>
+        </article>
+
+        <article class="dn-tile dn-tile--tall dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-layer-group"></i
+          ></span>
+          <h3 class="dn-h3">{{ h.features.categories.t }}</h3>
+          <p>{{ h.features.categories.d }}</p>
+          <div class="dn-marquee">
+            <div class="dn-marquee__track">
+              <ul class="dn-marquee__list" aria-label="{{ h.features.categories.t }}">
+                {%- for c in home.categories %}
+                <li class="dn-marquee__item">
+                  <i class="fa-solid fa-{{ c.icon }}" aria-hidden="true"></i>{{
+                  c[L] }}
+                </li>
+                {%- endfor %}
+              </ul>
+              <ul class="dn-marquee__list" aria-hidden="true">
+                {%- for c in home.categories %}
+                <li class="dn-marquee__item">
+                  <i class="fa-solid fa-{{ c.icon }}"></i>{{ c[L] }}
+                </li>
+                {%- endfor %}
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="dn-tile dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-bookmark"></i
+          ></span>
+          <h3 class="dn-h3">{{ h.features.saved.t }}</h3>
+          <p>{{ h.features.saved.d }}</p>
+        </article>
+
+        <article class="dn-tile dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-minimize"></i
+          ></span>
+          <h3 class="dn-h3">{{ h.features.simple.t }}</h3>
+          <p>{{ h.features.simple.d }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="dn-section" data-steps-section>
+    <div class="dn-container">
+      <div class="dn-section-head">
+        <p class="dn-kicker" data-reveal>03</p>
+        <h2 class="dn-h2" data-split>{{ h.how.title }}</h2>
+      </div>
+
+      <div class="dn-how" data-how>
+        <div class="dn-how__visual dn-iphone-stage">
+          {{ iphone([sc.appstore, sc.signin, sc.feed], rot="2,16,-2") }}
+          <div class="dn-iphone-shadow" aria-hidden="true"></div>
+        </div>
+
+        <ol class="dn-steps" data-steps>
+          <li class="dn-steps__rail" aria-hidden="true">
+            <span class="dn-steps__fill" data-steps-fill></span>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon2.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">01</span>
+              <h3 class="dn-h3">{{ h.how.steps[0].t }}</h3>
+              <p>{{ h.how.steps[0].d }}</p>
+            </div>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon1.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">02</span>
+              <h3 class="dn-h3">{{ h.how.steps[1].t }}</h3>
+              <p>{{ h.how.steps[1].d }}</p>
+            </div>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon3.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">03</span>
+              <h3 class="dn-h3">{{ h.how.steps[2].t }}</h3>
+              <p>{{ h.how.steps[2].d }}</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="dn-section">
+    <div class="dn-container dn-faq">
+      <div class="dn-faq__intro">
+        <p class="dn-kicker" data-reveal>04</p>
+        <h2 class="dn-h2" data-split>{{ h.faq.title }}</h2>
+      </div>
+
+      <div class="dn-accordion">
+        <details class="dn-qa dn-glass" open data-reveal>
+          <summary>
+            {{ h.faq.contentQ }}
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              {{ h.faq.contentA.pre }}
+              {%- for c in home.categories %} {{ c[L] }}
+              {%- if loop.revindex == 2 %} {{ h.faq.contentA.and }}{% elif not loop.last %},{% endif %}
+              {%- endfor %}{{ glue(h.faq.contentA.post) }}
+            </p>
+          </div>
+        </details>
+        {%- for item in h.faq.items %}
+
+        <details class="dn-qa dn-glass" data-reveal>
+          <summary>
+            {{ item.q }}
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>{{ item.a }}</p>
+          </div>
+        </details>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="dn-section">
+    <div class="dn-container dn-contact">
+      <div>
+        <p class="dn-kicker" data-reveal>05</p>
+        <h2 class="dn-h2" data-split>{{ h.contact.title }}</h2>
+        <p class="dn-lead" data-reveal>
+          {{ h.contact.lead }}
+        </p>
+        <div class="dn-contact__mail" data-reveal>
+          <a href="mailto:info@dipnot.app"
+            ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+            >info@dipnot.app</a
+          >
+          <a href="mailto:help@dipnot.app"
+            ><i class="fa-solid fa-life-ring" aria-hidden="true"></i
+            >help@dipnot.app</a
+          >
+        </div>
+      </div>
+
+      <div class="dn-contact__card dn-glass dn-glass--strong" data-reveal>
+        <form id="contact-form" novalidate>
+          <!-- Honeypot (spam trap — bots fill this, humans don't see it) -->
+          <div class="dn-hidden" aria-hidden="true">
+            <label for="contact-website">Website</label>
+            <input
+              id="contact-website"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="dn-form-row">
+            <div class="dn-field">
+              <label class="dn-label" for="contact-name">{{ h.contact.name }}</label>
+              <div class="dn-control">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <input
+                  id="contact-name"
+                  aria-describedby="contact-feedback"
+                  name="name"
+                  class="dn-input"
+                  type="text"
+                  placeholder="{{ h.contact.namePh }}"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="dn-field">
+              <label class="dn-label" for="contact-email">{{ h.contact.email }}</label>
+              <div class="dn-control">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <input
+                  id="contact-email"
+                  aria-describedby="contact-feedback"
+                  name="email"
+                  class="dn-input"
+                  type="email"
+                  placeholder="{{ h.contact.emailPh }}"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="dn-field">
+            <label class="dn-label" for="contact-subject">{{ h.contact.subject }}</label>
+            <select id="contact-subject" name="subject" class="dn-input">
+              <option value="general">{{ h.contact.subjects.general }}</option>
+              <option value="support">{{ h.contact.subjects.support }}</option>
+              <option value="partnership">{{ h.contact.subjects.partnership }}</option>
+              <option value="feedback">{{ h.contact.subjects.feedback }}</option>
+            </select>
+          </div>
+
+          <div class="dn-field">
+            <label class="dn-label" for="contact-message">{{ h.contact.message }}</label>
+            <textarea
+              id="contact-message"
+              maxlength="2000"
+              aria-describedby="contact-feedback"
+              name="message"
+              class="dn-input"
+              placeholder="{{ h.contact.messagePh }}"
+              required
+            ></textarea>
+          </div>
+
+          <div class="dn-field">
+            <label class="dn-check">
+              <input
+                id="contact-terms"
+                type="checkbox"
+                aria-describedby="contact-feedback"
+                required
+              />
+              <span>
+                {%- if h.contact.terms.pre %}{{ h.contact.terms.pre }} {% endif -%}
+                <a href="{{ t.url.terms }}" target="_blank" rel="noopener noreferrer">{{ h.contact.terms.terms }}</a>
+                {{ h.contact.terms.and }}
+                <a href="{{ t.url.privacy }}" target="_blank" rel="noopener noreferrer">{{ h.contact.terms.privacy }}</a>{{ glue(h.contact.terms.post) }}
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="dn-btn dn-btn--primary dn-btn--block">
+            {{ h.contact.submit }}
+          </button>
+
+          <!-- Feedback (success/error) -->
+          <p
+            id="contact-feedback"
+            class="help mt-3"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD — the deep zone starts here -->
+  <section
+    id="download"
+    class="dn-cta"
+    aria-labelledby="download-title"
+    data-anchor="center"
+  >
+    <div class="dn-container">
+      <div
+        class="dn-cta__panel dn-glass dn-glass--refract"
+        data-cta
+        data-anchor-target
+      >
+        <div class="dn-cta__rays" aria-hidden="true"></div>
+        <img
+          class="dn-cta__logo"
+          src="/img/logos/logo.svg"
+          alt=""
+          width="72"
+          height="72"
+          data-reveal
+        />
+        <h2 id="download-title" class="dn-display" data-split>
+          {{ heading(h.cta.title) }}
+        </h2>
+        <p class="dn-lead" data-reveal>
+          {{ h.cta.lead }}
+        </p>
+        {% set storeReveal = true %} {% include "partials/store-buttons.njk" %}
+        {%- set storeReveal = false %}
+      </div>
+    </div>
+  </section>
+</main>

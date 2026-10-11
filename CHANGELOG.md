@@ -46,6 +46,17 @@ build:images` → `img/opt/`, AVIF + WebP) in a CSS 3D frame. Status
     browser-language tooltips); the contact form mirrors the backend's
     10–2000 character rule. Network failures show a Turkish fallback
     instead of the raw "Failed to fetch" on all four forms.
+  - **English** — an English version under `/en/` (home, contact,
+    account deletion), with the existing EN legal pages and the brand
+    book (`marka-kitabi.html` TR + `brand-book.html` EN). Each pair
+    renders one template from one bilingual data file
+    (`_data/home.js`, `_data/brandbook.js`, shell strings in
+    `_data/i18n.js`), so TR and EN can't drift. A TR/EN switch in the
+    nav goes to the page's counterpart; Turkish pages offer the
+    English version to English-browser visitors (no redirect). Script
+    messages come from `js/messages.js`, which also maps the Turkish
+    Cloud Function replies to English. The EN hero says the app and
+    its articles are in Turkish. Competition rules stay Turkish only.
   - **Performance** — Lighthouse mobile on the home page goes 69 → 98
     (gzip, as served by Pages). The hero entrance is CSS (no wait on
     GSAP), Bulma no longer loads on the home page or 404, **Inter is

@@ -13,7 +13,10 @@
       burger.classList.toggle("is-active", open);
       sheet.classList.toggle("is-active", open);
       burger.setAttribute("aria-expanded", String(open));
-      burger.setAttribute("aria-label", open ? "Menüyü kapat" : "Menüyü aç");
+      burger.setAttribute(
+        "aria-label",
+        window.dnI18n.t(open ? "menuClose" : "menuOpen"),
+      );
     };
 
     burger.addEventListener("click", () => {
@@ -65,6 +68,42 @@
     new IntersectionObserver(([entry]) => {
       nav.classList.toggle("is-scrolled", !entry.isIntersecting);
     }).observe(sentinel);
+  }
+
+  // Language. Remember an explicit switch; on Turkish pages, offer the
+  // English version to English-browser visitors who haven't chosen yet.
+  const remember = (value) => {
+    try {
+      localStorage.setItem("lang", value);
+    } catch (e) {
+      // Private mode: fine, the hint just shows again next time.
+    }
+  };
+  document.addEventListener("click", (e) => {
+    const sw = e.target.closest("[data-lang-switch]");
+    if (sw) remember(sw.dataset.langSwitch);
+  });
+
+  const hint = document.querySelector("[data-lang-hint]");
+  if (hint) {
+    let chosen = null;
+    try {
+      chosen = localStorage.getItem("lang");
+    } catch (e) {
+      // ignore
+    }
+    const prefs = navigator.languages || [navigator.language || ""];
+    const wantsEnglish =
+      /^en\b/i.test(prefs[0] || "") && !prefs.some((l) => /^tr\b/i.test(l));
+    if (!chosen && wantsEnglish) hint.hidden = false;
+    hint.addEventListener("click", (e) => {
+      if (e.target.closest("[data-lang-hint-close]")) {
+        hint.hidden = true;
+        remember("tr");
+      } else if (e.target.closest("a")) {
+        remember("en");
+      }
+    });
   }
 
   // In-page anchors: land the section's heading just under the floating

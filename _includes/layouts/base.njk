@@ -98,7 +98,7 @@
   <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-  <a class="dn-skip" href="#main">İçeriğe geç</a>
+  <a class="dn-skip" href="#main">{{ i18n[lang or "tr"].skip }}</a>
 
   <!-- Ambient ocean background -->
   <div class="dn-ocean" aria-hidden="true">
@@ -127,11 +127,13 @@
 
   {% include "partials/footer.njk" %}
 
+  {%- include "partials/lang-hint.njk" %}
   {%- if site.analytics.enabled %}
   {% include "partials/consent.njk" %}
   {%- endif %}
 
   <!-- Scripts -->
+  <script src="/js/messages.js?v={{ site.jsVersion }}"></script>
   <script src="/js/main.js?v={{ site.jsVersion }}"></script>
   <script src="/js/newsletter.js?v={{ site.jsVersion }}"></script>
   {%- if site.analytics.enabled %}

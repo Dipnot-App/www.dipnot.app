@@ -1,26 +1,29 @@
+{%- set t = i18n[lang or "tr"] -%}
+{%- set other = t.langSwitch.lang -%}
 <!-- NAVIGATION — floating liquid-glass bar -->
 <header class="dn-nav" data-nav>
-  <nav class="dn-nav__bar dn-glass dn-glass--pill" aria-label="Ana gezinme">
-    <a class="dn-nav__brand" href="/">
+  <nav class="dn-nav__bar dn-glass dn-glass--pill" aria-label="{{ t.navLabel }}">
+    <a class="dn-nav__brand" href="{{ t.home }}">
       <img src="/img/logos/logo.svg" alt="" width="32" height="32">
       Dipnot
     </a>
 
     <ul class="dn-nav__links">
-      <li><a href="/#about">Dipnot nedir?</a></li>
-      <li><a href="/#features">Özellikler</a></li>
-      <li><a href="/#how-it-works">Nasıl çalışır?</a></li>
-      <li><a href="/#faq">S.S.S.</a></li>
-      <li><a href="/#contact">İletişim</a></li>
+      <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+      <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+      <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+      <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+      <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
     </ul>
 
     <div class="dn-nav__actions">
-      <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="Tema değiştir">
+      <a class="dn-btn dn-lang" href="{{ hreflang | altUrl(other, i18n[other].home) }}" hreflang="{{ other }}" lang="{{ other }}" aria-label="{{ t.langSwitch.label }}" data-lang-switch="{{ other }}">{{ t.langSwitch.short }}</a>
+      <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="{{ t.theme }}">
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
         <i class="fa-solid fa-sun" aria-hidden="true"></i>
       </button>
-      <a href="/#download" class="dn-btn dn-btn--primary dn-nav__download">Uygulamayı indir</a>
-      <button type="button" class="dn-burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navbar" data-target="navbar">
+      <a href="{{ t.home }}#download" class="dn-btn dn-btn--primary dn-nav__download">{{ t.download }}</a>
+      <button type="button" class="dn-burger" aria-label="{{ t.menuOpen }}" aria-expanded="false" aria-controls="navbar" data-target="navbar">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </button>
@@ -30,12 +33,12 @@
   <!-- Mobile sheet -->
   <div id="navbar" class="dn-sheet dn-glass dn-glass--strong">
     <ul>
-      <li><a href="/">Ana sayfa</a></li>
-      <li><a href="/#about">Dipnot nedir?</a></li>
-      <li><a href="/#features">Özellikler</a></li>
-      <li><a href="/#how-it-works">Nasıl çalışır?</a></li>
-      <li><a href="/#faq">S.S.S.</a></li>
-      <li><a href="/#contact">İletişim</a></li>
+      <li><a href="{{ t.home }}">{{ t.nav.home }}</a></li>
+      <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+      <li><a href="{{ t.home }}#features">{{ t.nav.features }}</a></li>
+      <li><a href="{{ t.home }}#how-it-works">{{ t.nav.how }}</a></li>
+      <li><a href="{{ t.home }}#faq">{{ t.nav.faq }}</a></li>
+      <li><a href="{{ t.home }}#contact">{{ t.nav.contact }}</a></li>
     </ul>
     {% include "partials/store-buttons.njk" %}
   </div>
