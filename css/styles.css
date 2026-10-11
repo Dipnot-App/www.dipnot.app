@@ -3201,7 +3201,7 @@ main.container > .section {
 .dn-nf__time {
   position: relative;
   /* nudged so the segment tops line up with the depth digits */
-  margin-top: 0.55rem;
+  margin-top: 0.75rem;
   font:
     700 1.6rem / 1 "DSEG7",
     ui-monospace,
