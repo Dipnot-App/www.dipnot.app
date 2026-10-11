@@ -31,7 +31,7 @@ import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.j
 // One loop of the choreography, in seconds
 const LOOP = 31; // 16 s of action + 15 s of empty water
 const FAR = 32; // start/end distance (hidden in the fog)
-const NEAR = 4.4; // closest approach
+const NEAR = 4.8; // reference depth; it never comes closer than NEAR + 1.6
 
 const ease = (t) => t * t * (3 - 2 * t);
 
@@ -166,7 +166,8 @@ export async function mount(host, { src, waterColor, light, onReady }) {
   // ?shark-t= / ?shark-freeze for screenshots
   const q = new URLSearchParams(location.search);
   const tParam = parseFloat(q.get("shark-t"));
-  let t = Number.isFinite(tParam) ? tParam : 0;
+  // t = 16: the page opens on 15 s of empty water before the first pass
+  let t = Number.isFinite(tParam) ? tParam : 16;
   const frozen = q.has("shark-freeze");
   let running = true;
   let ready = false;
@@ -187,24 +188,27 @@ export async function mount(host, { src, waterColor, light, onReady }) {
     let yaw; // 0 = facing us, -π/2 = facing left
     let speed;
     if (t < 8) {
+      // a steady approach, straight at us
       const k = ease(t / 8);
-      z = MathUtils.lerp(FAR, NEAR + 2.2, k);
-      xr = MathUtils.lerp(0.55, 0.34, k);
-      yaw = -0.22;
+      z = MathUtils.lerp(FAR, NEAR + 3.4, k);
+      xr = MathUtils.lerp(0.55, 0.32, k);
+      yaw = -0.18;
       speed = 0.25;
-    } else if (t < 11) {
-      const k = (t - 8) / 3;
-      z = MathUtils.lerp(NEAR + 2.2, NEAR, Math.sin(k * Math.PI));
-      xr = MathUtils.lerp(0.34, 0.26, k);
-      yaw = MathUtils.lerp(-0.22, -0.4, k);
-      speed = 1;
+    } else if (t < 10.5) {
+      // a short surge, jaws starting to open… then it thinks better of it:
+      // the turn begins before it gets close
+      const k = (t - 8) / 2.5;
+      z = MathUtils.lerp(NEAR + 3.4, NEAR + 1.6, Math.sin(k * Math.PI * 0.5));
+      xr = MathUtils.lerp(0.32, 0.22, k);
+      yaw = MathUtils.lerp(-0.18, -0.75, ease(k));
+      speed = MathUtils.lerp(0.4, 0.75, Math.sin(k * Math.PI));
     } else if (t < 16) {
-      const k = (t - 11) / 5;
-      z = MathUtils.lerp(NEAR + 2.2, NEAR + 5, k);
-      // accelerate out past the left edge (body length clears the frame)
-      xr = MathUtils.lerp(0.26, -2.4, k * k);
-      yaw = MathUtils.lerp(-0.4, -1.45, ease(Math.min(1, k * 1.6)));
-      speed = 0.6;
+      const k = (t - 10.5) / 5.5;
+      z = MathUtils.lerp(NEAR + 1.6, NEAR + 5, k);
+      // veers off and accelerates past the left edge
+      xr = MathUtils.lerp(0.22, -2.4, k * k);
+      yaw = MathUtils.lerp(-0.75, -1.45, ease(Math.min(1, k * 1.4)));
+      speed = 0.45;
     } else {
       z = FAR;
       xr = 0.55;
