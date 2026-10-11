@@ -2505,6 +2505,66 @@ main.container > .section {
   animation: dn-spin 0.7s linear infinite;
 }
 
+/* Analytics consent banner (partials/consent.njk) */
+.dn-consent {
+  position: fixed;
+  right: var(--dn-gutter);
+  bottom: var(--dn-gutter);
+  left: var(--dn-gutter);
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--dn-radius-3xl);
+  font-size: var(--dn-fs-small);
+}
+.dn-consent[hidden] {
+  display: none;
+}
+.dn-consent__copy {
+  flex: 1 1 18rem;
+}
+.dn-consent__title {
+  margin-bottom: 0.25rem;
+  color: var(--dn-fg);
+  font-weight: 600;
+}
+.dn-consent__copy p:last-child {
+  color: var(--dn-fg-muted);
+  line-height: var(--dn-lh-normal);
+}
+.dn-consent a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dn-consent__actions {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+.dn-consent__actions .dn-btn {
+  flex: 1 1 0;
+  min-height: 2.6rem;
+  font-size: var(--dn-fs-small);
+}
+/* Footer "Çerez tercihleri": a button styled as a footer link */
+.dn-linkbtn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--dn-fg-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.dn-linkbtn:hover {
+  color: var(--dn-fg);
+}
+
 /* 404 */
 /* Phone left, text right on desktop; on small screens the text stays
    first so the way home is above the fold */

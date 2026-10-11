@@ -11,6 +11,17 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=()">
   <meta name="theme-color" content="{{ site.themeColor }}">
+  {#- Search-engine ownership checks: emitted only once a code is set
+      in site.json (no visitor data involved) #}
+  {%- if site.verification.google %}
+  <meta name="google-site-verification" content="{{ site.verification.google }}">
+  {%- endif %}
+  {%- if site.verification.bing %}
+  <meta name="msvalidate.01" content="{{ site.verification.bing }}">
+  {%- endif %}
+  {%- if site.verification.yandex %}
+  <meta name="yandex-verification" content="{{ site.verification.yandex }}">
+  {%- endif %}
   {%- if robots %}
   <meta name="robots" content="{{ robots }}">
   {%- endif %}
@@ -120,9 +131,16 @@
 
   {% include "partials/footer.njk" %}
 
+  {%- if site.analytics.enabled %}
+  {% include "partials/consent.njk" %}
+  {%- endif %}
+
   <!-- Scripts -->
   <script src="/js/main.js?v={{ site.jsVersion }}"></script>
   <script src="/js/newsletter.js?v={{ site.jsVersion }}"></script>
+  {%- if site.analytics.enabled %}
+  <script src="/js/consent.js?v={{ site.jsVersion }}" data-ga4="{{ site.analytics.ga4 }}"></script>
+  {%- endif %}
   {%- if hasContactForm %}
   <script src="/js/contact.js?v={{ site.jsVersion }}"></script>
   {%- endif %}

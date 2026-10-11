@@ -28,5 +28,14 @@
       "integrity": "sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q"
     }
   },
-  "twitterImage": "https://dipnot.app/img/og/og-horizontal.png"
+  "twitterImage": "https://dipnot.app/img/og/og-horizontal.png",
+  "analytics": {
+    "enabled": false,
+    "ga4": "G-YSQJLFK4HZ"
+  },
+  "verification": {
+    "google": "",
+    "bing": "",
+    "yandex": ""
+  }
 }
