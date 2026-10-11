@@ -955,8 +955,10 @@ h6,
   perspective: 2000px;
 }
 .dn-hero__layer {
-  transform-style: preserve-3d;
-  will-change: transform;
+  /* Each phone takes perspective from its own parent, so the layer can
+     fade (opacity flattens preserve-3d, which would collapse the phone) */
+  perspective: 2000px;
+  will-change: transform, opacity;
 }
 .dn-hero__back {
   position: absolute;
@@ -1840,6 +1842,7 @@ select.dn-input {
 }
 
 .dn-newsletter {
+  align-self: start;
   padding: 1.5rem;
   border-radius: var(--dn-radius-2xl);
 }
@@ -1854,13 +1857,6 @@ select.dn-input {
 }
 .dn-newsletter__row .dn-btn {
   flex: 1 1 auto;
-}
-.dn-newsletter .dn-store {
-  margin-top: 1.25rem;
-}
-.dn-newsletter .dn-store__btn {
-  flex: 1 1 9rem;
-  min-height: 3rem;
 }
 
 .dn-footer__contact {

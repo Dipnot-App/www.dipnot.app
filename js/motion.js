@@ -317,30 +317,40 @@
       /* ---------------------------------------------------------------
          About — the phone rises out of the depth; its feed scrolls
          --------------------------------------------------------------- */
-      const aboutPhone = $("[data-about-stage] [data-iphone]");
+      // Opacity goes on the stage, never the phone: opacity < 1 forces a
+      // preserve-3d element flat, so fading the phone itself collapsed its
+      // edge until it hit 1 and snapped back into 3D (the scroll "jump").
+      const aboutStage = $("[data-about-stage]");
+      const aboutPhone = aboutStage && $("[data-iphone]", aboutStage);
       if (aboutPhone) {
         const [rx, ry, rz] = rest(aboutPhone);
+        const trigger = {
+          trigger: "#about",
+          start: "top 95%",
+          end: "bottom 35%",
+          scrub: 1,
+        };
+        gsap.fromTo(
+          aboutStage,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: { ...trigger, end: "top 45%" },
+          },
+        );
         gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: "#about",
-              start: "top 95%",
-              end: "bottom 35%",
-              scrub: 1,
-            },
-          })
+          .timeline({ scrollTrigger: trigger })
           .fromTo(
             aboutPhone,
             {
               y: 160,
-              opacity: 0,
               rotationX: rx + 30,
               rotationY: ry + 45,
               rotationZ: rz - 6,
             },
             {
               y: 0,
-              opacity: 1,
               rotationX: rx,
               rotationY: ry,
               rotationZ: rz,
