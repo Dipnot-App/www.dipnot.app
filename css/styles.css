@@ -822,6 +822,9 @@ a.dn-seg__item:hover {
 }
 [data-theme="light"] .dn-theme-toggle .fa-sun {
   display: inline-block;
+  /* Warm amber, dark enough for 3:1 on the light glass (pure yellow
+     isn't). The only non-teal accent, sun icon only. */
+  color: oklch(0.62 0.15 65);
 }
 
 .dn-burger {
