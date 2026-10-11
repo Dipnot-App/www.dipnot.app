@@ -5,36 +5,98 @@ title: "Sayfa bulunamadı | Dipnot App"
 description: "Sayfa bulunamadı — Dipnot App."
 keywords: "dalış, scuba diving, su altı, dipnot app"
 robots: "noindex"
-hideNav: true
 permalink: "/404.html"
 ---
 
-<!-- HERO BANNER -->
-<section class="hero is-fullheight-with-navbar has-background-hero">
-  <div class="hero-body">
-    <div class="columns">
-      <div class="column is-align-content-center">
-        <p class="title is-size-1 has-text-white has-text-centered mb-5">
-          <span class="has-text-primary" style="font-size: 12rem">404</span>
-          <span style="white-space: nowrap">Sayfa bulunamadı</span>
-        </p>
-        <p class="subtitle has-text-white has-text-centered">
-          Üzgünüz, aradığınız sayfa bulunamadı.
-        </p>
-        <div
-          class="buttons are-large mt-6 is-flex is-justify-content-center mb-6"
-        >
-          <a href="/" class="button is-light is-outlined">
-            <span class="ml-2">Anasayfaya dön</span>
-          </a>
+<section id="main" class="dn-nf" aria-labelledby="nf-title" data-nf>
+  {% include "partials/bubbles.njk" %} {% include "partials/abyss.njk" %}
+  <div class="dn-container dn-nf__inner">
+    <div class="dn-nf__computer dn-glass dn-glass--strong" aria-hidden="true">
+      <div class="dn-nf__screen">
+        <div class="dn-nf__row">
+          <span data-en="DEPTH">DERİNLİK</span>
+          <span data-en="TIME">SÜRE</span>
+        </div>
+        <div class="dn-nf__row dn-nf__row--main">
+          <span class="dn-nf__depth">404<small>m</small></span>
+          <span class="dn-nf__time"
+            ><span class="dn-nf__ghost">88:88</span
+            ><span data-nf-time>00:00</span></span
+          >
+        </div>
+        <div class="dn-nf__row">
+          <span class="dn-nf__ndl">NDL -- <b class="dn-nf__deco">DECO</b></span>
+          <span class="dn-nf__alarm" data-en="↑ ASCEND">↑ YÜKSEL</span>
         </div>
       </div>
-
-      <div class="column is-align-content-center">
-        <figure class="image">
-          <img src="/img/deviceframes-hero.png" alt="Hero DeviceFrames" />
-        </figure>
-      </div>
     </div>
+
+    <h1 id="nf-title" class="dn-nf__title" data-en="You went too deep.">
+      Fazla derine indin.
+    </h1>
+    <p class="dn-nf__sub" data-en="This page doesn't exist down here.">
+      Bu derinlikte böyle bir sayfa yok.
+    </p>
+    <a
+      href="/"
+      class="dn-btn dn-btn--primary dn-nf__btn"
+      data-en="Back to the surface"
+      data-en-href="/en/"
+    >
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      <span>Yüzeye çık</span>
+    </a>
   </div>
+  <p class="dn-nf__credit">
+    <span>3D modeller:</span>
+    <a
+      href="https://sketchfab.com/3d-models/animated-swimming-great-white-shark-loop-297ed35c6a5f43749b0ae189d991a3f1"
+      target="_blank"
+      rel="noopener noreferrer"
+      >LasquetiSpice</a
+    >,
+    <a
+      href="https://sketchfab.com/3d-models/anglerfish-5e2f4b2d2e1a4613a008b6caaf40d50c"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Abby_Holzworth1</a
+    >
+    (<a
+      href="https://creativecommons.org/licenses/by/4.0/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >CC BY 4.0</a
+    >)
+  </p>
 </section>
+
+<script>
+  // Dive time: how long the visitor has been "down here", MM:SS
+  (function () {
+    var el = document.querySelector("[data-nf-time]");
+    var start = Date.now();
+    var tick = function () {
+      var s = Math.floor((Date.now() - start) / 1000);
+      var m = Math.min(99, Math.floor(s / 60));
+      el.textContent =
+        String(m).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+    };
+    setInterval(tick, 1000);
+  })();
+</script>
+<script>
+  // One 404 serves every missing URL (GitHub Pages); /en/… paths get the
+  // English copy. Turkish is the no-JS default.
+  if (location.pathname.indexOf("/en/") === 0) {
+    var nf = document.querySelector("[data-nf]");
+    nf.lang = "en";
+    var cr = nf.querySelector(".dn-nf__credit");
+    if (cr) cr.querySelector("span").textContent = "3D models:";
+    nf.querySelectorAll("[data-en]").forEach(function (el) {
+      var target = el.querySelector("span") || el;
+      target.textContent = el.getAttribute("data-en");
+      if (el.dataset.enHref) el.setAttribute("href", el.dataset.enHref);
+    });
+    document.title = "Page not found | Dipnot App";
+  }
+</script>

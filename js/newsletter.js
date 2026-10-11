@@ -7,11 +7,41 @@
   const message = document.getElementById("newsletter-message");
   const button = form.querySelector("button");
 
+  // Turkish copy for everything the browser would otherwise word itself:
+  // the form is `novalidate`, so native (browser-language) tooltips never
+  // show, and network failures never surface "Failed to fetch".
+  const t = window.dnI18n.t;
+  const MSG = {
+    empty: t("emailEmpty"),
+    invalid: t("emailInvalid"),
+    offline: t("offline"),
+  };
+
+  const show = (text, kind) => {
+    message.textContent = text;
+    message.className = kind ? `help is-${kind}` : "help";
+  };
+
+  const invalid = (text) => {
+    emailInput.setAttribute("aria-invalid", "true");
+    show(text, "danger");
+    emailInput.focus();
+  };
+
+  emailInput.addEventListener("input", () => {
+    if (emailInput.getAttribute("aria-invalid") === "true") {
+      emailInput.removeAttribute("aria-invalid");
+      show("");
+    }
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    message.textContent = "";
-    message.className = "help";
+    if (!emailInput.value.trim()) return invalid(MSG.empty);
+    if (!emailInput.checkValidity()) return invalid(MSG.invalid);
+
+    show("");
     button.classList.add("is-loading");
     button.disabled = true;
 
@@ -22,7 +52,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: emailInput.value,
+            email: emailInput.value.trim(),
           }),
         },
       );
@@ -30,15 +60,19 @@
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Bir hata oluştu");
+        // Server messages are already Turkish; show them as-is
+        const fail = new Error(data.error || MSG.offline);
+        fail.fromServer = true;
+        throw fail;
       }
 
-      message.textContent = data.message;
-      message.classList.add("is-success");
+      show(window.dnI18n.server(data.message, true), "success");
       emailInput.value = "";
     } catch (err) {
-      message.textContent = err.message;
-      message.classList.add("is-danger");
+      show(
+        err.fromServer ? window.dnI18n.server(err.message, false) : MSG.offline,
+        "danger",
+      );
     } finally {
       button.classList.remove("is-loading");
       button.disabled = false;

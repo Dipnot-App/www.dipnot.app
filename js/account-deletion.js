@@ -14,6 +14,8 @@ const emailInput = document.getElementById("deletion-email");
 const reasonInput = document.getElementById("deletion-reason");
 const message = document.getElementById("deletion-message");
 const button = form.querySelector("button[type=submit]");
+const i18n = window.dnI18n;
+const OFFLINE = i18n.t("offlineFormal");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -42,17 +44,23 @@ form.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (!res.ok) {
-      throw new Error(data.error || "Bir hata oluştu. Lütfen tekrar deneyin.");
+      // Server messages are already Turkish; show them as-is
+      const fail = new Error(data.error || OFFLINE);
+      fail.fromServer = true;
+      throw fail;
     }
 
-    message.textContent =
-      data.message ||
-      "Onay e-postası gönderildi. Hesabınızın silinmesi için e-postadaki bağlantıya tıklayın.";
+    message.textContent = data.message
+      ? i18n.server(data.message, true)
+      : i18n.t("deletionSent");
     message.classList.add("is-success");
     form.reset();
   } catch (err) {
-    message.textContent =
-      err.message || "Bir hata oluştu. Lütfen tekrar deneyin.";
+    // Network, parse and App Check failures would otherwise surface raw
+    // (often English) error text
+    message.textContent = err.fromServer
+      ? i18n.server(err.message, false)
+      : OFFLINE;
     message.classList.add("is-danger");
   } finally {
     button.classList.remove("is-loading");
