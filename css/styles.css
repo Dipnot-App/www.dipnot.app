@@ -3281,6 +3281,18 @@ main.container > .section {
   animation: dn-abyss-pulse 2.6s ease-in-out infinite;
 }
 
+/* The 404 sits deeper than the rest of the site: darker water in both
+   themes (the 3D fog in js/shark3d.js is deepened to match) */
+html:has(.dn-nf) .dn-ocean::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: oklch(0.06 0.02 240 / 0.5);
+}
+html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
+  background: oklch(0.32 0.05 228 / 0.3);
+}
+
 /* 3D shark canvas (js/shark3d.js); hides the SVG fallback once it renders */
 .dn-shark3d {
   position: absolute;

@@ -29,10 +29,11 @@ import {
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
+import { clone as cloneSkinned } from "three/examples/jsm/utils/SkeletonUtils.js";
 
 // One loop of the choreography, in seconds
-const LOOP = 31; // 16 s of action + 15 s of empty water
-const FAR = 32; // start/end distance (hidden in the fog)
+const LOOP = 30; // the attack: 13 s of action, 17 s of empty water
+const FAR = 28; // where the attacker appears (deep in the fog)
 const NEAR = 4.8; // reference depth; it never comes closer than NEAR + 1.6
 
 const ease = (t) => t * t * (3 - 2 * t);
@@ -131,17 +132,19 @@ export async function mount(
   host.appendChild(renderer.domElement);
 
   const scene = new Scene();
-  const water = new Color(cssToHex(waterColor));
-  scene.fog = new FogExp2(water, light ? 0.06 : 0.065);
+  // the 404 water is darker than the rest of the site (see .dn-nf CSS)
+  const deepen = (css, isLight) =>
+    new Color(cssToHex(css)).multiplyScalar(isLight ? 0.72 : 0.5);
+  scene.fog = new FogExp2(deepen(waterColor, light), light ? 0.06 : 0.065);
 
   const camera = new PerspectiveCamera(38, 1, 0.1, 200);
   camera.position.set(0, 0, 0);
   camera.lookAt(0, 0, -10);
 
   // Cold light from the surface above, a faint fill from below
-  const ambient = new AmbientLight(0x6fa8b8, light ? 1.1 : 0.75);
+  const ambient = new AmbientLight(0x6fa8b8, light ? 0.8 : 0.45);
   scene.add(ambient);
-  const sun = new DirectionalLight(0xbfefff, 2.6);
+  const sun = new DirectionalLight(0xbfefff, light ? 2.2 : 1.8);
   sun.position.set(0.4, 10, 2);
   scene.add(sun);
   const under = new DirectionalLight(0x1d4b5c, 0.5);
@@ -186,7 +189,43 @@ export async function mount(
   const bite = mixer.clipAction(clip("Biting"));
   swim.play();
   bite.play();
+  bite.paused = true; // its time is set per frame: one bite per pass
   bite.setEffectiveWeight(0);
+  const BITE = 1.3; // seconds the single open-and-close takes
+
+  // A second shark far back in the dark, always circling
+  const circler = cloneSkinned(model);
+  circler.scale.multiplyScalar(0.62);
+  // own materials (its fade is independent) and no glowing eye sprites
+  const drop = [];
+  circler.traverse((o) => {
+    if (o.isSprite) drop.push(o);
+    else if (o.material) o.material = o.material.clone();
+  });
+  drop.forEach((o) => o.removeFromParent());
+  const circleRig = new Group();
+  circleRig.add(circler);
+  scene.add(circleRig);
+  const circleMixer = new AnimationMixer(circler);
+  const circling = clip("Circling");
+  circleMixer.clipAction(circling).play();
+  // The clip swims a wide loop (root motion). Sample it once and shift
+  // the shark so the loop is centred on the rig, then shrink the rig so
+  // the whole loop stays on screen.
+  {
+    const sum = new Vector3();
+    const steps = 16;
+    for (let i = 0; i < steps; i++) {
+      circleMixer.setTime((circling.duration * i) / steps);
+      circleRig.updateMatrixWorld(true);
+      sum.add(new Box3().setFromObject(circler, true).getCenter(new Vector3()));
+    }
+    circler.position.sub(sum.divideScalar(steps));
+    circleMixer.setTime(0);
+  }
+  circleRig.scale.setScalar(0.62);
+  const fadeCircler = fader(circler);
+  let circleFade = 0;
 
   // The anglerfish: small, far back, lit only by its own lure
   let anglerRig = null;
@@ -197,7 +236,7 @@ export async function mount(
     // swims left → right
     normalise(fish, 2.6, "Head_Upper", "Fin_Tail7", new Vector3(1, 0, 0));
     fish.traverse((o) => {
-      if (o.material) o.material.emissiveIntensity = 2.2;
+      if (o.material) o.material.emissiveIntensity = 4;
     });
     anglerRig = new Group();
     anglerRig.add(fish);
@@ -211,9 +250,9 @@ export async function mount(
         transparent: true,
       }),
     );
-    halo.scale.setScalar(0.9 / fish.scale.x);
+    halo.scale.setScalar(1.7 / fish.scale.x);
     lure.add(halo);
-    const lureLight = new PointLight(0x5fe8d0, 6, 4, 2);
+    const lureLight = new PointLight(0x5fe8d0, 16, 6, 2);
     lure.add(lureLight);
     scene.add(anglerRig);
     anglerMixer = new AnimationMixer(fish);
@@ -223,7 +262,7 @@ export async function mount(
     const inner = fadeAngler;
     fadeAngler = (v) => {
       inner(v);
-      haloMat.opacity = v * (0.75 + Math.sin(performance.now() / 500) * 0.25);
+      haloMat.opacity = v * (0.85 + Math.sin(performance.now() / 500) * 0.15);
     };
   }
 
@@ -244,8 +283,8 @@ export async function mount(
   // ?shark-t= / ?shark-freeze for screenshots
   const q = new URLSearchParams(location.search);
   const tParam = parseFloat(q.get("shark-t"));
-  // t = 16: the page opens on 15 s of empty water before the first pass
-  let t = Number.isFinite(tParam) ? tParam : 16;
+  // t = 15: the page opens on 15 s of empty water before the first attack
+  let t = Number.isFinite(tParam) ? tParam : 15;
   const frozen = q.has("shark-freeze");
   // angler has its own clock (37 s cycle); -4 → first pass ~4 s in
   const aParam = parseFloat(q.get("angler-t"));
@@ -258,56 +297,72 @@ export async function mount(
     const dt = frozen ? 0 : Math.min(clock.getDelta(), 0.05);
     t = (t + dt) % LOOP;
 
-    // 0–8 approach from the right · 8–11 lunge + bite · 11–16 turn and
-    // swim off past the left edge · 16–31 gone (reset far right)
-    // x is in units of the visible half-width at that depth, so "right of
-    // the dive computer" holds on every screen size.
     const halfW = (d) =>
       Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
+    // The attack, every 30 s. x is in units of the visible half-width at
+    // that depth, so it reads the same on every screen size.
+    // 0–1.2 out of the fog · 1.2–4 rushes at us · 4–5.3 one bite ·
+    // 5.3–6.3 thinks better of it, veers left · 6.3–13 cruises off left ·
+    // 13–30 gone
     let z;
     let xr; // -1 = left edge, 0 = centre, 1 = right edge
     let yaw; // 0 = facing us, -π/2 = facing left
-    let speed;
-    if (t < 8) {
-      // a steady approach, straight at us
-      const k = ease(t / 8);
-      z = MathUtils.lerp(FAR, NEAR + 3.4, k);
-      xr = MathUtils.lerp(0.55, 0.32, k);
-      yaw = -0.18;
-      speed = 0.25;
-    } else if (t < 10.5) {
-      // a short surge, jaws starting to open… then it thinks better of it:
-      // the turn begins before it gets close
-      const k = (t - 8) / 2.5;
-      z = MathUtils.lerp(NEAR + 3.4, NEAR + 1.6, Math.sin(k * Math.PI * 0.5));
-      xr = MathUtils.lerp(0.32, 0.22, k);
-      yaw = MathUtils.lerp(-0.18, -0.75, ease(k));
-      speed = MathUtils.lerp(0.4, 0.75, Math.sin(k * Math.PI));
-    } else if (t < 16) {
-      const k = (t - 10.5) / 5.5;
-      z = MathUtils.lerp(NEAR + 1.6, NEAR + 5, k);
-      // veers off and accelerates past the left edge
-      xr = MathUtils.lerp(0.22, -2.4, k * k);
-      yaw = MathUtils.lerp(-0.75, -1.45, ease(Math.min(1, k * 1.4)));
-      speed = 0.45;
+    let swimRate;
+    if (t < 1.2) {
+      const k = t / 1.2;
+      z = MathUtils.lerp(FAR, FAR - 3, k);
+      xr = 0.45;
+      yaw = -0.12;
+      swimRate = 1.6;
+    } else if (t < 4) {
+      const k = (t - 1.2) / 2.8;
+      z = MathUtils.lerp(FAR - 3, NEAR + 2.4, k * k * (2 - k)); // fast, then braking
+      xr = MathUtils.lerp(0.45, 0.2, k);
+      yaw = -0.12;
+      swimRate = 1.9;
+    } else if (t < 4 + BITE) {
+      const k = (t - 4) / BITE;
+      z = MathUtils.lerp(NEAR + 2.4, NEAR + 1.8, Math.sin(k * Math.PI * 0.5));
+      xr = 0.2;
+      yaw = -0.12 - k * 0.08;
+      swimRate = 0.6;
+    } else if (t < 6.3) {
+      const k = (t - 4 - BITE) / (6.3 - 4 - BITE);
+      z = MathUtils.lerp(NEAR + 1.8, NEAR + 3, k);
+      xr = MathUtils.lerp(0.2, 0.05, k);
+      yaw = MathUtils.lerp(-0.2, -1.4, ease(k));
+      swimRate = 1.3;
+    } else if (t < 13) {
+      const k = (t - 6.3) / 6.7;
+      z = MathUtils.lerp(NEAR + 3, NEAR + 5, k);
+      xr = MathUtils.lerp(0.05, -2.4, k);
+      yaw = -1.45;
+      swimRate = 0.65;
     } else {
       z = FAR;
-      xr = 0.55;
-      yaw = -0.22;
-      speed = 0.2;
+      xr = 0.45;
+      yaw = -0.12;
+      swimRate = 0.5;
     }
-    rig.position.set(xr * halfW(z), 1.15 + Math.sin(t * 0.5) * 0.15, -z);
-    rig.rotation.y = yaw + Math.sin(t * 0.4) * 0.05;
-    rig.rotation.x = Math.sin(t * 0.27) * 0.04;
-    // fade in out of the dark over the first 2.5 s instead of popping in
-    fadeShark(t < 2.5 ? ease(t / 2.5) : t >= 16 ? 0 : 1);
-    // bite only during the surge; otherwise the real swim cycle
-    const biting = t >= 8 && t < 10.5 ? Math.sin(((t - 8) / 2.5) * Math.PI) : 0;
-    bite.setEffectiveWeight(biting);
-    swim.setEffectiveWeight(1 - biting);
-    swim.timeScale = 0.55 + speed;
-    bite.timeScale = 0.7;
+    rig.position.set(xr * halfW(z), 1.15 + Math.sin(t * 0.5) * 0.12, -z);
+    rig.rotation.y = yaw + Math.sin(t * 0.4) * 0.04;
+    rig.rotation.x = Math.sin(t * 0.27) * 0.03;
+    fadeShark(t < 1.2 ? ease(t / 1.2) : t >= 13 ? 0 : 1);
+
+    // exactly one open-and-close of the jaws, then back to swimming
+    const inBite = t >= 4 && t < 4 + BITE;
+    const bw = inBite ? Math.min(1, (t - 4) / 0.15, (4 + BITE - t) / 0.15) : 0;
+    bite.time = inBite ? ((t - 4) / BITE) * bite.getClip().duration : 0;
+    bite.setEffectiveWeight(bw);
+    swim.setEffectiveWeight(1 - bw);
+    swim.timeScale = swimRate;
     mixer.update(dt);
+
+    // The circler: far back, slightly left of centre, low, always there
+    circleFade = Math.min(1, circleFade + dt / 3);
+    circleRig.position.set(0, 0.9, -15);
+    fadeCircler(ease(circleFade));
+    circleMixer.update(dt);
 
     // Anglerfish: its own 37 s cycle, drifting left → right low behind
     // the copy; first pass ~4 s after the page opens
@@ -332,7 +387,7 @@ export async function mount(
 
     // eyes fade in only when the shark is close enough to matter
     eyeMat.opacity =
-      t >= 16 ? 0 : MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
+      t >= 13 ? 0 : MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
 
     renderer.render(scene, camera);
     if (!ready) {
@@ -355,10 +410,10 @@ export async function mount(
   return {
     // live theme switch: re-tint the fog and the light levels
     setTheme(isLight, css) {
-      scene.fog.color.set(cssToHex(css));
+      scene.fog.color.copy(deepen(css, isLight));
       scene.fog.density = isLight ? 0.06 : 0.065;
-      ambient.intensity = isLight ? 1.1 : 0.75;
-      sun.intensity = 2.6;
+      ambient.intensity = isLight ? 0.8 : 0.45;
+      sun.intensity = isLight ? 2.2 : 1.8;
     },
   };
 }
