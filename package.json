@@ -9,6 +9,7 @@
   "scripts": {
     "build": "eleventy",
     "build:og": "node scripts/build-og.js",
+    "build:images": "node scripts/build-images.js",
     "serve": "eleventy --serve",
     "clean": "rm -rf _site",
     "check:html": "html-validate \"_site/**/*.html\"",
