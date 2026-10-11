@@ -13,7 +13,7 @@
     "serve": "eleventy --serve",
     "clean": "rm -rf _site",
     "check:html": "html-validate \"_site/**/*.html\"",
-    "check:a11y": "pa11y-ci --sitemap http://localhost:8080/sitemap.xml",
+    "check:a11y": "pa11y-ci --config .pa11yci.json",
     "check:lighthouse": "lhci autorun",
     "check:links": "lychee --no-progress _site",
     "format": "prettier --write .",
