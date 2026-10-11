@@ -3192,6 +3192,7 @@ main.container > .section {
 .dn-nf__time {
   font-size: 1.75rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 .dn-nf__alarm {
   color: oklch(0.72 0.19 28);
