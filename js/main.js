@@ -67,26 +67,39 @@
     }).observe(sentinel);
   }
 
-  // Specular sheen: each glass surface tracks the pointer (fine pointers
-  // only — on touch the sheen stays at its resting position).
+  // Specular sheen: each glass surface's light trails the pointer with
+  // easing rather than snapping to it (fine pointers only — on touch it
+  // stays at its resting position).
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const EASE = 0.12; // share of the remaining distance covered per frame
+    let glass = null;
+    let target = { x: 0, y: 0 };
+    let pos = { x: 0, y: 0 };
     let frame = 0;
-    let event = null;
 
-    const paint = () => {
-      frame = 0;
-      const glass = event.target.closest && event.target.closest(".dn-glass");
-      if (!glass) return;
-      const r = glass.getBoundingClientRect();
-      glass.style.setProperty("--mx", `${event.clientX - r.left}px`);
-      glass.style.setProperty("--my", `${event.clientY - r.top}px`);
+    const step = () => {
+      pos.x += (target.x - pos.x) * EASE;
+      pos.y += (target.y - pos.y) * EASE;
+      glass.style.setProperty("--mx", `${pos.x.toFixed(1)}px`);
+      glass.style.setProperty("--my", `${pos.y.toFixed(1)}px`);
+      const settled =
+        Math.abs(target.x - pos.x) < 0.5 && Math.abs(target.y - pos.y) < 0.5;
+      frame = settled ? 0 : requestAnimationFrame(step);
     };
 
     document.addEventListener(
       "pointermove",
       (e) => {
-        event = e;
-        if (!frame) frame = requestAnimationFrame(paint);
+        const el = e.target.closest && e.target.closest(".dn-glass");
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        target = { x: e.clientX - r.left, y: e.clientY - r.top };
+        if (el !== glass) {
+          // New surface: start the light where the pointer entered
+          glass = el;
+          pos = { ...target };
+        }
+        if (!frame) frame = requestAnimationFrame(step);
       },
       { passive: true },
     );

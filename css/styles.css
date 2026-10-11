@@ -92,7 +92,7 @@
   --dn-glass-shadow:
     0 1px 2px oklch(0.3 0.05 220 / 0.06),
     0 12px 40px -12px oklch(0.3 0.06 220 / 0.22);
-  --dn-sheen: oklch(1 0 0 / 0.7);
+  --dn-sheen: oklch(1 0 0 / 0.32);
   --dn-footer-bg: oklch(1 0 0 / 0.42);
 }
 
@@ -119,7 +119,7 @@
   --dn-glass-edge: oklch(1 0 0 / 0.14);
   --dn-glass-shadow:
     0 1px 2px oklch(0 0 0 / 0.3), 0 18px 50px -14px oklch(0 0 0 / 0.6);
-  --dn-sheen: oklch(1 0 0 / 0.16);
+  --dn-sheen: oklch(1 0 0 / 0.06);
   --dn-footer-bg: oklch(0.12 0.012 250 / 0.7);
 
   --bulma-link-l: 65%;
@@ -410,17 +410,19 @@ h6,
   inset: 0;
   z-index: -1;
   border-radius: inherit;
+  /* Wide, low-contrast falloff: a soft light on the glass, not a spot */
   background: radial-gradient(
-    420px circle at var(--mx, 30%) var(--my, -20%),
+    640px circle at var(--mx, 30%) var(--my, -20%),
     var(--dn-sheen),
-    transparent 45%
+    color-mix(in oklch, var(--dn-sheen) 40%, transparent) 30%,
+    transparent 65%
   );
-  opacity: 0.55;
-  transition: opacity var(--dn-dur-slow) var(--dn-ease);
+  opacity: 0.5;
+  transition: opacity 700ms var(--dn-ease);
   pointer-events: none;
 }
 .dn-glass:hover::before {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .dn-glass--strong {
