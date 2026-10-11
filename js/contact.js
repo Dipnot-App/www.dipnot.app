@@ -21,6 +21,12 @@
       "Geçerli bir e-posta adresi yaz (ör. ad@ornek.com).",
     ],
     ["contact-message", (el) => el.value.trim(), "Lütfen mesajını yaz."],
+    // Mirrors submitContactForm's 10–2000 rule (maxlength caps the top)
+    [
+      "contact-message",
+      (el) => el.value.trim().length >= 10,
+      "Mesajın en az 10 karakter olmalı.",
+    ],
     [
       "contact-terms",
       (el) => el.checked,
