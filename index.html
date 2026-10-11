@@ -305,8 +305,9 @@ screens:
           </summary>
           <div class="dn-qa__body">
             <p>
-              Dipnot'ta dalış güvenliği, ekipman, çevre, tarih ve dalış kültürü
-              gibi farklı başlıklar altında hazırlanmış, derinlikli makaleler
+              Dipnot'ta {%- for c in categories %} {{ c.label }} {%- if
+              loop.revindex == 2 %} ve{% elif not loop.last %},{% endif %} {%-
+              endfor %} başlıkları altında hazırlanmış, derinlikli makaleler
               bulabilirsin. İçerikler hızlı tüketim için değil, tekrar tekrar
               başvurulabilecek şekilde hazırlanır.
             </p>

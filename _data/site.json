@@ -27,5 +27,7 @@
       "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js",
       "integrity": "sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q"
     }
-  }
+  },
+  "ogImageSquare": "https://dipnot.app/img/og/og-square.png",
+  "twitterImage": "https://dipnot.app/img/og/og-horizontal.png"
 }
