@@ -106,8 +106,13 @@
       );
       const visual = $("[data-hero-visual]", hero);
       const chips = $$("[data-chip]", hero);
-      const heroPhone = $(".dn-hero__duo > [data-iphone]", hero);
+      // Intro animates the phones and the back layer; scroll animates their
+      // wrappers. Separate elements, so a ScrollTrigger refresh mid-intro
+      // can't re-apply stale start values (that was the post-intro jump).
+      const heroPhone = $("[data-hero-front] [data-iphone]", hero);
+      const heroFront = $("[data-hero-front]", hero);
       const heroBack = $("[data-hero-back]", hero);
+      const heroBackScroll = $("[data-hero-back-scroll]", hero);
       const heroTilt = $("[data-iphone-tilt]", hero);
 
       gsap.set(title, { opacity: 1 });
@@ -145,22 +150,22 @@
         .fromTo(
           heroPhone,
           {
-            rotationX: rest(heroPhone)[0] + 18,
-            rotationY: rest(heroPhone)[1] - 50,
-            rotationZ: rest(heroPhone)[2] - 8,
+            rotationX: rest(heroPhone)[0] + 10,
+            rotationY: rest(heroPhone)[1] + 28,
+            rotationZ: rest(heroPhone)[2] - 4,
           },
           {
             rotationX: rest(heroPhone)[0],
             rotationY: rest(heroPhone)[1],
             rotationZ: rest(heroPhone)[2],
-            duration: 2.2,
+            duration: 2,
             ease: "expo.out",
           },
           0.25,
         )
         .fromTo(
           heroBack,
-          { x: 90, opacity: 0 },
+          { x: -70, opacity: 0 },
           { x: 0, opacity: 1, duration: 1.8, ease: "expo.out" },
           0.7,
         )
@@ -205,12 +210,9 @@
           },
         });
       });
-      gsap.to(heroPhone, {
-        rotationY: () => rest(heroPhone)[1] + 18,
-        rotationX: 0,
-        rotationZ: 0,
+      gsap.to(heroFront, {
+        rotationY: 18,
         ease: "none",
-        immediateRender: false,
         scrollTrigger: {
           trigger: hero,
           start: "top top",
@@ -218,12 +220,10 @@
           scrub: 1,
         },
       });
-
-      gsap.to(heroBack, {
+      gsap.to(heroBackScroll, {
         x: -50,
         y: 30,
         ease: "none",
-        immediateRender: false,
         scrollTrigger: {
           trigger: hero,
           start: "top top",

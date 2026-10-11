@@ -944,21 +944,25 @@ h6,
 .dn-hero__visual .dn-iphone {
   --w: clamp(200px, 19vw, 280px);
 }
-/* Second phone sits behind and to the left, further away. No filter
-   here: a filter would flatten the 3D edge; the screen is dimmed instead. */
+/* Two phones, each in its own 3D context: the duo is flat with its own
+   perspective, so the phones composite in DOM order and can never cut
+   through each other mid-animation. The back phone is dimmed rather
+   than filtered (a filter would flatten its edge). */
 .dn-hero__duo {
   position: relative;
+  perspective: 2000px;
+}
+.dn-hero__layer {
   transform-style: preserve-3d;
+  will-change: transform;
 }
 .dn-hero__back {
   position: absolute;
-  top: 7%;
-  right: 52%;
-  transform-style: preserve-3d;
+  top: 8%;
+  right: 74%;
 }
 .dn-hero__back .dn-iphone {
-  transform: translateZ(-180px) rotateX(var(--rx)) rotateY(var(--ry))
-    rotateZ(var(--rz));
+  --w: clamp(180px, 16vw, 240px);
 }
 .dn-hero__back .dn-iphone__screen::after {
   content: "";
@@ -2038,7 +2042,10 @@ main.container > .section > .content {
 
 @media (max-width: 767px) {
   .dn-hero__back {
-    right: 36%;
+    right: 46%;
+  }
+  .dn-hero__back .dn-iphone {
+    --w: 160px;
   }
   .dn-bento {
     grid-template-columns: 1fr;

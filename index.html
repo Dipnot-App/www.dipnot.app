@@ -57,10 +57,14 @@ screens:
       <div class="dn-iphone-stage">
         <div class="dn-iphone-tilt" data-iphone-tilt data-parallax="-10">
           <div class="dn-hero__duo">
-            <div class="dn-hero__back" data-hero-back>
-              {{ iphone([screens.saved], rot="6,-30,4") }}
+            <div class="dn-hero__back" data-hero-back-scroll>
+              <div class="dn-hero__layer" data-hero-back>
+                {{ iphone([screens.saved], rot="6,-30,4") }}
+              </div>
             </div>
-            {{ iphone([screens.feed], rot="8,-24,4", eager=true) }}
+            <div class="dn-hero__layer" data-hero-front>
+              {{ iphone([screens.feed], rot="8,-24,4", eager=true) }}
+            </div>
           </div>
         </div>
         <div class="dn-iphone-shadow" aria-hidden="true"></div>
