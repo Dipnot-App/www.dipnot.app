@@ -492,35 +492,6 @@
         });
       }
 
-      /* ---------------------------------------------------------------
-         Magnetic buttons (desktop)
-         --------------------------------------------------------------- */
-      if (full) {
-        $$(".dn-store__btn, main .dn-btn--primary").forEach((btn) => {
-          const mx = gsap.quickTo(btn, "x", { duration: 0.5, ease: EASE });
-          const my = gsap.quickTo(btn, "y", { duration: 0.5, ease: EASE });
-          const onMove = (e) => {
-            const r = btn.getBoundingClientRect();
-            mx((e.clientX - r.left - r.width / 2) * 0.22);
-            my((e.clientY - r.top - r.height / 2) * 0.3);
-          };
-          const onLeave = () => {
-            gsap.to(btn, {
-              x: 0,
-              y: 0,
-              duration: 0.9,
-              ease: "elastic.out(1, 0.4)",
-            });
-          };
-          btn.addEventListener("pointermove", onMove);
-          btn.addEventListener("pointerleave", onLeave);
-          ctx.add(() => () => {
-            btn.removeEventListener("pointermove", onMove);
-            btn.removeEventListener("pointerleave", onLeave);
-          });
-        });
-      }
-
       return () => titleSplit.revert();
     },
   );
