@@ -32,7 +32,11 @@ import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.j
 import { clone as cloneSkinned } from "three/examples/jsm/utils/SkeletonUtils.js";
 
 // One loop of the choreography, in seconds
-const LOOP = 30; // the attack: 13 s of action, 17 s of empty water
+// One 50 s scene: the small shark crosses 0–32 s, the attack runs
+// 34–48 s; never both on screen
+const LOOP = 50;
+const CRUISE = 32; // small shark's crossing
+const ATTACK_AT = 34; // attack start in the scene loop
 const FAR = 28; // where the attacker appears (deep in the fog)
 const NEAR = 4.8; // reference depth; it never comes closer than NEAR + 1.6
 
@@ -194,10 +198,11 @@ export async function mount(
   const BITE_AT = 3; // jaws start working before it arrives
   const BITE = 2.2; // two open-and-close snaps
 
-  // A second shark far back in the dark, always circling
+  // A second, smaller shark: swims in from the right, makes a wide
+  // turn far back in the dark and swims out on the left (no fades)
   const circler = cloneSkinned(model);
-  circler.scale.multiplyScalar(0.62);
-  // own materials (its fade is independent) and no glowing eye sprites
+  circler.scale.multiplyScalar(0.5);
+  // own materials and no glowing eye sprites
   const drop = [];
   circler.traverse((o) => {
     if (o.isSprite) drop.push(o);
@@ -208,25 +213,9 @@ export async function mount(
   circleRig.add(circler);
   scene.add(circleRig);
   const circleMixer = new AnimationMixer(circler);
-  const circling = clip("Circling");
-  circleMixer.clipAction(circling).play();
-  // The clip swims a wide loop (root motion). Sample it once and shift
-  // the shark so the loop is centred on the rig, then shrink the rig so
-  // the whole loop stays on screen.
-  {
-    const sum = new Vector3();
-    const steps = 16;
-    for (let i = 0; i < steps; i++) {
-      circleMixer.setTime((circling.duration * i) / steps);
-      circleRig.updateMatrixWorld(true);
-      sum.add(new Box3().setFromObject(circler, true).getCenter(new Vector3()));
-    }
-    circler.position.sub(sum.divideScalar(steps));
-    circleMixer.setTime(0);
-  }
-  circleRig.scale.setScalar(0.62);
-  const fadeCircler = fader(circler);
-  let circleFade = 0;
+  circleMixer.clipAction(clip("Swimming")).play();
+  let cHeading = -Math.PI / 2;
+  let cBank = 0;
 
   // The anglerfish: small, far back, lit only by its own lure
   let anglerRig = null;
@@ -284,8 +273,13 @@ export async function mount(
   // ?shark-t= / ?shark-freeze for screenshots
   const q = new URLSearchParams(location.search);
   const tParam = parseFloat(q.get("shark-t"));
-  // t = 15: the page opens on 15 s of empty water before the first attack
-  let t = Number.isFinite(tParam) ? tParam : 15;
+  // T is the scene clock; ?shark-t= jumps straight into the attack
+  const sParam = parseFloat(q.get("scene-t"));
+  let T = Number.isFinite(sParam)
+    ? sParam
+    : Number.isFinite(tParam)
+      ? ATTACK_AT + tParam
+      : 0;
   const frozen = q.has("shark-freeze");
   // angler has its own clock (37 s cycle); -4 → first pass ~4 s in
   const aParam = parseFloat(q.get("angler-t"));
@@ -342,7 +336,12 @@ export async function mount(
   const frame = () => {
     if (!running) return;
     const dt = frozen ? 0 : Math.min(clock.getDelta(), 0.05);
-    t = (t + dt) % LOOP;
+    T = (T + dt) % LOOP;
+    // attack-local time; >= ATTACK_END means the attacker is off stage
+    const t =
+      T >= ATTACK_AT && T < ATTACK_AT + ATTACK_END
+        ? T - ATTACK_AT
+        : ATTACK_END + 1;
 
     const halfW = (d) =>
       Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
@@ -386,13 +385,38 @@ export async function mount(
     swim.timeScale = t < 3.6 ? 1.9 : t < 8 ? 1.25 : 0.65;
     mixer.update(dt);
 
-    // The circler leaves the stage while the attacker is on it, so the two
-    // never overlap: out by the time the attack starts, back after it ends
-    const circleWant = t >= ATTACK_END + 1 && t < LOOP - 2.5 ? 1 : 0;
-    circleFade += MathUtils.clamp(circleWant - circleFade, -dt / 2.2, dt / 2.5);
-    fadeCircler(ease(circleFade));
-    // The circler: far back, slightly left of centre, low, always there
-    circleRig.position.set(0, 0.9, -15);
+    // The small shark: in from the right edge, a wide loop out into the
+    // dark and back, out past the left edge. Heading follows its path.
+    const cAt = (tt) => {
+      const k = MathUtils.clamp(tt / CRUISE, 0, 1);
+      const d = 10.5 + 4 * (1 - Math.cos(k * Math.PI * 2)) * 0.5;
+      const loop = Math.sin(k * Math.PI * 2) * 0.35;
+      return {
+        x: (1.45 - 2.9 * k + loop) * hw(d),
+        // high, in the water between the nav and the dive computer
+        y: 2.6 + Math.sin(tt * 0.35) * 0.25,
+        z: -d,
+      };
+    };
+    if (T < CRUISE) {
+      const c0 = cAt(T);
+      const c1 = cAt(T + 0.3);
+      const want = Math.atan2(c1.x - c0.x, c1.z - c0.z);
+      const prev = cHeading;
+      cHeading +=
+        Math.atan2(Math.sin(want - cHeading), Math.cos(want - cHeading)) *
+        Math.min(1, dt * 2.5 || 1);
+      const rate = dt ? (cHeading - prev) / dt : 0;
+      cBank +=
+        (MathUtils.clamp(-rate * 0.4, -0.45, 0.45) - cBank) *
+        Math.min(1, dt * 2 || 1);
+      circleRig.visible = true;
+      circleRig.position.set(c0.x, c0.y, c0.z);
+      circleRig.rotation.set(0, cHeading, cBank, "YXZ");
+    } else {
+      circleRig.visible = false;
+      cHeading = -Math.PI / 2;
+    }
     circleMixer.update(dt);
 
     // Anglerfish: its own 37 s cycle, drifting left → right low behind
