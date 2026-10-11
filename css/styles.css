@@ -3210,6 +3210,158 @@ main.container > .section {
   color: var(--dn-fg-muted);
   font-size: var(--dn-fs-lead);
 }
+/* Deep-sea creatures (partials/abyss.njk) */
+.dn-abyss {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --dn-abyss-body: oklch(0.07 0.015 240 / 0.92);
+  --dn-abyss-edge: oklch(0.6 0.08 200 / 0.55);
+  --dn-abyss-light: oklch(0.9 0.16 170);
+}
+[data-theme="light"] .dn-abyss {
+  --dn-abyss-body: oklch(0.32 0.05 225 / 0.5);
+  --dn-abyss-edge: oklch(0.2 0.05 225 / 0.3);
+  --dn-abyss-light: oklch(0.72 0.17 165);
+}
+.dn-abyss__body {
+  fill: var(--dn-abyss-body);
+  stroke: var(--dn-abyss-edge);
+  stroke-width: 1;
+}
+.dn-abyss__fin {
+  fill: var(--dn-abyss-body);
+  opacity: 0.85;
+}
+.dn-abyss__mouth {
+  fill: oklch(0.03 0 0 / 0.95);
+}
+.dn-abyss__teeth,
+.dn-abyss__fang {
+  fill: none;
+  stroke: oklch(0.92 0.02 90 / 0.9);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dn-abyss__stalk {
+  fill: none;
+  stroke: var(--dn-abyss-edge);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.dn-abyss__eye {
+  fill: oklch(0.88 0.04 110);
+}
+.dn-abyss__pupil {
+  fill: oklch(0.1 0 0);
+}
+.dn-abyss__lure,
+.dn-abyss__dots circle,
+.dn-abyss__eyes ellipse {
+  fill: var(--dn-abyss-light);
+}
+.dn-abyss__glow {
+  animation: dn-abyss-pulse 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.dn-abyss__dots {
+  animation: dn-abyss-pulse 3.4s ease-in-out infinite;
+}
+
+.dn-abyss__swim {
+  position: absolute;
+  left: 0;
+  will-change: transform;
+}
+.dn-abyss__swim--angler {
+  top: 76%;
+  width: clamp(150px, 17vw, 230px);
+  animation: dn-abyss-cross 46s linear -14s infinite;
+}
+.dn-abyss__swim--viper {
+  top: 13%;
+  width: clamp(140px, 16vw, 220px);
+  animation: dn-abyss-cross-back 38s linear -26s infinite;
+}
+.dn-abyss__swim svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: dn-abyss-bob 5s ease-in-out infinite;
+}
+.dn-abyss__viper {
+  transform: scaleX(-1);
+  animation-name: dn-abyss-bob-flip !important;
+}
+.dn-abyss__eyes {
+  position: absolute;
+  right: 7%;
+  bottom: 16%;
+  width: 46px;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px var(--dn-abyss-light));
+  animation: dn-abyss-blink 9s ease-in-out 3s infinite;
+}
+
+@keyframes dn-abyss-cross {
+  from {
+    transform: translateX(-30vw);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+@keyframes dn-abyss-cross-back {
+  from {
+    transform: translateX(120vw);
+  }
+  to {
+    transform: translateX(-30vw);
+  }
+}
+@keyframes dn-abyss-bob {
+  50% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+@keyframes dn-abyss-bob-flip {
+  0%,
+  100% {
+    transform: scaleX(-1);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-8px) rotate(2deg);
+  }
+}
+@keyframes dn-abyss-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes dn-abyss-blink {
+  0%,
+  30%,
+  100% {
+    opacity: 0;
+  }
+  38%,
+  60% {
+    opacity: 0.9;
+  }
+  44%,
+  54% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+  48% {
+    transform: scaleY(0.1);
+  }
+}
+
 @keyframes dn-nf-bob {
   50% {
     transform: rotate(-2deg) translateY(-10px);
@@ -3222,8 +3374,20 @@ main.container > .section {
 }
 @media (prefers-reduced-motion: reduce) {
   .dn-nf__computer,
-  .dn-nf__alarm {
-    animation: none;
+  .dn-nf__alarm,
+  .dn-abyss *,
+  .dn-abyss__swim svg {
+    animation: none !important;
+  }
+  /* Parked at the edges instead of swimming */
+  .dn-abyss__swim--angler {
+    transform: translateX(4vw);
+  }
+  .dn-abyss__swim--viper {
+    transform: translateX(calc(100vw - 100% - 4vw));
+  }
+  .dn-abyss__eyes {
+    opacity: 0.7;
   }
 }
 
