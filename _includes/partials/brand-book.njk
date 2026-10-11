@@ -17,11 +17,11 @@
     <p class="dn-lead">{{ t.lead }}</p>
     <div class="dn-bb-hero__actions">
       <a class="dn-btn dn-btn--primary" href="{{ b.pack }}" download>
-        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        {% icon "download" %}
         {{ t.download }}
       </a>
       <a class="dn-btn dn-glass dn-glass--pill" href="{{ t.other.href }}" hreflang="{{ t.other.lang }}" lang="{{ t.other.lang }}">
-        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        {% icon "globe" %}
         {{ t.other.label }}
       </a>
     </div>
@@ -144,7 +144,7 @@
         <li class="dn-bb-tile dn-glass">
           <div class="dn-bb-tile__stage dn-bb-misuse dn-bb-misuse--{{ loop.index }}">
             <img src="/img/logos/{{ 'logo-white' if loop.index == 6 else 'logo' }}.svg" alt="" width="96" height="96" loading="lazy">
-            <span class="dn-bb-misuse__x" aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            <span class="dn-bb-misuse__x" aria-hidden="true">{% icon "xmark" %}</span>
           </div>
           <div class="dn-bb-tile__meta">
             <p class="dn-bb-tile__name">{{ item }}</p>

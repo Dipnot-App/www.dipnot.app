@@ -12,13 +12,13 @@
         <p>{{ f.follow }}</p>
         <div class="dn-social">
           <a href="https://www.instagram.com/dipnot.app" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Instagram" aria-label="{{ f.follows.instagram }}">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            {% icon "brands:instagram" %}
           </a>
           <a href="https://www.facebook.com/profile.php?id=61568027754102" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Facebook" aria-label="{{ f.follows.facebook }}">
-            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            {% icon "brands:facebook" %}
           </a>
           <a href="https://www.linkedin.com/company/dipnotapp" target="_blank" rel="noopener noreferrer" class="dn-glass" title="Linkedin" aria-label="{{ f.follows.linkedin }}">
-            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            {% icon "brands:linkedin" %}
           </a>
         </div>
       </div>
@@ -41,7 +41,7 @@
         <form id="newsletter-form" novalidate>
           <div class="dn-newsletter__row">
             <div class="dn-control">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              {% icon "envelope" %}
               <label class="dn-sr-only" for="newsletter-email">{{ f.email }}</label>
               <input class="dn-input" type="email" id="newsletter-email" placeholder="{{ f.email }}" autocomplete="email" aria-describedby="newsletter-message" required>
             </div>
