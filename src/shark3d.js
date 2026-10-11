@@ -195,8 +195,8 @@ export async function mount(
   bite.play();
   bite.paused = true; // its time is set per frame: one bite per pass
   bite.setEffectiveWeight(0);
-  const BITE_AT = 3; // jaws start working before it arrives
-  const BITE = 2.2; // two open-and-close snaps
+  const BITE_AT = 3.2; // jaws start working just before it arrives
+  const BITE = 1.4; // one open-and-close of the jaws
 
   // A second, smaller shark: swims in from the right, makes a wide
   // turn far back in the dark and swims out on the left (no fades)
@@ -299,8 +299,9 @@ export async function mount(
       x: (1 - k) ** 2 * a.x + 2 * (1 - k) * k * b.x + k * k * c.x,
       z: (1 - k) ** 2 * a.z + 2 * (1 - k) * k * b.z + k * k * c.z,
     });
-    const start = P(0.45, FAR);
-    const near = P(0.22, NEAR + 2.6);
+    // well right of the dive computer, so the bite isn't hidden behind it
+    const start = P(0.85, FAR);
+    const near = P(0.5, NEAR + 2.6);
     const bitten = { x: near.x - 0.15, z: near.z + 0.5 };
     const swing = { x: bitten.x - 1.6, z: bitten.z + 0.7 };
     const away = { x: bitten.x - 3.6, z: bitten.z - 1.8 };
@@ -349,8 +350,8 @@ export async function mount(
     // path; the heading follows the direction of travel with a little
     // lag and the body banks into the turn, so it swims an arc instead
     // of rotating in place.
-    //   0–1 out of the fog · 1–3.6 rushes at us · 3–5.2 two snaps of the
-    //   jaws (start before it arrives) · 5.2–8 arcs away to the left ·
+    //   0–1 out of the fog · 1–3.6 rushes at us · 3.2–4.6 one snap of the
+    //   jaws, just before it arrives · 5.2–8 arcs away to the left ·
     //   8–14 cruises off the left edge · 14–30 gone
     const at3 = attackAt(t);
     const ahead = attackAt(Math.min(t + 0.25, ATTACK_END));
@@ -373,13 +374,13 @@ export async function mount(
     rig.rotation.set(Math.sin(t * 0.27) * 0.03, heading, bank, "YXZ");
     fadeShark(t < 1 ? ease(t) : t >= ATTACK_END ? 0 : 1);
 
-    // two snaps of the jaws, then back to swimming
+    // one snap of the jaws, then back to swimming
     const inBite = t >= BITE_AT && t < BITE_AT + BITE;
     const bw = inBite
       ? Math.min(1, (t - BITE_AT) / 0.15, (BITE_AT + BITE - t) / 0.15)
       : 0;
     const dur = bite.getClip().duration;
-    bite.time = inBite ? (((t - BITE_AT) / BITE) * 2 * dur) % dur : 0;
+    bite.time = inBite ? ((t - BITE_AT) / BITE) * dur : 0;
     bite.setEffectiveWeight(bw);
     swim.setEffectiveWeight(1 - bw);
     swim.timeScale = t < 3.6 ? 1.9 : t < 8 ? 1.25 : 0.65;
