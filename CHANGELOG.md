@@ -37,8 +37,20 @@ build:images` → `img/opt/`, AVIF + WebP) in a CSS 3D frame. Status
     One address form ("sen") on the home page, nav, footer and 404;
     legal pages stay formal. FAQ cadence: almost daily, usually 5–6
     articles a week. Category labels come from the app itself.
-  - **Sub-pages** keep their content and pick up the new shell, header
-    and a glass reading panel.
+  - **Sub-pages** keep their content and pick up the new shell: header
+    and glass reading panels at the nav bar's width, Bulma forms /
+    notifications / code restyled, the account-deletion form in its own
+    panel. 404 rebuilt (3D phone, bubbles, nav shown). The footer links
+    **Yarışma koşulları**, which wasn't linked anywhere before.
+  - **Forms** — newsletter and contact validate in Turkish (no
+    browser-language tooltips); the contact form mirrors the backend's
+    10–2000 character rule. Network failures show a Turkish fallback
+    instead of the raw "Failed to fetch" on all four forms.
+  - **Performance** — Lighthouse mobile on the home page goes 69 → 98
+    (gzip, as served by Pages). The hero entrance is CSS (no wait on
+    GSAP), Bulma no longer loads on the home page or 404, **Inter is
+    self-hosted** (`fonts/`, OFL; the Google Fonts origin is gone),
+    and Font Awesome loads without blocking first paint.
 
 ## 2026-10-10
 
