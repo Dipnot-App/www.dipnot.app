@@ -45,19 +45,25 @@ permalink: "/404.html"
     </a>
   </div>
   <p class="dn-nf__credit">
-    3D köpekbalığı:
+    <span>3D modeller:</span>
     <a
-      href="https://sketchfab.com/3d-models/great-white-shark-attack-bite-animation-loop-936d4110b39945f5a46cb2d831ece920"
+      href="https://sketchfab.com/3d-models/animated-swimming-great-white-shark-loop-297ed35c6a5f43749b0ae189d991a3f1"
       target="_blank"
       rel="noopener noreferrer"
       >LasquetiSpice</a
     >,
     <a
+      href="https://sketchfab.com/3d-models/anglerfish-5e2f4b2d2e1a4613a008b6caaf40d50c"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Abby_Holzworth1</a
+    >
+    (<a
       href="https://creativecommons.org/licenses/by/4.0/"
       target="_blank"
       rel="noopener noreferrer"
       >CC BY 4.0</a
-    >
+    >)
   </p>
 </section>
 
@@ -68,7 +74,7 @@ permalink: "/404.html"
     var nf = document.querySelector("[data-nf]");
     nf.lang = "en";
     var cr = nf.querySelector(".dn-nf__credit");
-    if (cr) cr.firstChild.textContent = "3D shark: ";
+    if (cr) cr.querySelector("span").textContent = "3D models:";
     nf.querySelectorAll("[data-en]").forEach(function (el) {
       var target = el.querySelector("span") || el;
       target.textContent = el.getAttribute("data-en");

@@ -19,11 +19,16 @@ plates from Wikimedia Commons, turned into masks by
 - _Eurypharynx pelecanoides_, Carl Chun, Aus den Tiefen des Weltmeeres
   (1903)
 
-The 3D shark on the 404 page is based on "Great White Shark Attack
-Bite Animation Loop"
-(https://sketchfab.com/3d-models/great-white-shark-attack-bite-animation-loop-936d4110b39945f5a46cb2d831ece920)
-by LasquetiSpice (https://sketchfab.com/LasquetiSpice), licensed under
-CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/). It was
-optimised for the web (meshopt geometry, WebP textures; licence text in
-`img-src/abyss/shark-LICENSE.txt`) and is rendered with three.js
-(MIT), bundled by `npm run build:shark` from `src/shark3d.js`.
+The 3D models on the 404 page are licensed under CC BY 4.0
+(http://creativecommons.org/licenses/by/4.0/):
+
+- "Animated Swimming Great White Shark Loop"
+  (https://sketchfab.com/3d-models/animated-swimming-great-white-shark-loop-297ed35c6a5f43749b0ae189d991a3f1)
+  by LasquetiSpice (https://sketchfab.com/LasquetiSpice)
+- "Anglerfish"
+  (https://sketchfab.com/3d-models/anglerfish-5e2f4b2d2e1a4613a008b6caaf40d50c)
+  by Abby_Holzworth1 (https://sketchfab.com/Abby_Holzworth1)
+
+Both were optimised for the web (meshopt geometry, WebP textures;
+licence texts in `img-src/abyss/*-LICENSE.txt`) and are rendered with
+three.js (MIT), bundled by `npm run build:shark` from `src/shark3d.js`.

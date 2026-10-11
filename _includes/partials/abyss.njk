@@ -64,6 +64,7 @@
         const { mount } = await import("/js/shark3d.js?v={{ site.jsVersion }}");
         const api = await mount(host, {
           src: "/img/abyss/shark.glb",
+          anglerSrc: "/img/abyss/anglerfish.glb",
           waterColor: water(),
           light: root.dataset.theme === "light",
           onReady: () => root.classList.add("dn-shark3d-on"),

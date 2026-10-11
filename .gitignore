@@ -156,4 +156,4 @@ _site/
 
 # 3D model source archive (10 MB): kept locally, the optimised
 # img/abyss/shark.glb is what ships
-img-src/abyss/shark-source.zip
+img-src/abyss/*-source.zip
