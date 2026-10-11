@@ -95,10 +95,10 @@
   --dn-sheen: oklch(1 0 0 / 0.32);
   --dn-footer-bg: oklch(1 0 0 / 0.42);
   --dn-bubble-hi: oklch(1 0 0 / 0.95);
-  --dn-bubble-glint: oklch(1 0 0 / 0.6);
-  --dn-bubble-core: oklch(1 0 0 / 0.18);
-  --dn-bubble-rim: oklch(0.42 0.07 215 / 0.8);
-  --dn-bubble-rim-soft: oklch(1 0 0 / 0.55);
+  --dn-bubble-glint: oklch(1 0 0 / 0.7);
+  --dn-bubble-core: oklch(1 0 0 / 0.22);
+  --dn-bubble-rim: oklch(0.68 0.07 210 / 0.55);
+  --dn-bubble-rim-soft: oklch(1 0 0 / 0.7);
 }
 
 /* Dark theme (canon dark tokens, teal-tinted water) */
@@ -907,11 +907,16 @@ h6,
   pointer-events: none;
 }
 .dn-bubbles span {
+  /* Size drives speed, as in water: bigger bubbles rise faster (a 28px
+     one crosses the hero in ~12s, a 6px one in ~26s) and wobble more
+     slowly. --n is the diameter in px, set per bubble in the markup. */
+  --d: calc(30s - var(--n) * 0.65s);
+  --w: calc(0.9s + var(--n) * 0.055s);
   position: absolute;
   bottom: -2rem;
   left: var(--x);
-  width: var(--s);
-  height: var(--s);
+  width: calc(var(--n) * 1px);
+  height: calc(var(--n) * 1px);
   opacity: 0;
   will-change: translate, scale, opacity;
   animation: dn-rise var(--d) cubic-bezier(0.4, 0, 0.8, 0.7) var(--dl) infinite;
