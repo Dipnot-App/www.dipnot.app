@@ -905,13 +905,6 @@ h6,
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  mask-image: linear-gradient(
-    0deg,
-    transparent,
-    #000 15%,
-    #000 70%,
-    transparent
-  );
 }
 .dn-bubbles span {
   position: absolute;
