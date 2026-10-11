@@ -58,9 +58,10 @@ jobs:
       - name: Broken-link check (lychee)
         uses: lycheeverse/lychee-action@v2
         with:
-          # --base tells lychee how to resolve root-relative paths (/foo → _site/foo).
+          # --root-dir resolves root-relative paths (/foo → _site/foo); it
+          # must be absolute (lychee 0.24 rejects a relative --base).
           # --offline skips external URL fetches (keeps CI deterministic).
-          args: --no-progress --offline --base _site _site
+          args: --no-progress --offline --root-dir ${{ github.workspace }}/_site _site
           fail: true
 
       - name: Upload Pages artifact
