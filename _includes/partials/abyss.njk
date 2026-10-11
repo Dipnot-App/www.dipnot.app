@@ -4,25 +4,24 @@
     (aria-hidden); transform/opacity only; still with reduced motion. -#}
 <div class="dn-abyss" aria-hidden="true">
   {#- A giant shark facing us, far back in the dark: a blurred head-on
-      silhouette whose eyes catch the light, looming in and fading out -#}
+      silhouette, open jaws, glowing slit eyes; looms in and fades out -#}
   <svg class="dn-shark" viewBox="0 0 400 260">
     <g class="dn-shark__body">
-      <path d="M182 70 L200 6 L218 70 Z" />
-      <path d="M98 138 L4 222 L136 160 Z" />
-      <path d="M302 138 L396 222 L264 160 Z" />
-      <path d="M52 118 C86 76 148 60 200 60 C252 60 314 76 348 118 C326 152 272 178 200 190 C128 178 74 152 52 118 Z" />
+      <path d="M184 74 L204 -4 L218 74 Z" />
+      <path d="M104 138 L-6 244 L152 166 Z" />
+      <path d="M296 138 L406 244 L248 166 Z" />
+      <path d="M36 114 L108 70 L200 56 L292 70 L364 114 L304 160 L236 196 L200 208 L164 196 L96 160 Z" />
     </g>
-    <path class="dn-shark__mouth" d="M146 160 Q200 186 254 160 Q200 174 146 160 Z" />
-    {#- Small almond eyes; only a thin crescent catches the light -#}
-    <g class="dn-shark__eye" transform="translate(90 114) rotate(-8)">
-      <ellipse class="dn-shark__ball" rx="7.5" ry="3.6" />
-      <path class="dn-shark__shine" d="M-5.5 -0.6 Q0 -4.2 5.5 -0.6 Q0 -2.4 -5.5 -0.6 Z" />
-      <circle class="dn-shark__glint" cx="2" cy="-1.4" r="0.9" />
+    <path class="dn-shark__mouth" d="M136 156 Q200 132 264 156 Q236 194 200 202 Q164 194 136 156 Z" />
+    <path class="dn-shark__teeth" d="M138.9 154.6 L141.1 160.4 L145.9 154.6 Z M150.7 151.7 L153.4 160.3 L156.0 151.7 Z M159.5 149.7 L160.9 160.3 L164.9 149.7 Z M170.8 147.8 L172.7 162.5 L176.4 147.8 Z M181.1 146.6 L184.2 163.5 L187.9 146.6 Z M192.0 146.0 L195.2 157.6 L199.6 146.0 Z M200.6 146.0 L204.7 158.0 L206.7 146.0 Z M210.6 146.5 L213.6 161.1 L217.5 146.5 Z M222.8 147.7 L224.5 158.0 L228.1 147.7 Z M233.1 149.4 L236.4 160.2 L239.2 149.4 Z M242.0 151.4 L246.4 159.9 L249.5 151.4 Z M252.1 154.0 L256.6 161.5 L258.7 154.0 Z M142.5 167.7 L144.9 162.1 L149.6 167.7 Z M152.6 176.2 L155.1 167.5 L157.7 176.2 Z M161.8 183.4 L165.3 173.8 L168.4 183.4 Z M176.9 191.3 L180.4 182.3 L183.4 191.3 Z M189.4 196.0 L194.1 185.8 L196.2 196.0 Z M204.5 196.1 L207.6 184.8 L209.4 196.1 Z M217.8 190.7 L220.6 178.3 L224.6 190.7 Z M230.3 184.7 L232.7 174.9 L235.2 184.7 Z M240.9 177.4 L244.2 171.1 L245.8 177.4 Z M250.4 168.4 L254.4 162.8 L256.2 168.4 Z" />
+    {#- Slanted, triangular slit eyes with a bioluminescent glow -#}
+    <g class="dn-shark__eye">
+      <path class="dn-shark__glow" d="M72 107 L112 101 L103 114 Z" />
+      <path class="dn-shark__core" d="M80 107.5 L108 103 L102 110.5 Z" />
     </g>
-    <g class="dn-shark__eye" transform="translate(310 114) rotate(8)">
-      <ellipse class="dn-shark__ball" rx="7.5" ry="3.6" />
-      <path class="dn-shark__shine" d="M-5.5 -0.6 Q0 -4.2 5.5 -0.6 Q0 -2.4 -5.5 -0.6 Z" />
-      <circle class="dn-shark__glint" cx="-2" cy="-1.4" r="0.9" />
+    <g class="dn-shark__eye">
+      <path class="dn-shark__glow" d="M328 107 L288 101 L297 114 Z" />
+      <path class="dn-shark__core" d="M320 107.5 L292 103 L298 110.5 Z" />
     </g>
   </svg>
   <div class="dn-abyss__swim dn-abyss__swim--angler">

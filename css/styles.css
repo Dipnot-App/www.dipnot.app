@@ -3285,38 +3285,45 @@ main.container > .section {
 .dn-shark {
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 30%;
   width: min(118vw, 1200px);
   height: auto;
   opacity: 0;
   transform: translate(-50%, -45%) scale(0.92);
   animation: dn-shark-loom 17s ease-in-out 3s infinite;
-  --dn-shark-body: oklch(0.06 0.012 240 / 0.85);
-  --dn-shark-eye: oklch(0.88 0.08 150);
+  --dn-shark-body: oklch(0.05 0.012 240 / 0.9);
+  --dn-shark-eye: oklch(0.86 0.18 115);
 }
 [data-theme="light"] .dn-shark {
-  --dn-shark-body: oklch(0.22 0.04 230 / 0.32);
-  --dn-shark-eye: oklch(0.82 0.1 150);
+  --dn-shark-body: oklch(0.2 0.04 230 / 0.4);
+  --dn-shark-eye: oklch(0.8 0.18 110);
 }
 .dn-shark__body {
   fill: var(--dn-shark-body);
-  filter: blur(9px);
+  filter: blur(6px);
 }
 .dn-shark__mouth {
-  fill: oklch(0 0 0 / 0.35);
-  filter: blur(4px);
+  fill: oklch(0.02 0 0 / 0.8);
+  filter: blur(2.5px);
 }
-.dn-shark__ball {
-  fill: oklch(0.03 0.005 240);
-  stroke: oklch(0.5 0.05 200 / 0.35);
-  stroke-width: 0.6;
+.dn-shark__teeth {
+  fill: oklch(0.85 0.02 95 / 0.3);
+  filter: blur(0.9px);
 }
-.dn-shark__shine {
+.dn-shark__glow {
   fill: var(--dn-shark-eye);
-  filter: drop-shadow(0 0 3px var(--dn-shark-eye));
+  filter: blur(2.5px) drop-shadow(0 0 7px var(--dn-shark-eye));
+  opacity: 0.55;
+  animation: dn-shark-eyes 2.4s ease-in-out infinite;
 }
-.dn-shark__glint {
-  fill: oklch(0.98 0.02 150);
+.dn-shark__core {
+  fill: oklch(0.93 0.15 108);
+  opacity: 0.85;
+}
+@keyframes dn-shark-eyes {
+  50% {
+    opacity: 0.85;
+  }
 }
 @media (max-width: 767px) {
   /* keep its eyes clear of the dive computer on phones */
@@ -3385,7 +3392,8 @@ main.container > .section {
   .dn-nf__alarm,
   .dn-abyss__swim,
   .dn-abyss__bob,
-  .dn-abyss__lure {
+  .dn-abyss__lure,
+  .dn-shark__glow {
     animation: none !important;
   }
   /* Parked at the edges instead of swimming */
