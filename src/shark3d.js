@@ -175,37 +175,50 @@ export async function mount(host, { src, waterColor, light, onReady }) {
     const dt = frozen ? 0 : Math.min(clock.getDelta(), 0.05);
     t = (t + dt) % LOOP;
 
-    // 0–8 approach · 8–11 lunge + bite · 11–16 retreat · 16–19 gone
+    // 0–8 approach from the right · 8–11 lunge + bite · 11–16 turn and
+    // swim off past the left edge · 16–19 gone (reset far right)
+    // x is in units of the visible half-width at that depth, so "right of
+    // the dive computer" holds on every screen size.
+    const halfW = (d) =>
+      Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
     let z;
+    let xr; // -1 = left edge, 0 = centre, 1 = right edge
+    let yaw; // 0 = facing us, -π/2 = facing left
     let speed;
     if (t < 8) {
-      z = MathUtils.lerp(FAR, NEAR + 2.2, ease(t / 8));
+      const k = ease(t / 8);
+      z = MathUtils.lerp(FAR, NEAR + 2.2, k);
+      xr = MathUtils.lerp(0.55, 0.34, k);
+      yaw = -0.22;
       speed = 0.25;
     } else if (t < 11) {
       const k = (t - 8) / 3;
       z = MathUtils.lerp(NEAR + 2.2, NEAR, Math.sin(k * Math.PI));
+      xr = MathUtils.lerp(0.34, 0.26, k);
+      yaw = MathUtils.lerp(-0.22, -0.4, k);
       speed = 1;
     } else if (t < 16) {
-      z = MathUtils.lerp(NEAR + 2.2, FAR, ease((t - 11) / 5));
-      speed = 0.3;
+      const k = (t - 11) / 5;
+      z = MathUtils.lerp(NEAR + 2.2, NEAR + 5, k);
+      // accelerate out past the left edge (body length clears the frame)
+      xr = MathUtils.lerp(0.26, -2.4, k * k);
+      yaw = MathUtils.lerp(-0.4, -1.45, ease(Math.min(1, k * 1.6)));
+      speed = 0.6;
     } else {
       z = FAR;
+      xr = 0.55;
+      yaw = -0.22;
       speed = 0.2;
     }
-    rig.position.set(
-      Math.sin(t * 0.33) * 0.35,
-      1.15 +
-        Math.sin(t * 0.5) * 0.15 -
-        (t > 11 && t < 16 ? (t - 11) * 0.12 : 0),
-      -z,
-    );
-    rig.rotation.y = Math.sin(t * 0.4) * 0.08;
+    rig.position.set(xr * halfW(z), 1.15 + Math.sin(t * 0.5) * 0.15, -z);
+    rig.rotation.y = yaw + Math.sin(t * 0.4) * 0.05;
     rig.rotation.x = Math.sin(t * 0.27) * 0.04;
     bite.timeScale = speed;
     mixer.update(dt);
 
     // eyes fade in only when the shark is close enough to matter
-    eyeMat.opacity = MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
+    eyeMat.opacity =
+      t >= 16 ? 0 : MathUtils.clamp((FAR - z) / (FAR - NEAR - 4), 0, 1) * 0.85;
 
     renderer.render(scene, camera);
     if (!ready) {
