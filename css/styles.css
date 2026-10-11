@@ -896,6 +896,9 @@ a.dn-seg__item:hover {
       visibility 0s linear var(--dn-dur-slow);
   }
   .dn-sheet.is-active {
+    /* The sheet sits inside .dn-nav, which is click-through
+       (pointer-events: none) so the page under the bar stays usable */
+    pointer-events: auto;
     opacity: 1;
     visibility: visible;
     transform: none;
