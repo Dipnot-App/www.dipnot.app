@@ -5,7 +5,7 @@
   <p>This page is also available in English.</p>
   <a class="dn-btn dn-btn--primary" href="{{ hreflang | altUrl('en', '/en/') }}" hreflang="en">English version</a>
   <button type="button" class="dn-btn dn-btn--icon dn-langhint__close" aria-label="Close" data-lang-hint-close>
-    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    {% icon "xmark" %}
   </button>
 </aside>
 {%- endif %}

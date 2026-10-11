@@ -1,16 +1,18 @@
-/* Inter (SIL OFL 1.1, fonts/OFL.txt), self-hosted: variable 400–700,
-   the two subsets Turkish needs. Replaces the Google Fonts CDN (one less
-   render-blocking origin, and no visitor IPs sent to Google). */
+/* Inter (SIL OFL 1.1, fonts/OFL.txt), self-hosted: variable 400–700.
+   inter-latin is Google Fonts' latin subset; inter-latin-tr carries only
+   the Turkish letters outside it (Ğ ğ İ Ş ş; ı is in latin), cut from the
+   latin-ext subset with
+     pyftsubset inter-latin-ext.woff2 --unicodes=U+011E,U+011F,U+0130,U+015E,U+015F
+       --layout-features='*' --flavor=woff2
+   3 KB instead of 85 KB. Other Latin Extended letters fall back to the
+   system font (none are used). */
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
-  unicode-range:
-    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("../fonts/inter-latin-tr.woff2") format("woff2");
+  unicode-range: U+011E-011F, U+0130, U+015E-015F;
 }
 @font-face {
   font-family: "Inter";
@@ -304,6 +306,34 @@ h6,
   white-space: nowrap;
 }
 
+/* Icons: Font Awesome Free SVGs inlined by the `icon` shortcode
+   (eleventy.config.js). Sized like the old icon font: 1em tall, glyph
+   width, sitting on the text baseline. */
+.dn-i {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: -0.125em;
+}
+.dn-i svg {
+  display: block;
+  width: auto;
+  height: 1em;
+  overflow: visible;
+  fill: currentColor;
+}
+.dn-i--2x {
+  font-size: 2em;
+}
+.dn-i--spin {
+  animation: dn-spin 1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dn-i--spin {
+    animation-duration: 3s;
+  }
+}
+
 /* --------------------------------------------------------------------------
    3. Ocean — fixed background. Every moving part animates transform or
       opacity only, so scrolling never repaints it: the descent is a
@@ -568,16 +598,14 @@ h6,
   height: 1.35rem;
 }
 
-/* Font Awesome loads without blocking paint; reserve each icon's box
-   so buttons don't change width (and wrap) when the font arrives */
+/* Icons in buttons: fixed box so labels line up */
 /* (Not the theme toggle: fixed-size, and it shows/hides its icons) */
-.dn-btn:not(.dn-theme-toggle) > i[class*="fa-"] {
-  display: inline-block;
+.dn-btn:not(.dn-theme-toggle) > .dn-i {
   flex: none;
   width: 1.25em;
   text-align: center;
 }
-.dn-btn > i.fa-2x {
+.dn-btn > .dn-i--2x {
   width: 1em;
 }
 .dn-btn--primary {
@@ -816,11 +844,11 @@ a.dn-seg__item:hover {
 .dn-theme-toggle:hover {
   background: color-mix(in oklch, var(--dn-fg) 7%, transparent);
 }
-.dn-theme-toggle .fa-sun,
-[data-theme="light"] .dn-theme-toggle .fa-moon {
+.dn-theme-toggle .dn-i--sun,
+[data-theme="light"] .dn-theme-toggle .dn-i--moon {
   display: none;
 }
-[data-theme="light"] .dn-theme-toggle .fa-sun {
+[data-theme="light"] .dn-theme-toggle .dn-i--sun {
   display: inline-block;
   /* Warm amber, dark enough for 3:1 on the light glass (pure yellow
      isn't). The only non-teal accent, sun icon only. */

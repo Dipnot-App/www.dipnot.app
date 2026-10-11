@@ -28,8 +28,8 @@
           {%- endfor %}
         </div>
         <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="{{ t.theme }}">
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          {% icon "moon" %}
+          {% icon "sun" %}
         </button>
       </div>
       <a href="{{ t.home }}#download" class="dn-btn dn-btn--primary dn-nav__download">{{ t.download }}</a>

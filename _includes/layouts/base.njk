@@ -83,11 +83,8 @@
   </script>
   <!-- Inter, self-hosted (see @font-face in styles.css) -->
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- Font Awesome CDN — loaded without blocking first paint (icons are
-       decorative; text renders first). SRI still applies. -->
-  <link rel="preload" as="style" href="{{ site.cdn.fontAwesome.href }}" integrity="{{ site.cdn.fontAwesome.integrity }}" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ site.cdn.fontAwesome.href }}" integrity="{{ site.cdn.fontAwesome.integrity }}" crossorigin="anonymous"></noscript>
+  <link rel="preload" href="/fonts/inter-latin-tr.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Icons: Font Awesome Free (CC BY 4.0, fontawesome.com), inlined as SVG -->
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/styles.css?v={{ site.cssVersion }}">
 

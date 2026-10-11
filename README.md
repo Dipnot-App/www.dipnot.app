@@ -32,3 +32,12 @@ The 3D models on the 404 page are licensed under CC BY 4.0
 Both were optimised for the web (meshopt geometry, WebP textures;
 licence texts in `img-src/abyss/*-LICENSE.txt`) and are rendered with
 three.js (MIT), bundled by `npm run build:shark` from `src/shark3d.js`.
+
+Icons are Font Awesome Free 6.5.2 by Fonticons, Inc.
+(https://fontawesome.com), icons licensed under CC BY 4.0
+(https://fontawesome.com/license/free). They are inlined as SVG at
+build time from the `@fortawesome/fontawesome-free` package by the
+`icon` shortcode in `eleventy.config.js`.
+
+Text is set in Inter (SIL OFL 1.1, `fonts/OFL.txt`); the 404 dive
+computer uses DSEG7 (SIL OFL 1.1, `fonts/DSEG-LICENSE.txt`).

@@ -8,6 +8,15 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-12
 
+- **2.0.2: mobile performance** — Font Awesome no longer loads: the
+  ~25 icons in use are inlined as SVG at build time by an `icon`
+  shortcode (`eleventy.config.js`, from the `@fortawesome/fontawesome-free`
+  devDependency; CC BY 4.0, credited in the README). That drops 275 KB of
+  icon fonts and their CSS from every page. Inter's 85 KB latin-ext
+  subset is replaced by a 3 KB file with only the Turkish letters
+  outside latin (Ğ ğ İ Ş ş). Page weight: home 595 → 232 KB, legal
+  pages 459 → 93 KB. Measured locally, same method before and after.
+  ([#166](https://github.com/Dipnot-App/www.dipnot.app/issues/166))
 - **Dev dependencies, audit** — Patched the dev-only advisories that
   have a fix, via scoped `overrides`: `tmp` ^0.2.6 and `uuid` ^11.1.1
   inside `@lhci/cli`, and `basic-ftp` ^6.2.3 (pulled in through
