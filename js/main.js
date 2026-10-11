@@ -160,6 +160,46 @@
     }
   });
 
+  // Scroll spy: the nav link of the section crossing the middle of the
+  // viewport shows as current (same look as hover). Home page only: the
+  // links must point at sections on this page.
+  const spyLinks = [
+    ...document.querySelectorAll(".dn-nav__links a, .dn-sheet a"),
+  ].filter((a) => {
+    const url = new URL(a.href);
+    return url.pathname === window.location.pathname && url.hash.length > 1;
+  });
+  const spySections = [
+    ...new Set(
+      spyLinks.map((a) => decodeURIComponent(new URL(a.href).hash.slice(1))),
+    ),
+  ]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  if (spySections.length && "IntersectionObserver" in window) {
+    const inView = new Set();
+    const mark = () => {
+      // the last section in page order that is crossing the line
+      const current = spySections.filter((sec) => inView.has(sec)).pop();
+      spyLinks.forEach((a) => {
+        const on = !!current && new URL(a.href).hash.slice(1) === current.id;
+        if (on) a.setAttribute("aria-current", "location");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) =>
+          e.isIntersecting ? inView.add(e.target) : inView.delete(e.target),
+        );
+        mark();
+      },
+      // a thin band just above the middle of the viewport
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    spySections.forEach((sec) => spy.observe(sec));
+  }
+
   // Arriving from another page with a hash (e.g. /#faq from a legal page):
   // correct the browser's jump once layout has settled. ScrollTrigger
   // re-measures after load (pin spacing shifts everything below it), so
