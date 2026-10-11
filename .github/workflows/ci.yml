@@ -16,6 +16,8 @@ permissions:
 jobs:
   build-and-check:
     name: Build & check
+    # Adding any other label doesn't re-run the checks
+    if: github.event.action != 'labeled' || github.event.label.name == 'lighthouse'
     runs-on: ubuntu-latest
     # One queue per branch, so PRs never wait on each other or on a
     # release. A newer push supersedes a running check, except on main,
