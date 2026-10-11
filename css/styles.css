@@ -2257,6 +2257,14 @@ main.container .button.is-primary:hover {
    19. Responsive
    -------------------------------------------------------------------------- */
 
+/* The footer's bottom row wraps below ~1200px; when it does, the legal
+   links go above the copyright line */
+@media (max-width: 1199px) {
+  .dn-footer__legal {
+    order: -1;
+  }
+}
+
 @media (max-width: 1023px) {
   .dn-how {
     grid-template-columns: 1fr;
@@ -2363,9 +2371,7 @@ main.container .button.is-primary:hover {
   .dn-footer__grid {
     grid-template-columns: 1fr;
   }
-  .dn-newsletter__row {
-    flex-direction: column;
-  }
+
   .dn-hero .dn-store__btn,
   .dn-cta .dn-store__btn {
     flex: 1 1 100%;
