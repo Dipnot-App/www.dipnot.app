@@ -1,5 +1,4 @@
 {%- set t = i18n[lang or "tr"] -%}
-{%- set other = t.langSwitch.lang -%}
 <!-- NAVIGATION — floating liquid-glass bar -->
 <header class="dn-nav" data-nav>
   <nav class="dn-nav__bar dn-glass dn-glass--pill" aria-label="{{ t.navLabel }}">
@@ -17,11 +16,22 @@
     </ul>
 
     <div class="dn-nav__actions">
-      <a class="dn-btn dn-lang" href="{{ hreflang | altUrl(other, i18n[other].home) }}" hreflang="{{ other }}" lang="{{ other }}" aria-label="{{ t.langSwitch.label }}" data-lang-switch="{{ other }}">{{ t.langSwitch.short }}</a>
-      <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="{{ t.theme }}">
-        <i class="fa-solid fa-moon" aria-hidden="true"></i>
-        <i class="fa-solid fa-sun" aria-hidden="true"></i>
-      </button>
+      <span class="dn-nav__divider" aria-hidden="true"></span>
+      <div class="dn-settings" role="group" aria-label="{{ t.settingsLabel }}">
+        <div class="dn-seg" role="group" aria-label="Dil / Language">
+          {%- for code in ["tr", "en"] %}
+          {%- if code == (lang or "tr") %}
+          <span class="dn-seg__item is-active" aria-current="true" lang="{{ code }}">{{ code | upper }}</span>
+          {%- else %}
+          <a class="dn-seg__item" href="{{ hreflang | altUrl(code, i18n[code].home) }}" hreflang="{{ code }}" lang="{{ code }}" aria-label="{{ t.langSwitch.label }}" data-lang-switch="{{ code }}">{{ code | upper }}</a>
+          {%- endif %}
+          {%- endfor %}
+        </div>
+        <button id="theme-toggle" type="button" class="dn-btn dn-btn--icon dn-theme-toggle" aria-label="{{ t.theme }}">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+      </div>
       <a href="{{ t.home }}#download" class="dn-btn dn-btn--primary dn-nav__download">{{ t.download }}</a>
       <button type="button" class="dn-burger" aria-label="{{ t.menuOpen }}" aria-expanded="false" aria-controls="navbar" data-target="navbar">
         <span aria-hidden="true"></span>
