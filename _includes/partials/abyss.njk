@@ -45,7 +45,9 @@
 </div>
 <script type="module">
   // Load the 3D shark only after the page is fully up and the browser is
-  // idle, never with reduced motion, never without WebGL.
+  // idle, never with reduced motion, never without WebGL, and never in
+  // automated browsers (software WebGL stalls CI audits past their
+  // timeouts; bots get the SVG shark).
   const host = document.querySelector("[data-shark3d]");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hasGL = (() => {
@@ -56,7 +58,7 @@
       return false;
     }
   })();
-  if (host && !reduce && hasGL) {
+  if (host && !reduce && hasGL && !navigator.webdriver) {
     const root = document.documentElement;
     const water = () => getComputedStyle(root).getPropertyValue("--dn-water-mid").trim();
     const go = async () => {
