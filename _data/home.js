@@ -40,15 +40,15 @@ module.exports = {
   tr: {
     eyebrow: "Dalış dünyasını her gün yeni bir yazıyla keşfet.",
     title: { pre: "Su altını", accent: "okumaya", post: "hazır mısın?" },
-    lead: "Dalış güvenliğinden ekipmana, batıklardan su altı fotoğrafçılığına; dalış dünyasını derinlemesine anlatan yazılar.",
+    lead: "Dalış güvenliğinden ekipmana, batıklardan su altı fotoğrafçılığına; dalış dünyasını derinlemesine anlatan yazılar Dipnot'ta.",
     appNote: "",
     chips: ["Özenle seçilmiş içerikler", "Kategoriler", "Sade arayüz"],
     scroll: "Aşağı kaydır",
     about: {
       title: { pre: "", accent: "Dipnot", post: "nedir?" },
       body: [
-        "Dipnot, dalış ve su altı dünyasına ilgi duyan herkes için hazırlanmış bağımsız bir içerik platformudur. Uygulama içinde; dalış kültürü, güvenlik, ekipman, çevre, tarih ve güncel konular üzerine özenle yazılmış makalelere ulaşabilirsin.",
-        "Dipnot, hızlı tüketilen içerikler yerine kalıcı ve referans alınabilir bilgiler sunmayı amaçlar. Yeni başlayanlardan deneyimli dalıcılara kadar herkes için, okunabilir, sade ve güvenilir bir kaynak oluşturur.",
+        "Dipnot, dalış ve su altı dünyasına ilgi duyan herkes için hazırlanmış bağımsız bir içerik platformudur. Uygulamada dalış gündeminden güvenliğe, ekipman ve teknolojiden mağara ve batıklara, çevreden seyahate kadar özenle yazılmış makalelere ulaşabilirsin.",
+        "Dipnot, dalış dünyasında olup biteni tek bir yerden, sade ve güvenilir bir şekilde takip etmen için var. Yeni başlayanlardan deneyimli dalıcılara kadar herkes için okunabilir ve güvenilir bir kaynak oluşturur.",
       ],
     },
     features: {
@@ -91,7 +91,7 @@ module.exports = {
       contentA: {
         pre: "Dipnot'ta",
         and: "ve",
-        post: "başlıkları altında hazırlanmış, derinlikli makaleler bulabilirsin. İçerikler hızlı tüketim için değil, tekrar tekrar başvurulabilecek şekilde hazırlanır.",
+        post: "başlıkları altında hazırlanmış, derinlikli makaleler bulabilirsin. Hemen her gün yayınlanan yeni yazılarla dalış dünyasının gündemini kaçırmazsın.",
       },
       items: [
         {
@@ -100,7 +100,7 @@ module.exports = {
         },
         {
           q: "Uygulama tamamen ücretsiz mi?",
-          a: "Dipnot'un temel içeriklerine ücretsiz olarak erişebilirsin. İlerleyen dönemde, özel dosyalar ve derinlemesine içerikler için ücretli üyelik seçenekleri sunulacaktır.",
+          a: "Dipnot'un temel içeriklerine ücretsiz olarak erişebilirsin. İlerleyen dönemde, özel içerikler ve araçlar için ücretli üyelik seçenekleri sunulacaktır.",
         },
         {
           q: "Yeni içerikler ne sıklıkla yayınlanıyor?",
@@ -110,7 +110,7 @@ module.exports = {
     },
     contact: {
       title: "İletişim",
-      lead: "Soru, öneri ya da iş birliği için bize yaz; en kısa sürede dönüş yapalım.",
+      lead: "Soru, öneri ya da iş birliği için bize yazabilirsin; sana en kısa sürede dönüş yapacağız.",
       name: "Ad soyad",
       namePh: "Adın ve soyadın",
       email: "E-posta",
@@ -141,15 +141,15 @@ module.exports = {
   en: {
     eyebrow: "Discover the diving world with a new article every day.",
     title: { pre: "Ready to", accent: "read", post: "the deep?" },
-    lead: "From dive safety to gear, from wrecks to underwater photography: in-depth writing about the diving world.",
+    lead: "From dive safety to gear, from wrecks to underwater photography: in-depth writing about the diving world, on Dipnot.",
     appNote: "The Dipnot app and its articles are in Turkish.",
     chips: ["Carefully curated", "Categories", "Clean interface"],
     scroll: "Scroll down",
     about: {
       title: { pre: "What is", accent: "Dipnot", post: "?" },
       body: [
-        "Dipnot is an independent publication for everyone drawn to diving and the underwater world. In the app you'll find carefully written articles on dive culture, safety, gear, the environment, history and current events.",
-        "Instead of fast, disposable content, Dipnot aims for lasting knowledge you can come back to. For beginners and experienced divers alike, it's a readable, simple and trustworthy source.",
+        "Dipnot is an independent publication for everyone drawn to diving and the underwater world. In the app you'll find carefully written articles on everything from dive news and safety to gear and technology, caves and wrecks, the environment and travel.",
+        "Dipnot is here so you can keep up with what's happening in the diving world, in one place, simply and reliably. For beginners and experienced divers alike, it's a readable and trustworthy source.",
       ],
     },
     features: {
@@ -195,7 +195,7 @@ module.exports = {
       contentA: {
         pre: "In-depth articles under",
         and: "and",
-        post: ", written to come back to, not to skim once. Articles are published in Turkish.",
+        post: ". With new articles almost every day, you won't miss what's happening in diving. Articles are published in Turkish.",
       },
       items: [
         {
@@ -204,7 +204,7 @@ module.exports = {
         },
         {
           q: "Is the app completely free?",
-          a: "Dipnot's core content is free to read. Paid membership options for special features and in-depth content will come later.",
+          a: "Dipnot's core content is free to read. Paid membership options for exclusive content and tools will come later.",
         },
         {
           q: "How often is new content published?",
@@ -214,7 +214,7 @@ module.exports = {
     },
     contact: {
       title: "Contact",
-      lead: "Questions, ideas or partnerships: write to us and we'll get back to you soon.",
+      lead: "Questions, ideas or partnerships: write to us and we'll get back to you as soon as we can.",
       name: "Full name",
       namePh: "Your full name",
       email: "Email",

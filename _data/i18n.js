@@ -35,7 +35,7 @@ module.exports = {
     store: { get: "İndir" },
     footer: {
       follow:
-        "Dalış dünyasına dair paylaşımlar için bizi sosyal ağlarda takip et:",
+        "Dalış dünyasına dair paylaşımlar için bizi sosyal ağlarda takip edebilirsin:",
       follows: {
         instagram: "Dipnot'u Instagram'da takip et",
         facebook: "Dipnot'u Facebook'ta takip et",
