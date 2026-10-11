@@ -233,8 +233,9 @@ h6,
 }
 
 .dn-container {
+  /* Content edges line up with the floating nav bar's edges */
   width: 100%;
-  max-width: var(--dn-container);
+  max-width: calc(var(--dn-container) + 2 * var(--dn-gutter));
   margin-inline: auto;
   padding-inline: var(--dn-gutter);
 }
@@ -1996,16 +1997,26 @@ select.dn-input {
    -------------------------------------------------------------------------- */
 
 .hero.has-background-hero {
-  padding-top: calc(var(--dn-nav-h) + 2.5rem);
+  padding-top: calc(var(--dn-nav-h) + 3rem);
   background: transparent;
 }
 .hero.has-background-hero.is-fullheight-with-navbar {
   min-height: 100svh;
 }
+/* Header and reading panels share the nav bar's width (container +
+   gutters); the title lines up with the panel's text */
+.has-background-hero:not(.is-fullheight-with-navbar) > .hero-body {
+  width: 100%;
+  max-width: calc(var(--dn-container) + 2 * var(--dn-gutter));
+  margin-inline: auto;
+  padding: 0 calc(var(--dn-gutter) + clamp(1.5rem, 4vw, 3rem)) 0;
+}
 .has-background-hero .title {
+  margin-bottom: 0 !important;
   color: var(--dn-fg) !important;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.25rem, 2.6vw + 1.2rem, 3.5rem) !important;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   line-height: var(--dn-lh-heading);
   text-wrap: balance;
 }
@@ -2015,18 +2026,30 @@ select.dn-input {
 .has-background-hero .has-text-primary {
   color: var(--dn-accent-text) !important;
 }
-.has-background-hero .button {
-  border-radius: var(--dn-radius-pill);
+/* Pages wrap <main> in Bulma's .py-6 (3rem, !important); the header
+   already provides the top spacing, so drop it there */
+main.container.py-6 {
+  padding-top: 0 !important;
+}
+main.container > .section:first-child {
+  padding-top: 2rem;
+}
+/* A page can split into several panels (e.g. the account-deletion form) */
+main.container > .section > .content + .content {
+  margin-top: 1.5rem;
 }
 
-/* Reading width: title and panel share one column */
-.has-background-hero:not(.is-fullheight-with-navbar) > .hero-body,
+/* Same width as the nav bar. !important because Bulma's container
+   max-width rules escalate :not() chains per breakpoint (up to 0,4,0). */
 main.container {
   width: 100%;
-  max-width: 960px;
+  max-width: calc(var(--dn-container) + 2 * var(--dn-gutter)) !important;
   margin-inline: auto;
+  padding-inline: var(--dn-gutter);
 }
-
+main.container > .section {
+  padding-inline: 0;
+}
 main.container > .section > .content {
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: var(--dn-radius-3xl);
@@ -2056,8 +2079,138 @@ main.container > .section > .content {
 .content a {
   color: var(--dn-accent-text);
 }
+.content code {
+  padding: 0.1em 0.4em;
+  border-radius: var(--dn-radius-sm);
+  background: color-mix(in oklch, var(--dn-accent) 12%, transparent);
+  color: var(--dn-accent-text);
+  font-size: 0.875em;
+}
+.content hr {
+  height: 1px;
+  margin-block: 2rem;
+  border: 0;
+  background: var(--dn-border);
+}
 .content .table {
+  --bulma-table-color: var(--dn-fg);
+  --bulma-table-cell-heading-color: var(--dn-fg);
+  --bulma-table-cell-border-color: var(--dn-border);
+  --bulma-table-head-cell-color: var(--dn-fg);
   background: transparent;
+}
+
+/* Bulma notifications (privacy-policy note, deletion confirm status set
+   by account-deletion-confirm.js): glass with a coloured edge instead of
+   Bulma's solid fills */
+main .notification {
+  --dn-note: var(--dn-teal);
+  padding: 1.1rem 1.4rem;
+  border-radius: var(--dn-radius-2xl);
+  background: color-mix(
+    in oklch,
+    var(--dn-note) 12%,
+    var(--dn-glass-bg-strong)
+  );
+  box-shadow:
+    inset 3px 0 0 var(--dn-note),
+    inset 0 0 0 1px color-mix(in oklch, var(--dn-note) 28%, transparent);
+  color: var(--dn-fg);
+}
+main .notification.is-warning {
+  --dn-note: oklch(0.76 0.15 75);
+}
+main .notification.is-danger {
+  --dn-note: oklch(0.62 0.2 27);
+}
+main .notification.is-success {
+  --dn-note: oklch(0.65 0.15 155);
+}
+main .notification a,
+main .notification strong {
+  color: inherit;
+}
+main .notification a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Bulma form controls on the account-deletion page */
+main.container .label {
+  color: var(--dn-fg);
+  font-size: var(--dn-fs-small);
+  font-weight: 600;
+}
+main.container .label .has-text-grey {
+  color: var(--dn-fg-subtle) !important;
+  font-weight: 400;
+}
+main.container .input,
+main.container .textarea {
+  min-height: 3rem;
+  border: 0;
+  border-radius: var(--dn-radius-xl);
+  background: color-mix(in oklch, var(--dn-glass-solid) 55%, transparent);
+  box-shadow:
+    inset 0 0 0 1px var(--dn-border),
+    inset 0 1px 2px oklch(0 0 0 / 0.06);
+  color: var(--dn-fg);
+  font-family: var(--dn-font);
+}
+main.container .input::placeholder,
+main.container .textarea::placeholder {
+  color: var(--dn-fg-subtle);
+}
+main.container .input:focus,
+main.container .textarea:focus {
+  background: var(--dn-glass-solid);
+  box-shadow:
+    inset 0 0 0 1.5px var(--dn-accent),
+    0 0 0 4px color-mix(in oklch, var(--dn-accent) 22%, transparent);
+}
+main.container .control.has-icons-left .icon {
+  height: 3rem;
+  color: var(--dn-fg-subtle);
+}
+main.container .control.has-icons-left .input {
+  padding-left: 2.6rem;
+}
+main.container .button.is-primary {
+  min-height: 2.9rem;
+  padding-inline: 1.5rem;
+  border: 0;
+  border-radius: var(--dn-radius-pill);
+  background: linear-gradient(
+    180deg,
+    oklch(0.6 0.085 208) 0%,
+    oklch(0.47 0.075 212) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.35),
+    inset 0 -1px 0 oklch(0 0 0 / 0.2),
+    0 8px 24px -8px color-mix(in oklch, var(--dn-teal) 70%, transparent);
+  color: oklch(0.99 0 0);
+  font-weight: 600;
+}
+main.container .button.is-primary:hover {
+  color: oklch(0.99 0 0);
+  transform: translateY(-1px);
+}
+
+/* 404 */
+.dn-404__code {
+  margin: 0 0 0.5rem;
+  background: linear-gradient(160deg, var(--dn-teal-bright), var(--dn-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(6rem, 14vw, 11rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+[data-theme="light"] .dn-404__code {
+  background-image: linear-gradient(160deg, var(--dn-teal), var(--dn-teal-ink));
 }
 
 /* --------------------------------------------------------------------------

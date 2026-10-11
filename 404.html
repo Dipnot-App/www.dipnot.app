@@ -5,35 +5,26 @@ title: "Sayfa bulunamadı | Dipnot App"
 description: "Sayfa bulunamadı — Dipnot App."
 keywords: "dalış, scuba diving, su altı, dipnot app"
 robots: "noindex"
-hideNav: true
 permalink: "/404.html"
+feed: { name: "feed", alt: "Dipnot ana sayfa akışı" }
 ---
 
-<!-- HERO BANNER -->
-<section id="main" class="hero is-fullheight-with-navbar has-background-hero">
-  <div class="hero-body">
-    <div class="columns">
-      <div class="column is-align-content-center">
-        <p class="title is-size-1 has-text-white has-text-centered mb-5">
-          <span class="has-text-primary" style="font-size: 12rem">404</span>
-          <span style="white-space: nowrap">Sayfa bulunamadı</span>
-        </p>
-        <p class="subtitle has-text-white has-text-centered">
-          Üzgünüz, aradığın sayfa bulunamadı.
-        </p>
-        <div
-          class="buttons are-large mt-6 is-flex is-justify-content-center mb-6"
-        >
-          <a href="/" class="button is-light is-outlined">
-            <span class="ml-2">Anasayfaya dön</span>
-          </a>
-        </div>
-      </div>
+{%- from "macros/iphone.njk" import iphone -%}
 
-      <div class="column is-align-content-center">
-        <figure class="image">
-          <img src="/img/deviceframes-hero.png" alt="Hero DeviceFrames" />
-        </figure>
+<section id="main" class="dn-hero" aria-labelledby="nf-title">
+  {% include "partials/bubbles.njk" %}
+  <div class="dn-container dn-hero__grid">
+    <div class="dn-hero__copy">
+      <p class="dn-404__code" aria-hidden="true">404</p>
+      <h1 id="nf-title" class="dn-display">Sayfa bulunamadı</h1>
+      <p class="dn-lead">Üzgünüz, aradığın sayfa bulunamadı.</p>
+      <a href="/" class="dn-btn dn-btn--primary">Anasayfaya dön</a>
+    </div>
+
+    <div class="dn-hero__visual">
+      <div class="dn-iphone-stage">
+        {{ iphone([feed], rot="8,-24,4", eager=true) }}
+        <div class="dn-iphone-shadow" aria-hidden="true"></div>
       </div>
     </div>
   </div>
