@@ -292,46 +292,48 @@ export async function mount(
   const hw = (d) =>
     Math.tan(MathUtils.degToRad(camera.fov / 2)) * d * camera.aspect;
   // World position of the attacker at attack time `t` (camera looks −Z)
+  // The attack path as keyframes (time → point), interpolated with a
+  // time-aware Catmull-Rom (cubic Hermite) so position AND speed are
+  // continuous: no jolt where one phase hands over to the next.
   const attackAt = (t) => {
     const y = 1.15 + Math.sin(t * 0.5) * 0.12;
     const P = (xr, d) => ({ x: xr * hw(d), z: -d });
-    const bez = (a, b, c, k) => ({
-      x: (1 - k) ** 2 * a.x + 2 * (1 - k) * k * b.x + k * k * c.x,
-      z: (1 - k) ** 2 * a.z + 2 * (1 - k) * k * b.z + k * k * c.z,
-    });
     // well right of the dive computer, so the bite isn't hidden behind it
-    const start = P(0.85, FAR);
     const near = P(0.5, NEAR + 2.6);
-    const bitten = { x: near.x - 0.15, z: near.z + 0.5 };
-    const swing = { x: bitten.x - 1.6, z: bitten.z + 0.7 };
-    const away = { x: bitten.x - 3.6, z: bitten.z - 1.8 };
-    const gone = P(-2.6, NEAR + 7);
-    let p;
-    if (t < 3.6) {
-      const k = Math.min(1, t / 3.6);
-      const kk = k * k * (2 - k);
-      p = {
-        x: MathUtils.lerp(start.x, near.x, kk),
-        z: MathUtils.lerp(start.z, near.z, kk),
-      };
-    } else if (t < 5.2) {
-      const k = (t - 3.6) / 1.6;
-      p = {
-        x: MathUtils.lerp(near.x, bitten.x, k),
-        z: MathUtils.lerp(near.z, bitten.z, ease(k)),
-      };
-    } else if (t < 8) {
-      p = bez(bitten, swing, away, ease((t - 5.2) / 2.8));
-    } else if (t < ATTACK_END) {
-      const k = (t - 8) / (ATTACK_END - 8);
-      p = {
-        x: MathUtils.lerp(away.x, gone.x, k),
-        z: MathUtils.lerp(away.z, gone.z, k),
-      };
-    } else {
-      p = start;
-    }
-    return { x: p.x, y, z: p.z };
+    const keys = [
+      [-1, P(0.9, FAR + 3)],
+      [0, P(0.85, FAR)],
+      [1.8, P(0.68, 15)], // the rush
+      [3.6, near], // arrives
+      [4.8, { x: near.x - 0.25, z: near.z + 0.35 }], // the bite
+      [6.2, { x: near.x - 1.9, z: near.z + 0.2 }], // swings left
+      [8.2, { x: near.x - 4.2, z: near.z - 1.6 }], // and away
+      [ATTACK_END, P(-2.6, NEAR + 7)], // off the left edge
+      [ATTACK_END + 2, P(-3.6, NEAR + 7.5)],
+    ];
+    const tt = MathUtils.clamp(t, 0, ATTACK_END);
+    let i = 1;
+    while (i < keys.length - 2 && tt > keys[i + 1][0]) i++;
+    const [t0, p0] = keys[i - 1];
+    const [t1, p1] = keys[i];
+    const [t2, p2] = keys[i + 1];
+    const [t3, p3] = keys[i + 2];
+    const h = t2 - t1;
+    const u = (tt - t1) / h;
+    // tangents scaled to this segment's duration
+    const m1 = (k) => ((p2[k] - p0[k]) / (t2 - t0)) * h;
+    const m2 = (k) => ((p3[k] - p1[k]) / (t3 - t1)) * h;
+    const herm = (k) => {
+      const u2 = u * u;
+      const u3 = u2 * u;
+      return (
+        (2 * u3 - 3 * u2 + 1) * p1[k] +
+        (u3 - 2 * u2 + u) * m1(k) +
+        (-2 * u3 + 3 * u2) * p2[k] +
+        (u3 - u2) * m2(k)
+      );
+    };
+    return { x: herm("x"), y, z: herm("z") };
   };
 
   const frame = () => {
@@ -383,7 +385,9 @@ export async function mount(
     bite.time = inBite ? ((t - BITE_AT) / BITE) * dur : 0;
     bite.setEffectiveWeight(bw);
     swim.setEffectiveWeight(1 - bw);
-    swim.timeScale = t < 3.6 ? 1.9 : t < 8 ? 1.25 : 0.65;
+    // tail beat eases between paces instead of switching
+    const pace = t < 3.6 ? 1.9 : t < 8 ? 1.25 : 0.65;
+    swim.timeScale += (pace - swim.timeScale) * Math.min(1, dt * 1.5 || 1);
     mixer.update(dt);
 
     // The small shark: in from the right edge, a wide loop out into the
