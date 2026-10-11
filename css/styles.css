@@ -1834,6 +1834,10 @@ select.dn-input {
   margin-top: 0.15rem;
   accent-color: var(--dn-teal);
 }
+.dn-check input[aria-invalid="true"] {
+  outline: 2px solid oklch(0.6 0.2 27);
+  outline-offset: 2px;
+}
 .dn-check a,
 .dn-link {
   color: var(--dn-accent-text);

@@ -9,8 +9,53 @@
   const button = form.querySelector("button[type=submit]");
   const OFFLINE = "Şu an bağlantı kurulamadı. Lütfen biraz sonra tekrar dene.";
 
+  // The form is `novalidate`: these checks replace the browser's own
+  // tooltips, which appear in the visitor's browser language. Checked in
+  // page order; the first failure is shown and focused.
+  const CHECKS = [
+    ["contact-name", (el) => el.value.trim(), "Lütfen adını ve soyadını yaz."],
+    ["contact-email", (el) => el.value.trim(), "Lütfen e-posta adresini yaz."],
+    [
+      "contact-email",
+      (el) => el.checkValidity(),
+      "Geçerli bir e-posta adresi yaz (ör. ad@ornek.com).",
+    ],
+    ["contact-message", (el) => el.value.trim(), "Lütfen mesajını yaz."],
+    [
+      "contact-terms",
+      (el) => el.checked,
+      "Göndermek için kullanım koşullarını ve gizlilik politikasını kabul etmelisin.",
+    ],
+  ];
+
+  const clearInvalid = (el) => {
+    if (el.getAttribute("aria-invalid") !== "true") return;
+    el.removeAttribute("aria-invalid");
+    if (!form.querySelector('[aria-invalid="true"]')) {
+      feedback.textContent = "";
+      feedback.className = "help mt-3";
+    }
+  };
+  form.addEventListener("input", (e) => clearInvalid(e.target));
+  form.addEventListener("change", (e) => clearInvalid(e.target));
+
+  const validate = () => {
+    for (const [id, ok, text] of CHECKS) {
+      const el = document.getElementById(id);
+      if (ok(el)) continue;
+      el.setAttribute("aria-invalid", "true");
+      feedback.textContent = text;
+      feedback.className = "help mt-3 is-danger";
+      el.focus();
+      return false;
+    }
+    return true;
+  };
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!validate()) return;
 
     feedback.textContent = "";
     feedback.className = "help mt-3";
@@ -22,7 +67,7 @@
 
       // Honeypot: if filled, pretend success and skip the network call.
       if (formData.get("website")) {
-        feedback.textContent = "Mesajınız iletildi.";
+        feedback.textContent = "Mesajın iletildi.";
         feedback.classList.add("is-success");
         form.reset();
         return;
@@ -53,7 +98,7 @@
         throw fail;
       }
 
-      feedback.textContent = data.message || "Mesajınız iletildi.";
+      feedback.textContent = data.message || "Mesajın iletildi.";
       feedback.classList.add("is-success");
       form.reset();
     } catch (err) {

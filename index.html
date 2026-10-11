@@ -386,7 +386,7 @@ screens:
       </div>
 
       <div class="dn-contact__card dn-glass dn-glass--strong" data-reveal>
-        <form id="contact-form">
+        <form id="contact-form" novalidate>
           <!-- Honeypot (spam trap — bots fill this, humans don't see it) -->
           <div class="dn-hidden" aria-hidden="true">
             <label for="contact-website">Website</label>
@@ -406,6 +406,7 @@ screens:
                 <i class="fa-solid fa-user" aria-hidden="true"></i>
                 <input
                   id="contact-name"
+                  aria-describedby="contact-feedback"
                   name="name"
                   class="dn-input"
                   type="text"
@@ -422,6 +423,7 @@ screens:
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 <input
                   id="contact-email"
+                  aria-describedby="contact-feedback"
                   name="email"
                   class="dn-input"
                   type="email"
@@ -447,6 +449,7 @@ screens:
             <label class="dn-label" for="contact-message">Mesaj</label>
             <textarea
               id="contact-message"
+              aria-describedby="contact-feedback"
               name="message"
               class="dn-input"
               placeholder="Mesajını buraya yaz"
@@ -456,7 +459,12 @@ screens:
 
           <div class="dn-field">
             <label class="dn-check">
-              <input type="checkbox" required />
+              <input
+                id="contact-terms"
+                type="checkbox"
+                aria-describedby="contact-feedback"
+                required
+              />
               <span>
                 <a
                   href="/kullanim-kosullari.html"
