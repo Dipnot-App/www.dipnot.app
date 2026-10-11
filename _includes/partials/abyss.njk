@@ -3,6 +3,28 @@
     for sources), used as CSS masks so each theme tints them. Decorative
     (aria-hidden); transform/opacity only; still with reduced motion. -#}
 <div class="dn-abyss" aria-hidden="true">
+  {#- A giant shark facing us, far back in the dark: a blurred head-on
+      silhouette whose eyes catch the light, looming in and fading out -#}
+  <svg class="dn-shark" viewBox="0 0 400 260">
+    <g class="dn-shark__body">
+      <path d="M182 70 L200 6 L218 70 Z" />
+      <path d="M98 138 L4 222 L136 160 Z" />
+      <path d="M302 138 L396 222 L264 160 Z" />
+      <path d="M52 118 C86 76 148 60 200 60 C252 60 314 76 348 118 C326 152 272 178 200 190 C128 178 74 152 52 118 Z" />
+    </g>
+    <path class="dn-shark__mouth" d="M146 160 Q200 186 254 160 Q200 174 146 160 Z" />
+    {#- Small almond eyes; only a thin crescent catches the light -#}
+    <g class="dn-shark__eye" transform="translate(90 114) rotate(-8)">
+      <ellipse class="dn-shark__ball" rx="7.5" ry="3.6" />
+      <path class="dn-shark__shine" d="M-5.5 -0.6 Q0 -4.2 5.5 -0.6 Q0 -2.4 -5.5 -0.6 Z" />
+      <circle class="dn-shark__glint" cx="2" cy="-1.4" r="0.9" />
+    </g>
+    <g class="dn-shark__eye" transform="translate(310 114) rotate(8)">
+      <ellipse class="dn-shark__ball" rx="7.5" ry="3.6" />
+      <path class="dn-shark__shine" d="M-5.5 -0.6 Q0 -4.2 5.5 -0.6 Q0 -2.4 -5.5 -0.6 Z" />
+      <circle class="dn-shark__glint" cx="-2" cy="-1.4" r="0.9" />
+    </g>
+  </svg>
   <div class="dn-abyss__swim dn-abyss__swim--angler">
     <div class="dn-abyss__bob">
       <div class="dn-abyss__fish" style="--src: url(/img/abyss/anglerfish.webp); aspect-ratio: 900 / 481"></div>
@@ -15,46 +37,4 @@
   <div class="dn-abyss__swim dn-abyss__swim--fang">
     <div class="dn-abyss__bob"><div class="dn-abyss__fish" style="--src: url(/img/abyss/fangtooth.webp); aspect-ratio: 900 / 466"></div></div>
   </div>
-  <div class="dn-abyss__swim dn-abyss__swim--gulper">
-    <div class="dn-abyss__bob"><div class="dn-abyss__fish" style="--src: url(/img/abyss/gulper.webp); aspect-ratio: 1200 / 241"></div></div>
-  </div>
-
-  {#- Eyes in the dark: positioned and blinked by the script below -#}
-  <svg class="dn-abyss__eyes" viewBox="0 0 60 20" data-abyss-eyes>
-    <ellipse cx="14" cy="10" rx="6.5" ry="4.5" />
-    <ellipse cx="46" cy="10" rx="6.5" ry="4.5" />
-  </svg>
-  <svg class="dn-abyss__eyes dn-abyss__eyes--small" viewBox="0 0 60 20" data-abyss-eyes>
-    <ellipse cx="16" cy="10" rx="5" ry="3.5" />
-    <ellipse cx="44" cy="10" rx="5" ry="3.5" />
-  </svg>
 </div>
-<script>
-  // Eyes open at random spots around the edges (never over the copy in
-  // the middle), blink, close, and move on. Skipped with reduced motion.
-  (function () {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // Pixel position inside the left/right bands, clamped so the eyes
-    // never cross the screen edge
-    var spot = function (el) {
-      var W = innerWidth, H = innerHeight, w = el.offsetWidth || 60;
-      var band = Math.max(w, W * 0.2);
-      var x = Math.random() < 0.5
-        ? 12 + Math.random() * (band - w)
-        : W - 12 - w - Math.random() * (band - w);
-      return { x: Math.max(8, Math.min(W - w - 8, x)), y: H * (0.14 + Math.random() * 0.72) };
-    };
-    document.querySelectorAll("[data-abyss-eyes]").forEach(function (el, i) {
-      var cycle = function () {
-        var p = spot(el);
-        el.style.left = p.x + "px";
-        el.style.top = p.y + "px";
-        el.classList.remove("is-open");
-        void el.offsetWidth; // restart the animation
-        el.classList.add("is-open");
-        setTimeout(cycle, 4200 + Math.random() * 4000);
-      };
-      setTimeout(cycle, 1500 + i * 2600);
-    });
-  })();
-</script>

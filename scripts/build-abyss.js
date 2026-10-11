@@ -9,7 +9,6 @@
 //   fangtooth   Anoplogaster cornuta — Résultats des campagnes
 //               scientifiques (Albert I of Monaco), 1911
 //   viperfish   Chauliodus sloani — Goode & Bean, Oceanic Ichthyology
-//   gulper      Eurypharynx pelecanoides — Carl Chun, 1903
 const path = require("path");
 const fs = require("fs");
 const sharp = require("sharp");
@@ -24,7 +23,6 @@ const JOBS = [
   // silhouette and draw the linework (local darkness) bright
   { name: "fangtooth", width: 900, paper: 236, ink: 60, detail: true },
   { name: "viperfish", width: 1000, paper: 225, ink: 60 },
-  { name: "gulper", width: 1200, paper: 225, ink: 50 },
 ];
 
 async function build({ name, width, paper, ink, detail }) {

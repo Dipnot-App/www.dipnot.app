@@ -3259,17 +3259,8 @@ main.container > .section {
   width: clamp(220px, 26vw, 380px);
   animation: dn-abyss-cross-back 50s linear -30s infinite;
 }
-.dn-abyss__swim--gulper {
-  top: 82%;
-  width: clamp(260px, 34vw, 520px);
-  animation: dn-abyss-cross-back 84s linear -8s infinite;
-}
 .dn-abyss__swim--fang .dn-abyss__bob {
   animation-duration: 7.5s;
-}
-.dn-abyss__swim--gulper .dn-abyss__bob {
-  animation-name: dn-abyss-undulate;
-  animation-duration: 9s;
 }
 /* The anglerfish's lure, at the tip of its stalk in the plate */
 .dn-abyss__lure {
@@ -3289,26 +3280,68 @@ main.container > .section {
   filter: blur(0.5px);
   animation: dn-abyss-pulse 2.6s ease-in-out infinite;
 }
-.dn-abyss__eyes {
-  position: absolute;
-  width: clamp(56px, 6vw, 84px);
-  opacity: 0;
-  filter: drop-shadow(0 0 8px var(--dn-abyss-light));
-  transform-origin: center;
-  transition:
-    left 0s,
-    top 0s;
-}
-.dn-abyss__eyes--small {
-  width: clamp(38px, 4vw, 56px);
-}
-.dn-abyss__eyes ellipse {
-  fill: var(--dn-abyss-light);
-}
-.dn-abyss__eyes.is-open {
-  animation: dn-abyss-blink 3.6s ease-in-out forwards;
-}
 
+/* The shark: huge, far back, blurred; only its eyes catch light */
+.dn-shark {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: min(118vw, 1200px);
+  height: auto;
+  opacity: 0;
+  transform: translate(-50%, -45%) scale(0.92);
+  animation: dn-shark-loom 17s ease-in-out 3s infinite;
+  --dn-shark-body: oklch(0.06 0.012 240 / 0.85);
+  --dn-shark-eye: oklch(0.88 0.08 150);
+}
+[data-theme="light"] .dn-shark {
+  --dn-shark-body: oklch(0.22 0.04 230 / 0.32);
+  --dn-shark-eye: oklch(0.82 0.1 150);
+}
+.dn-shark__body {
+  fill: var(--dn-shark-body);
+  filter: blur(9px);
+}
+.dn-shark__mouth {
+  fill: oklch(0 0 0 / 0.35);
+  filter: blur(4px);
+}
+.dn-shark__ball {
+  fill: oklch(0.03 0.005 240);
+  stroke: oklch(0.5 0.05 200 / 0.35);
+  stroke-width: 0.6;
+}
+.dn-shark__shine {
+  fill: var(--dn-shark-eye);
+  filter: drop-shadow(0 0 3px var(--dn-shark-eye));
+}
+.dn-shark__glint {
+  fill: oklch(0.98 0.02 150);
+}
+@media (max-width: 767px) {
+  /* keep its eyes clear of the dive computer on phones */
+  .dn-shark {
+    top: 24%;
+    width: 130vw;
+  }
+}
+@keyframes dn-shark-loom {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.9);
+  }
+  24%,
+  38% {
+    opacity: 1;
+    transform: translate(-50%, -45%) scale(1);
+  }
+  56%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(1.04);
+  }
+}
 @keyframes dn-abyss-cross {
   from {
     transform: translateX(-40vw);
@@ -3330,47 +3363,10 @@ main.container > .section {
     transform: translateY(-12px) rotate(-1.5deg);
   }
 }
-@keyframes dn-abyss-undulate {
-  50% {
-    transform: translateY(10px) rotate(1.5deg) scaleY(1.04);
-  }
-}
 @keyframes dn-abyss-pulse {
   50% {
     transform: scale(0.75);
     filter: blur(1px) brightness(0.8);
-  }
-}
-@keyframes dn-abyss-blink {
-  0% {
-    opacity: 0;
-    transform: scaleY(0.1);
-  }
-  12% {
-    opacity: 0.95;
-    transform: scaleY(1);
-  }
-  40% {
-    transform: scaleY(1);
-  }
-  44% {
-    transform: scaleY(0.08);
-  }
-  48%,
-  70% {
-    opacity: 0.95;
-    transform: scaleY(1);
-  }
-  74% {
-    transform: scaleY(0.08);
-  }
-  78% {
-    opacity: 0.95;
-    transform: scaleY(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scaleY(0.1);
   }
 }
 
@@ -3397,12 +3393,11 @@ main.container > .section {
   .dn-abyss__swim--fang {
     transform: translateX(3vw);
   }
-  .dn-abyss__swim--viper,
-  .dn-abyss__swim--gulper {
+  .dn-abyss__swim--viper {
     transform: translateX(calc(100vw - 100% - 3vw));
   }
   .dn-abyss__swim--fang,
-  .dn-abyss__swim--gulper {
+  .dn-shark {
     display: none;
   }
 }
