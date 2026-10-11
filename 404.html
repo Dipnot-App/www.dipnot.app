@@ -6,55 +6,57 @@ description: "Sayfa bulunamadı — Dipnot App."
 keywords: "dalış, scuba diving, su altı, dipnot app"
 robots: "noindex"
 permalink: "/404.html"
-feed: { name: "feed", alt: "Dipnot ana sayfa akışı" }
 ---
 
-{%- from "macros/iphone.njk" import iphone -%}
-
-<section id="main" class="dn-hero" aria-labelledby="nf-title">
+<section id="main" class="dn-nf" aria-labelledby="nf-title" data-nf>
   {% include "partials/bubbles.njk" %}
-  <div class="dn-container dn-hero__grid dn-hero__grid--flip">
-    <div class="dn-hero__copy dn-404" data-404>
-      <p class="dn-404__code" aria-hidden="true">404</p>
-      <div class="dn-404__msg" lang="tr">
-        <h1 id="nf-title" class="dn-display">Sayfa bulunamadı</h1>
-        <p class="dn-lead">Üzgünüz, aradığın sayfa bulunamadı.</p>
-      </div>
-      <div class="dn-404__msg dn-404__msg--en" lang="en">
-        <p class="dn-404__title">Page not found</p>
-        <p class="dn-lead">Sorry, the page you're looking for doesn't exist.</p>
-      </div>
-      <div class="dn-404__actions">
-        <a href="/" class="dn-btn dn-btn--primary" data-404-tr
-          >Anasayfaya dön</a
-        >
-        <a
-          href="/en/"
-          class="dn-btn dn-glass dn-glass--pill"
-          lang="en"
-          hreflang="en"
-          data-404-en
-          >Go to the English site</a
-        >
+  <div class="dn-container dn-nf__inner">
+    <div class="dn-nf__computer dn-glass dn-glass--strong" aria-hidden="true">
+      <div class="dn-nf__screen">
+        <div class="dn-nf__row">
+          <span data-en="DEPTH">DERİNLİK</span>
+          <span data-en="TIME">SÜRE</span>
+        </div>
+        <div class="dn-nf__row dn-nf__row--main">
+          <span class="dn-nf__depth">404<small>m</small></span>
+          <span class="dn-nf__time">∞</span>
+        </div>
+        <div class="dn-nf__row">
+          <span>NDL --</span>
+          <span class="dn-nf__alarm" data-en="↑ ASCEND">↑ YÜKSEL</span>
+        </div>
       </div>
     </div>
-    <script>
-      // One 404 serves every missing URL (GitHub Pages). For /en/… paths
-      // lead with English; without JS both languages still show.
-      if (location.pathname.indexOf("/en/") === 0) {
-        document.querySelector("[data-404]").classList.add("dn-404--en");
-        document.querySelector("[data-404-tr]").className =
-          "dn-btn dn-glass dn-glass--pill";
-        document.querySelector("[data-404-en]").className =
-          "dn-btn dn-btn--primary";
-      }
-    </script>
 
-    <div class="dn-hero__visual">
-      <div class="dn-iphone-stage">
-        {{ iphone([feed], rot="8,-24,4", eager=true) }}
-        <div class="dn-iphone-shadow" aria-hidden="true"></div>
-      </div>
-    </div>
+    <h1 id="nf-title" class="dn-nf__title" data-en="You went too deep.">
+      Fazla derine indin.
+    </h1>
+    <p class="dn-nf__sub" data-en="This page doesn't exist down here.">
+      Bu derinlikte böyle bir sayfa yok.
+    </p>
+    <a
+      href="/"
+      class="dn-btn dn-btn--primary dn-nf__btn"
+      data-en="Back to the surface"
+      data-en-href="/en/"
+    >
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      <span>Yüzeye çık</span>
+    </a>
   </div>
 </section>
+
+<script>
+  // One 404 serves every missing URL (GitHub Pages); /en/… paths get the
+  // English copy. Turkish is the no-JS default.
+  if (location.pathname.indexOf("/en/") === 0) {
+    var nf = document.querySelector("[data-nf]");
+    nf.lang = "en";
+    nf.querySelectorAll("[data-en]").forEach(function (el) {
+      var target = el.querySelector("span") || el;
+      target.textContent = el.getAttribute("data-en");
+      if (el.dataset.enHref) el.setAttribute("href", el.dataset.enHref);
+    });
+    document.title = "Page not found | Dipnot App";
+  }
+</script>
