@@ -566,7 +566,8 @@ h6,
 
 /* Font Awesome loads without blocking paint; reserve each icon's box
    so buttons don't change width (and wrap) when the font arrives */
-.dn-btn > i[class*="fa-"] {
+/* (Not the theme toggle: fixed-size, and it shows/hides its icons) */
+.dn-btn:not(.dn-theme-toggle) > i[class*="fa-"] {
   display: inline-block;
   flex: none;
   width: 1.25em;
