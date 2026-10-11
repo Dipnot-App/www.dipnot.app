@@ -90,6 +90,14 @@ build:images` → `img/opt/`, AVIF + WebP) in a CSS 3D frame. Status
     lychee are now **hard gates**, joining html-validate and
     `format:check` (#34).
 
+- **CI, faster checks** — Lighthouse now gates releases only (every
+  push to `main`, before the deploy), or a PR with the `lighthouse`
+  label, or a manual run; other PRs finish in about a minute. It audits
+  five representative pages (home, `/en/`, privacy, contact, brand
+  book) instead of 13. Checks queue per branch and the deploy has its
+  own `pages` queue, so PRs no longer wait on each other and a release
+  can't be cancelled by another branch's run (#123).
+
 ## 2026-10-10
 
 - **OG test pages (temporary)** — Added unlinked, `noindex`
