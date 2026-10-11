@@ -3,6 +3,9 @@
     for sources), used as CSS masks so each theme tints them. Decorative
     (aria-hidden); transform/opacity only; still with reduced motion. -#}
 <div class="dn-abyss" aria-hidden="true">
+  {#- Real 3D shark (js/shark3d.js) mounts here when WebGL and motion are
+      available; the SVG shark below is the fallback until it renders -#}
+  <div class="dn-shark3d" data-shark3d></div>
   {#- A giant shark facing us, far back in the dark: a blurred head-on
       silhouette, open jaws, glowing slit eyes; looms in and fades out -#}
   <svg class="dn-shark" viewBox="0 0 400 260">
@@ -37,3 +40,41 @@
     <div class="dn-abyss__bob"><div class="dn-abyss__fish" style="--src: url(/img/abyss/fangtooth.webp); aspect-ratio: 900 / 466"></div></div>
   </div>
 </div>
+<script type="module">
+  // Load the 3D shark only after the page is fully up and the browser is
+  // idle, never with reduced motion, never without WebGL.
+  const host = document.querySelector("[data-shark3d]");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGL = (() => {
+    try {
+      const c = document.createElement("canvas");
+      return !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch {
+      return false;
+    }
+  })();
+  if (host && !reduce && hasGL) {
+    const root = document.documentElement;
+    const water = () => getComputedStyle(root).getPropertyValue("--dn-water-mid").trim();
+    const go = async () => {
+      try {
+        const { mount } = await import("/js/shark3d.js?v={{ site.jsVersion }}");
+        const api = await mount(host, {
+          src: "/img/abyss/shark.glb",
+          waterColor: water(),
+          light: root.dataset.theme === "light",
+          onReady: () => root.classList.add("dn-shark3d-on"),
+        });
+        new MutationObserver(() =>
+          api.setTheme(root.dataset.theme === "light", water()),
+        ).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+      } catch (err) {
+        // keep the SVG fallback
+      }
+    };
+    const idle = () =>
+      "requestIdleCallback" in window ? requestIdleCallback(go, { timeout: 1500 }) : setTimeout(go, 300);
+    if (document.readyState === "complete") idle();
+    else addEventListener("load", idle, { once: true });
+  }
+</script>

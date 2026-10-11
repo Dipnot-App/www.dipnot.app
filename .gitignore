@@ -153,3 +153,7 @@ _site/
 # macOS Finder metadata
 .DS_Store
 **/.DS_Store
+
+# 3D model source archive (10 MB): kept locally, the optimised
+# img/abyss/shark.glb is what ships
+img-src/abyss/shark-source.zip

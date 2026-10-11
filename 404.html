@@ -44,6 +44,21 @@ permalink: "/404.html"
       <span>Yüzeye çık</span>
     </a>
   </div>
+  <p class="dn-nf__credit">
+    3D köpekbalığı:
+    <a
+      href="https://sketchfab.com/3d-models/great-white-shark-attack-bite-animation-loop-936d4110b39945f5a46cb2d831ece920"
+      target="_blank"
+      rel="noopener noreferrer"
+      >LasquetiSpice</a
+    >,
+    <a
+      href="https://creativecommons.org/licenses/by/4.0/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >CC BY 4.0</a
+    >
+  </p>
 </section>
 
 <script>
@@ -52,6 +67,8 @@ permalink: "/404.html"
   if (location.pathname.indexOf("/en/") === 0) {
     var nf = document.querySelector("[data-nf]");
     nf.lang = "en";
+    var cr = nf.querySelector(".dn-nf__credit");
+    if (cr) cr.firstChild.textContent = "3D shark: ";
     nf.querySelectorAll("[data-en]").forEach(function (el) {
       var target = el.querySelector("span") || el;
       target.textContent = el.getAttribute("data-en");

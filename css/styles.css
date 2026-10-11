@@ -3281,6 +3281,30 @@ main.container > .section {
   animation: dn-abyss-pulse 2.6s ease-in-out infinite;
 }
 
+/* 3D shark canvas (js/shark3d.js); hides the SVG fallback once it renders */
+.dn-shark3d {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s var(--dn-ease);
+}
+.dn-shark3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.dn-shark3d-on .dn-shark3d {
+  opacity: 1;
+}
+/* On light water a dark shark behind dark text hurts reading: keep it
+   ghostlier there */
+[data-theme="light"].dn-shark3d-on .dn-shark3d {
+  opacity: 0.55;
+}
+.dn-shark3d-on .dn-shark {
+  display: none;
+}
+
 /* The shark: huge, far back, blurred; only its eyes catch light */
 .dn-shark {
   position: absolute;
@@ -3377,6 +3401,20 @@ main.container > .section {
   }
 }
 
+.dn-nf__credit {
+  position: absolute;
+  right: var(--dn-gutter);
+  bottom: 0.75rem;
+  z-index: 1;
+  color: var(--dn-fg-subtle);
+  font-size: var(--dn-fs-caption);
+  opacity: 0.7;
+}
+.dn-nf__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 @keyframes dn-nf-bob {
   50% {
     transform: rotate(-2deg) translateY(-10px);

@@ -18,3 +18,12 @@ plates from Wikimedia Commons, turned into masks by
 - _Chauliodus sloani_, Goode & Bean, Oceanic Ichthyology (1896)
 - _Eurypharynx pelecanoides_, Carl Chun, Aus den Tiefen des Weltmeeres
   (1903)
+
+The 3D shark on the 404 page is based on "Great White Shark Attack
+Bite Animation Loop"
+(https://sketchfab.com/3d-models/great-white-shark-attack-bite-animation-loop-936d4110b39945f5a46cb2d831ece920)
+by LasquetiSpice (https://sketchfab.com/LasquetiSpice), licensed under
+CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/). It was
+optimised for the web (meshopt geometry, WebP textures; licence text in
+`img-src/abyss/shark-LICENSE.txt`) and is rendered with three.js
+(MIT), bundled by `npm run build:shark` from `src/shark3d.js`.
