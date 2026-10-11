@@ -17,7 +17,8 @@ terse — the commit message and PR body carry the full reasoning.
     `#04d1b2` accent drift for the ratified teal `#338596` / `#6ad0e3`.
     Liquid-glass surfaces (frost; refraction in Chromium; solid fallback
     for reduced transparency) over a fixed "ocean" that deepens as the
-    page scrolls. Bulma stays loaded only for the legal pages' content.
+    page scrolls. **Bulma is gone** from every page (legal content,
+    tables and forms restyled on `dn-`); its CDN link is removed.
   - **Motion** — GSAP 3.13 + ScrollTrigger + SplitText from cdnjs, SRI
     pinned in [`_data/site.json`](_data/site.json), driven by
     [`js/motion.js`](js/motion.js) on the home page only. Everything is
@@ -62,6 +63,25 @@ build:images` → `img/opt/`, AVIF + WebP) in a CSS 3D frame. Status
     GSAP), Bulma no longer loads on the home page or 404, **Inter is
     self-hosted** (`fonts/`, OFL; the Google Fonts origin is gone),
     and Font Awesome loads without blocking first paint.
+  - **404** — a deep-water scene: a dive computer reading 404 m with a
+    live dive timer (MM:SS, DSEG7 LCD font, OFL, `fonts/`) and a
+    blinking DECO alarm; real 3D models (three.js 0.186, bundled with
+    esbuild via `npm run build:shark` → `js/shark3d.js`) of a great
+    white that circles in the back and makes one attack per 50 s loop,
+    and an anglerfish with a glowing lure. Loaded only after the page
+    is idle, never with reduced motion or without WebGL (SVG shark
+    fallback). Models are CC BY 4.0, credited on the page and in
+    `img-src/abyss/*-LICENSE.txt`. Bilingual (TR + `/en/` paths).
+  - **Analytics (off)** — GA4 behind a KVKK consent banner
+    (`js/consent.js`, footer "Çerez tercihleri"), plus Search Console /
+    Bing / Yandex verification tags, all gated in
+    [`_data/site.json`](_data/site.json) and **disabled** until the
+    processor lands in the KVKK policy.
+  - **OG** — one default `og:image` from the new set (`og-square`
+    dropped).
+  - **CI** — pa11y-ci (15 URLs), Lighthouse CI (error asserts) and
+    lychee are now **hard gates**, joining html-validate and
+    `format:check` (#34).
 
 ## 2026-10-10
 
