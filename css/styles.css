@@ -1042,7 +1042,8 @@ a.dn-seg__item:hover {
   --d: calc(30s - var(--n) * 0.65s);
   --w: calc(0.9s + var(--n) * 0.055s);
   position: absolute;
-  bottom: -2rem;
+  /* Spawns fully inside the hero (never half-clipped by its edge) */
+  bottom: 3%;
   left: var(--x);
   width: calc(var(--n) * 1px);
   height: calc(var(--n) * 1px);
@@ -1082,14 +1083,15 @@ a.dn-seg__item:hover {
     scale: 0.75;
     opacity: 0;
   }
-  10% {
+  /* Fade in over the first ~1s (5% of a 12–26s rise) */
+  5% {
     opacity: var(--o);
   }
   85% {
     opacity: calc(var(--o) * 0.7);
   }
   100% {
-    translate: 0 -95vh;
+    translate: 0 -92vh;
     scale: 1.15;
     opacity: 0;
   }
