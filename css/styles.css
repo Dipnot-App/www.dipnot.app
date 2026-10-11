@@ -197,6 +197,10 @@ strong {
 }
 
 html {
+  /* Nothing may widen the page sideways on phones (decorative glows,
+     rays, split-text masks); body's clip alone doesn't stop mobile
+     browsers from growing the layout viewport */
+  overflow-x: clip;
   background: var(--dn-water-deep);
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--dn-nav-h) + 2rem);
@@ -1483,7 +1487,7 @@ a.dn-seg__item:hover {
 }
 .dn-about__halo {
   position: absolute;
-  inset: 10% -5% 0;
+  inset: 10% 0 0;
   z-index: -1;
   border-radius: 50%;
   background: radial-gradient(
