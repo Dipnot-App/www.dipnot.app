@@ -108,11 +108,11 @@ screens:
 
 <main id="main" class="dn-main">
   <!-- ABOUT -->
-  <section id="about" class="dn-section">
+  <section id="about" class="dn-section" data-anchor="center">
     <div class="dn-container dn-split">
       <div class="dn-about__visual">
         <div class="dn-about__halo" aria-hidden="true"></div>
-        <div class="dn-iphone-stage" data-about-stage>
+        <div class="dn-iphone-stage" data-about-stage data-anchor-target>
           {{ iphone([screens.article], rot="4,22,-3") }}
           <div class="dn-iphone-shadow" aria-hidden="true"></div>
         </div>
@@ -492,9 +492,18 @@ screens:
   </section>
 
   <!-- DOWNLOAD — the deep zone starts here -->
-  <section id="download" class="dn-cta" aria-labelledby="download-title">
+  <section
+    id="download"
+    class="dn-cta"
+    aria-labelledby="download-title"
+    data-anchor="center"
+  >
     <div class="dn-container">
-      <div class="dn-cta__panel dn-glass dn-glass--refract" data-cta>
+      <div
+        class="dn-cta__panel dn-glass dn-glass--refract"
+        data-cta
+        data-anchor-target
+      >
         <div class="dn-cta__rays" aria-hidden="true"></div>
         <img
           class="dn-cta__logo"

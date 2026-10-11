@@ -84,12 +84,24 @@
     return y;
   };
 
+  // Sections marked data-anchor="center" (about, download) center their
+  // [data-anchor-target] in the space under the nav instead, so the phone
+  // or card isn't cut off; if it doesn't fit, align its top instead.
   const scrollToSection = (id, smooth) => {
     const section = id && document.getElementById(id);
     if (!section || !section.matches(".dn-section, .dn-cta")) return false;
     const bar = document.querySelector(".dn-nav__bar");
     const navBottom = bar ? bar.getBoundingClientRect().bottom : 0;
-    const top = layoutTop(targetOf(section)) - navBottom - GAP;
+    let top;
+    const box =
+      section.dataset.anchor === "center" &&
+      section.querySelector("[data-anchor-target]");
+    const room = window.innerHeight - navBottom;
+    if (box && box.offsetHeight + GAP * 2 <= room) {
+      top = layoutTop(box) - navBottom - (room - box.offsetHeight) / 2;
+    } else {
+      top = layoutTop(targetOf(section)) - navBottom - GAP;
+    }
     window.scrollTo({
       top,
       behavior: smooth && !reduceMotion.matches ? "smooth" : "instant",
