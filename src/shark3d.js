@@ -29,7 +29,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
 
 // One loop of the choreography, in seconds
-const LOOP = 19;
+const LOOP = 31; // 16 s of action + 15 s of empty water
 const FAR = 32; // start/end distance (hidden in the fog)
 const NEAR = 4.4; // closest approach
 
@@ -162,10 +162,11 @@ export async function mount(host, { src, waterColor, light, onReady }) {
   window.addEventListener("resize", resize);
 
   const clock = new Clock();
-  // start mid-fog so the first approach comes soon (?shark-t= for tests)
+  // each cycle (the first too) starts in empty water and fades in;
+  // ?shark-t= / ?shark-freeze for screenshots
   const q = new URLSearchParams(location.search);
   const tParam = parseFloat(q.get("shark-t"));
-  let t = Number.isFinite(tParam) ? tParam : 4;
+  let t = Number.isFinite(tParam) ? tParam : 0;
   const frozen = q.has("shark-freeze");
   let running = true;
   let ready = false;
@@ -176,7 +177,7 @@ export async function mount(host, { src, waterColor, light, onReady }) {
     t = (t + dt) % LOOP;
 
     // 0–8 approach from the right · 8–11 lunge + bite · 11–16 turn and
-    // swim off past the left edge · 16–19 gone (reset far right)
+    // swim off past the left edge · 16–31 gone (reset far right)
     // x is in units of the visible half-width at that depth, so "right of
     // the dive computer" holds on every screen size.
     const halfW = (d) =>
@@ -213,6 +214,9 @@ export async function mount(host, { src, waterColor, light, onReady }) {
     rig.position.set(xr * halfW(z), 1.15 + Math.sin(t * 0.5) * 0.15, -z);
     rig.rotation.y = yaw + Math.sin(t * 0.4) * 0.05;
     rig.rotation.x = Math.sin(t * 0.27) * 0.04;
+    // fade in out of the dark over the first 2.5 s instead of popping in
+    renderer.domElement.style.opacity =
+      t < 2.5 ? ease(t / 2.5).toFixed(3) : t >= 16 ? "0" : "1";
     bite.timeScale = speed;
     mixer.update(dt);
 
