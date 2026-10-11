@@ -98,89 +98,22 @@
       /* ---------------------------------------------------------------
          Hero intro
          --------------------------------------------------------------- */
+      // The entrance itself (text, visual, phone turn, back phone,
+      // chips) is CSS (`html.dn-intro`, see styles.css) so it starts on
+      // first paint instead of waiting for GSAP; it uses translate/scale/
+      // opacity, which never collide with the transforms animated here.
+      // Scroll animates the phones' wrappers, not the phones.
       const hero = $(".dn-hero");
-      const title = $("[data-hero-title]", hero);
-      const heroParts = $$(
-        "[data-hero]:not([data-hero-title]):not([data-hero-visual])",
-        hero,
-      );
-      const visual = $("[data-hero-visual]", hero);
       const chips = $$("[data-chip]", hero);
-      // Intro animates the phones and the back layer; scroll animates their
-      // wrappers. Separate elements, so a ScrollTrigger refresh mid-intro
-      // can't re-apply stale start values (that was the post-intro jump).
-      const heroPhone = $("[data-hero-front] [data-iphone]", hero);
       const heroFront = $("[data-hero-front]", hero);
-      const heroBack = $("[data-hero-back]", hero);
       const heroBackScroll = $("[data-hero-back-scroll]", hero);
       const heroTilt = $("[data-iphone-tilt]", hero);
 
-      gsap.set(title, { opacity: 1 });
-      const titleSplit = SplitText.create(title, {
-        type: "lines",
-        mask: "lines",
-        linesClass: "dnline",
-      });
-
-      const intro = gsap.timeline({ defaults: { ease: EASE }, delay: 0.1 });
-      intro
-        .fromTo(
-          heroParts[0],
-          { y: 16, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-        )
-        .fromTo(
-          titleSplit.lines,
-          { yPercent: 110 },
-          { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.1 },
-          0.15,
-        )
-        .fromTo(
-          heroParts.slice(1),
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 },
-          0.55,
-        )
-        .fromTo(
-          visual,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.4, ease: "expo.out" },
-          0.25,
-        )
-        .fromTo(
-          heroPhone,
-          {
-            rotationX: rest(heroPhone)[0] + 10,
-            rotationY: rest(heroPhone)[1] + 28,
-            rotationZ: rest(heroPhone)[2] - 4,
-          },
-          {
-            rotationX: rest(heroPhone)[0],
-            rotationY: rest(heroPhone)[1],
-            rotationZ: rest(heroPhone)[2],
-            duration: 2,
-            ease: "expo.out",
-          },
-          0.25,
-        )
-        .fromTo(
-          heroBack,
-          { x: -70, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1.8, ease: "expo.out" },
-          0.7,
-        )
-        .fromTo(
-          chips,
-          { scale: 0.6, opacity: 0 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.9,
-            ease: "back.out(1.8)",
-            stagger: 0.14,
-          },
-          0.9,
-        );
+      // GSAP reads the current computed scale when it first touches an
+      // element; mid CSS pop that is 0.6, and it would bake that into its
+      // own transform for good. Pin it to 1 — the CSS `scale` animation
+      // still plays on its own property.
+      gsap.set(chips, { scale: 1 });
 
       // Chips bob like they're floating (yPercent, so it composes with
       // the scroll parallax on y)
@@ -192,7 +125,7 @@
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,
-          delay: 1.8 + i * 0.2,
+          delay: 2.2 + i * 0.2,
         });
       });
 
@@ -501,8 +434,6 @@
           repeat: -1,
         });
       }
-
-      return () => titleSplit.revert();
     },
   );
 

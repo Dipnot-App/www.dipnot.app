@@ -1,3 +1,29 @@
+/* Inter (SIL OFL 1.1, fonts/OFL.txt), self-hosted: variable 400–700,
+   the two subsets Turkish needs. Replaces the Google Fonts CDN (one less
+   render-blocking origin, and no visitor IPs sent to Google). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
 /* ==========================================================================
    Dipnot landing — "Dalış" design system
    --------------------------------------------------------------------------
@@ -139,6 +165,48 @@
 /* --------------------------------------------------------------------------
    2. Base
    -------------------------------------------------------------------------- */
+
+/* Minimal reset for pages that don't load Bulma (home, 404); it matches
+   what Bulma's own reset does, so the legal pages are unaffected */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+img,
+picture,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  color: var(--dn-accent-text);
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+strong {
+  font-weight: 600;
+}
 
 html {
   background: var(--dn-water-deep);
@@ -2087,6 +2155,10 @@ main.container > .section > .content {
 }
 .content a {
   color: var(--dn-accent-text);
+  /* Links inside running text need more than colour (WCAG 1.4.1) */
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, currentColor 45%, transparent);
+  text-underline-offset: 3px;
 }
 .content code {
   padding: 0.1em 0.4em;
@@ -2241,9 +2313,86 @@ main.container .button.is-primary:hover {
        when motion is allowed; motion.js reveals everything)
    -------------------------------------------------------------------------- */
 
-.dn-motion [data-reveal],
-.dn-motion .dn-hero [data-hero] {
+.dn-motion [data-reveal] {
   opacity: 0;
+}
+
+/* Hero entrance — pure CSS on html.dn-intro (set pre-paint when motion is
+   allowed), so it starts with the first paint instead of waiting for
+   GSAP. Uses the individual translate / scale properties, which compose
+   with (never override) the transforms GSAP animates on scroll. */
+@keyframes dn-in-rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+/* Text variant: starts at 0.01, not 0. Chrome ignores opacity-0 paints
+   for LCP, so a 0 start pushed LCP onto the nav logo until the fade
+   ended; 0.01 is invisible but makes the headline the LCP at first paint. */
+@keyframes dn-in-rise-text {
+  from {
+    opacity: 0.01;
+    translate: 0 24px;
+  }
+}
+@keyframes dn-in-pop {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+@keyframes dn-in-slide {
+  from {
+    opacity: 0;
+    translate: -70px 0;
+  }
+}
+@keyframes dn-in-turn {
+  from {
+    transform: rotateX(calc(var(--rx) + 10deg)) rotateY(calc(var(--ry) + 28deg))
+      rotateZ(calc(var(--rz) - 4deg));
+  }
+}
+.dn-intro .dn-hero [data-hero] {
+  animation: dn-in-rise 0.9s var(--dn-ease) both;
+}
+.dn-intro .dn-hero .dn-eyebrow {
+  animation-delay: 0.05s;
+}
+.dn-intro .dn-hero [data-hero-title] {
+  animation-name: dn-in-rise-text;
+  animation-duration: 1.1s;
+  animation-delay: 0.12s;
+}
+.dn-intro .dn-hero .dn-lead {
+  animation-name: dn-in-rise-text;
+  animation-delay: 0.3s;
+}
+.dn-intro .dn-hero__copy > div[data-hero] {
+  animation-delay: 0.42s;
+}
+.dn-intro .dn-hero [data-hero-visual] {
+  animation-duration: 1.4s;
+  animation-delay: 0.2s;
+}
+.dn-intro [data-hero-front] .dn-iphone {
+  animation: dn-in-turn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.dn-intro [data-hero-back] {
+  animation: dn-in-slide 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+.dn-intro .dn-hero [data-chip] {
+  animation: dn-in-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.dn-intro .dn-hero .dn-chip--a {
+  animation-delay: 0.9s;
+}
+.dn-intro .dn-hero .dn-chip--b {
+  animation-delay: 1.04s;
+}
+.dn-intro .dn-hero .dn-chip--c {
+  animation-delay: 1.18s;
 }
 
 /* SplitText line masks: room for Turkish diacritics (İ Ş Ğ) above and

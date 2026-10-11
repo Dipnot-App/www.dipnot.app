@@ -25,8 +25,8 @@
       <div class="dn-iphone__screen">
         {%- for s in screens %}
         <picture data-screen="{{ loop.index0 }}">
-          <source type="image/avif" srcset="/img/opt/screen-{{ s.name }}-450.avif 450w, /img/opt/screen-{{ s.name }}-900.avif 900w" sizes="(min-width: 1024px) 300px, 70vw">
-          <source type="image/webp" srcset="/img/opt/screen-{{ s.name }}-450.webp 450w, /img/opt/screen-{{ s.name }}-900.webp 900w" sizes="(min-width: 1024px) 300px, 70vw">
+          <source type="image/avif" srcset="/img/opt/screen-{{ s.name }}-450.avif 450w, /img/opt/screen-{{ s.name }}-640.avif 640w, /img/opt/screen-{{ s.name }}-900.avif 900w" sizes="(min-width: 1024px) 280px, 240px">
+          <source type="image/webp" srcset="/img/opt/screen-{{ s.name }}-450.webp 450w, /img/opt/screen-{{ s.name }}-640.webp 640w, /img/opt/screen-{{ s.name }}-900.webp 900w" sizes="(min-width: 1024px) 280px, 240px">
           <img src="/img/opt/screen-{{ s.name }}-900.webp" alt="{{ s.alt }}" width="900" height="1951"{% if eager and loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>
         </picture>
         {%- endfor %}

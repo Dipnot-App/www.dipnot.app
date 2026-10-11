@@ -18,7 +18,7 @@ const JOBS = [
     (name) => ({
       src: `screens/${name}.png`,
       name: `screen-${name}`,
-      widths: [450, 900],
+      widths: [450, 640, 900],
     }),
   ),
 ];
