@@ -24,7 +24,7 @@ module.exports = {
       about: "Dipnot nedir?",
       features: "Özellikler",
       how: "Nasıl çalışır?",
-      faq: "S.S.S.",
+      faq: "SSS",
       contact: "İletişim",
     },
     theme: "Tema değiştir",

@@ -8,6 +8,13 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-11
 
+- **2.0.1 follow-ups** — Mobile menu links were not tappable on the
+  live 2.0.0 (the sheet inherited the nav's click-through); fixed. The
+  nav now marks the section in view (same look as hover,
+  `aria-current="location"`). "S.S.S." → "SSS". The download card
+  shows the app icon (teal on Sky Captain, iOS-rounded) instead of the
+  bare mark.
+  ([#163](https://github.com/Dipnot-App/www.dipnot.app/pull/163))
 - **Release 2.0.0: landing redesign ("Dalış")** — The landing is
   rebuilt from the ground up; `package.json` goes `1.0.0` → `2.0.0`.
   The previous site is tagged **`v1.0.0`** (`9b4ec4a`, the 2026-10-10
