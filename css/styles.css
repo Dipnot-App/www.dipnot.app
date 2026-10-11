@@ -94,6 +94,11 @@
     0 12px 40px -12px oklch(0.3 0.06 220 / 0.22);
   --dn-sheen: oklch(1 0 0 / 0.32);
   --dn-footer-bg: oklch(1 0 0 / 0.42);
+  --dn-bubble-hi: oklch(1 0 0 / 0.95);
+  --dn-bubble-glint: oklch(1 0 0 / 0.6);
+  --dn-bubble-core: oklch(1 0 0 / 0.18);
+  --dn-bubble-rim: oklch(0.42 0.07 215 / 0.8);
+  --dn-bubble-rim-soft: oklch(1 0 0 / 0.55);
 }
 
 /* Dark theme (canon dark tokens, teal-tinted water) */
@@ -121,6 +126,11 @@
     0 1px 2px oklch(0 0 0 / 0.3), 0 18px 50px -14px oklch(0 0 0 / 0.6);
   --dn-sheen: oklch(1 0 0 / 0.06);
   --dn-footer-bg: oklch(0.12 0.012 250 / 0.7);
+  --dn-bubble-hi: oklch(1 0 0 / 0.9);
+  --dn-bubble-glint: oklch(0.9 0.05 200 / 0.4);
+  --dn-bubble-core: oklch(0.85 0.06 205 / 0.05);
+  --dn-bubble-rim: oklch(0.92 0.04 200 / 0.6);
+  --dn-bubble-rim-soft: oklch(0.85 0.06 205 / 0.15);
 
   --bulma-link-l: 65%;
   --bulma-primary-l: 52%;
@@ -884,7 +894,91 @@ h6,
   padding: calc(var(--dn-nav-h) + 3rem) 0 4rem;
 }
 
+/* Ambient bubbles — hero only. Modelled on real rising air: a thin
+   bright rim (light refracting at the edge), a near-clear middle, a
+   specular glint top-left and a faint second one bottom-right. Each rises
+   (translate), grows a little as pressure drops (scale) and wobbles side
+   to side while flexing its shape (::before). Compositor-only. */
+.dn-bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    0deg,
+    transparent,
+    #000 15%,
+    #000 70%,
+    transparent
+  );
+}
+.dn-bubbles span {
+  position: absolute;
+  bottom: -2rem;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  opacity: 0;
+  will-change: translate, scale, opacity;
+  animation: dn-rise var(--d) cubic-bezier(0.4, 0, 0.8, 0.7) var(--dl) infinite;
+}
+.dn-bubbles span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 28%,
+      var(--dn-bubble-hi) 0 9%,
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 70% 74%,
+      var(--dn-bubble-glint) 0 5%,
+      transparent 13%
+    ),
+    radial-gradient(
+      circle,
+      var(--dn-bubble-core) 0 52%,
+      var(--dn-bubble-rim-soft) 64%,
+      var(--dn-bubble-rim) 71%,
+      transparent 74%
+    );
+  will-change: transform;
+  animation: dn-wobble var(--w) ease-in-out var(--dl) infinite alternate;
+}
+@keyframes dn-rise {
+  0% {
+    translate: 0 0;
+    scale: 0.75;
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--o);
+  }
+  85% {
+    opacity: calc(var(--o) * 0.7);
+  }
+  100% {
+    translate: 0 -95vh;
+    scale: 1.15;
+    opacity: 0;
+  }
+}
+@keyframes dn-wobble {
+  0% {
+    transform: translateX(calc(var(--dx) * -1)) scale(1.07, 0.93);
+  }
+  100% {
+    transform: translateX(var(--dx)) scale(0.94, 1.06);
+  }
+}
 .dn-hero__grid {
+  position: relative;
+  z-index: 1;
+
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
@@ -2112,6 +2206,9 @@ main.container > .section > .content {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .dn-bubbles {
+    display: none;
   }
   .dn-ocean__rays,
   .dn-ocean__glow,
