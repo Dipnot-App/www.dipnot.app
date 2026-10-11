@@ -9,516 +9,540 @@ og:
   url: "https://dipnot.app/"
   description: "Dipnot, dalış ve su altı dünyasına ilgi duyanlar için hazırlanmış makale odaklı bir mobil içerik platformudur."
 hasContactForm: true
+pageMotion: true
+categories:
+  - { label: "Gündem", icon: "fire" }
+  - { label: "Dalış Güvenliği", icon: "shield-halved" }
+  - { label: "Eğitim", icon: "graduation-cap" }
+  - { label: "Seyahat", icon: "plane" }
+  - { label: "Ekipman", icon: "toolbox" }
+  - { label: "Sualtı Görüntüleme", icon: "camera" }
+  - { label: "Arkeoloji", icon: "landmark" }
+  - { label: "Çevre Koruma", icon: "leaf" }
+  - { label: "Etkinlikler & Festivaller", icon: "calendar-days" }
+  - { label: "Sağlık", icon: "heart-pulse" }
+  - { label: "Sertifikasyon Rehberi", icon: "certificate" }
+  - { label: "Teknoloji", icon: "microchip" }
+  - { label: "Topluluk Hikayeleri", icon: "users" }
+  - { label: "TSSF", icon: "building-columns" }
+  - { label: "Yurttaş Bilimi", icon: "flask" }
 ---
 
-<!-- HERO BANNER -->
-<section
-  class="hero is-fullheight-with-navbar has-background-hero hero-animated"
->
-  <div class="hero-bubbles" aria-hidden="true">
-    <span></span><span></span><span></span><span></span> <span></span
-    ><span></span><span></span>
-  </div>
-  <div class="hero-body">
-    <div class="columns">
-      <div class="column is-align-content-center">
-        <h1 class="title is-size-1 has-text-white mb-5">
-          Su altını <span class="has-text-primary">okumaya</span>
-          <span style="white-space: nowrap">hazır mısın?</span>
-        </h1>
-        <p class="subtitle has-text-white">
-          Etkinliklerden teknolojiye, güvenlikten ekipmanlara dalış dünyasını
-          derinlemesine ele alan içerikler...
-        </p>
-        <div
-          class="buttons are-large mt-6 is-flex is-justify-content-center mb-6"
-        >
-          <a
-            href="https://play.google.com/store/apps/details?id=com.vacstudio.dipnot"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button is-light is-outlined is-rounded"
-          >
-            <img src="/img/svg/google-play.svg" alt="Google Play" />
-            <span class="ml-2">Google Play</span>
-          </a>
-          <a
-            href="https://apps.apple.com/app/id6757102330"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button is-light is-rounded"
-          >
-            <img src="/img/svg/app-store.svg" alt="App Store" />
-            <span class="ml-2">App Store</span>
-          </a>
-        </div>
+<!-- HERO -->
+<section class="dn-hero" aria-labelledby="hero-title">
+  <div class="dn-container dn-hero__grid">
+    <div class="dn-hero__copy">
+      <p class="dn-eyebrow dn-glass dn-glass--pill" data-hero>
+        <span class="dn-eyebrow__dot" aria-hidden="true"></span>
+        Dalış ve su altı dünyası için
+      </p>
+
+      <h1 id="hero-title" class="dn-display" data-hero data-hero-title>
+        Su altını <span class="dn-accent">okumaya</span>
+        <span class="dn-nowrap">hazır mısın?</span>
+      </h1>
+
+      <p class="dn-lead" data-hero>
+        Etkinliklerden teknolojiye, güvenlikten ekipmanlara dalış dünyasını
+        derinlemesine ele alan içerikler...
+      </p>
+
+      <div data-hero>{% include "partials/store-buttons.njk" %}</div>
+    </div>
+
+    <div class="dn-hero__visual" data-hero data-hero-visual>
+      <div class="dn-hero__phones" data-parallax="-12">
+        <picture>
+          <source
+            type="image/avif"
+            srcset="
+              /img/opt/hero-phones-640.avif 640w,
+              /img/opt/hero-phones-941.avif 941w
+            "
+            sizes="(min-width: 1024px) 560px, 92vw"
+          />
+          <source
+            type="image/webp"
+            srcset="
+              /img/opt/hero-phones-640.webp 640w,
+              /img/opt/hero-phones-941.webp 941w
+            "
+            sizes="(min-width: 1024px) 560px, 92vw"
+          />
+          <img
+            src="/img/deviceframes-hero.png"
+            alt="Dipnot uygulamasının makale akışı ve giriş ekranı"
+            width="941"
+            height="800"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
-      <div class="column is-align-content-center">
-        <figure class="image">
-          <img src="/img/deviceframes-hero.png" alt="Hero DeviceFrames" />
-        </figure>
+      <div
+        class="dn-chip dn-chip--a dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-30"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-feather-pointed"></i
+        ></span>
+        Küratörlü içerikler
+      </div>
+      <div
+        class="dn-chip dn-chip--b dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-55"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-layer-group"></i
+        ></span>
+        Kategoriler
+      </div>
+      <div
+        class="dn-chip dn-chip--c dn-glass dn-glass--refract"
+        data-chip
+        data-parallax="-20"
+      >
+        <span class="dn-chip__icon" aria-hidden="true"
+          ><i class="fa-solid fa-minimize"></i
+        ></span>
+        Sade arayüz
       </div>
     </div>
   </div>
+
+  <a class="dn-scrollcue" href="#about" aria-label="Aşağı kaydır"></a>
 </section>
 
-<!-- MAIN PAGE -->
-<main class="container py-6">
-  <!-- ABOUT APP -->
-  <section id="about" class="section mt-6">
-    <div class="card" style="border-radius: 0 4em 0 4em">
-      <div class="card-content p-0">
-        <div class="columns is-gapless">
-          <div class="column is-5 py-0">
-            <figure class="image">
-              <img
-                src="/img/deviceframes-about.png"
-                alt="About DeviceFrames"
-                style="margin-top: -36px"
-              />
-            </figure>
-          </div>
-
-          <div class="column is-7 is-flex is-justify-content-center">
-            <div
-              class="is-align-content-center px-6 py-5"
-              style="max-width: 600px"
-            >
-              <h2 class="title is-2 mb-4">
-                <span class="has-text-primary">Dipnot</span> nedir?
-              </h2>
-              <p class="mt-3">
-                Dipnot, dalış ve su altı dünyasına ilgi duyan herkes için
-                hazırlanmış bağımsız bir içerik platformudur. Uygulama içinde;
-                dalış kültürü, güvenlik, ekipman, çevre, tarih ve güncel konular
-                üzerine özenle yazılmış makalelere ulaşabilirsiniz.
-              </p>
-              <p class="mt-3">
-                Dipnot, hızlı tüketilen içerikler yerine kalıcı ve referans
-                alınabilir bilgiler sunmayı amaçlar. Yeni başlayanlardan
-                deneyimli dalıcılara kadar herkes için, okunabilir, sade ve
-                güvenilir bir kaynak oluşturur.
-              </p>
+<main id="main" class="dn-main">
+  <!-- ABOUT -->
+  <section id="about" class="dn-section">
+    <div class="dn-container dn-split">
+      <div class="dn-about__visual">
+        <div class="dn-about__halo" aria-hidden="true"></div>
+        <div class="dn-device" data-device>
+          <div class="dn-device__screen">
+            <div class="dn-device__feed">
+              <picture>
+                <source
+                  type="image/avif"
+                  srcset="
+                    /img/opt/about-screen-450.avif 450w,
+                    /img/opt/about-screen-900.avif 900w
+                  "
+                  sizes="(min-width: 1024px) 340px, 80vw"
+                />
+                <source
+                  type="image/webp"
+                  srcset="
+                    /img/opt/about-screen-450.webp 450w,
+                    /img/opt/about-screen-900.webp 900w
+                  "
+                  sizes="(min-width: 1024px) 340px, 80vw"
+                />
+                <img
+                  src="/img/opt/about-screen-900.webp"
+                  alt="Dipnot uygulamasında kategorilere göre makale akışı"
+                  width="900"
+                  height="1310"
+                  loading="lazy"
+                  data-device-screen
+                />
+              </picture>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="dn-prose">
+        <p class="dn-kicker" data-reveal>01</p>
+        <h2 class="dn-h2" data-split>
+          <span class="dn-accent">Dipnot</span> nedir?
+        </h2>
+        <p data-reveal>
+          Dipnot, dalış ve su altı dünyasına ilgi duyan herkes için hazırlanmış
+          bağımsız bir içerik platformudur. Uygulama içinde; dalış kültürü,
+          güvenlik, ekipman, çevre, tarih ve güncel konular üzerine özenle
+          yazılmış makalelere ulaşabilirsiniz.
+        </p>
+        <p data-reveal>
+          Dipnot, hızlı tüketilen içerikler yerine kalıcı ve referans alınabilir
+          bilgiler sunmayı amaçlar. Yeni başlayanlardan deneyimli dalıcılara
+          kadar herkes için, okunabilir, sade ve güvenilir bir kaynak oluşturur.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section id="features" class="section my-6">
-    <div class="has-text-centered mb-6">
-      <h2 class="title is-2 mb-4">Özellikler</h2>
-      <p class="subtitle mb-6">
-        Dalış odaklı, sade ve nitelikli bir içerik deneyimi
-      </p>
-    </div>
+  <section id="features" class="dn-section">
+    <div class="dn-container">
+      <div class="dn-section-head">
+        <p class="dn-kicker" data-reveal>02</p>
+        <h2 class="dn-h2" data-split>Özellikler</h2>
+        <p class="dn-lead" data-reveal>
+          Dalış odaklı, sade ve nitelikli bir içerik deneyimi
+        </p>
+      </div>
 
-    <div class="columns is-multiline">
-      <div class="column is-3">
-        <div class="card has-text-centered p-5">
-          <span class="icon is-large mb-4">
-            <i class="fa-solid fa-feather-pointed fa-3x"></i>
-          </span>
-          <h3 class="title is-5">Küratörlü içerikler</h3>
+      <div class="dn-bento">
+        <article class="dn-tile dn-tile--wide dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-feather-pointed"></i
+          ></span>
+          <i
+            class="fa-solid fa-quote-right dn-tile__mark"
+            aria-hidden="true"
+          ></i>
+          <h3 class="dn-h3">Küratörlü içerikler</h3>
           <p>Deneyimli dalıcılar tarafından hazırlanmış nitelikli yazılar.</p>
-        </div>
-      </div>
+        </article>
 
-      <div class="column is-3">
-        <div class="card has-text-centered p-5">
-          <span class="icon is-large mb-4">
-            <i class="fa-solid fa-layer-group fa-3x"></i>
-          </span>
-          <h3 class="title is-5">Kategoriler</h3>
+        <article class="dn-tile dn-tile--tall dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-layer-group"></i
+          ></span>
+          <h3 class="dn-h3">Kategoriler</h3>
           <p>Farklı başlıklar altında düzenlenmiş içerikler.</p>
-        </div>
-      </div>
+          <div class="dn-marquee">
+            <div class="dn-marquee__track">
+              <ul class="dn-marquee__list" aria-label="Kategoriler">
+                {%- for c in categories %}
+                <li class="dn-marquee__item">
+                  <i class="fa-solid fa-{{ c.icon }}" aria-hidden="true"></i>{{
+                  c.label }}
+                </li>
+                {%- endfor %}
+              </ul>
+              <ul class="dn-marquee__list" aria-hidden="true">
+                {%- for c in categories %}
+                <li class="dn-marquee__item">
+                  <i class="fa-solid fa-{{ c.icon }}"></i>{{ c.label }}
+                </li>
+                {%- endfor %}
+              </ul>
+            </div>
+          </div>
+        </article>
 
-      <div class="column is-3">
-        <div class="card has-text-centered p-5">
-          <span class="icon is-large mb-4">
-            <i class="fa-solid fa-sliders fa-3x"></i>
-          </span>
-          <h3 class="title is-5">Kişisel deneyim</h3>
+        <article class="dn-tile dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-sliders"></i
+          ></span>
+          <h3 class="dn-h3">Kişisel deneyim</h3>
           <p>Profiline göre şekillenen okuma akışı.</p>
-        </div>
-      </div>
+        </article>
 
-      <div class="column is-3">
-        <div class="card has-text-centered p-5">
-          <span class="icon is-large mb-4">
-            <i class="fa-solid fa-minimize fa-3x"></i>
-          </span>
-          <h3 class="title is-5">Sade arayüz</h3>
+        <article class="dn-tile dn-glass" data-tile>
+          <span class="dn-lens" aria-hidden="true"
+            ><i class="fa-solid fa-minimize"></i
+          ></span>
+          <h3 class="dn-h3">Sade arayüz</h3>
           <p>Dikkat dağıtmayan, odaklı tasarım.</p>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS? -->
-  <section id="how-it-works" class="section">
-    <div class="columns is-multiline">
-      <div class="column is-12 has-text-centered">
-        <h2 class="title is-2 mb-6">Nasıl çalışır?</h2>
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="dn-section" data-steps-section>
+    <div class="dn-container">
+      <div class="dn-section-head">
+        <p class="dn-kicker" data-reveal>03</p>
+        <h2 class="dn-h2" data-split>Nasıl çalışır?</h2>
       </div>
 
-      <div class="column">
-        <div
-          class="card p-4 has-background-info has-text-dark has-text-centered"
-        >
-          <div
-            class="card-header is-flex-direction-column"
-            style="box-shadow: none"
-          >
-            <div class="title has-text-dark">
-              <figure class="image is-128x128 m-auto">
-                <img src="/img/apw-Icon2.png" alt="Ücretsiz indir" />
-              </figure>
-
-              <h3 class="is-size-3 mt-4">Ücretsiz indir</h3>
-            </div>
+      <ol class="dn-steps" data-steps>
+        <li class="dn-steps__rail" aria-hidden="true">
+          <span class="dn-steps__fill" data-steps-fill></span>
+        </li>
+        <li class="dn-step" data-step>
+          <div class="dn-step__orb dn-glass">
+            <img
+              src="/img/apw-Icon2.png"
+              alt=""
+              width="116"
+              height="116"
+              loading="lazy"
+            />
           </div>
-
-          <div class="card-content">
+          <span class="dn-step__num" aria-hidden="true">1</span>
+          <div class="dn-step__card dn-glass">
+            <h3 class="dn-h3">Ücretsiz indir</h3>
             <p>App Store veya Google Play üzerinden Dipnot'u ücretsiz indir.</p>
           </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div
-          class="card p-4 has-background-danger has-text-dark has-text-centered"
-        >
-          <div
-            class="card-header is-flex-direction-column"
-            style="box-shadow: none"
-          >
-            <div class="title has-text-dark">
-              <figure class="image is-128x128 m-auto">
-                <img src="/img/apw-Icon1.png" alt="Profil oluştur" />
-              </figure>
-
-              <h3 class="is-size-3 mt-4">Profil oluştur</h3>
-            </div>
+        </li>
+        <li class="dn-step" data-step>
+          <div class="dn-step__orb dn-glass">
+            <img
+              src="/img/apw-Icon1.png"
+              alt=""
+              width="116"
+              height="116"
+              loading="lazy"
+            />
           </div>
-
-          <div class="card-content">
+          <span class="dn-step__num" aria-hidden="true">2</span>
+          <div class="dn-step__card dn-glass">
+            <h3 class="dn-h3">Profil oluştur</h3>
             <p>İlgi alanlarını seç, okuma deneyimini kişiselleştir.</p>
           </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div
-          class="card p-4 has-background-warning has-text-dark has-text-centered"
-        >
-          <div
-            class="card-header is-flex-direction-column"
-            style="box-shadow: none"
-          >
-            <div class="title has-text-dark">
-              <figure class="image is-128x128 m-auto">
-                <img src="/img/apw-Icon3.png" alt="İçerikleri keşfet" />
-              </figure>
-
-              <h3 class="is-size-3 mt-4">İçerikleri keşfet</h3>
-            </div>
+        </li>
+        <li class="dn-step" data-step>
+          <div class="dn-step__orb dn-glass">
+            <img
+              src="/img/apw-Icon3.png"
+              alt=""
+              width="116"
+              height="116"
+              loading="lazy"
+            />
           </div>
-
-          <div class="card-content">
+          <span class="dn-step__num" aria-hidden="true">3</span>
+          <div class="dn-step__card dn-glass">
+            <h3 class="dn-h3">İçerikleri keşfet</h3>
             <p>
               Dalış ve su altı dünyasına dair farklı başlıklar altında
               hazırlanmış makalelere kolayca ulaş.
             </p>
           </div>
-        </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="dn-section">
+    <div class="dn-container dn-faq">
+      <div class="dn-faq__intro">
+        <p class="dn-kicker" data-reveal>04</p>
+        <h2 class="dn-h2" data-split>Sıkça sorulan sorular</h2>
+      </div>
+
+      <div class="dn-accordion">
+        <details class="dn-qa dn-glass" open data-reveal>
+          <summary>
+            Dipnot'ta ne tür içerikler bulabilirim?
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Dipnot'ta dalış güvenliği, ekipman, çevre, tarih ve dalış kültürü
+              gibi farklı başlıklar altında hazırlanmış, derinlikli makaleler
+              bulabilirsin. İçerikler hızlı tüketim için değil, tekrar tekrar
+              başvurulabilecek şekilde hazırlanır.
+            </p>
+          </div>
+        </details>
+
+        <details class="dn-qa dn-glass" data-reveal>
+          <summary>
+            Dipnot'u diğer dalış bloglarından ayıran nedir?
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Dipnot, dağınık içerikler yerine tek bir platformda, küratörlü ve
+              düzenli bir okuma deneyimi sunar. Reklam odaklı değil, bilgi
+              odaklıdır.
+            </p>
+          </div>
+        </details>
+
+        <details class="dn-qa dn-glass" data-reveal>
+          <summary>
+            Uygulama tamamen ücretsiz mi?
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Dipnot'un temel içeriklerine ücretsiz olarak erişebilirsin.
+              İlerleyen dönemde, özel dosyalar ve derinlemesine içerikler için
+              ücretli üyelik seçenekleri sunulacaktır.
+            </p>
+          </div>
+        </details>
+
+        <details class="dn-qa dn-glass" data-reveal>
+          <summary>
+            Yeni içerikler ne sıklıkla yayınlanıyor?
+            <span class="dn-qa__icon" aria-hidden="true"
+              ><i class="fa-solid fa-plus"></i
+            ></span>
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Yeni makaleler düzenli olarak eklenir. Profil oluşturarak ilgi
+              alanlarını seçebilir ve yayınlanan içerikleri kolayca takip
+              edebilirsin.
+            </p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
 
-  <hr class="my-6" />
-
-  <!-- F.A.Q. -->
-  <section id="faq" class="section">
-    <div class="columns">
-      <div class="column is-5 mt-5">
-        <figure class="image">
-          <img src="/img/deviceframes-sss.png" alt="FAQ DeviceFrames" />
-        </figure>
+  <!-- CONTACT -->
+  <section id="contact" class="dn-section">
+    <div class="dn-container dn-contact">
+      <div>
+        <p class="dn-kicker" data-reveal>05</p>
+        <h2 class="dn-h2" data-split>İletişim</h2>
+        <p class="dn-lead" data-reveal>
+          Bizimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.
+        </p>
+        <div class="dn-contact__mail" data-reveal>
+          <a href="mailto:info@dipnot.app"
+            ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+            >info@dipnot.app</a
+          >
+          <a href="mailto:help@dipnot.app"
+            ><i class="fa-solid fa-life-ring" aria-hidden="true"></i
+            >help@dipnot.app</a
+          >
+        </div>
       </div>
 
-      <div class="column is-7">
-        <h2 class="title is-2 mb-6">Sıkça sorulan sorular</h2>
-
-        <div class="card">
-          <header class="card-header is-clickable">
-            <p class="card-header-title">
-              Dipnot'ta ne tür içerikler bulabilirim?
-            </p>
-            <button
-              type="button"
-              class="card-header-icon"
-              aria-label="SSS cevabını aç veya kapat"
-            >
-              <span class="icon">
-                <i class="fas fa-angle-down faq-icon" aria-hidden="true"></i>
-              </span>
-            </button>
-          </header>
-          <div class="card-content faq-content">
-            Dipnot'ta dalış güvenliği, ekipman, çevre, tarih ve dalış kültürü
-            gibi farklı başlıklar altında hazırlanmış, derinlikli makaleler
-            bulabilirsin. İçerikler hızlı tüketim için değil, tekrar tekrar
-            başvurulabilecek şekilde hazırlanır.
+      <div class="dn-contact__card dn-glass dn-glass--strong" data-reveal>
+        <form id="contact-form">
+          <!-- Honeypot (spam trap — bots fill this, humans don't see it) -->
+          <div class="dn-hidden" aria-hidden="true">
+            <label for="contact-website">Website</label>
+            <input
+              id="contact-website"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
           </div>
-        </div>
 
-        <div class="card">
-          <header class="card-header is-clickable">
-            <p class="card-header-title">
-              Dipnot'u diğer dalış bloglarından ayıran nedir?
-            </p>
-            <button
-              type="button"
-              class="card-header-icon"
-              aria-label="SSS cevabını aç veya kapat"
-            >
-              <span class="icon">
-                <i class="fas fa-angle-down faq-icon" aria-hidden="true"></i>
-              </span>
-            </button>
-          </header>
-          <div class="card-content faq-content is-hidden">
-            Dipnot, dağınık içerikler yerine tek bir platformda, küratörlü ve
-            düzenli bir okuma deneyimi sunar. Reklam odaklı değil, bilgi
-            odaklıdır.
-          </div>
-        </div>
+          <div class="dn-form-row">
+            <div class="dn-field">
+              <label class="dn-label" for="contact-name">Ad soyad</label>
+              <div class="dn-control">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <input
+                  id="contact-name"
+                  name="name"
+                  class="dn-input"
+                  type="text"
+                  placeholder="Adınız ve soyadınız"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+            </div>
 
-        <div class="card">
-          <header class="card-header is-clickable">
-            <p class="card-header-title">Uygulama tamamen ücretsiz mi?</p>
-            <button
-              type="button"
-              class="card-header-icon"
-              aria-label="SSS cevabını aç veya kapat"
-            >
-              <span class="icon">
-                <i class="fas fa-angle-down faq-icon" aria-hidden="true"></i>
-              </span>
-            </button>
-          </header>
-          <div class="card-content faq-content is-hidden">
-            Dipnot'un temel içeriklerine ücretsiz olarak erişebilirsin.
-            İlerleyen dönemde, özel dosyalar ve derinlemesine içerikler için
-            ücretli üyelik seçenekleri sunulacaktır.
+            <div class="dn-field">
+              <label class="dn-label" for="contact-email">E-posta</label>
+              <div class="dn-control">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <input
+                  id="contact-email"
+                  name="email"
+                  class="dn-input"
+                  type="email"
+                  placeholder="eposta@ornek.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <header class="card-header is-clickable">
-            <p class="card-header-title">
-              Yeni içerikler ne sıklıkla yayınlanıyor?
-            </p>
-            <button
-              type="button"
-              class="card-header-icon"
-              aria-label="SSS cevabını aç veya kapat"
-            >
-              <span class="icon">
-                <i class="fas fa-angle-down faq-icon" aria-hidden="true"></i>
-              </span>
-            </button>
-          </header>
-          <div class="card-content faq-content is-hidden">
-            Yeni makaleler düzenli olarak eklenir. Profil oluşturarak ilgi
-            alanlarını seçebilir ve yayınlanan içerikleri kolayca takip
-            edebilirsin.
+          <div class="dn-field">
+            <label class="dn-label" for="contact-subject">Konu</label>
+            <select id="contact-subject" name="subject" class="dn-input">
+              <option value="general">Genel bilgi</option>
+              <option value="support">Teknik destek</option>
+              <option value="partnership">İş birliği</option>
+              <option value="feedback">Geri bildirim</option>
+            </select>
           </div>
-        </div>
+
+          <div class="dn-field">
+            <label class="dn-label" for="contact-message">Mesaj</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              class="dn-input"
+              placeholder="Mesajınızı buraya yazın..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="dn-field">
+            <label class="dn-check">
+              <input type="checkbox" required />
+              <span>
+                <a
+                  href="/kullanim-kosullari.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Kullanım koşulları</a
+                >
+                ve
+                <a
+                  href="/gizlilik-politikasi.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Gizlilik politikası</a
+                >
+                bilgilendirme metinlerini okudum ve kabul ediyorum.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="dn-btn dn-btn--primary dn-btn--block">
+            Gönder
+          </button>
+
+          <!-- Feedback (success/error) -->
+          <p
+            id="contact-feedback"
+            class="help mt-3"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- DOWNLOAD -->
-  <div class="hero has-background-hero my-6" style="border-radius: 1em">
-    <div class="hero-body has-text-centered">
-      <p class="title is-size-1 has-text-white mb-4">
-        Kullanmaya <span class="has-text-primary">ücretsiz</span> başla!
-      </p>
-      <p class="subtitle has-text-white">
-        Teknikten tarihe, güvenlikten çevreye dalış dünyasını derinlemesine ele
-        alan içerikler...
-      </p>
-      <div class="buttons are-large mt-6 is-flex is-justify-content-center">
-        <a
-          href="https://play.google.com/store/apps/details?id=com.vacstudio.dipnot"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button is-light is-outlined is-rounded"
-        >
-          <img src="/img/svg/google-play.svg" alt="Google Play" />
-          <span class="ml-2">Google Play</span>
-        </a>
-        <a
-          href="https://apps.apple.com/app/id6757102330"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button is-light is-rounded"
-        >
-          <img src="/img/svg/app-store.svg" alt="App Store" />
-          <span class="ml-2">App Store</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-6">
-          <div class="card">
-            <div class="pt-6">
-              <h2 class="title is-4 has-text-centered">İletişim</h2>
-              <p class="has-text-centered mb-6">
-                Bizimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.
-              </p>
-            </div>
-
-            <div class="card-content">
-              <!-- Contact Form -->
-              <form id="contact-form">
-                <!-- Honeypot (spam trap — bots fill this, humans don't see it) -->
-                <div class="is-hidden" aria-hidden="true">
-                  <label for="contact-website">Website</label>
-                  <input
-                    id="contact-website"
-                    name="website"
-                    type="text"
-                    tabindex="-1"
-                    autocomplete="off"
-                  />
-                </div>
-
-                <!-- Name -->
-                <div class="field">
-                  <label class="label" for="contact-name">Ad soyad</label>
-                  <div class="control has-icons-left">
-                    <input
-                      id="contact-name"
-                      name="name"
-                      class="input"
-                      type="text"
-                      placeholder="Adınız ve soyadınız"
-                      required
-                    />
-                    <span class="icon is-small is-left">
-                      <i class="fa-solid fa-user"></i>
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Email -->
-                <div class="field">
-                  <label class="label" for="contact-email">E-posta</label>
-                  <div class="control has-icons-left">
-                    <input
-                      id="contact-email"
-                      name="email"
-                      class="input"
-                      type="email"
-                      placeholder="eposta@ornek.com"
-                      required
-                    />
-                    <span class="icon is-small is-left">
-                      <i class="fa-solid fa-envelope"></i>
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Subject -->
-                <div class="field">
-                  <label class="label" for="contact-subject">Konu</label>
-                  <div class="control">
-                    <div class="select is-fullwidth">
-                      <select id="contact-subject" name="subject">
-                        <option value="general">Genel bilgi</option>
-                        <option value="support">Teknik destek</option>
-                        <option value="partnership">İş birliği</option>
-                        <option value="feedback">Geri bildirim</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Message -->
-                <div class="field">
-                  <label class="label" for="contact-message">Mesaj</label>
-                  <div class="control">
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      class="textarea"
-                      placeholder="Mesajınızı buraya yazın..."
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-
-                <!-- Terms -->
-                <div class="field">
-                  <div class="control">
-                    <label class="checkbox">
-                      <input type="checkbox" required />
-                      <span>
-                        <a
-                          href="/kullanim-kosullari.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          >Kullanım koşulları</a
-                        >
-                        ve
-                        <a
-                          href="/gizlilik-politikasi.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          >Gizlilik politikası</a
-                        >
-                        bilgilendirme metinlerini okudum ve kabul ediyorum.
-                      </span>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Submit -->
-                <div class="field">
-                  <div class="control has-text-centered">
-                    <button
-                      type="submit"
-                      class="button is-primary is-fullwidth"
-                    >
-                      Gönder
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Feedback (success/error) -->
-                <p
-                  id="contact-feedback"
-                  class="help mt-3"
-                  role="status"
-                  aria-live="polite"
-                ></p>
-              </form>
-              <!-- /Contact Form -->
-            </div>
-          </div>
-        </div>
+  <!-- DOWNLOAD — the deep zone starts here -->
+  <section
+    id="download"
+    class="dn-cta dn-deep"
+    aria-labelledby="download-title"
+  >
+    <div class="dn-container">
+      <div class="dn-cta__panel dn-glass dn-glass--refract" data-cta>
+        <div class="dn-cta__rays" aria-hidden="true"></div>
+        <img
+          class="dn-cta__logo"
+          src="/img/logos/logo.svg"
+          alt=""
+          width="72"
+          height="72"
+          data-reveal
+        />
+        <h2 id="download-title" class="dn-display" data-split>
+          Kullanmaya <span class="dn-accent">ücretsiz</span> başla!
+        </h2>
+        <p class="dn-lead" data-reveal>
+          Teknikten tarihe, güvenlikten çevreye dalış dünyasını derinlemesine
+          ele alan içerikler...
+        </p>
+        {% set storeReveal = true %} {% include "partials/store-buttons.njk" %}
+        {%- set storeReveal = false %}
       </div>
     </div>
   </section>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang or 'tr' }}" class="has-navbar-fixed-top">
+<html lang="{{ lang or 'tr' }}" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,26 @@
   {%- endif %}
 
   <title>{{ title }}</title>
+  <!-- Theme + capability flags before first paint (no theme flash) -->
+  <script>
+    (function () {
+      var d = document.documentElement, t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      d.setAttribute("data-theme", t);
+      var b = navigator.userAgentData && navigator.userAgentData.brands;
+      if (b && b.some(function (x) { return x.brand === "Chromium"; })) d.classList.add("dn-refract");
+      {%- if pageMotion %}
+      if (matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+        d.classList.add("dn-motion");
+        // Safety net: if GSAP never arrives, show the content anyway.
+        setTimeout(function () { if (!window.__dnMotionReady) d.classList.remove("dn-motion"); }, 2500);
+      }
+      {%- endif %}
+    })();
+  </script>
   <!-- Inter via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +77,27 @@
   <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+  <a class="dn-skip" href="#main">İçeriğe geç</a>
+
+  <!-- Ambient ocean background -->
+  <div class="dn-ocean" aria-hidden="true">
+    <div class="dn-ocean__glow dn-ocean__glow--a"></div>
+    <div class="dn-ocean__glow dn-ocean__glow--b"></div>
+    <div class="dn-ocean__glow dn-ocean__glow--c"></div>
+    <div class="dn-ocean__rays"></div>
+    <div class="dn-ocean__motes"></div>
+    <div class="dn-ocean__grain"></div>
+  </div>
+
+  <!-- Liquid-glass refraction filter (Chromium backdrop-filter: url()) -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <filter id="dn-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="2" result="soft"/>
+      <feDisplacementMap in="SourceGraphic" in2="soft" scale="38" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   {%- if not hideNav %}
   {% include "partials/nav.njk" %}
   {%- endif %}
@@ -70,6 +111,12 @@
   <script src="/js/newsletter.js?v={{ site.jsVersion }}"></script>
   {%- if hasContactForm %}
   <script src="/js/contact.js?v={{ site.jsVersion }}"></script>
+  {%- endif %}
+  {%- if pageMotion %}
+  <script src="{{ site.cdn.gsap.href }}" integrity="{{ site.cdn.gsap.integrity }}" crossorigin="anonymous" defer></script>
+  <script src="{{ site.cdn.scrollTrigger.href }}" integrity="{{ site.cdn.scrollTrigger.integrity }}" crossorigin="anonymous" defer></script>
+  <script src="{{ site.cdn.splitText.href }}" integrity="{{ site.cdn.splitText.integrity }}" crossorigin="anonymous" defer></script>
+  <script src="/js/motion.js?v={{ site.jsVersion }}" defer></script>
   {%- endif %}
   {%- if pageModule %}
   <script type="module" src="/js/{{ pageModule }}?v={{ site.jsVersion }}"></script>

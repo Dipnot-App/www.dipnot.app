@@ -1,0 +1,437 @@
+// Home-page motion — GSAP + ScrollTrigger + SplitText (cdnjs, SRI-pinned
+// in _data/site.json). IIFE for the same reason as contact.js.
+//
+// Contract with the CSS: base.njk adds html.dn-motion before first paint
+// when motion is allowed, which hides [data-reveal] and the hero's
+// [data-hero] parts. Everything here animates those to opacity 1. If this
+// file or GSAP never loads, the head script's timeout removes the class
+// and the page simply shows, static.
+(() => {
+  const root = document.documentElement;
+  const { gsap, ScrollTrigger, SplitText } = window;
+
+  if (!gsap || !ScrollTrigger || !SplitText) {
+    root.classList.remove("dn-motion");
+    return;
+  }
+  window.__dnMotionReady = true;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  const EASE = "power3.out";
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => gsap.utils.toArray(sel, ctx);
+
+  // Accordion height animation — progressive enhancement over native
+  // <details>, independent of the reduced-motion split below because a
+  // collapse is a state change, not decoration. Duration drops to 0 when
+  // the user asks for less motion.
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  $$(".dn-qa").forEach((details) => {
+    const summary = $("summary", details);
+    const body = $(".dn-qa__body", details);
+    summary.addEventListener("click", (e) => {
+      e.preventDefault();
+      const d = reduced.matches ? 0 : 1;
+      if (details.open) {
+        gsap.to(body, {
+          height: 0,
+          duration: 0.35 * d,
+          ease: "power2.inOut",
+          onComplete: () => {
+            details.open = false;
+            gsap.set(body, { clearProps: "height" });
+          },
+        });
+      } else {
+        details.open = true;
+        gsap.fromTo(
+          body,
+          { height: 0 },
+          {
+            height: "auto",
+            duration: 0.5 * d,
+            ease: EASE,
+            clearProps: "height",
+          },
+        );
+      }
+    });
+  });
+
+  const mm = gsap.matchMedia();
+
+  // The user switched reduced motion on mid-visit: drop the hidden states.
+  mm.add("(prefers-reduced-motion: reduce)", () => {
+    root.classList.remove("dn-motion");
+  });
+
+  mm.add(
+    {
+      full: "(prefers-reduced-motion: no-preference) and (min-width: 1024px)",
+      lite: "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
+    },
+    (ctx) => {
+      const { full } = ctx.conditions;
+      root.classList.add("dn-motion");
+
+      /* ---------------------------------------------------------------
+         Depth — the ocean darkens as the page descends
+         --------------------------------------------------------------- */
+      const ocean = $(".dn-ocean");
+      gsap.fromTo(
+        ocean,
+        { "--depth": 0 },
+        {
+          "--depth": 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.8,
+          },
+        },
+      );
+
+      /* ---------------------------------------------------------------
+         Hero intro
+         --------------------------------------------------------------- */
+      const hero = $(".dn-hero");
+      const title = $("[data-hero-title]", hero);
+      const heroParts = $$(
+        "[data-hero]:not([data-hero-title]):not([data-hero-visual])",
+        hero,
+      );
+      const visual = $("[data-hero-visual]", hero);
+      const chips = $$("[data-chip]", hero);
+
+      gsap.set(title, { opacity: 1 });
+      const titleSplit = SplitText.create(title, {
+        type: "lines",
+        mask: "lines",
+        linesClass: "dnline",
+      });
+
+      const intro = gsap.timeline({ defaults: { ease: EASE }, delay: 0.1 });
+      intro
+        .fromTo(
+          heroParts[0],
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+        )
+        .fromTo(
+          titleSplit.lines,
+          { yPercent: 110 },
+          { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.1 },
+          0.15,
+        )
+        .fromTo(
+          heroParts.slice(1),
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 },
+          0.55,
+        )
+        .fromTo(
+          visual,
+          { y: 80, scale: 0.92, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 1.6, ease: "expo.out" },
+          0.3,
+        )
+        .fromTo(
+          chips,
+          { scale: 0.6, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.9,
+            ease: "back.out(1.8)",
+            stagger: 0.14,
+          },
+          0.9,
+        );
+
+      // Chips bob like they're floating (yPercent, so it composes with
+      // the scroll parallax on y)
+      chips.forEach((chip, i) => {
+        gsap.to(chip, {
+          yPercent: -18,
+          rotation: i % 2 ? 1.5 : -1.5,
+          duration: 2.6 + i * 0.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: 1.8 + i * 0.2,
+        });
+      });
+
+      // Scroll-out parallax: phones and chips drift at different speeds,
+      // the copy rises and fades as the hero leaves.
+      $$("[data-parallax]", hero).forEach((el) => {
+        gsap.to(el, {
+          y: () => parseFloat(el.dataset.parallax) * (full ? 4 : 2),
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+      if (full) {
+        gsap.to($(".dn-hero__copy", hero), {
+          y: 90,
+          opacity: 0.15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      /* ---------------------------------------------------------------
+         Generic reveals + split headings
+         --------------------------------------------------------------- */
+      const seen = new WeakSet();
+      const reveal = (batch) => {
+        const fresh = batch.filter((el) => !seen.has(el));
+        fresh.forEach((el) => seen.add(el));
+        if (!fresh.length) return;
+        gsap.fromTo(
+          fresh,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: EASE,
+            stagger: 0.09,
+            overwrite: true,
+          },
+        );
+      };
+      ScrollTrigger.batch("main [data-reveal]", {
+        start: "top 90%",
+        onEnter: reveal,
+        onEnterBack: reveal,
+        onLeave: reveal,
+      });
+
+      $$("main [data-split]").forEach((heading) => {
+        SplitText.create(heading, {
+          type: "lines",
+          mask: "lines",
+          linesClass: "dnline",
+          autoSplit: true,
+          onSplit: (self) =>
+            gsap.fromTo(
+              self.lines,
+              { yPercent: 110 },
+              {
+                yPercent: 0,
+                duration: 1.1,
+                ease: "expo.out",
+                stagger: 0.1,
+                scrollTrigger: { trigger: heading, start: "top 88%" },
+              },
+            ),
+        });
+      });
+
+      /* ---------------------------------------------------------------
+         About — the phone rises out of the depth; its feed scrolls
+         --------------------------------------------------------------- */
+      const device = $("[data-device]");
+      if (device) {
+        gsap.fromTo(
+          device,
+          {
+            y: 140,
+            rotateX: 22,
+            scale: 0.88,
+            opacity: 0,
+            transformPerspective: 1400,
+          },
+          {
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#about",
+              start: "top 92%",
+              end: "center 62%",
+              scrub: 1,
+            },
+          },
+        );
+        gsap.to($("[data-device-screen]"), {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#about",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      }
+
+      /* ---------------------------------------------------------------
+         Features — tiles tilt toward the pointer (desktop)
+         --------------------------------------------------------------- */
+      if (full) {
+        $$("[data-tile]").forEach((tile) => {
+          gsap.set(tile, { transformPerspective: 1000 });
+          const rx = gsap.quickTo(tile, "rotationX", {
+            duration: 0.6,
+            ease: EASE,
+          });
+          const ry = gsap.quickTo(tile, "rotationY", {
+            duration: 0.6,
+            ease: EASE,
+          });
+          const onMove = (e) => {
+            const r = tile.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            rx(py * -6);
+            ry(px * 6);
+          };
+          const onLeave = () => {
+            rx(0);
+            ry(0);
+          };
+          tile.addEventListener("pointermove", onMove);
+          tile.addEventListener("pointerleave", onLeave);
+          ctx.add(() => () => {
+            tile.removeEventListener("pointermove", onMove);
+            tile.removeEventListener("pointerleave", onLeave);
+          });
+        });
+      }
+
+      /* ---------------------------------------------------------------
+         How it works — pinned on desktop, the path draws through the
+         three steps; on mobile the vertical rail fills as you pass
+         --------------------------------------------------------------- */
+      const stepsSection = $("[data-steps-section]");
+      const fill = $("[data-steps-fill]");
+      const steps = $$("[data-step]");
+      if (stepsSection && fill && steps.length) {
+        const tl = gsap.timeline({
+          defaults: { ease: "power2.out" },
+          scrollTrigger: full
+            ? {
+                trigger: stepsSection,
+                start: "center center",
+                end: "+=130%",
+                pin: true,
+                scrub: 1,
+              }
+            : {
+                trigger: "[data-steps]",
+                start: "top 75%",
+                end: "bottom 55%",
+                scrub: 1,
+              },
+        });
+        tl.fromTo(
+          fill,
+          full ? { scaleX: 0 } : { scaleY: 0 },
+          {
+            ...(full ? { scaleX: 1 } : { scaleY: 1 }),
+            ease: "none",
+            duration: steps.length,
+          },
+          0,
+        );
+        steps.forEach((step, i) => {
+          const at = i === 0 ? 0 : i - 0.15;
+          tl.fromTo(
+            step,
+            { opacity: 0.18, y: 40 },
+            { opacity: 1, y: 0, duration: 0.7 },
+            at,
+          ).fromTo(
+            $(".dn-step__orb", step),
+            { scale: 0.5, rotate: -20 },
+            { scale: 1, rotate: 0, duration: 0.7, ease: "back.out(2)" },
+            at,
+          );
+        });
+      }
+
+      /* ---------------------------------------------------------------
+         Download CTA — the panel surfaces from the deep
+         --------------------------------------------------------------- */
+      const cta = $("[data-cta]");
+      if (cta) {
+        gsap.fromTo(
+          cta,
+          { y: 80, scale: 0.94 },
+          {
+            y: 0,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: cta,
+              start: "top bottom",
+              end: "top 45%",
+              scrub: 1,
+            },
+          },
+        );
+        gsap.to($(".dn-cta__rays", cta), {
+          rotation: 6,
+          transformOrigin: "50% 0%",
+          duration: 9,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+      }
+
+      /* ---------------------------------------------------------------
+         Magnetic buttons (desktop)
+         --------------------------------------------------------------- */
+      if (full) {
+        $$(".dn-store__btn, main .dn-btn--primary").forEach((btn) => {
+          const mx = gsap.quickTo(btn, "x", { duration: 0.5, ease: EASE });
+          const my = gsap.quickTo(btn, "y", { duration: 0.5, ease: EASE });
+          const onMove = (e) => {
+            const r = btn.getBoundingClientRect();
+            mx((e.clientX - r.left - r.width / 2) * 0.22);
+            my((e.clientY - r.top - r.height / 2) * 0.3);
+          };
+          const onLeave = () => {
+            gsap.to(btn, {
+              x: 0,
+              y: 0,
+              duration: 0.9,
+              ease: "elastic.out(1, 0.4)",
+            });
+          };
+          btn.addEventListener("pointermove", onMove);
+          btn.addEventListener("pointerleave", onLeave);
+          ctx.add(() => () => {
+            btn.removeEventListener("pointermove", onMove);
+            btn.removeEventListener("pointerleave", onLeave);
+          });
+        });
+      }
+
+      return () => titleSplit.revert();
+    },
+  );
+
+  // Fonts and lazy images change layout; re-measure triggers once settled.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+  window.addEventListener("load", () => ScrollTrigger.refresh());
+})();
