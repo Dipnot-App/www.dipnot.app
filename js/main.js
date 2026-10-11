@@ -67,6 +67,69 @@
     }).observe(sentinel);
   }
 
+  // In-page anchors: land the section's heading just under the floating
+  // nav. Native anchoring aligns the section box, and its top padding
+  // left the heading 170–260px down the screen.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const GAP = 32;
+  const targetOf = (section) =>
+    section.querySelector(".dn-kicker, .dn-cta__panel, h2") || section;
+
+  // Document position from layout, ignoring transforms: reveal
+  // animations hold headings 36px low until they play, and measuring
+  // that in-between state overshot the scroll by exactly that much.
+  const layoutTop = (el) => {
+    let y = 0;
+    for (let node = el; node; node = node.offsetParent) y += node.offsetTop;
+    return y;
+  };
+
+  const scrollToSection = (id, smooth) => {
+    const section = id && document.getElementById(id);
+    if (!section || !section.matches(".dn-section, .dn-cta")) return false;
+    const bar = document.querySelector(".dn-nav__bar");
+    const navBottom = bar ? bar.getBoundingClientRect().bottom : 0;
+    const top = layoutTop(targetOf(section)) - navBottom - GAP;
+    window.scrollTo({
+      top,
+      behavior: smooth && !reduceMotion.matches ? "smooth" : "instant",
+    });
+    return true;
+  };
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href*="#"]');
+    if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const url = new URL(link.href);
+    if (url.pathname !== window.location.pathname) return;
+    const id = decodeURIComponent(url.hash.slice(1));
+    if (scrollToSection(id, true)) {
+      e.preventDefault();
+      history.pushState(null, "", `#${id}`);
+    }
+  });
+
+  // Arriving from another page with a hash (e.g. /#faq from a legal page):
+  // correct the browser's jump once layout has settled. ScrollTrigger
+  // re-measures after load (pin spacing shifts everything below it), so
+  // re-run after each refresh in the first few seconds, debounced.
+  if (window.location.hash) {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    let timer = 0;
+    const settle = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => scrollToSection(id, false), 150);
+    };
+    window.addEventListener("load", () => {
+      settle();
+      const st = window.ScrollTrigger;
+      if (st) {
+        st.addEventListener("refresh", settle);
+        setTimeout(() => st.removeEventListener("refresh", settle), 3000);
+      }
+    });
+  }
+
   // Specular sheen: each glass surface's light trails the pointer with
   // easing rather than snapping to it (fine pointers only — on touch it
   // stays at its resting position).

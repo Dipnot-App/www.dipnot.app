@@ -797,6 +797,11 @@ h6,
   position: relative;
   padding-block: var(--dn-section-y);
 }
+/* No-JS fallback for anchor links: cancel most of the top padding so the
+   heading, not the padded box, lands under the nav (main.js refines it) */
+.dn-section {
+  scroll-margin-top: calc(1rem - var(--dn-section-y));
+}
 
 .dn-kicker {
   display: inline-flex;
@@ -1496,7 +1501,8 @@ h6,
 }
 .dn-faq__intro {
   position: sticky;
-  top: calc(var(--dn-nav-h) + 3rem);
+  /* Sticks at the same spot anchor links land headings: 32px under the nav */
+  top: calc(var(--dn-nav-h) + 2.3rem);
 }
 
 .dn-accordion {
