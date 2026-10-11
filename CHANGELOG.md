@@ -6,6 +6,16 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-12
+
+- **Dev dependencies, audit** — Patched the dev-only advisories that
+  have a fix, via scoped `overrides`: `tmp` ^0.2.6 and `uuid` ^11.1.1
+  inside `@lhci/cli`, and `basic-ftp` ^6.2.3 (pulled in through
+  Lighthouse CI's proxy agent). The three left (`braces`, `extract-zip`,
+  `sprintf-js`) have no patched release; they're build/CI-only and
+  unreachable with our inputs, and are recorded as accepted. No
+  site-facing change; pa11y and Lighthouse pass unchanged.
+
 ## 2026-10-11
 
 - **2.0.1 follow-ups** — Mobile menu links were not tappable on the
