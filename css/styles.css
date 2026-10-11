@@ -2282,6 +2282,229 @@ main.container .button.is-primary:hover {
     0 4px 12px -4px color-mix(in oklch, var(--dn-teal) 45%, transparent);
 }
 
+/* --------------------------------------------------------------------------
+   17b. Legacy page markup without Bulma
+   The legal, contact and account pages keep their original Bulma class
+   names (and the account-deletion scripts set some of them), but Bulma
+   itself no longer loads there — only brand-book opts in (`bulma: true`)
+   until its rewrite. These rules cover exactly the classes those pages
+   and scripts use.
+   -------------------------------------------------------------------------- */
+
+/* Page header */
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+.hero-body {
+  flex-grow: 1;
+}
+.columns,
+.column {
+  display: block;
+}
+.title {
+  margin: 0;
+  line-height: var(--dn-lh-heading);
+}
+.has-background-hero .has-text-white {
+  color: var(--dn-fg) !important;
+}
+
+/* Page body: <main class="container py-6"> > <section class="section"> */
+main.container.py-6 {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+main.container > .section {
+  padding-bottom: 0;
+}
+
+/* Reading typography (.content) */
+.content {
+  font-size: 1rem;
+  overflow-wrap: break-word;
+}
+.content > :first-child {
+  margin-top: 0;
+}
+.content h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.6rem, 1.2vw + 1.2rem, 2rem);
+  font-weight: 700;
+  line-height: var(--dn-lh-heading);
+}
+.content h2 {
+  margin: 2.25rem 0 0.85rem;
+  font-size: clamp(1.3rem, 0.8vw + 1.05rem, 1.6rem);
+  font-weight: 700;
+  line-height: var(--dn-lh-heading);
+}
+.content h3 {
+  margin: 1.75rem 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.content h4 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.content p,
+.content ul,
+.content ol,
+.content table,
+.content address {
+  margin: 0 0 1rem;
+}
+.content ul,
+.content ol {
+  padding-left: 1.5em;
+}
+.content ul {
+  list-style: disc outside;
+}
+.content ol {
+  list-style: decimal outside;
+}
+.content li + li {
+  margin-top: 0.35em;
+}
+.content li > ul,
+.content li > ol {
+  margin-top: 0.35em;
+  margin-bottom: 0;
+}
+.content address {
+  font-style: normal;
+}
+
+/* Tables (privacy policies) — scroll sideways on phones instead of
+   squeezing four columns into 300px */
+.content .table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--dn-fg);
+  font-size: var(--dn-fs-small);
+}
+.content .table th,
+.content .table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--dn-border);
+  text-align: left;
+  vertical-align: top;
+}
+.content .table th {
+  font-weight: 600;
+}
+.content .table thead th {
+  border-bottom-width: 2px;
+}
+.content .table tbody tr:last-child td {
+  border-bottom: 0;
+}
+@media (max-width: 767px) {
+  .content .table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* Icons (Font Awesome inside Bulma's .icon box) and helpers */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+}
+.icon.is-large {
+  width: 3rem;
+  height: 3rem;
+}
+.is-hidden {
+  display: none !important;
+}
+.has-text-centered {
+  text-align: center !important;
+}
+.mr-2 {
+  margin-right: 0.5rem !important;
+}
+.mt-3 {
+  margin-top: 0.75rem !important;
+}
+.py-5 {
+  padding-block: 1.5rem !important;
+}
+
+/* Notifications: box + the title the confirm script injects */
+.notification {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.notification .title.is-5 {
+  margin-bottom: 0.35rem;
+  color: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.notification p:last-child {
+  margin-bottom: 0;
+}
+
+/* Account-deletion form (field/label/control/input/textarea/button) */
+.field {
+  margin-bottom: 1rem;
+}
+.label {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+.control {
+  position: relative;
+}
+.control.has-icons-left .icon.is-left {
+  position: absolute;
+  top: 0;
+  left: 0.6rem;
+  pointer-events: none;
+}
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font: 400 var(--dn-fs-body) / 1.4 var(--dn-font);
+  appearance: none;
+}
+.textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--dn-dur-base) var(--dn-ease);
+}
+.button.is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+.button.is-loading::after {
+  content: "";
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid oklch(1 0 0 / 0.9);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: dn-spin 0.7s linear infinite;
+}
+
 /* 404 */
 /* Phone left, text right on desktop; on small screens the text stays
    first so the way home is above the fold */

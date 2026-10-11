@@ -75,8 +75,8 @@
   <!-- Inter, self-hosted (see @font-face in styles.css) -->
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  {%- if not noBulma %}
-  <!-- Bulma CDN (legacy: legal pages' content/forms only) -->
+  {%- if bulma %}
+  <!-- Bulma CDN — legacy, brand-book only until its rewrite (#53) -->
   <link rel="stylesheet" href="{{ site.cdn.bulma.href }}" integrity="{{ site.cdn.bulma.integrity }}" crossorigin="anonymous">
   {%- endif %}
   <!-- Font Awesome CDN — loaded without blocking first paint (icons are
