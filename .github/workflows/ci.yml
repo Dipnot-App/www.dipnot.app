@@ -4,6 +4,8 @@ on:
   push:
     branches: [main, dev]
   pull_request:
+    # `labeled` so adding the `lighthouse` label re-runs the checks with it
+    types: [opened, synchronize, reopened, labeled]
   workflow_dispatch:
 
 permissions:
@@ -11,14 +13,16 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   build-and-check:
     name: Build & check
     runs-on: ubuntu-latest
+    # One queue per branch, so PRs never wait on each other or on a
+    # release. A newer push supersedes a running check, except on main,
+    # whose run carries the deploy (#123).
+    concurrency:
+      group: checks-${{ github.ref }}
+      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -52,7 +56,14 @@ jobs:
       - name: Accessibility audit (pa11y)
         run: npm run check:a11y
 
+      # Lighthouse is slow (3 runs per URL), so it gates releases only:
+      # every push to main, right before the deploy. On a PR, add the
+      # `lighthouse` label to run it; or run the workflow by hand.
       - name: Lighthouse audit
+        if: >-
+          (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+          github.event_name == 'workflow_dispatch' ||
+          contains(github.event.pull_request.labels.*.name, 'lighthouse')
         run: npm run check:lighthouse
 
       - name: Broken-link check (lychee)
@@ -75,6 +86,10 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs: build-and-check
     runs-on: ubuntu-latest
+    # Deploys never overlap or cancel each other
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
