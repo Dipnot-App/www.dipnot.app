@@ -11,6 +11,7 @@
     "build:og": "node scripts/build-og.js",
     "build:images": "node scripts/build-images.js",
     "build:brand": "node scripts/build-brand-pack.js",
+    "build:abyss": "node scripts/build-abyss.js",
     "serve": "eleventy --serve",
     "clean": "rm -rf _site",
     "check:html": "html-validate \"_site/**/*.html\"",

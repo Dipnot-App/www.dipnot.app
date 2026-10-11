@@ -3210,106 +3210,108 @@ main.container > .section {
   color: var(--dn-fg-muted);
   font-size: var(--dn-fs-lead);
 }
-/* Deep-sea creatures (partials/abyss.njk) */
+/* Deep-sea creatures (partials/abyss.njk): public-domain engravings as
+   masks, tinted per theme — pale ghosts in dark water, faint ink on light */
 .dn-abyss {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  --dn-abyss-body: oklch(0.07 0.015 240 / 0.92);
-  --dn-abyss-edge: oklch(0.6 0.08 200 / 0.55);
+  --dn-abyss-ink: oklch(0.86 0.05 205);
+  --dn-abyss-alpha: 0.3;
   --dn-abyss-light: oklch(0.9 0.16 170);
 }
 [data-theme="light"] .dn-abyss {
-  --dn-abyss-body: oklch(0.32 0.05 225 / 0.5);
-  --dn-abyss-edge: oklch(0.2 0.05 225 / 0.3);
-  --dn-abyss-light: oklch(0.72 0.17 165);
+  --dn-abyss-ink: oklch(0.25 0.05 230);
+  --dn-abyss-alpha: 0.26;
+  --dn-abyss-light: oklch(0.7 0.17 165);
 }
-.dn-abyss__body {
-  fill: var(--dn-abyss-body);
-  stroke: var(--dn-abyss-edge);
-  stroke-width: 1;
-}
-.dn-abyss__fin {
-  fill: var(--dn-abyss-body);
-  opacity: 0.85;
-}
-.dn-abyss__mouth {
-  fill: oklch(0.03 0 0 / 0.95);
-}
-.dn-abyss__teeth,
-.dn-abyss__fang {
-  fill: none;
-  stroke: oklch(0.92 0.02 90 / 0.9);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.dn-abyss__stalk {
-  fill: none;
-  stroke: var(--dn-abyss-edge);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-.dn-abyss__eye {
-  fill: oklch(0.88 0.04 110);
-}
-.dn-abyss__pupil {
-  fill: oklch(0.1 0 0);
-}
-.dn-abyss__lure,
-.dn-abyss__dots circle,
-.dn-abyss__eyes ellipse {
-  fill: var(--dn-abyss-light);
-}
-.dn-abyss__glow {
-  animation: dn-abyss-pulse 2.6s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.dn-abyss__dots {
-  animation: dn-abyss-pulse 3.4s ease-in-out infinite;
-}
-
 .dn-abyss__swim {
   position: absolute;
   left: 0;
   will-change: transform;
 }
+.dn-abyss__bob {
+  position: relative;
+  animation: dn-abyss-bob 6s ease-in-out infinite;
+}
+.dn-abyss__fish {
+  width: 100%;
+  background: var(--dn-abyss-ink);
+  opacity: var(--dn-abyss-alpha);
+  -webkit-mask: var(--src) center / contain no-repeat;
+  mask: var(--src) center / contain no-repeat;
+}
+/* Facing right → swim left to right; facing left → right to left */
 .dn-abyss__swim--angler {
-  top: 76%;
-  width: clamp(150px, 17vw, 230px);
-  animation: dn-abyss-cross 46s linear -14s infinite;
+  top: 70%;
+  width: clamp(200px, 24vw, 360px);
+  animation: dn-abyss-cross 58s linear -12s infinite;
+}
+.dn-abyss__swim--fang {
+  top: 44%;
+  width: clamp(170px, 19vw, 280px);
+  animation: dn-abyss-cross 72s linear -50s infinite;
 }
 .dn-abyss__swim--viper {
-  top: 13%;
-  width: clamp(140px, 16vw, 220px);
-  animation: dn-abyss-cross-back 38s linear -26s infinite;
+  top: 12%;
+  width: clamp(220px, 26vw, 380px);
+  animation: dn-abyss-cross-back 50s linear -30s infinite;
 }
-.dn-abyss__swim svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  animation: dn-abyss-bob 5s ease-in-out infinite;
+.dn-abyss__swim--gulper {
+  top: 82%;
+  width: clamp(260px, 34vw, 520px);
+  animation: dn-abyss-cross-back 84s linear -8s infinite;
 }
-.dn-abyss__viper {
-  transform: scaleX(-1);
-  animation-name: dn-abyss-bob-flip !important;
+.dn-abyss__swim--fang .dn-abyss__bob {
+  animation-duration: 7.5s;
+}
+.dn-abyss__swim--gulper .dn-abyss__bob {
+  animation-name: dn-abyss-undulate;
+  animation-duration: 9s;
+}
+/* The anglerfish's lure, at the tip of its stalk in the plate */
+.dn-abyss__lure {
+  position: absolute;
+  left: 62.4%;
+  top: 1.7%;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    oklch(0.98 0.05 170) 0 12%,
+    var(--dn-abyss-light) 22%,
+    transparent 70%
+  );
+  filter: blur(0.5px);
+  animation: dn-abyss-pulse 2.6s ease-in-out infinite;
 }
 .dn-abyss__eyes {
   position: absolute;
-  right: 7%;
-  bottom: 16%;
-  width: 46px;
+  width: clamp(56px, 6vw, 84px);
   opacity: 0;
-  filter: drop-shadow(0 0 6px var(--dn-abyss-light));
-  animation: dn-abyss-blink 9s ease-in-out 3s infinite;
+  filter: drop-shadow(0 0 8px var(--dn-abyss-light));
+  transform-origin: center;
+  transition:
+    left 0s,
+    top 0s;
+}
+.dn-abyss__eyes--small {
+  width: clamp(38px, 4vw, 56px);
+}
+.dn-abyss__eyes ellipse {
+  fill: var(--dn-abyss-light);
+}
+.dn-abyss__eyes.is-open {
+  animation: dn-abyss-blink 3.6s ease-in-out forwards;
 }
 
 @keyframes dn-abyss-cross {
   from {
-    transform: translateX(-30vw);
+    transform: translateX(-40vw);
   }
   to {
     transform: translateX(120vw);
@@ -3320,44 +3322,54 @@ main.container > .section {
     transform: translateX(120vw);
   }
   to {
-    transform: translateX(-30vw);
+    transform: translateX(-45vw);
   }
 }
 @keyframes dn-abyss-bob {
   50% {
-    transform: translateY(-10px) rotate(-2deg);
+    transform: translateY(-12px) rotate(-1.5deg);
   }
 }
-@keyframes dn-abyss-bob-flip {
-  0%,
-  100% {
-    transform: scaleX(-1);
-  }
+@keyframes dn-abyss-undulate {
   50% {
-    transform: scaleX(-1) translateY(-8px) rotate(2deg);
+    transform: translateY(10px) rotate(1.5deg) scaleY(1.04);
   }
 }
 @keyframes dn-abyss-pulse {
   50% {
-    opacity: 0.35;
+    transform: scale(0.75);
+    filter: blur(1px) brightness(0.8);
   }
 }
 @keyframes dn-abyss-blink {
-  0%,
-  30%,
-  100% {
+  0% {
     opacity: 0;
+    transform: scaleY(0.1);
   }
-  38%,
-  60% {
-    opacity: 0.9;
-  }
-  44%,
-  54% {
-    opacity: 0.9;
+  12% {
+    opacity: 0.95;
     transform: scaleY(1);
   }
-  48% {
+  40% {
+    transform: scaleY(1);
+  }
+  44% {
+    transform: scaleY(0.08);
+  }
+  48%,
+  70% {
+    opacity: 0.95;
+    transform: scaleY(1);
+  }
+  74% {
+    transform: scaleY(0.08);
+  }
+  78% {
+    opacity: 0.95;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
     transform: scaleY(0.1);
   }
 }
@@ -3375,19 +3387,23 @@ main.container > .section {
 @media (prefers-reduced-motion: reduce) {
   .dn-nf__computer,
   .dn-nf__alarm,
-  .dn-abyss *,
-  .dn-abyss__swim svg {
+  .dn-abyss__swim,
+  .dn-abyss__bob,
+  .dn-abyss__lure {
     animation: none !important;
   }
   /* Parked at the edges instead of swimming */
-  .dn-abyss__swim--angler {
-    transform: translateX(4vw);
+  .dn-abyss__swim--angler,
+  .dn-abyss__swim--fang {
+    transform: translateX(3vw);
   }
-  .dn-abyss__swim--viper {
-    transform: translateX(calc(100vw - 100% - 4vw));
+  .dn-abyss__swim--viper,
+  .dn-abyss__swim--gulper {
+    transform: translateX(calc(100vw - 100% - 3vw));
   }
-  .dn-abyss__eyes {
-    opacity: 0.7;
+  .dn-abyss__swim--fang,
+  .dn-abyss__swim--gulper {
+    display: none;
   }
 }
 
