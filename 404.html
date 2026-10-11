@@ -14,12 +14,41 @@ feed: { name: "feed", alt: "Dipnot ana sayfa akışı" }
 <section id="main" class="dn-hero" aria-labelledby="nf-title">
   {% include "partials/bubbles.njk" %}
   <div class="dn-container dn-hero__grid dn-hero__grid--flip">
-    <div class="dn-hero__copy">
+    <div class="dn-hero__copy dn-404" data-404>
       <p class="dn-404__code" aria-hidden="true">404</p>
-      <h1 id="nf-title" class="dn-display">Sayfa bulunamadı</h1>
-      <p class="dn-lead">Üzgünüz, aradığın sayfa bulunamadı.</p>
-      <a href="/" class="dn-btn dn-btn--primary">Anasayfaya dön</a>
+      <div class="dn-404__msg" lang="tr">
+        <h1 id="nf-title" class="dn-display">Sayfa bulunamadı</h1>
+        <p class="dn-lead">Üzgünüz, aradığın sayfa bulunamadı.</p>
+      </div>
+      <div class="dn-404__msg dn-404__msg--en" lang="en">
+        <p class="dn-404__title">Page not found</p>
+        <p class="dn-lead">Sorry, the page you're looking for doesn't exist.</p>
+      </div>
+      <div class="dn-404__actions">
+        <a href="/" class="dn-btn dn-btn--primary" data-404-tr
+          >Anasayfaya dön</a
+        >
+        <a
+          href="/en/"
+          class="dn-btn dn-glass dn-glass--pill"
+          lang="en"
+          hreflang="en"
+          data-404-en
+          >Go to the English site</a
+        >
+      </div>
     </div>
+    <script>
+      // One 404 serves every missing URL (GitHub Pages). For /en/… paths
+      // lead with English; without JS both languages still show.
+      if (location.pathname.indexOf("/en/") === 0) {
+        document.querySelector("[data-404]").classList.add("dn-404--en");
+        document.querySelector("[data-404-tr]").className =
+          "dn-btn dn-glass dn-glass--pill";
+        document.querySelector("[data-404-en]").className =
+          "dn-btn dn-btn--primary";
+      }
+    </script>
 
     <div class="dn-hero__visual">
       <div class="dn-iphone-stage">
