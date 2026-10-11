@@ -106,7 +106,8 @@
       );
       const visual = $("[data-hero-visual]", hero);
       const chips = $$("[data-chip]", hero);
-      const heroPhone = $("[data-iphone]", hero);
+      const heroPhone = $(".dn-hero__duo > [data-iphone]", hero);
+      const heroBack = $("[data-hero-back]", hero);
       const heroTilt = $("[data-iphone-tilt]", hero);
 
       gsap.set(title, { opacity: 1 });
@@ -158,6 +159,12 @@
           0.25,
         )
         .fromTo(
+          heroBack,
+          { x: 90, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1.8, ease: "expo.out" },
+          0.7,
+        )
+        .fromTo(
           chips,
           { scale: 0.6, opacity: 0 },
           {
@@ -202,6 +209,19 @@
         rotationY: () => rest(heroPhone)[1] + 18,
         rotationX: 0,
         rotationZ: 0,
+        ease: "none",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      gsap.to(heroBack, {
+        x: -50,
+        y: 30,
         ease: "none",
         immediateRender: false,
         scrollTrigger: {
@@ -374,17 +394,19 @@
          How it works — pinned on desktop, the path draws through the
          three steps; on mobile the vertical rail fills as you pass
          --------------------------------------------------------------- */
-      const stepsSection = $("[data-steps-section]");
+      const how = $("[data-how]");
       const fill = $("[data-steps-fill]");
       const steps = $$("[data-step]");
-      if (stepsSection && fill && steps.length) {
+      if (how && fill && steps.length) {
+        const howPhone = $("[data-iphone]", how);
+        const screens = howPhone ? $$("[data-screen]", howPhone) : [];
         const tl = gsap.timeline({
           defaults: { ease: "power2.out" },
           scrollTrigger: full
             ? {
-                trigger: stepsSection,
+                trigger: how,
                 start: "center center",
-                end: "+=130%",
+                end: "+=150%",
                 pin: true,
                 anticipatePin: 1,
                 scrub: 1,
@@ -398,27 +420,45 @@
         });
         tl.fromTo(
           fill,
-          full ? { scaleX: 0 } : { scaleY: 0 },
-          {
-            ...(full ? { scaleX: 1 } : { scaleY: 1 }),
-            ease: "none",
-            duration: steps.length,
-          },
+          { scaleY: 0 },
+          { scaleY: 1, ease: "none", duration: steps.length },
           0,
         );
         steps.forEach((step, i) => {
           const at = i === 0 ? 0 : i - 0.15;
           tl.fromTo(
             step,
-            { opacity: 0.18, y: 40 },
-            { opacity: 1, y: 0, duration: 0.7 },
+            full ? { opacity: 0.25, x: 24 } : { opacity: 0.25, y: 24 },
+            { opacity: 1, x: 0, y: 0, duration: 0.6 },
             at,
           ).fromTo(
             $(".dn-step__orb", step),
-            { scale: 0.5, rotate: -20 },
-            { scale: 1, rotate: 0, duration: 0.7, ease: "back.out(2)" },
+            { scale: 0.6 },
+            { scale: 1, duration: 0.6, ease: "back.out(2)" },
             at,
           );
+          // The phone shows this step's screen, turning slightly each time
+          if (i > 0 && screens[i]) {
+            tl.fromTo(
+              screens[i],
+              { opacity: 0, scale: 1.04 },
+              { opacity: 1, scale: 1, duration: 0.5 },
+              at,
+            );
+          }
+          if (howPhone) {
+            const [rx, ry, rz] = rest(howPhone);
+            tl.to(
+              howPhone,
+              {
+                rotationX: rx,
+                rotationY: ry - i * 10,
+                rotationZ: rz,
+                duration: 0.8,
+              },
+              at,
+            );
+          }
         });
       }
 

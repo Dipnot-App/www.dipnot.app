@@ -5,24 +5,20 @@ const path = require("path");
 const fs = require("fs/promises");
 const sharp = require("sharp");
 
-const IMG = path.resolve(__dirname, "..", "img");
-const OUT = path.join(IMG, "opt");
+// Sources live outside img/ so the full-size originals aren't deployed
+// (Eleventy copies img/ wholesale).
+const SRC = path.resolve(__dirname, "..", "img-src");
+const OUT = path.resolve(__dirname, "..", "img", "opt");
 
-// `extract` crops the source before resizing. about-screen is the app
-// screen cut out of deviceframes-about.png, whose baked-in background
-// doesn't fit the glass design; the CSS device frame replaces it.
+// `extract` (optional) crops the source before resizing.
 const JOBS = [
-  {
-    src: "deviceframes-hero.png",
-    name: "hero-phones",
-    widths: [640, 941],
-  },
-  {
-    src: "deviceframes-about.png",
-    name: "about-screen",
-    extract: { left: 548, top: 190, width: 900, height: 1310 },
+  // App screenshots for the 3D iPhone (macros/iphone.njk): full
+  // 1290×2796 iPhone captures, status bar included.
+  ...["feed", "article", "categories", "saved", "signin"].map((name) => ({
+    src: `screens/${name}.png`,
+    name: `screen-${name}`,
     widths: [450, 900],
-  },
+  })),
 ];
 
 async function main() {
@@ -31,14 +27,14 @@ async function main() {
   for (const job of JOBS) {
     for (const width of job.widths) {
       const base = () => {
-        let img = sharp(path.join(IMG, job.src));
+        let img = sharp(path.join(SRC, job.src));
         if (job.extract) img = img.extract(job.extract);
         return img.resize({ width, withoutEnlargement: true });
       };
       const stem = path.join(OUT, `${job.name}-${width}`);
       await base().avif({ quality: 55, effort: 6 }).toFile(`${stem}.avif`);
       await base().webp({ quality: 78, effort: 6 }).toFile(`${stem}.webp`);
-      console.log(`Wrote ${path.relative(IMG, stem)}.{avif,webp}`);
+      console.log(`Wrote ${path.relative(OUT, stem)}.{avif,webp}`);
     }
   }
 }

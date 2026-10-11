@@ -10,22 +10,22 @@ og:
   description: "Dipnot, dalış ve su altı dünyasına ilgi duyanlar için hazırlanmış makale odaklı bir mobil içerik platformudur."
 hasContactForm: true
 pageMotion: true
+# Category labels as shown in the app (Kategoriler screen, 2026-10-11).
+# The full list lives in Firestore; only these six are confirmed.
 categories:
   - { label: "Gündem", icon: "fire" }
+  - { label: "Çevre & Koruma", icon: "leaf" }
   - { label: "Dalış Güvenliği", icon: "shield-halved" }
-  - { label: "Eğitim", icon: "graduation-cap" }
-  - { label: "Seyahat", icon: "plane" }
-  - { label: "Ekipman", icon: "toolbox" }
-  - { label: "Sualtı Görüntüleme", icon: "camera" }
-  - { label: "Arkeoloji", icon: "landmark" }
-  - { label: "Çevre Koruma", icon: "leaf" }
-  - { label: "Etkinlikler & Festivaller", icon: "calendar-days" }
-  - { label: "Sağlık", icon: "heart-pulse" }
-  - { label: "Sertifikasyon Rehberi", icon: "certificate" }
-  - { label: "Teknoloji", icon: "microchip" }
-  - { label: "Topluluk Hikayeleri", icon: "users" }
-  - { label: "TSSF", icon: "building-columns" }
-  - { label: "Yurttaş Bilimi", icon: "flask" }
+  - { label: "Ekipman & Teknoloji", icon: "microchip" }
+  - { label: "Mağara & Batık", icon: "mountain" }
+  - { label: "Seyahat & Yaşam", icon: "plane" }
+# App screenshots for the 3D iPhones (img-src/screens → img/opt).
+screens:
+  feed: { name: "feed", alt: "Dipnot ana sayfa akışı" }
+  article: { name: "article", alt: "Dipnot uygulamasında bir makale" }
+  categories: { name: "categories", alt: "Dipnot kategoriler ekranı" }
+  saved: { name: "saved", alt: "Dipnot kaydedilen makaleler ekranı" }
+  signin: { name: "signin", alt: "Dipnot giriş ekranı" }
 ---
 
 {% from "macros/iphone.njk" import iphone %}
@@ -55,8 +55,12 @@ categories:
     <div class="dn-hero__visual" data-hero data-hero-visual>
       <div class="dn-iphone-stage">
         <div class="dn-iphone-tilt" data-iphone-tilt data-parallax="-10">
-          {{ iphone("about-screen", "Dipnot uygulamasında kategorilere göre
-          makale akışı", rot="8,-26,5", inset=true, eager=true) }}
+          <div class="dn-hero__duo">
+            <div class="dn-hero__back" data-hero-back>
+              {{ iphone([screens.saved], rot="6,-30,4") }}
+            </div>
+            {{ iphone([screens.feed], rot="8,-24,4", eager=true) }}
+          </div>
         </div>
         <div class="dn-iphone-shadow" aria-hidden="true"></div>
       </div>
@@ -104,8 +108,7 @@ categories:
       <div class="dn-about__visual">
         <div class="dn-about__halo" aria-hidden="true"></div>
         <div class="dn-iphone-stage" data-about-stage>
-          {{ iphone("about-screen", "Dipnot uygulamasında makale akışı",
-          rot="4,22,-3", inset=true) }}
+          {{ iphone([screens.article], rot="4,22,-3") }}
           <div class="dn-iphone-shadow" aria-hidden="true"></div>
         </div>
       </div>
@@ -208,62 +211,72 @@ categories:
         <h2 class="dn-h2" data-split>Nasıl çalışır?</h2>
       </div>
 
-      <ol class="dn-steps" data-steps>
-        <li class="dn-steps__rail" aria-hidden="true">
-          <span class="dn-steps__fill" data-steps-fill></span>
-        </li>
-        <li class="dn-step" data-step>
-          <div class="dn-step__orb dn-glass">
-            <img
-              src="/img/apw-Icon2.png"
-              alt=""
-              width="116"
-              height="116"
-              loading="lazy"
-            />
-          </div>
-          <span class="dn-step__num" aria-hidden="true">1</span>
-          <div class="dn-step__card dn-glass">
-            <h3 class="dn-h3">Ücretsiz indir</h3>
-            <p>App Store veya Google Play üzerinden Dipnot'u ücretsiz indir.</p>
-          </div>
-        </li>
-        <li class="dn-step" data-step>
-          <div class="dn-step__orb dn-glass">
-            <img
-              src="/img/apw-Icon1.png"
-              alt=""
-              width="116"
-              height="116"
-              loading="lazy"
-            />
-          </div>
-          <span class="dn-step__num" aria-hidden="true">2</span>
-          <div class="dn-step__card dn-glass">
-            <h3 class="dn-h3">Profil oluştur</h3>
-            <p>İlgi alanlarını seç, okuma deneyimini kişiselleştir.</p>
-          </div>
-        </li>
-        <li class="dn-step" data-step>
-          <div class="dn-step__orb dn-glass">
-            <img
-              src="/img/apw-Icon3.png"
-              alt=""
-              width="116"
-              height="116"
-              loading="lazy"
-            />
-          </div>
-          <span class="dn-step__num" aria-hidden="true">3</span>
-          <div class="dn-step__card dn-glass">
-            <h3 class="dn-h3">İçerikleri keşfet</h3>
-            <p>
-              Dalış ve su altı dünyasına dair farklı başlıklar altında
-              hazırlanmış makalelere kolayca ulaş.
-            </p>
-          </div>
-        </li>
-      </ol>
+      <div class="dn-how" data-how>
+        <div class="dn-how__visual dn-iphone-stage">
+          {{ iphone([screens.signin, screens.categories, screens.feed],
+          rot="2,16,-2") }}
+          <div class="dn-iphone-shadow" aria-hidden="true"></div>
+        </div>
+
+        <ol class="dn-steps" data-steps>
+          <li class="dn-steps__rail" aria-hidden="true">
+            <span class="dn-steps__fill" data-steps-fill></span>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon2.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">01</span>
+              <h3 class="dn-h3">Ücretsiz indir</h3>
+              <p>
+                App Store veya Google Play üzerinden Dipnot'u ücretsiz indir.
+              </p>
+            </div>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon1.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">02</span>
+              <h3 class="dn-h3">Profil oluştur</h3>
+              <p>İlgi alanlarını seç, okuma deneyimini kişiselleştir.</p>
+            </div>
+          </li>
+          <li class="dn-step" data-step>
+            <div class="dn-step__orb dn-glass">
+              <img
+                src="/img/apw-Icon3.png"
+                alt=""
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+            </div>
+            <div class="dn-step__card dn-glass">
+              <span class="dn-step__num" aria-hidden="true">03</span>
+              <h3 class="dn-h3">İçerikleri keşfet</h3>
+              <p>
+                Dalış ve su altı dünyasına dair farklı başlıklar altında
+                hazırlanmış makalelere kolayca ulaş.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 

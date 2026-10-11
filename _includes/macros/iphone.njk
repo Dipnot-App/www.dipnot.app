@@ -1,16 +1,15 @@
 {#
-  3D iPhone (17 Pro proportions, Deep Blue) around an app screenshot.
+  3D iPhone (17 Pro proportions, Deep Blue) around app screenshots.
 
-  screen  img/opt basename; expects -450 and -900 widths in AVIF + WebP
-          (scripts/build-images.js)
-  alt     screenshot description (Turkish)
-  rot     "rx,ry,rz" resting rotation in degrees; motion.js animates
-          from/around it, CSS uses it as the static pose
-  inset   true when the screenshot has no status bar (cropped): the
-          screen reserves the status-bar strip above it
-  eager   true for the hero (no lazy loading, high fetch priority)
+  screens  list of { name, alt }: img/opt/screen-<name>-{450,900}.{avif,webp}
+           from scripts/build-images.js. More than one stacks them; the
+           first shows, motion.js crossfades the rest ([data-screen]).
+  rot      "rx,ry,rz" resting rotation in degrees; motion.js animates
+           from/around it, CSS uses it as the static pose
+  eager    true for the hero (no lazy loading, high fetch priority)
+  mod      extra classes on the phone
 #}
-{% macro iphone(screen, alt, rot="0,0,0", inset=false, eager=false, mod="") %}
+{% macro iphone(screens, rot="0,0,0", eager=false, mod="") %}
 {%- set r = rot.split(",") -%}
 <div class="dn-iphone {{ mod }}" data-iphone data-rot="{{ rot }}" style="--rx: {{ r[0] }}deg; --ry: {{ r[1] }}deg; --rz: {{ r[2] }}deg">
   <div class="dn-iphone__edge" aria-hidden="true">
@@ -23,12 +22,14 @@
   <span class="dn-iphone__key dn-iphone__key--camera" aria-hidden="true"></span>
   <div class="dn-iphone__body">
     <div class="dn-iphone__front">
-      <div class="dn-iphone__screen{% if inset %} dn-iphone__screen--inset{% endif %}">
-        <picture>
-          <source type="image/avif" srcset="/img/opt/{{ screen }}-450.avif 450w, /img/opt/{{ screen }}-900.avif 900w" sizes="(min-width: 1024px) 320px, 70vw">
-          <source type="image/webp" srcset="/img/opt/{{ screen }}-450.webp 450w, /img/opt/{{ screen }}-900.webp 900w" sizes="(min-width: 1024px) 320px, 70vw">
-          <img src="/img/opt/{{ screen }}-900.webp" alt="{{ alt }}" width="900" height="1310"{% if eager %} fetchpriority="high"{% else %} loading="lazy"{% endif %} data-iphone-screen>
+      <div class="dn-iphone__screen">
+        {%- for s in screens %}
+        <picture data-screen="{{ loop.index0 }}">
+          <source type="image/avif" srcset="/img/opt/screen-{{ s.name }}-450.avif 450w, /img/opt/screen-{{ s.name }}-900.avif 900w" sizes="(min-width: 1024px) 300px, 70vw">
+          <source type="image/webp" srcset="/img/opt/screen-{{ s.name }}-450.webp 450w, /img/opt/screen-{{ s.name }}-900.webp 900w" sizes="(min-width: 1024px) 300px, 70vw">
+          <img src="/img/opt/screen-{{ s.name }}-900.webp" alt="{{ s.alt }}" width="900" height="1951"{% if eager and loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>
         </picture>
+        {%- endfor %}
         <span class="dn-iphone__island" aria-hidden="true"></span>
         <span class="dn-iphone__glare" aria-hidden="true"></span>
       </div>
