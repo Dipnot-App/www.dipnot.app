@@ -8,6 +8,10 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-13
 
+- **`agent-state.md` is gitignored** — core-docs now asks each repo
+  for an `agent-state.md` (standards watermark + handoff). This repo is
+  public and the file names a private repo's commit, so it stays
+  local like `CLAUDE.md` rather than being committed.
 - **Font Awesome 7.3.1** — Dependabot (#171) moved FA Free 6.5.2 →
   7.3.1 and broke the build: FA 7 SVGs put `fill="currentColor"` before
   `d`, so the `icon` shortcode's path regex matched nothing. The regex
