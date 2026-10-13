@@ -6,6 +6,24 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-14
+
+- **CSS compiled for older browsers (#175)** — On Chrome/Edge 109 (the
+  last release for Windows 7/8, reported by a visitor) the site
+  rendered black: no background, invisible text. Every colour token is
+  `oklch()` and many tints are `color-mix()`, both Chrome 111+.
+  `css/styles.css` is now an Eleventy template run through Lightning
+  CSS (targets Chrome 109, Firefox 115, Safari 15.4): hex fallbacks
+  for every token, modern colours kept behind `@supports`, minified
+  (gzip 20.2 → 15.4 KB). Verified in Chromium 109.0.5414 (old CSS:
+  black page; new: full render) and pixel-diffed in current Chrome
+  (light identical, dark max ±14/765 rounding). `color-mix()` over
+  `var()` can't be resolved at build time, so some glows and tints
+  stay missing on 109; accepted. Rejected: a hand-written
+  `@supports not (color: oklch(…))` block (only a basic readable
+  page, and 133 values to keep in sync by hand). JS minification left
+  out: our JS already runs on 109 and the gain is a few KB.
+
 ## 2026-10-13
 
 - **`agent-state.md` is gitignored** — core-docs now asks each repo

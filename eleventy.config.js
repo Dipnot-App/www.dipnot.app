@@ -1,5 +1,17 @@
 const fs = require("fs");
 const path = require("path");
+const { transform } = require("lightningcss");
+
+// Oldest browsers the CSS must render in. Chrome 109 is the last release
+// for Windows 7/8; it predates oklch() and color-mix() (Chrome 111), so
+// Lightning CSS writes hex fallbacks for every colour token. color-mix()
+// over var() can't be resolved at build time and stays as-is (glows and
+// tints drop out there; background and text don't).
+const CSS_TARGETS = {
+  chrome: 109 << 16,
+  firefox: 115 << 16,
+  safari: (15 << 16) | (4 << 8),
+};
 
 // Font Awesome Free icons (CC BY 4.0), inlined as SVG at build time from
 // the npm package, so no icon font downloads. Credit in README.md.
@@ -31,7 +43,23 @@ module.exports = function (eleventyConfig) {
     return `<i class="dn-i dn-i--${id}${cls ? ` ${cls}` : ""}" aria-hidden="true">${svg}</i>`;
   });
 
-  eleventyConfig.addPassthroughCopy("css");
+  // css/styles.css is a template, not a passthrough: compiled for
+  // CSS_TARGETS and minified, so the dev server serves the same output.
+  eleventyConfig.addTemplateFormats("css");
+  eleventyConfig.addExtension("css", {
+    outputFileExtension: "css",
+    compileOptions: {
+      permalink: (contents, inputPath) =>
+        inputPath.replace(/^\.\//, "").replace(/\\/g, "/"),
+    },
+    compile: (inputContent, inputPath) => () =>
+      transform({
+        filename: inputPath,
+        code: Buffer.from(inputContent),
+        minify: true,
+        targets: CSS_TARGETS,
+      }).code.toString(),
+  });
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("fonts");
