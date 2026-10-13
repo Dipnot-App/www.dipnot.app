@@ -8,6 +8,9 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **Release 2.0.3** — ships the Chrome 109 CSS fix (#175, below), Font
+  Awesome 7.3.1 (2026-10-13) and the pa11y-ci 5 / html-validate bump
+  (#170).
 - **CSS compiled for older browsers (#175)** — On Chrome/Edge 109 (the
   last release for Windows 7/8, reported by a visitor) the site
   rendered black: no background, invisible text. Every colour token is
