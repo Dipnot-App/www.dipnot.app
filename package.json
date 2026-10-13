@@ -1,7 +1,7 @@
 {
   "name": "www-dipnot-app",
   "private": true,
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Dipnot landing page — static site, built with Eleventy.",
   "engines": {
     "node": "^24"
