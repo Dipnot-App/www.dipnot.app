@@ -138,8 +138,9 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Agent instructions — not shipped in this public repo
+# Agent instructions and state — not shipped in this public repo
 CLAUDE.md
+agent-state.md
 
 # Claude Code per-machine permission approvals (absolute local paths)
 .claude/
