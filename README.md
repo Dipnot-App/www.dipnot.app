@@ -33,7 +33,7 @@ Both were optimised for the web (meshopt geometry, WebP textures;
 licence texts in `img-src/abyss/*-LICENSE.txt`) and are rendered with
 three.js (MIT), bundled by `npm run build:shark` from `src/shark3d.js`.
 
-Icons are Font Awesome Free 6.5.2 by Fonticons, Inc.
+Icons are Font Awesome Free 7.3.1 by Fonticons, Inc.
 (https://fontawesome.com), icons licensed under CC BY 4.0
 (https://fontawesome.com/license/free). They are inlined as SVG at
 build time from the `@fortawesome/fontawesome-free` package by the

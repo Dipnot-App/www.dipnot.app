@@ -6,6 +6,42 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-14
+
+- **Release 2.0.3** — ships the Chrome 109 CSS fix (#175, below), Font
+  Awesome 7.3.1 (2026-10-13) and the pa11y-ci 5 / html-validate bump
+  (#170).
+- **CSS compiled for older browsers (#175)** — On Chrome/Edge 109 (the
+  last release for Windows 7/8, reported by a visitor) the site
+  rendered black: no background, invisible text. Every colour token is
+  `oklch()` and many tints are `color-mix()`, both Chrome 111+.
+  `css/styles.css` is now an Eleventy template run through Lightning
+  CSS (targets Chrome 109, Firefox 115, Safari 15.4): hex fallbacks
+  for every token, modern colours kept behind `@supports`, minified
+  (gzip 20.2 → 15.4 KB). Verified in Chromium 109.0.5414 (old CSS:
+  black page; new: full render) and pixel-diffed in current Chrome
+  (light identical, dark max ±14/765 rounding). `color-mix()` over
+  `var()` can't be resolved at build time, so some glows and tints
+  stay missing on 109; accepted. Rejected: a hand-written
+  `@supports not (color: oklch(…))` block (only a basic readable
+  page, and 133 values to keep in sync by hand). JS minification left
+  out: our JS already runs on 109 and the gain is a few KB.
+
+## 2026-10-13
+
+- **`agent-state.md` is gitignored** — core-docs now asks each repo
+  for an `agent-state.md` (standards watermark + handoff). This repo is
+  public and the file names a private repo's commit, so it stays
+  local like `CLAUDE.md` rather than being committed.
+- **Font Awesome 7.3.1** — Dependabot (#171) moved FA Free 6.5.2 →
+  7.3.1 and broke the build: FA 7 SVGs put `fill="currentColor"` before
+  `d`, so the `icon` shortcode's path regex matched nothing. The regex
+  now accepts attributes in any order. All 27 icons in use exist in 7
+  and each is still one `<path>`. Nev chose to keep FA 7 over reverting
+  to 6.5.2; the rejected option was revert + ignore FA majors, because
+  canon (`brand-usage.md`) still names FA 6 for every surface. That
+  deviation is reported to core-docs as an `ask`.
+
 ## 2026-10-12
 
 - **2.0.2: mobile performance** — Font Awesome no longer loads: the
@@ -27,6 +63,33 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-11
 
+- **get.dipnot.app / app.dipnot.app restyled** to match the v2 look
+  ([app.dipnot.app#8](https://github.com/Dipnot-App/app.dipnot.app/pull/8)).
+  The two domains are one Vercel project serving the same pages. The
+  repo is mobile-owned and changes normally go through `to-mobile.md`;
+  Nev approved this one-off **UI-only** edit by landing (styles, Inter
+  self-hosted, app-icon tile). Scripts, manifests and `vercel.json` are
+  byte-identical. `fyi` to mobile, deviation `ask` to core-docs
+  (dna_communication `7c9725c`).
+- **Uptime monitoring** — UptimeRobot (free) watches `dipnot.app` and
+  `get.dipnot.app`. The form functions answer GET with 405, which the
+  free plan can't count as up (custom status codes are paid), so those
+  two monitors are paused and function monitoring is handed to the
+  functions agent (health response or Cloud Monitoring checks;
+  dna_communication `5c5875e`). Tracked in #161.
+- **Decisions (Nev)** — Nav label **"SSS"** without dots, since Turkish
+  multi-word initialisms take none (TBMM, ABD); "S.S.S." dropped. The
+  theme toggle's sun stays **warm amber**, not the brand Gold `#C49B3A`.
+  Gold is reserved for admin/operator contexts in `logo.md` and is
+  likely under 3:1 on the light glass. Active-section highlighting in
+  the nav reuses the hover pill (Nev's call, no new style).
+- **CI fixes found by the v2.0.0 PR run** (#162) — lychee's
+  `--base _site` had always been invalid (lychee 0.24 needs an
+  absolute path), hidden while the step was report-only; it now uses
+  `--root-dir ${{ github.workspace }}/_site`. pa11y timed out once on
+  `404.html` when software WebGL stalled the page while drawing the 3D
+  scene; the scene now skips automated browsers (`navigator.webdriver`),
+  which get the SVG shark.
 - **2.0.1 follow-ups** — Mobile menu links were not tappable on the
   live 2.0.0 (the sheet inherited the nav's click-through); fixed. The
   nav now marks the section in view (same look as hover,
