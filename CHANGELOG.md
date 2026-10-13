@@ -6,6 +6,17 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-13
+
+- **Font Awesome 7.3.1** — Dependabot (#171) moved FA Free 6.5.2 →
+  7.3.1 and broke the build: FA 7 SVGs put `fill="currentColor"` before
+  `d`, so the `icon` shortcode's path regex matched nothing. The regex
+  now accepts attributes in any order. All 27 icons in use exist in 7
+  and each is still one `<path>`. Nev chose to keep FA 7 over reverting
+  to 6.5.2; the rejected option was revert + ignore FA majors, because
+  canon (`brand-usage.md`) still names FA 6 for every surface. That
+  deviation is reported to core-docs as an `ask`.
+
 ## 2026-10-12
 
 - **2.0.2: mobile performance** — Font Awesome no longer loads: the
