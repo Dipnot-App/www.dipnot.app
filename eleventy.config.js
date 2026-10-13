@@ -13,7 +13,8 @@ const iconSvg = (name) => {
     const [set, id] = name.includes(":") ? name.split(":") : ["solid", name];
     const src = fs.readFileSync(path.join(FA_SVGS, set, `${id}.svg`), "utf8");
     const viewBox = src.match(/viewBox="([^"]+)"/)[1];
-    const d = src.match(/<path d="([^"]+)"/)[1];
+    // FA 7 puts attributes before `d` (`<path fill="currentColor" d=…>`).
+    const d = src.match(/<path\b[^>]*\sd="([^"]+)"/)[1];
     iconCache.set(name, {
       id,
       svg: `<svg viewBox="${viewBox}"><path d="${d}"/></svg>`,
