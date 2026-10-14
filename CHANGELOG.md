@@ -8,6 +8,8 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **Release 2.0.4** — ships competition rules Madde 10 and the privacy
+  pointer (#179, below).
 - **Competition rules Madde 10: cheating checks disclosed** — Appended
   the registry's "Hile tespiti" paragraph to `yarisma-kosullari.html`
   → 10. Kişisel Verilerin Korunması (what is compared, who sees it,
