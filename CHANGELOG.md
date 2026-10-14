@@ -8,6 +8,9 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **OG test pages removed** — `og-test/`, `img/og-test/` and their
+  `.prettierignore` line. Core-docs closed #185 on 2026-10-12: one
+  `og:image` per page (`og-default.png`) is canon.
 - **Release 2.0.5** — ships GSAP self-hosting (#182, below). Deployed
   and tagged on `16a9232` before this bump landed, so that commit's
   `package.json` still reads 2.0.4.
