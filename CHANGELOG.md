@@ -8,6 +8,9 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **Release 2.0.5** — ships GSAP self-hosting (#182, below). Deployed
+  and tagged on `16a9232` before this bump landed, so that commit's
+  `package.json` still reads 2.0.4.
 - **GSAP self-hosted, cdnjs dropped (#182)** — Per Nev's 2026-10-12
   rule (landing loads no third-party CDN; a public CDN sees every
   visitor's IP). `gsap` 3.13.0 is a pinned devDependency; Eleventy
