@@ -8,6 +8,14 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **Competition rules Madde 10: cheating checks disclosed** — Appended
+  the registry's "Hile tespiti" paragraph to `yarisma-kosullari.html`
+  → 10. Kişisel Verilerin Korunması (what is compared, who sees it,
+  KVKK m. 5/2-f, kept 3 months after the winner is announced, deleted
+  accounts included). Both privacy policies gain only the one-sentence
+  pointer to Madde 10, so their 30-day deletion doesn't contradict it.
+  Copied verbatim from `data-processors.md` → Competition vote data
+  (core-docs#222). Dates bumped on all three pages and in the sitemap.
 - **Release 2.0.3** — ships the Chrome 109 CSS fix (#175, below), Font
   Awesome 7.3.1 (2026-10-13) and the pa11y-ci 5 / html-validate bump
   (#170).
