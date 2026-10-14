@@ -39,5 +39,9 @@ Icons are Font Awesome Free 7.3.1 by Fonticons, Inc.
 build time from the `@fortawesome/fontawesome-free` package by the
 `icon` shortcode in `eleventy.config.js`.
 
+Home-page motion uses GSAP (GreenSock, https://gsap.com) under its
+standard no-charge license (https://gsap.com/standard-license),
+self-hosted from the pinned `gsap` package at build time.
+
 Text is set in Inter (SIL OFL 1.1, `fonts/OFL.txt`); the 404 dive
 computer uses DSEG7 (SIL OFL 1.1, `fonts/DSEG-LICENSE.txt`).

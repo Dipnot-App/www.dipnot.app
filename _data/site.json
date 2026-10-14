@@ -2,24 +2,10 @@
   "title": "Dipnot",
   "baseUrl": "https://dipnot.app",
   "cssVersion": "261014_1",
-  "jsVersion": "261012_1",
+  "jsVersion": "261014_1",
   "themeColor": "#338596",
   "author": "Nevcan Uludaş",
   "ogImage": "https://dipnot.app/img/og/og-default.png",
-  "cdn": {
-    "gsap": {
-      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js",
-      "integrity": "sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc"
-    },
-    "scrollTrigger": {
-      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js",
-      "integrity": "sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh"
-    },
-    "splitText": {
-      "href": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js",
-      "integrity": "sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q"
-    }
-  },
   "twitterImage": "https://dipnot.app/img/og/og-horizontal.png",
   "analytics": {
     "enabled": false,

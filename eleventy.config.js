@@ -20,6 +20,7 @@ const FA_SVGS = path.join(
   "node_modules/@fortawesome/fontawesome-free/svgs",
 );
 const iconCache = new Map();
+const GSAP_VERSION = require("gsap/package.json").version;
 const iconSvg = (name) => {
   if (!iconCache.has(name)) {
     const [set, id] = name.includes(":") ? name.split(":") : ["solid", name];
@@ -61,6 +62,15 @@ module.exports = function (eleventyConfig) {
       }).code.toString(),
   });
   eleventyConfig.addPassthroughCopy("js");
+  // GSAP (home page only) is self-hosted from the pinned npm package: no
+  // third-party CDN sees visitors' IPs. The version is in the path, so a
+  // Dependabot bump busts the cache by itself.
+  eleventyConfig.addGlobalData("gsapVersion", GSAP_VERSION);
+  for (const f of ["gsap", "ScrollTrigger", "SplitText"]) {
+    eleventyConfig.addPassthroughCopy({
+      [`node_modules/gsap/dist/${f}.min.js`]: `js/vendor/gsap-${GSAP_VERSION}/${f}.min.js`,
+    });
+  }
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("site.webmanifest");
