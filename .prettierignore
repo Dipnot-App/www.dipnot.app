@@ -13,8 +13,5 @@ sitemap.xml
 *.svg
 img/
 
-# Temporary OG test pages (dna_core_docs#185); prettier lowercases the
-# doctype, html-validate wants it uppercase. Remove with the pages.
-og-test/
 # esbuild output (minified bundle of src/shark3d.js + three.js)
 js/shark3d.js
