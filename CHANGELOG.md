@@ -8,6 +8,16 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-14
 
+- **GSAP self-hosted, cdnjs dropped (#182)** — Per Nev's 2026-10-12
+  rule (landing loads no third-party CDN; a public CDN sees every
+  visitor's IP). `gsap` 3.13.0 is a pinned devDependency; Eleventy
+  copies `gsap`, `ScrollTrigger` and `SplitText` to
+  `js/vendor/gsap-<version>/`, so a bump changes the URL. The files
+  are byte-identical to the cdnjs ones (same SHA-384 as the old SRI
+  pins), so motion is unchanged. `site.cdn` and the SRI hashes are
+  gone: same-origin scripts don't need them. Shared CDN caching no
+  longer exists (browsers partition caches per site), and Pages is
+  already behind Fastly, so nothing is lost.
 - **Release 2.0.4** — ships competition rules Madde 10 and the privacy
   pointer (#179, below).
 - **Competition rules Madde 10: cheating checks disclosed** — Appended

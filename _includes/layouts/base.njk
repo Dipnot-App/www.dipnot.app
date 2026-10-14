@@ -140,9 +140,9 @@
   <script src="/js/contact.js?v={{ site.jsVersion }}"></script>
   {%- endif %}
   {%- if pageMotion %}
-  <script src="{{ site.cdn.gsap.href }}" integrity="{{ site.cdn.gsap.integrity }}" crossorigin="anonymous" defer></script>
-  <script src="{{ site.cdn.scrollTrigger.href }}" integrity="{{ site.cdn.scrollTrigger.integrity }}" crossorigin="anonymous" defer></script>
-  <script src="{{ site.cdn.splitText.href }}" integrity="{{ site.cdn.splitText.integrity }}" crossorigin="anonymous" defer></script>
+  {%- for f in ["gsap", "ScrollTrigger", "SplitText"] %}
+  <script src="/js/vendor/gsap-{{ gsapVersion }}/{{ f }}.min.js" defer></script>
+  {%- endfor %}
   <script src="/js/motion.js?v={{ site.jsVersion }}" defer></script>
   {%- endif %}
   {%- if pageModule %}

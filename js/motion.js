@@ -1,5 +1,6 @@
-// Home-page motion — GSAP + ScrollTrigger + SplitText (cdnjs, SRI-pinned
-// in _data/site.json). IIFE for the same reason as contact.js.
+// Home-page motion — GSAP + ScrollTrigger + SplitText (self-hosted from
+// the pinned npm package, see eleventy.config.js). IIFE for the same
+// reason as contact.js.
 //
 // Contract with the CSS: base.njk adds html.dn-motion before first paint
 // when motion is allowed, which hides [data-reveal] and the hero's
