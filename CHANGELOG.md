@@ -6,6 +6,18 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-15
+
+- **Release 2.0.6** — ships the mobile App Check paragraph (below).
+- **Privacy policy: mobile App Check paragraph** — Mirrored the
+  registry's "Privacy-policy snippet, mobile" (TR + EN) from
+  `data-processors.md` → Firebase App Check into §3 of
+  `gizlilik-politikasi.html` and `privacy-policy.html`, directly after
+  the reCAPTCHA Enterprise entry, word for word. Apple Inc. (App
+  Attest) is a new recipient; Play Integrity is Google LLC. Mobile
+  1.7.0 waits for it. Dates bumped on both pages and in the sitemap
+  (core-docs#223).
+
 ## 2026-10-14
 
 - **OG test pages removed** — `og-test/`, `img/og-test/` and their
