@@ -40,7 +40,7 @@ module.exports = {
         initials: "NU",
         role: "Kurucu Ortak · Ürün ve Teknoloji",
         summary:
-          "iOS ve Android uygulamasının, yönetim panelinin ve web sitesinin mimarisini kurup geliştiriyor; bulut altyapısı, veri güvenliği ve marka sistemi de onun sorumluluğunda.",
+          "iOS ve Android uygulamalarından, yönetim panelinden ve web sitesinden sorumlu; genel teknoloji mimarisini kurup geliştiriyor, bulut altyapısını, veri güvenliğini ve kurumsal kimlik sistemini yönetiyor.",
         bio: [
           "2008'den beri dalıyor, 2011'den bu yana dalış eğitmeni; 7.000'i aşkın dalışının 1.000'den fazlası batıklarda. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye'nin kurucusu. Türkiye ile Dubai arasında temel, teknik ve kapalı devre (CCR) dalış eğitimleri veriyor.",
           "Çalışmalarının merkezinde sualtı kültürel mirası var: Akdeniz Üniversitesi'nde Akdeniz Sualtı Kültürel Mirası yüksek lisansını tamamlıyor; 2025'te Adrasan, Kumluca ve Fethiye'deki batıklarda arkeolojik araştırma dalışlarına katıldı. Ghost Diving Türkiye koordinatörü ve Project Baseline Marmara proje dalıcısı; mağara haritalama ve 3D fotogrametri üzerine çalışıyor.",
@@ -108,7 +108,7 @@ module.exports = {
         initials: "NU",
         role: "Co-founder · Product & Technology",
         summary:
-          "Architects and builds the iOS and Android app, the admin panel and the website; the cloud infrastructure, data security and the brand system are also in this remit.",
+          "Responsible for the iOS and Android apps, the admin panel and the website; designs and develops the overall technology architecture, and manages the cloud infrastructure, data security and the corporate identity system.",
         bio: [
           "Diving since 2008 and a dive instructor since 2011, with 7,000+ dives, more than 1,000 of them on wrecks. Turkey's first GUE (Global Underwater Explorers) instructor and founder of GUE Turkey. Teaches fundamentals, technical and closed-circuit rebreather (CCR) diving between Turkey and Dubai.",
           "Underwater cultural heritage is at the centre of the work: completing an MA in Mediterranean Underwater Cultural Heritage Studies at Akdeniz University, and in 2025 took part in archaeological research dives on wrecks at Adrasan, Kumluca and Fethiye. Coordinator of Ghost Diving Turkey and project diver for Project Baseline Marmara; works on cave survey and 3D photogrammetry.",
