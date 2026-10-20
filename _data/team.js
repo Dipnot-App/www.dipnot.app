@@ -18,12 +18,25 @@ module.exports = {
         initials: "NU",
         role: "Kurucu Ortak · Ürün ve Teknoloji",
         summary:
-          "[Önceki kariyer]den dalışa; 2008'den beri dalıyor, çok disiplinli dalış eğitmeni. Dipnot'un ürününü ve teknolojisini yönetir.",
+          "Türkiye'nin ilk GUE eğitmeni; mağara ve teknik dalış eğitmeni, sualtı görüntü yönetmeni ve yazılım mimarı. Dipnot'un ürününü ve teknolojisini yönetir.",
         bio: [
-          "[Doğum yılı], [şehir]. [Üniversite ve bölüm]. [Dalış öncesi kariyer: sektör, kaç yıl, rol].",
-          "Sualtı dünyasıyla 2008'de tanıştı. [İlk eğitmenlik yılı ve ajansı]. Sportif dalış (SCUBA), serbest dalış, sidemount, mağara, batık ve teknik dalış alanlarında eğitim veriyor; engelli dalıcılar için özel dalış eğitimleri düzenliyor.",
-          "Neptün Sualtı Merkezi'ni kurdu. [GUE Türkiye ve ProTec Türkiye temsilciliği: yıllar, güncel mi?] [Deep Dive Dubai'de dalış amirliği: yıllar].",
-          "Dipnot'ta ürün ve teknolojiden sorumlu: mobil uygulamayı, yönetim panelini, web sitesini ve marka sistemini tasarlayıp geliştirdi.",
+          "[Doğum yılı], [şehir]. [Üniversite ve bölüm]. [Dalış öncesi kariyer, varsa].",
+          "Sualtı dünyasıyla 2008'de üniversitesinin dalış kulübünde tanıştı; üç yıl sonra, 2011'de dalış eğitmeni oldu. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni; bugün GUE Türkiye'nin ülke yöneticisi.",
+          "Başta mağara dalışı olmak üzere teknik derin dalış, karışım gazlar, kapalı devre solunum cihazları (CCR) ve serbest dalış alanlarında eğitim veriyor. Dubai'deki Deep Dive Dubai'de [rol] olarak çalışıyor; Halcyon, Shearwater ve SUEX'in marka elçisi.",
+          "V.A.C. Studio'da görüntü yönetmeni ve yazılım mimarı. Dipnot'ta ürün ve teknolojiden sorumlu: mobil uygulamayı, yönetim panelini, web sitesini ve marka sistemini tasarlayıp geliştirdi.",
+        ],
+        links: [
+          { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "brands:linkedin",
+            label: "Nevcan Uludaş, LinkedIn",
+            href: "https://www.linkedin.com/in/nevcanuludas/",
+          },
+          {
+            icon: "brands:instagram",
+            label: "Nevcan Uludaş, Instagram",
+            href: "https://www.instagram.com/nevcanuludas/",
+          },
         ],
       },
       {
@@ -51,12 +64,25 @@ module.exports = {
         initials: "NU",
         role: "Co-founder · Product & Technology",
         summary:
-          "From [previous career] to diving; diving since 2008, multidisciplinary dive instructor. Leads Dipnot's product and technology.",
+          "Turkey's first GUE instructor; cave and technical diving instructor, underwater cinematographer and software architect. Leads Dipnot's product and technology.",
         bio: [
-          "[Birth year], [city]. [University and field]. [Career before diving: industry, years, role].",
-          "First dived in 2008. [First instructor year and agency]. Teaches recreational scuba, freediving, sidemount, cave, wreck and technical diving, and runs adaptive diving courses for divers with disabilities.",
-          "Founded Neptün Sualtı Merkezi. [GUE Turkey and ProTec Turkey representation: years, current?] [Dive supervisor at Deep Dive Dubai: years].",
-          "At Dipnot, responsible for product and technology: designed and built the mobile app, the admin panel, the website and the brand system.",
+          "[Birth year], [city]. [University and field]. [Career before diving, if any].",
+          "First breathed underwater in 2008 with the university diving club and became a dive instructor three years later, in 2011. Turkey's first GUE (Global Underwater Explorers) instructor and today GUE Turkey's country manager.",
+          "Teaches cave diving above all, plus technical deep diving, mixed gases, closed-circuit rebreathers (CCR) and freediving. Works at Deep Dive Dubai as [role]; brand ambassador for Halcyon, Shearwater and SUEX.",
+          "Cinematographer and software architect at V.A.C. Studio. At Dipnot, responsible for product and technology: designed and built the mobile app, the admin panel, the website and the brand system.",
+        ],
+        links: [
+          { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "brands:linkedin",
+            label: "Nevcan Uludaş on LinkedIn",
+            href: "https://www.linkedin.com/in/nevcanuludas/",
+          },
+          {
+            icon: "brands:instagram",
+            label: "Nevcan Uludaş on Instagram",
+            href: "https://www.instagram.com/nevcanuludas/",
+          },
         ],
       },
       {
