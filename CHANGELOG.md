@@ -8,6 +8,8 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **Release 2.0.7** — ships the team page and the Florya address
+  (below).
 - **Team page** — New `ekip.html` / `en/team.html` ("Ekibimizle
   tanışın" / "Meet the team"): one full-width glass card per member
   (Cüneyt Çakın, Hesna Onbaşı, Nevcan Uludaş, Birgül Eker) with
