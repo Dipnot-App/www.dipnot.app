@@ -23,6 +23,17 @@ module.exports = {
         role: "Kurucu Ortak · İş Geliştirme ve Sponsorluk",
         summary:
           "Dipnot'un gelir modelini yürütüyor: sponsorluk anlaşmaları, uygulama içi reklam alanları ve dalış merkezleriyle iş birlikleri onun masasında.",
+        bio: [
+          "CCR eğitmen eğitmeni ve PADI IDC Staff Instructor; kapalı devre solunum cihazlarıyla derin dalış eğitimleri veriyor ve yeni eğitmenler yetiştiriyor.",
+          "Diver ile Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft ve MPS gibi teknik dalış markalarının Türkiye distribütörlüğünü yürütüyor. Sektördeki bu geniş ağı Dipnot'un sponsorluk ve iş birliklerine taşıyor.",
+        ],
+        links: [
+          {
+            icon: "globe",
+            label: "Diver, diver.com.tr",
+            href: "https://www.diver.com.tr/",
+          },
+        ],
       },
       {
         name: "Hesna Onbaşı",
@@ -31,9 +42,9 @@ module.exports = {
         summary:
           "Dipnot'un yayın çizgisini belirliyor ve yayın akışını yönetiyor: konu seçiminden yazım, çeviri ve editörlüğe kadar tüm içerik süreci onun elinden geçiyor.",
         bio: [
-          "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı.",
-          "İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
-          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
+          "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı. Uzun yıllar adliye ve adli tıp muhabirliği yaptı.",
+          "Bu deneyim kalemine de yansıdı: Kanuni ve Mimar Sinan dönemine uzanan, İstanbul'da geçen ilk polisiye romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
+          "IANTD Sidemount ve Recreational Trimix eğitmeni; Çanakkale Kabatepe'deki Gallipoli Wrecks Dive Centre ekibinde, Gelibolu'nun Birinci Dünya Savaşı batıklarında dalıyor.",
         ],
       },
       {
@@ -103,6 +114,17 @@ module.exports = {
         role: "Co-founder · Business Development & Partnerships",
         summary:
           "Runs Dipnot's revenue model: sponsorship deals, in-app ad placements and partnerships with dive centres all sit on this desk.",
+        bio: [
+          "CCR Instructor Trainer and PADI IDC Staff Instructor; teaches deep diving on closed-circuit rebreathers and trains new instructors.",
+          "Through Diver, distributes technical diving brands in Turkey, including Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft and MPS, and brings that wide industry network to Dipnot's sponsorships and partnerships.",
+        ],
+        links: [
+          {
+            icon: "globe",
+            label: "Diver, diver.com.tr",
+            href: "https://www.diver.com.tr/",
+          },
+        ],
       },
       {
         name: "Hesna Onbaşı",
@@ -111,9 +133,9 @@ module.exports = {
         summary:
           "Sets Dipnot's editorial line and manages the publishing schedule: the whole content process, from choosing topics to writing, translating and editing, goes through Hesna.",
         bio: [
-          "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk.",
-          "First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
-          "IANTD Sidemount and Recreational Trimix Instructor.",
+          "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk. Spent years as a court and forensic-medicine reporter.",
+          "That experience carried into fiction: the first crime novel, <em>Süleyman'ın Kuyuları</em>, set in Istanbul and reaching back to the era of Suleiman the Magnificent and the architect Sinan, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
+          "IANTD Sidemount and Recreational Trimix Instructor; part of the Gallipoli Wrecks Dive Centre team at Kabatepe, Çanakkale, diving the First World War wrecks of Gallipoli.",
         ],
       },
       {
