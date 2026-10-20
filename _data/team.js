@@ -44,7 +44,7 @@ module.exports = {
         summary:
           "iOS ve Android uygulamalarından, yönetim panelinden ve web sitesinden sorumlu; genel teknoloji mimarisini kurup geliştiriyor, bulut altyapısını, veri güvenliğini ve kurumsal kimlik sistemini yönetiyor.",
         bio: [
-          "2008'de dalmaya başladı, 2011'den bu yana dalış eğitmeni. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor. Dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı.",
+          "Dalışa 2008'de başladı; 2011'den bu yana aktif olarak dalış eğitmenliği yapıyor. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor. Dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı.",
           "Sualtı projelerinde aktif: Ghost Diving Türkiye koordinatörü olarak hayalet ağ projeleri yürütüyor, Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, arkeolojik araştırmalara katılıyor ve mağara haritalama projeleri yapıyor. Sualtı arkeolojisi yüksek lisansını tamamlıyor.",
           "Doğuş Teknoloji ve SabancıDx gibi şirketlerde yazılım mimarı olarak çalıştı; bu deneyimini Dipnot'un teknoloji altyapısına taşıyor.",
         ],
@@ -124,7 +124,7 @@ module.exports = {
         summary:
           "Responsible for the iOS and Android apps, the admin panel and the website; designs and develops the overall technology architecture, and manages the cloud infrastructure, data security and the corporate identity system.",
         bio: [
-          "Started diving in 2008 and has been a dive instructor since 2011. Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives. Has held various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool.",
+          "Started diving in 2008 and has been actively teaching as a dive instructor since 2011. Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives. Has held various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool.",
           "Active in underwater projects: coordinates Ghost Diving Turkey's ghost-net projects, supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in archaeological research and runs cave survey projects. Completing an MA in underwater archaeology.",
           "Has worked as a software architect at companies such as Doğuş Teknoloji and SabancıDx, and brings that experience to Dipnot's technology.",
         ],
