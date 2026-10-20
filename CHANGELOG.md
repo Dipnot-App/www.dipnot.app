@@ -8,6 +8,10 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **Team page layout** — Portraits sit in a liquid-glass frame (the
+  `.dn-glass` material) with a leaf shape (`border-radius: 50% 10%`).
+  On phones the avatar sits beside the name and role, with the summary
+  and bio full width below, roughly halving each card's height.
 - **Terms of use (EN): "Republic of Türkiye"** — Spelling only, the
   Turkish original already says "Türkiye Cumhuriyeti", so the "Last
   updated" date stays in step with it.
