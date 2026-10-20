@@ -15,6 +15,7 @@
     "http://localhost:8080/terms-of-use.html",
     "http://localhost:8080/yarisma-kosullari.html",
     "http://localhost:8080/iletisim.html",
+    "http://localhost:8080/hakkimizda.html",
     "http://localhost:8080/hesap-silme.html",
     "http://localhost:8080/hesap-silme-onayi.html",
     "http://localhost:8080/404.html",
@@ -22,6 +23,7 @@
     "http://localhost:8080/brand-book.html",
     "http://localhost:8080/en/",
     "http://localhost:8080/en/contact.html",
+    "http://localhost:8080/en/about.html",
     "http://localhost:8080/en/delete-account.html"
   ]
 }

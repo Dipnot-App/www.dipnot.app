@@ -8,6 +8,10 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **About page** — New `hakkimizda.html` / `en/about.html` (what
+  Dipnot is, the name, team, developer, contact), linked from the
+  footer site map only, not the navbar. Sitemap entries added.
+
 - **Company address: Florya** — The Bahçeşehir address is replaced
   with the canonical one from core-docs `product-overview.md` →
   Company address, word for word, in the footer (every page),
