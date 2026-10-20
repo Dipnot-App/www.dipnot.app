@@ -74,7 +74,8 @@ module.exports = {
         initials: "BE",
         role: "Sosyal Medya",
         summary:
-          "Arkeolog. Dipnot'un Instagram akışını yürütüyor: yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla paylaşıyor.",
+          "Dipnot'un sosyal medya hesaplarını yürütüyor: yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla paylaşıyor.",
+        bio: ["Arkeolog."],
       },
     ],
   },
@@ -141,7 +142,8 @@ module.exports = {
         initials: "BE",
         role: "Social Media",
         summary:
-          "Archaeologist. Runs Dipnot's Instagram feed, regularly sharing new articles with readers through their images and summaries.",
+          "Runs Dipnot's social media accounts, regularly sharing new articles with readers through their images and summaries.",
+        bio: ["Archaeologist."],
       },
     ],
   },
