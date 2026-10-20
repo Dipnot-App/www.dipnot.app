@@ -26,8 +26,8 @@ module.exports = {
         summary:
           "Dipnot'un gelir modelini yürütüyor: sponsorluk anlaşmaları, uygulama içi reklam alanları ve dalış merkezleriyle iş birlikleri onun masasında.",
         bio: [
-          "CCR eğitmen eğitmeni ve PADI IDC Staff Instructor; kapalı devre solunum cihazlarıyla derin dalış eğitimleri veriyor ve yeni eğitmenler yetiştiriyor.",
-          "Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft ve MPS gibi teknik dalış markalarının Türkiye distribütörlüğünü yürütüyor. Sektördeki bu geniş ağı Dipnot'un sponsorluk ve iş birliklerine taşıyor.",
+          "CCR eğitmen eğitmeni. Kapalı devre solunum cihazlarıyla derin dalış eğitimleri veriyor ve yeni eğitmenler yetiştiriyor.",
+          "Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft ve MPS gibi teknik dalış markalarının Türkiye distribütörlüğünü yürütüyor. Sektördeki bu ağı Dipnot'un sponsorluk ve iş birliklerinde kullanıyor.",
         ],
         links: [
           {
@@ -143,8 +143,8 @@ module.exports = {
         summary:
           "Runs Dipnot's revenue model: sponsorship deals, in-app ad placements and partnerships with dive centres all sit on this desk.",
         bio: [
-          "CCR Instructor Trainer and PADI IDC Staff Instructor; teaches deep diving on closed-circuit rebreathers and trains new instructors.",
-          "Distributes technical diving brands in Turkey, including Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft and MPS, and brings that wide industry network to Dipnot's sponsorships and partnerships.",
+          "CCR Instructor Trainer. Teaches deep diving on closed-circuit rebreathers and trains new instructors.",
+          "Distributes technical diving brands in Turkey, including Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft and MPS, and uses that industry network for Dipnot's sponsorships and partnerships.",
         ],
         links: [
           {
