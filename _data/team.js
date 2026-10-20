@@ -82,8 +82,9 @@ module.exports = {
         bio: [
           "Eskişehir Osmangazi Üniversitesi'nde maden mühendisliği okudu; bugün Akdeniz Üniversitesi'nde sualtı arkeolojisi yüksek lisansını tamamlıyor. Türkiye ile Dubai arasında yaşıyor.",
           "Sualtıyla 2008'de, üniversitesinin dalış kulübünde aldığı ilk nefesle tanıştı. Üç yıl sonra, 2011'de eğitmen oldu ve o günden bu yana aktif olarak dalış eğitmenliği yapıyor.",
-          "Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor. Dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı. Ghost Diving Türkiye koordinatörü olarak hayalet ağ projeleri yürütüyor, Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, arkeolojik araştırmalara katılıyor ve mağara haritalama projeleri yapıyor.",
-          "Doğuş Teknoloji ve SabancıDx gibi şirketlerde yazılım mimarı olarak çalıştı; bu deneyimini Dipnot'un teknoloji altyapısına taşıyor.",
+          "Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor. Dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı.",
+          "Sualtı projelerinde de aktif: Ghost Diving Türkiye koordinatörü olarak hayalet ağ projeleri yürütüyor, Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, arkeolojik araştırmalara katılıyor ve mağara haritalama projeleri yapıyor.",
+          "2010'dan bu yana yazılım sektöründe. D&amp;R, Doğuş Teknoloji ve SabancıDx gibi şirketlerde görev aldı, yazılım mimarlığı yaptı; kendi geliştirdiği uygulamalarla girişimci olarak da üretiyor. Bu deneyimini Dipnot'un teknoloji altyapısına taşıyor.",
         ],
         links: [
           {
@@ -198,8 +199,9 @@ module.exports = {
         bio: [
           "Studied mining engineering at Eskişehir Osmangazi University and is now completing an MA in underwater archaeology at Akdeniz University. Lives between Türkiye and Dubai.",
           "First breathed underwater in 2008 with the university diving club. Became an instructor three years later, in 2011, and has been actively teaching ever since.",
-          "Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives. Has held various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool. Coordinates Ghost Diving Turkey's ghost-net projects, supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in archaeological research and runs cave survey projects.",
-          "Has worked as a software architect at companies such as Doğuş Teknoloji and SabancıDx, and brings that experience to Dipnot's technology.",
+          "Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives. Has held various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool.",
+          "Also active in underwater projects: coordinates Ghost Diving Turkey's ghost-net projects, supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in archaeological research and runs cave survey projects.",
+          "In the software industry since 2010. Has worked at companies such as D&amp;R, Doğuş Teknoloji and SabancıDx, including as a software architect, and as an entrepreneur builds independent apps. Brings that experience to Dipnot's technology.",
         ],
         links: [
           {
