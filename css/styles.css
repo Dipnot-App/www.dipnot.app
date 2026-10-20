@@ -3619,7 +3619,8 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
   place-items: center;
   width: 4.5rem;
   height: 4.5rem;
-  border-radius: 50% 10%;
+  /* Rounder than the frame, so the photo sits inside it like a lens */
+  border-radius: 50% 35%;
   object-fit: cover;
   background: linear-gradient(
     160deg,
