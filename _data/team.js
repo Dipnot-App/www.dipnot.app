@@ -10,7 +10,7 @@
 module.exports = {
   tr: {
     title: "Ekibimizle tanış",
-    lead: "Dipnot'u, dalış dünyasının içinden gelen küçük bir ekip hazırlıyor.",
+    lead: "Dipnot'un arkasında dalış eğitmenleri, bir gazeteci-editör ve bir arkeolog var.",
     more: "Özgeçmişi oku",
     members: [
       {
@@ -43,7 +43,7 @@ module.exports = {
 
   en: {
     title: "Meet the team",
-    lead: "Dipnot is made by a small team from the diving world.",
+    lead: "Behind Dipnot are dive instructors, a journalist and editor, and an archaeologist.",
     more: "Read bio",
     members: [
       {
