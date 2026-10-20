@@ -55,9 +55,10 @@ module.exports = {
         summary:
           "Dipnot'un yayın çizgisini belirliyor ve yayın akışını yönetiyor: konu seçiminden yazım, çeviri ve editörlüğe kadar tüm içerik süreci onun elinden geçiyor.",
         bio: [
-          "25 yıllık deneyime sahip bir gazeteci ve editör. atv, Habertürk TV, NTV ve ulusal dergilerde muhabir ve editör olarak çalıştı; atv'de Gece Haberleri Ekip Şefi olarak son dakika yayınlarının editoryal operasyonunu yönetti. Uzun yıllar adliye ve adli tıp muhabirliği yaptı.",
-          "Bu deneyim kalemine de yansıdı: Kanuni ve Mimar Sinan dönemine uzanan, İstanbul'da geçen ilk polisiye romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
-          "IANTD Sidemount ve Recreational Trimix eğitmeni. Türkiye ile Mısır'ın Dahab kenti arasında yaşıyor; editoryal birikimini dalışa ve dalış turizmine dair ilk elden bilgisiyle birleştiriyor.",
+          "İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı. Türkiye ile Mısır'ın Dahab kenti arasında yaşıyor.",
+          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
+          "25 yıl boyunca atv, Habertürk TV, NTV ve ulusal dergilerde muhabir ve editör olarak çalıştı. atv'de Gece Haberleri Ekip Şefi olarak son dakika yayınlarının editoryal operasyonunu yönetti. Uzun yıllar adliye ve adli tıp muhabirliği yaptı.",
+          "İlk polisiye romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
         ],
         links: [
           {
@@ -172,9 +173,10 @@ module.exports = {
         summary:
           "Sets Dipnot's editorial line and manages the publishing schedule: the whole content process, from choosing topics to writing, translating and editing, goes through Hesna.",
         bio: [
-          "A journalist and editor with 25 years of experience. Worked as a reporter and editor at atv, Habertürk TV, NTV and national magazines, and as atv's Night News Team Chief ran the editorial side of breaking-news broadcasts. Spent years as a court and forensic-medicine reporter.",
-          "That experience carried into fiction: the first crime novel, <em>Süleyman'ın Kuyuları</em>, set in Istanbul and reaching back to the era of Suleiman the Magnificent and the architect Sinan, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
-          "IANTD Sidemount and Recreational Trimix Instructor. Based in Türkiye and seasonally in Dahab, Egypt, combining editorial experience with first-hand knowledge of diving and dive tourism.",
+          "Studied at Istanbul University's Faculty of Communication. Lives between Türkiye and Dahab, Egypt.",
+          "IANTD Sidemount and Recreational Trimix Instructor.",
+          "Spent 25 years as a reporter and editor at atv, Habertürk TV, NTV and national magazines. As atv's Night News Team Chief, ran the editorial side of breaking-news broadcasts. Was a court and forensic-medicine reporter for many years.",
+          "First crime novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
         ],
         links: [
           {
