@@ -24,7 +24,7 @@
     "audit": "npm audit --audit-level=critical"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy": "^3.1.7",
     "@fortawesome/fontawesome-free": "7.3.1",
     "@gltf-transform/cli": "4.5.1",
     "@lhci/cli": "^0.15.0",
