@@ -84,7 +84,7 @@ module.exports = {
           "Sualtıyla 2008'de, üniversitesinin dalış kulübünde tanıştı. 2011'de eğitmen oldu; 2021'den bu yana tam zamanlı dalış eğitmenliği yapıyor.",
           "Türkiye'nin ilk GUE eğitmeni, GUE Türkiye'nin kurucusu ve ülke yöneticisi; bugün eğitmen yetiştiren Instructor Trainer seviyesinde eğitim veriyor. Üç yıl boyunca dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı. Kapalı devre solunum cihazları (CCR), mağara dalışları ve karışım gazlarla derin dalışlar konusunda deneyimli.",
           "Ghost Diving Türkiye'nin koordinatörü olarak denizlerdeki hayalet ağların temizlenmesine yönelik projeler yürütüyor. Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, sualtı arkeolojisi araştırmalarına katılıyor ve mağara haritalama projelerinde yer alıyor.",
-          "2010–2021 yılları arasında D&amp;R gibi şirketlerde yazılım geliştirme uzmanı, Doğuş Teknoloji ve SabancıDx'te yazılım mimarı olarak çalıştı. Bugün kendi yazılım projelerini geliştiriyor; bu birikimini Dipnot'un teknoloji altyapısında kullanıyor.",
+          "2010–2021 yılları arasında farklı firmalarda yazılım geliştirme uzmanı, Doğuş Teknoloji ve SabancıDx'te yazılım mimarı olarak çalıştı. Bugün kendi yazılım projelerini geliştiriyor; bu birikimini Dipnot'un teknoloji altyapısında kullanıyor.",
         ],
         links: [
           {
@@ -201,7 +201,7 @@ module.exports = {
           "Discovered the underwater world in 2008 at the university diving club. Became an instructor in 2011 and has been a full-time dive instructor since 2021.",
           "Turkey's first GUE instructor and the founder and country manager of GUE Turkey, now teaching at Instructor Trainer level, training new instructors. Spent three years in various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool. Experienced in closed-circuit rebreathers (CCR), cave diving and deep mixed-gas diving.",
           "As coordinator of Ghost Diving Turkey, runs projects to remove ghost nets from the sea. Supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in underwater archaeology research and works on cave survey projects.",
-          "From 2010 to 2021 worked as a software development specialist at companies such as D&amp;R, and as a software architect at Doğuş Teknoloji and SabancıDx. Now develops independent software projects and uses that experience in Dipnot's technology.",
+          "From 2010 to 2021 worked as a software development specialist at various companies, and as a software architect at Doğuş Teknoloji and SabancıDx. Now develops independent software projects and uses that experience in Dipnot's technology.",
         ],
         links: [
           {
