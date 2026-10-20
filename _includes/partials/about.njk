@@ -1,0 +1,64 @@
+{%- set a = about[lang or "tr"] -%}
+<!-- HERO BANNER -->
+<section class="hero has-background-hero">
+  <div class="hero-body">
+    <div class="columns">
+      <div class="column">
+        <p class="title is-size-1 has-text-white mb-5">{{ a.hero }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN PAGE -->
+<main id="main" class="container py-6">
+  <section class="section">
+    <div class="content">
+      <h1>{{ a.title }}</h1>
+      {%- for p in a.intro %}
+      <p>{{ p | safe }}</p>
+      {%- endfor %}
+
+      <h2>{{ a.nameTitle }}</h2>
+      <p>{{ a.name | safe }}</p>
+    </div>
+  </section>
+
+  <section class="section dn-team" aria-labelledby="team-title">
+    <header class="dn-team__head">
+      <h2 id="team-title" class="dn-h2">{{ a.teamTitle }}</h2>
+      <p class="dn-lead">{{ a.teamLead }}</p>
+    </header>
+    <ul class="dn-team__grid">
+      {%- for m in a.team %}
+      <li class="dn-team__card dn-glass dn-glass--strong">
+        {%- if m.photo %}
+        <img class="dn-team__avatar" src="{{ m.photo }}" alt="" width="96" height="96" loading="lazy">
+        {%- else %}
+        <span class="dn-team__avatar" aria-hidden="true">{{ m.initials }}</span>
+        {%- endif %}
+        <h3 class="dn-h3 dn-team__name">{{ m.name }}</h3>
+        <p class="dn-team__role">{{ m.role }}</p>
+        <p class="dn-team__bio">{{ m.bio | safe }}</p>
+        {%- if m.links %}
+        <p class="dn-team__links">
+          {%- for l in m.links %}
+          <a href="{{ l.href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ l.label }}">{% icon l.icon %}</a>
+          {%- endfor %}
+        </p>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="content">
+      <h2>{{ a.devTitle }}</h2>
+      <p>{{ a.dev | safe }}</p>
+
+      <h2>{{ a.contactTitle }}</h2>
+      <p>{{ a.contact | safe }}</p>
+    </div>
+  </section>
+</main>
