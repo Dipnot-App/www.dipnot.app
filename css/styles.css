@@ -3574,7 +3574,7 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
     align-items: flex-start;
     gap: clamp(2rem, 4vw, 3rem);
   }
-  .dn-team__card > .dn-team__avatar {
+  .dn-team__card .dn-team__avatar {
     flex: none;
     width: 8rem;
     height: 8rem;
@@ -3602,6 +3602,12 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+/* <picture> is the flex item; the <img> inside carries the avatar look */
+.dn-team__photo {
+  display: block;
+  flex: none;
+  line-height: 0;
 }
 .dn-team__name {
   margin: 0;

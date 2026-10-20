@@ -21,6 +21,20 @@ const JOBS = [
       widths: [450, 640, 900],
     }),
   ),
+  // Team portraits (ekip.html): square crops around the face, shown as a
+  // 6–8rem circle, so 256 covers 2x and 384 covers 3x.
+  {
+    src: "team/nevcan.jpg",
+    name: "team-nevcan",
+    extract: { left: 190, top: 20, width: 1200, height: 1200 },
+    widths: [256, 384],
+  },
+  {
+    src: "team/birgul.jpg",
+    name: "team-birgul",
+    extract: { left: 410, top: 600, width: 1700, height: 1700 },
+    widths: [256, 384],
+  },
 ];
 
 async function main() {

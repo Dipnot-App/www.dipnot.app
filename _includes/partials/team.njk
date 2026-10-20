@@ -18,7 +18,11 @@
       {%- for m in tm.members %}
       <li class="dn-team__card dn-glass dn-glass--strong">
         {%- if m.photo %}
-        <img class="dn-team__avatar" src="{{ m.photo }}" alt="" width="96" height="96" loading="lazy">
+        <picture class="dn-team__photo">
+          <source type="image/avif" srcset="/img/opt/{{ m.photo }}-256.avif 256w, /img/opt/{{ m.photo }}-384.avif 384w" sizes="8rem">
+          <source type="image/webp" srcset="/img/opt/{{ m.photo }}-256.webp 256w, /img/opt/{{ m.photo }}-384.webp 384w" sizes="8rem">
+          <img class="dn-team__avatar" src="/img/opt/{{ m.photo }}-256.webp" alt="" width="128" height="128" loading="lazy" decoding="async">
+        </picture>
         {%- else %}
         <span class="dn-team__avatar" aria-hidden="true">{{ m.initials }}</span>
         {%- endif %}

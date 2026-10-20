@@ -7,7 +7,8 @@
 // Member: name, initials (avatar until a photo exists), role, summary
 // (what they do at Dipnot, always on the card). Optional: bio (relevant
 // background only, max three paragraphs, no birth year; written by each
-// member, shown behind "Özgeçmişi oku"), photo (path under /img/team/),
+// member, shown behind "Özgeçmişi oku"), photo (img/opt stem, exported
+// by scripts/build-images.js from img-src/team/),
 // links [{ icon, label, href }].
 
 module.exports = {
@@ -38,6 +39,7 @@ module.exports = {
       {
         name: "Nevcan Uludaş",
         initials: "NU",
+        photo: "team-nevcan",
         role: "Kurucu Ortak · Ürün ve Teknoloji",
         summary:
           "iOS ve Android uygulamalarından, yönetim panelinden ve web sitesinden sorumlu; genel teknoloji mimarisini kurup geliştiriyor, bulut altyapısını, veri güvenliğini ve kurumsal kimlik sistemini yönetiyor.",
@@ -72,6 +74,7 @@ module.exports = {
       {
         name: "Birgül Eker",
         initials: "BE",
+        photo: "team-birgul",
         role: "Sosyal Medya",
         summary:
           "Dipnot'un sosyal medya hesaplarını yürütüyor: yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla paylaşıyor.",
@@ -109,6 +112,7 @@ module.exports = {
       {
         name: "Nevcan Uludaş",
         initials: "NU",
+        photo: "team-nevcan",
         role: "Co-founder · Product & Technology",
         summary:
           "Responsible for the iOS and Android apps, the admin panel and the website; designs and develops the overall technology architecture, and manages the cloud infrastructure, data security and the corporate identity system.",
@@ -143,6 +147,7 @@ module.exports = {
       {
         name: "Birgül Eker",
         initials: "BE",
+        photo: "team-birgul",
         role: "Social Media",
         summary:
           "Runs Dipnot's social media accounts, regularly sharing new articles with readers through their images and summaries.",
