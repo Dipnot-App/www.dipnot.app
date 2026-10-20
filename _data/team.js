@@ -3,8 +3,8 @@
 // blocks in lockstep.
 //
 // Member: name, initials (avatar until a photo exists), role, summary
-// (one or two sentences, always on the card), bio (paragraphs behind
-// "Özgeçmişi oku"). Optional: photo (path under /img/team/),
+// (what they do at Dipnot, always on the card), bio (relevant background
+// only, max three paragraphs, behind "Özgeçmişi oku"; no birth year). Optional: photo (path under /img/team/),
 // links [{ icon, label, href }].
 
 module.exports = {
@@ -18,15 +18,19 @@ module.exports = {
         initials: "NU",
         role: "Kurucu Ortak · Ürün ve Teknoloji",
         summary:
-          "Türkiye'nin ilk GUE eğitmeni; mağara ve teknik dalış eğitmeni, sualtı görüntü yönetmeni ve yazılım mimarı. Dipnot'un ürününü ve teknolojisini yönetir.",
+          "Dipnot'un ürününü ve teknolojisini yönetir: mobil uygulamayı, yönetim panelini ve web sitesini tasarlayıp geliştirdi, marka sistemini kurdu.",
         bio: [
-          "[Doğum yılı], [şehir]. [Üniversite ve bölüm]. [Dalış öncesi kariyer, varsa].",
-          "Sualtı dünyasıyla 2008'de üniversitesinin dalış kulübünde tanıştı; üç yıl sonra, 2011'de dalış eğitmeni oldu. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni; bugün GUE Türkiye'nin ülke yöneticisi.",
-          "Başta mağara dalışı olmak üzere teknik derin dalış, karışım gazlar, kapalı devre solunum cihazları (CCR) ve serbest dalış alanlarında eğitim veriyor. Dubai'deki Deep Dive Dubai'de [rol] olarak çalışıyor; Halcyon, Shearwater ve SUEX'in marka elçisi.",
-          "V.A.C. Studio'da görüntü yönetmeni ve yazılım mimarı. Dipnot'ta ürün ve teknolojiden sorumlu: mobil uygulamayı, yönetim panelini, web sitesini ve marka sistemini tasarlayıp geliştirdi.",
+          "2008'den beri dalıyor, 2011'den bu yana dalış eğitmeni; 7.000'i aşkın dalışının 1.000'den fazlası batıklarda. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye'nin kurucusu. Türkiye ile Dubai arasında temel, teknik ve kapalı devre (CCR) dalış eğitimleri veriyor.",
+          "Çalışmalarının merkezinde sualtı kültürel mirası var: Akdeniz Üniversitesi'nde Akdeniz Sualtı Kültürel Mirası yüksek lisansını tamamlıyor; 2025'te Adrasan, Kumluca ve Fethiye'deki batıklarda arkeolojik araştırma dalışlarına katıldı. Ghost Diving Türkiye koordinatörü ve Project Baseline Marmara proje dalıcısı; mağara haritalama ve 3D fotogrametri üzerine çalışıyor.",
+          "Yazılım mimarı ve sualtı görüntü yönetmeni. Halcyon, Shearwater, SUEX ve Big Blue marka elçisi.",
         ],
         links: [
           { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "id-card",
+            label: "Nevcan Uludaş, GUE eğitmen özgeçmişi",
+            href: "https://gue.com/diver-training/gue-instructors/instructor-resume?id=20397",
+          },
           {
             icon: "brands:linkedin",
             label: "Nevcan Uludaş, LinkedIn",
@@ -44,11 +48,11 @@ module.exports = {
         initials: "HO",
         role: "Kurucu Ortak · Yayın Yönetmeni",
         summary:
-          "Gazeteci, editör ve romancı; IANTD eğitmeni. Dipnot'un yazılarını yazar, çevirir ve yayına hazırlar.",
+          "Dipnot'un yayın yönetmeni: yazıları yazar, çevirir, düzenler ve yayına hazırlar.",
         bio: [
-          "1980'de Balıkesir İvrindi'de doğdu. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı.",
-          "Türkiye'nin önde gelen haber dergileri, televizyon kanalları ve radyolarında muhabir ve editör olarak çalıştı; NTV ve Habertürk bunlar arasında. İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
-          "IANTD Sidemount ve Recreational Trimix eğitmeni. Dipnot'ta yazıları yazıyor, çeviriyor ve yayına hazırlıyor.",
+          "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı.",
+          "İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
+          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
         ],
       },
     ],
@@ -64,15 +68,19 @@ module.exports = {
         initials: "NU",
         role: "Co-founder · Product & Technology",
         summary:
-          "Turkey's first GUE instructor; cave and technical diving instructor, underwater cinematographer and software architect. Leads Dipnot's product and technology.",
+          "Leads Dipnot's product and technology: designed and built the mobile app, the admin panel and the website, and set up the brand system.",
         bio: [
-          "[Birth year], [city]. [University and field]. [Career before diving, if any].",
-          "First breathed underwater in 2008 with the university diving club and became a dive instructor three years later, in 2011. Turkey's first GUE (Global Underwater Explorers) instructor and today GUE Turkey's country manager.",
-          "Teaches cave diving above all, plus technical deep diving, mixed gases, closed-circuit rebreathers (CCR) and freediving. Works at Deep Dive Dubai as [role]; brand ambassador for Halcyon, Shearwater and SUEX.",
-          "Cinematographer and software architect at V.A.C. Studio. At Dipnot, responsible for product and technology: designed and built the mobile app, the admin panel, the website and the brand system.",
+          "Diving since 2008 and a dive instructor since 2011, with 7,000+ dives, more than 1,000 of them on wrecks. Turkey's first GUE (Global Underwater Explorers) instructor and founder of GUE Turkey. Teaches fundamentals, technical and closed-circuit rebreather (CCR) diving between Turkey and Dubai.",
+          "Underwater cultural heritage is at the centre of the work: completing an MA in Mediterranean Underwater Cultural Heritage Studies at Akdeniz University, and in 2025 took part in archaeological research dives on wrecks at Adrasan, Kumluca and Fethiye. Coordinator of Ghost Diving Turkey and project diver for Project Baseline Marmara; works on cave survey and 3D photogrammetry.",
+          "Software architect and underwater cinematographer. Brand ambassador for Halcyon, Shearwater, SUEX and Big Blue.",
         ],
         links: [
           { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "id-card",
+            label: "Nevcan Uludaş, GUE instructor resume",
+            href: "https://gue.com/diver-training/gue-instructors/instructor-resume?id=20397",
+          },
           {
             icon: "brands:linkedin",
             label: "Nevcan Uludaş on LinkedIn",
@@ -90,11 +98,11 @@ module.exports = {
         initials: "HO",
         role: "Co-founder · Editor-in-Chief",
         summary:
-          "Journalist, editor and novelist; IANTD instructor. Writes, translates and edits Dipnot's articles.",
+          "Dipnot's editor-in-chief: writes, translates, edits and publishes the articles.",
         bio: [
-          "Born in 1980 in İvrindi, Balıkesir. Studied at Istanbul University's Faculty of Communication.",
-          "Worked as a reporter and editor for leading Turkish news magazines, TV channels and radio stations, including NTV and Habertürk. First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
-          "IANTD Sidemount and Recreational Trimix Instructor. At Dipnot: writes, translates and edits the articles.",
+          "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk.",
+          "First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
+          "IANTD Sidemount and Recreational Trimix Instructor.",
         ],
       },
     ],
