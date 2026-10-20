@@ -2,9 +2,12 @@
 // (_includes/partials/team.njk). Turkish is primary; keep the two
 // blocks in lockstep.
 //
+// Order: co-founders by surname, then the rest of the team.
+//
 // Member: name, initials (avatar until a photo exists), role, summary
-// (what they do at Dipnot, always on the card), bio (relevant background
-// only, max three paragraphs, behind "Özgeçmişi oku"; no birth year). Optional: photo (path under /img/team/),
+// (what they do at Dipnot, always on the card). Optional: bio (relevant
+// background only, max three paragraphs, no birth year; written by each
+// member, shown behind "Özgeçmişi oku"), photo (path under /img/team/),
 // links [{ icon, label, href }].
 
 module.exports = {
@@ -13,6 +16,25 @@ module.exports = {
     lead: "Dipnot'un arkasında dalış eğitmenleri, bir gazeteci-editör ve bir arkeolog var.",
     more: "Özgeçmişi oku",
     members: [
+      {
+        name: "Cüneyt Çakın",
+        initials: "CÇ",
+        role: "Kurucu Ortak · İş Geliştirme ve Sponsorluk",
+        summary:
+          "Dipnot'un iş geliştirme tarafını yönetir: sponsorluklar, marka iş birlikleri ve gelir.",
+      },
+      {
+        name: "Hesna Onbaşı",
+        initials: "HO",
+        role: "Kurucu Ortak · Yayın Yönetmeni",
+        summary:
+          "Dipnot'un yayın yönetmeni: yazıları yazar, çevirir, düzenler ve yayına hazırlar.",
+        bio: [
+          "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı.",
+          "İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
+          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
+        ],
+      },
       {
         name: "Nevcan Uludaş",
         initials: "NU",
@@ -25,7 +47,11 @@ module.exports = {
           "Yazılım mimarı ve sualtı görüntü yönetmeni. Halcyon, Shearwater, SUEX ve Big Blue marka elçisi.",
         ],
         links: [
-          { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "globe",
+            label: "nevcan.com",
+            href: "https://nevcan.com/",
+          },
           {
             icon: "id-card",
             label: "Nevcan Uludaş, GUE eğitmen özgeçmişi",
@@ -44,25 +70,38 @@ module.exports = {
         ],
       },
       {
-        name: "Hesna Onbaşı",
-        initials: "HO",
-        role: "Kurucu Ortak · Yayın Yönetmeni",
+        name: "Birgül Eker",
+        initials: "BE",
+        role: "Sosyal Medya",
         summary:
-          "Dipnot'un yayın yönetmeni: yazıları yazar, çevirir, düzenler ve yayına hazırlar.",
-        bio: [
-          "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı.",
-          "İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
-          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
-        ],
+          "Arkeolog; Dipnot'un Instagram hesabını yönetir ve yeni yazıları okurlarla buluşturur.",
       },
     ],
   },
-
   en: {
     title: "Meet the team",
     lead: "Behind Dipnot are dive instructors, a journalist and editor, and an archaeologist.",
     more: "Read bio",
     members: [
+      {
+        name: "Cüneyt Çakın",
+        initials: "CÇ",
+        role: "Co-founder · Business Development & Partnerships",
+        summary:
+          "Leads Dipnot's business development: sponsorships, brand partnerships and revenue.",
+      },
+      {
+        name: "Hesna Onbaşı",
+        initials: "HO",
+        role: "Co-founder · Editor-in-Chief",
+        summary:
+          "Dipnot's editor-in-chief: writes, translates, edits and publishes the articles.",
+        bio: [
+          "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk.",
+          "First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
+          "IANTD Sidemount and Recreational Trimix Instructor.",
+        ],
+      },
       {
         name: "Nevcan Uludaş",
         initials: "NU",
@@ -75,7 +114,11 @@ module.exports = {
           "Software architect and underwater cinematographer. Brand ambassador for Halcyon, Shearwater, SUEX and Big Blue.",
         ],
         links: [
-          { icon: "globe", label: "nevcan.com", href: "https://nevcan.com/" },
+          {
+            icon: "globe",
+            label: "nevcan.com",
+            href: "https://nevcan.com/",
+          },
           {
             icon: "id-card",
             label: "Nevcan Uludaş, GUE instructor resume",
@@ -94,16 +137,11 @@ module.exports = {
         ],
       },
       {
-        name: "Hesna Onbaşı",
-        initials: "HO",
-        role: "Co-founder · Editor-in-Chief",
+        name: "Birgül Eker",
+        initials: "BE",
+        role: "Social Media",
         summary:
-          "Dipnot's editor-in-chief: writes, translates, edits and publishes the articles.",
-        bio: [
-          "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk.",
-          "First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
-          "IANTD Sidemount and Recreational Trimix Instructor.",
-        ],
+          "Archaeologist; runs Dipnot's Instagram and brings new articles to readers.",
       },
     ],
   },
