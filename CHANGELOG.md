@@ -8,6 +8,9 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **Terms of use (EN): "Republic of Türkiye"** — Spelling only, the
+  Turkish original already says "Türkiye Cumhuriyeti", so the "Last
+  updated" date stays in step with it.
 - **Team page bios** — Every bio follows one order (personal, how
   they started diving, diving expertise, expertise for their Dipnot
   role) in a plainer voice; summaries say what each member is
