@@ -75,7 +75,9 @@ module.exports = {
         role: "Sosyal Medya",
         summary:
           "Dipnot'un sosyal medya hesaplarını yürütüyor: yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla paylaşıyor.",
-        bio: ["Arkeolog."],
+        bio: [
+          "Arkeolog. Arkeoloji bölümünden mezun oldu, yüksek lisansını yine arkeoloji alanında sürdürüyor; sualtı arkeolojisi üzerine çalışmaları var. TSSF/CMAS iki yıldızlı dalıcı.",
+        ],
       },
     ],
   },
@@ -143,7 +145,9 @@ module.exports = {
         role: "Social Media",
         summary:
           "Runs Dipnot's social media accounts, regularly sharing new articles with readers through their images and summaries.",
-        bio: ["Archaeologist."],
+        bio: [
+          "Archaeologist. Graduated in archaeology and is now doing a master's in the same field, with work on underwater archaeology. TSSF/CMAS two-star diver.",
+        ],
       },
     ],
   },
