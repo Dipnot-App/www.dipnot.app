@@ -3542,7 +3542,6 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
 
 /* Lines up with the hero title, like a reading panel's text */
 .dn-team__lead {
-  max-width: 44rem;
   margin: 0 0 2rem;
   padding-inline: clamp(1.5rem, 4vw, 3rem);
 }
