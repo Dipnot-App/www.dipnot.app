@@ -117,8 +117,8 @@ module.exports = {
         summary:
           "Dipnot'un sosyal medya hesaplarını yönetiyor ve arkeoloji yazılarını kaleme alıyor; yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla buluşturuyor.",
         bio: [
-          "Arkeoloji lisansının ardından yüksek lisansını da arkeoloji üzerine yapıyor; bir yandan da Kültürel Miras ve Turizm alanında eğitimini sürdürüyor. İlgisinin odağında sualtı arkeolojisi var: denizin altında saklı kalan geçmişin izini sürmek, çalışmalarının merkezinde.",
-          "TSSF/CMAS iki yıldızlı dalıcı olarak bu ilgiyi suyun altına da taşıyor. Arkeolojiyle dalışın buluştuğu Dipnot'ta bu birikimi hem yazılarına hem de sosyal medyadaki sesine taşıyor.",
+          "Arkeoloji bölümünü bitirdi, yüksek lisansını da arkeoloji üzerine yapıyor. Bir yandan da Kültürel Miras ve Turizm alanında eğitimine devam ediyor.",
+          "TSSF/CMAS iki yıldızlı dalıcı. Çalışmalarını sualtı arkeolojisi üzerine yoğunlaştırıyor.",
         ],
         links: [
           {
@@ -234,8 +234,8 @@ module.exports = {
         summary:
           "Runs Dipnot's social media accounts and writes its archaeology articles, regularly bringing new pieces to readers through their images and summaries.",
         bio: [
-          "After a degree in archaeology, now doing a master's in the same field, while also studying Cultural Heritage and Tourism. Underwater archaeology is at the heart of the work: tracing the past the sea keeps hidden.",
-          "As a TSSF/CMAS two-star diver, Birgül takes that interest below the surface too. At Dipnot, where archaeology meets diving, Birgül brings that background to both the articles and Dipnot's voice on social media.",
+          "Graduated in archaeology and is doing a master's in the same field, while also studying Cultural Heritage and Tourism.",
+          "TSSF/CMAS two-star diver. Focuses on underwater archaeology.",
         ],
         links: [
           {
