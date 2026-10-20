@@ -6,6 +6,14 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-20
+
+- **Company address: Florya** — The Bahçeşehir address is replaced
+  with the canonical one from core-docs `product-overview.md` →
+  Company address, word for word, in the footer (every page),
+  `iletisim.html` and `en/contact.html`. Sitemap dates bumped for the
+  two contact pages (core-docs#231).
+
 ## 2026-10-15
 
 - **Release 2.0.6** — ships the mobile App Check paragraph (below).
