@@ -24,17 +24,17 @@
     "audit": "npm audit --audit-level=critical"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy": "^3.1.7",
     "@fortawesome/fontawesome-free": "7.3.1",
     "@gltf-transform/cli": "4.5.1",
     "@lhci/cli": "^0.15.0",
     "esbuild": "0.28.2",
-    "gsap": "3.13.0",
+    "gsap": "3.15.0",
     "html-validate": "^11.16.2",
     "http-server": "^14.1.1",
     "lightningcss": "1.33.0",
     "pa11y-ci": "^5.0.0",
-    "prettier": "^3.9.9",
+    "prettier": "^3.9.10",
     "sharp": "^0.35.5",
     "three": "0.186.1",
     "wait-on": "^9.5.1"

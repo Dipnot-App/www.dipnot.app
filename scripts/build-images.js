@@ -21,6 +21,33 @@ const JOBS = [
       widths: [450, 640, 900],
     }),
   ),
+  // Team portraits (ekip.html): square crops around the face, shown as a
+  // 6–8rem circle, so 256 covers 2x and 384 covers 3x.
+  {
+    // Cropped from an Instagram screenshot; swap for an original photo
+    // when one arrives.
+    src: "team/cuneyt.jpg",
+    name: "team-cuneyt",
+    extract: { left: 111, top: 800, width: 800, height: 800 },
+    widths: [256, 384],
+  },
+  {
+    src: "team/hesna.jpg",
+    name: "team-hesna",
+    widths: [256, 384],
+  },
+  {
+    src: "team/nevcan.jpg",
+    name: "team-nevcan",
+    extract: { left: 0, top: 0, width: 1600, height: 1600 },
+    widths: [256, 384],
+  },
+  {
+    src: "team/birgul.jpg",
+    name: "team-birgul",
+    extract: { left: 68, top: 550, width: 2200, height: 2200 },
+    widths: [256, 384],
+  },
 ];
 
 async function main() {

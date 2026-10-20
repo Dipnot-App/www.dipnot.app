@@ -6,6 +6,24 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-20
+
+- **Team page** — New `ekip.html` / `en/team.html` ("Ekibimizle
+  tanışın" / "Meet the team"): one full-width glass card per member
+  (Cüneyt Çakın, Hesna Onbaşı, Nevcan Uludaş, Birgül Eker) with
+  portrait, role, a summary of their work at Dipnot, an expandable bio
+  and profile links, from `_data/team.js`. Portraits are face crops
+  exported by `build-images.js` from `img-src/team/` (metadata
+  stripped). Linked from the footer site map only, not the navbar.
+  Sitemap and pa11y entries added. The title uses "siz" by Nev's call,
+  a deviation from the "sen" voice reported to core-docs.
+
+- **Company address: Florya** — The Bahçeşehir address is replaced
+  with the canonical one from core-docs `product-overview.md` →
+  Company address, word for word, in the footer (every page),
+  `iletisim.html` and `en/contact.html`. Sitemap dates bumped for the
+  two contact pages (core-docs#231).
+
 ## 2026-10-15
 
 - **Release 2.0.6** — ships the mobile App Check paragraph (below).
