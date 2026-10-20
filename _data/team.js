@@ -57,8 +57,7 @@ module.exports = {
         bio: [
           "İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı. Türkiye ile Mısır'ın Dahab kenti arasında yaşıyor.",
           "IANTD Sidemount ve Recreational Trimix eğitmeni.",
-          "25 yıl boyunca atv, Habertürk TV, NTV ve ulusal dergilerde muhabir ve editör olarak çalıştı. atv'de Gece Haberleri Ekip Şefi olarak son dakika yayınlarının editoryal operasyonunu yönetti. Uzun yıllar adliye ve adli tıp muhabirliği yaptı.",
-          "İlk polisiye romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
+          "25 yıl boyunca atv, Habertürk TV, NTV ve ulusal dergilerde muhabir ve editör olarak çalıştı. atv'de Gece Haberleri Ekip Şefi olarak son dakika yayınlarının editoryal operasyonunu yönetti. Uzun yıllar adliye ve adli tıp muhabirliği yaptı; 2014'te Labirent Yayınları'ndan çıkan <em>Süleyman'ın Kuyuları</em> adlı bir polisiye romanı var. Bu deneyimini Dipnot'un yayın çizgisinde ve editoryal süreçlerinde kullanıyor.",
         ],
         links: [
           {
@@ -175,8 +174,7 @@ module.exports = {
         bio: [
           "Studied at Istanbul University's Faculty of Communication. Lives between Türkiye and Dahab, Egypt.",
           "IANTD Sidemount and Recreational Trimix Instructor.",
-          "Spent 25 years as a reporter and editor at atv, Habertürk TV, NTV and national magazines. As atv's Night News Team Chief, ran the editorial side of breaking-news broadcasts. Was a court and forensic-medicine reporter for many years.",
-          "First crime novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
+          "Spent 25 years as a reporter and editor at atv, Habertürk TV, NTV and national magazines. As atv's Night News Team Chief, ran the editorial side of breaking-news broadcasts. Was a court and forensic-medicine reporter for many years, and published a crime novel, <em>Süleyman'ın Kuyuları</em>, with Labirent in 2014. Brings that experience to Dipnot's editorial line and processes.",
         ],
         links: [
           {
