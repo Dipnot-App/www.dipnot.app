@@ -8,6 +8,16 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **Team page** — New `ekip.html` / `en/team.html` ("Ekibimizle
+  tanışın" / "Meet the team"): one full-width glass card per member
+  (Cüneyt Çakın, Hesna Onbaşı, Nevcan Uludaş, Birgül Eker) with
+  portrait, role, a summary of their work at Dipnot, an expandable bio
+  and profile links, from `_data/team.js`. Portraits are face crops
+  exported by `build-images.js` from `img-src/team/` (metadata
+  stripped). Linked from the footer site map only, not the navbar.
+  Sitemap and pa11y entries added. The title uses "siz" by Nev's call,
+  a deviation from the "sen" voice reported to core-docs.
+
 - **Company address: Florya** — The Bahçeşehir address is replaced
   with the canonical one from core-docs `product-overview.md` →
   Company address, word for word, in the footer (every page),
