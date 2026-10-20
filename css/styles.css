@@ -3537,18 +3537,18 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
 }
 
 /* --------------------------------------------------------------------------
-   17c. About page — team cards (hakkimizda / en/about)
+   17c. Team page — member cards (ekip / en/team)
    -------------------------------------------------------------------------- */
 
-.dn-team__head {
+/* Lines up with the hero title, like a reading panel's text */
+.dn-team__lead {
   max-width: 44rem;
-  margin: 0 auto 2rem;
-  text-align: center;
+  margin: 0 0 2rem;
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
 }
 .dn-team__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 24rem));
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   gap: 1.25rem;
   margin: 0;
   padding: 0;
