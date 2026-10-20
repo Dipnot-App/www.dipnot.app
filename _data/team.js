@@ -20,6 +20,7 @@ module.exports = {
       {
         name: "Cüneyt Çakın",
         initials: "CÇ",
+        photo: "team-cuneyt",
         role: "Kurucu Ortak · İş Geliştirme ve Sponsorluk",
         summary:
           "Dipnot'un gelir modelini yürütüyor: sponsorluk anlaşmaları, uygulama içi reklam alanları ve dalış merkezleriyle iş birlikleri onun masasında.",
@@ -38,6 +39,7 @@ module.exports = {
       {
         name: "Hesna Onbaşı",
         initials: "HO",
+        photo: "team-hesna",
         role: "Kurucu Ortak · Yayın Yönetmeni",
         summary:
           "Dipnot'un yayın çizgisini belirliyor ve yayın akışını yönetiyor: konu seçiminden yazım, çeviri ve editörlüğe kadar tüm içerik süreci onun elinden geçiyor.",
@@ -86,12 +88,12 @@ module.exports = {
         name: "Birgül Eker",
         initials: "BE",
         photo: "team-birgul",
-        role: "Sosyal Medya",
+        role: "Sosyal Medya · Arkeoloji İçerik Yazarı",
         summary:
-          "Dipnot'un sosyal medya hesaplarını yürütüyor: yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla paylaşıyor.",
+          "Dipnot'un sosyal medya hesaplarını yönetiyor ve arkeoloji yazılarını kaleme alıyor; yeni yazıları görselleri ve özetleriyle düzenli olarak okurlarla buluşturuyor.",
         bio: [
           "Arkeoloji lisansının ardından yüksek lisansını da arkeoloji üzerine yapıyor; bir yandan da Kültürel Miras ve Turizm alanında eğitimini sürdürüyor. İlgisinin odağında sualtı arkeolojisi var: denizin altında saklı kalan geçmişin izini sürmek, çalışmalarının merkezinde.",
-          "TSSF/CMAS iki yıldızlı dalıcı olarak bu ilgiyi suyun altına da taşıyor. Arkeolojiyle dalışın buluştuğu Dipnot'ta hem arkeoloji yazıları kaleme alıyor hem de yazıların sosyal medyadaki sesi oluyor.",
+          "TSSF/CMAS iki yıldızlı dalıcı olarak bu ilgiyi suyun altına da taşıyor. Arkeolojiyle dalışın buluştuğu Dipnot'ta bu birikimi hem yazılarına hem de sosyal medyadaki sesine taşıyor.",
         ],
         links: [
           {
@@ -111,6 +113,7 @@ module.exports = {
       {
         name: "Cüneyt Çakın",
         initials: "CÇ",
+        photo: "team-cuneyt",
         role: "Co-founder · Business Development & Partnerships",
         summary:
           "Runs Dipnot's revenue model: sponsorship deals, in-app ad placements and partnerships with dive centres all sit on this desk.",
@@ -129,6 +132,7 @@ module.exports = {
       {
         name: "Hesna Onbaşı",
         initials: "HO",
+        photo: "team-hesna",
         role: "Co-founder · Editor-in-Chief",
         summary:
           "Sets Dipnot's editorial line and manages the publishing schedule: the whole content process, from choosing topics to writing, translating and editing, goes through Hesna.",
@@ -177,12 +181,12 @@ module.exports = {
         name: "Birgül Eker",
         initials: "BE",
         photo: "team-birgul",
-        role: "Social Media",
+        role: "Social Media · Archaeology Writer",
         summary:
-          "Runs Dipnot's social media accounts, regularly sharing new articles with readers through their images and summaries.",
+          "Runs Dipnot's social media accounts and writes its archaeology articles, regularly bringing new pieces to readers through their images and summaries.",
         bio: [
           "After a degree in archaeology, now doing a master's in the same field, while also studying Cultural Heritage and Tourism. Underwater archaeology is at the heart of the work: tracing the past the sea keeps hidden.",
-          "As a TSSF/CMAS two-star diver, Birgül takes that interest below the surface too. At Dipnot, where archaeology meets diving, Birgül writes archaeology articles and is the voice of Dipnot's stories on social media.",
+          "As a TSSF/CMAS two-star diver, Birgül takes that interest below the surface too. At Dipnot, where archaeology meets diving, Birgül brings that background to both the articles and Dipnot's voice on social media.",
         ],
         links: [
           {
