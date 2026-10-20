@@ -21,7 +21,7 @@ module.exports = {
         initials: "CÇ",
         role: "Kurucu Ortak · İş Geliştirme ve Sponsorluk",
         summary:
-          "Şirketin günlük yönetimini ve Dipnot'un gelir modelini yürütüyor: sponsorluk anlaşmaları, uygulama içi reklam alanları ve dalış merkezleriyle iş birlikleri onun masasında.",
+          "Dipnot'un gelir modelini yürütüyor: sponsorluk anlaşmaları, uygulama içi reklam alanları ve dalış merkezleriyle iş birlikleri onun masasında.",
       },
       {
         name: "Hesna Onbaşı",
@@ -89,7 +89,7 @@ module.exports = {
         initials: "CÇ",
         role: "Co-founder · Business Development & Partnerships",
         summary:
-          "Runs the company day to day and Dipnot's revenue model: sponsorship deals, in-app ad placements and partnerships with dive centres all sit on this desk.",
+          "Runs Dipnot's revenue model: sponsorship deals, in-app ad placements and partnerships with dive centres all sit on this desk.",
       },
       {
         name: "Hesna Onbaşı",
