@@ -144,7 +144,7 @@ module.exports = {
           "Responsible for Dipnot's revenue model; runs sponsorship deals, in-app ad placements and partnerships with dive centres.",
         bio: [
           "CCR Instructor Trainer. Teaches deep diving on closed-circuit rebreathers and trains new instructors.",
-          "Distributes technical diving brands in Turkey, including Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft and MPS, and uses that industry network for Dipnot's sponsorships and partnerships.",
+          "Distributes technical diving brands in Türkiye, including Shearwater, Poseidon, Divesoft, Scuba Force, Seacraft and MPS, and uses that industry network for Dipnot's sponsorships and partnerships.",
         ],
         links: [
           {
@@ -199,8 +199,8 @@ module.exports = {
         bio: [
           "Studied mining engineering at Eskişehir Osmangazi University and is doing an MA in underwater archaeology at Akdeniz University. Lives between Türkiye and Dubai.",
           "Discovered the underwater world in 2008 at the university diving club. Became an instructor in 2011 and has been a full-time dive instructor since 2021.",
-          "Turkey's first GUE instructor and the founder and country manager of GUE Turkey, now teaching at Instructor Trainer level, training new instructors. Spent three years in various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool. Experienced in closed-circuit rebreathers (CCR), cave diving and deep mixed-gas diving.",
-          "As coordinator of Ghost Diving Turkey, runs projects to remove ghost nets from the sea. Supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in underwater archaeology research and works on cave survey projects.",
+          "Türkiye's first GUE instructor and the founder and country manager of GUE Türkiye, now teaching at Instructor Trainer level, training new instructors. Spent three years in various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool. Experienced in closed-circuit rebreathers (CCR), cave diving and deep mixed-gas diving.",
+          "As coordinator of Ghost Diving Türkiye, runs projects to remove ghost nets from the sea. Supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in underwater archaeology research and works on cave survey projects.",
           "From 2010 to 2021 worked as a software development specialist at various companies, and as a software architect at Doğuş Teknoloji and SabancıDx. Now develops independent software projects and uses that experience in Dipnot's technology.",
         ],
         links: [
