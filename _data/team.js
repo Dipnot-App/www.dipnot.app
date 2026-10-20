@@ -14,7 +14,7 @@
 module.exports = {
   tr: {
     title: "Ekibimizle tanış",
-    lead: "Dipnot'un arkasında dalış eğitmenleri, bir gazeteci-editör ve bir arkeolog var.",
+    lead: "Dipnot, dalıştan yayıncılığa, arkeolojiden teknolojiye farklı alanlardan profesyonellerin bir araya geldiği bir ekip.",
     more: "Özgeçmişi oku",
     members: [
       {
@@ -94,7 +94,7 @@ module.exports = {
   },
   en: {
     title: "Meet the team",
-    lead: "Behind Dipnot are dive instructors, a journalist and editor, and an archaeologist.",
+    lead: "Dipnot is a team of professionals from different fields, from diving and publishing to archaeology and technology.",
     more: "Read bio",
     members: [
       {
