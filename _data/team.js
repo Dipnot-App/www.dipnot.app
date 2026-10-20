@@ -56,7 +56,7 @@ module.exports = {
           "Dipnot'un yayın çizgisini belirliyor ve yayın akışını yönetiyor: konu seçiminden yazım, çeviri ve editörlüğe kadar tüm içerik süreci onun elinden geçiyor.",
         bio: [
           "İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı. Türkiye ile Mısır'ın Dahab kenti arasında yaşıyor.",
-          "IANTD Sidemount ve Recreational Trimix eğitmeni.",
+          "IANTD Sidemount ve Recreational Trimix eğitmeni. Scuba Helpdesk markasıyla Mısır'da bireysel ve grup dalış organizasyonları düzenliyor.",
           "25 yıl boyunca atv, Habertürk TV, NTV ve ulusal dergilerde muhabir ve editör olarak çalıştı. atv'de Gece Haberleri Ekip Şefi olarak son dakika yayınlarının editoryal operasyonunu yönetti. Uzun yıllar adliye ve adli tıp muhabirliği yaptı; 2014'te Labirent Yayınları'ndan çıkan <em>Süleyman'ın Kuyuları</em> adlı bir polisiye romanı var. Bu deneyimini Dipnot'un yayın çizgisinde ve editoryal süreçlerinde kullanıyor.",
         ],
         links: [
@@ -173,7 +173,7 @@ module.exports = {
           "Sets Dipnot's editorial line and manages the publishing schedule: the whole content process, from choosing topics to writing, translating and editing, goes through Hesna.",
         bio: [
           "Studied at Istanbul University's Faculty of Communication. Lives between Türkiye and Dahab, Egypt.",
-          "IANTD Sidemount and Recreational Trimix Instructor.",
+          "IANTD Sidemount and Recreational Trimix Instructor. Organises individual and group diving trips in Egypt under the Scuba Helpdesk brand.",
           "Spent 25 years as a reporter and editor at atv, Habertürk TV, NTV and national magazines. As atv's Night News Team Chief, ran the editorial side of breaking-news broadcasts. Was a court and forensic-medicine reporter for many years, and published a crime novel, <em>Süleyman'ın Kuyuları</em>, with Labirent in 2014. Brings that experience to Dipnot's editorial line and processes.",
         ],
         links: [
