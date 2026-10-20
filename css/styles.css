@@ -3549,6 +3549,7 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
 .dn-team__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  align-items: start;
   gap: 1.25rem;
   margin: 0;
   padding: 0;
@@ -3593,11 +3594,37 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-.dn-team__bio {
+.dn-team__summary,
+.dn-team__bio p {
   margin: 0;
   color: var(--dn-fg-muted);
   line-height: var(--dn-lh-normal);
   text-wrap: pretty;
+}
+.dn-team__more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--dn-accent-text);
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.dn-team__more summary::-webkit-details-marker {
+  display: none;
+}
+.dn-team__more summary .dn-i {
+  font-size: 0.75em;
+  transition: transform var(--dn-dur-base) var(--dn-ease);
+}
+.dn-team__more[open] summary .dn-i {
+  transform: rotate(180deg);
+}
+.dn-team__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 .dn-team__links {
   display: flex;

@@ -24,7 +24,17 @@
         {%- endif %}
         <h2 class="dn-h3 dn-team__name">{{ m.name }}</h2>
         <p class="dn-team__role">{{ m.role }}</p>
-        <p class="dn-team__bio">{{ m.bio | safe }}</p>
+        <p class="dn-team__summary">{{ m.summary | safe }}</p>
+        {%- if m.bio %}
+        <details class="dn-team__more">
+          <summary>{{ tm.more }} {% icon "chevron-down" %}</summary>
+          <div class="dn-team__bio">
+            {%- for p in m.bio %}
+            <p>{{ p | safe }}</p>
+            {%- endfor %}
+          </div>
+        </details>
+        {%- endif %}
         {%- if m.links %}
         <p class="dn-team__links">
           {%- for l in m.links %}
