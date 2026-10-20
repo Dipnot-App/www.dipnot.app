@@ -13,7 +13,7 @@
 
 module.exports = {
   tr: {
-    title: "Ekibimizle tanış",
+    title: "Ekibimizle tanışın",
     lead: "Dipnot, dalıştan yayıncılığa, arkeolojiden teknolojiye farklı alanlardan profesyonellerin bir araya geldiği bir ekip.",
     more: "Özgeçmişi oku",
     members: [

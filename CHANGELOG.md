@@ -9,7 +9,7 @@ terse — the commit message and PR body carry the full reasoning.
 ## 2026-10-20
 
 - **Team page** — New `ekip.html` / `en/team.html` ("Ekibimizle
-  tanış" / "Meet the team"): one glass card per member (initials until
+  tanışın" / "Meet the team"): one glass card per member (initials until
   photos arrive, role, short bio), from `_data/team.js`. Linked from
   the footer site map only, not the navbar. Sitemap and pa11y entries
   added.
