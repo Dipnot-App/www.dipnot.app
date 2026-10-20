@@ -42,9 +42,9 @@ module.exports = {
         summary:
           "iOS ve Android uygulamalarından, yönetim panelinden ve web sitesinden sorumlu; genel teknoloji mimarisini kurup geliştiriyor, bulut altyapısını, veri güvenliğini ve kurumsal kimlik sistemini yönetiyor.",
         bio: [
-          "2008'den beri dalıyor, 2011'den bu yana dalış eğitmeni; 7.000'i aşkın dalışının 1.000'den fazlası batıklarda. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye'nin kurucusu. Türkiye ile Dubai arasında temel, teknik ve kapalı devre (CCR) dalış eğitimleri veriyor.",
-          "Çalışmalarının merkezinde sualtı kültürel mirası var: Akdeniz Üniversitesi'nde Akdeniz Sualtı Kültürel Mirası yüksek lisansını tamamlıyor; 2025'te Adrasan, Kumluca ve Fethiye'deki batıklarda arkeolojik araştırma dalışlarına katıldı. Ghost Diving Türkiye koordinatörü ve Project Baseline Marmara proje dalıcısı; mağara haritalama ve 3D fotogrametri üzerine çalışıyor.",
-          "Yazılım mimarı ve sualtı görüntü yönetmeni. Halcyon, Shearwater, SUEX ve Big Blue marka elçisi.",
+          "2008'de dalmaya başladı, 2011'den bu yana dalış eğitmeni. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor.",
+          "Sualtı projelerinde aktif: Ghost Diving Türkiye koordinatörü olarak hayalet ağ projeleri yürütüyor, Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, arkeolojik araştırmalara katılıyor ve mağara haritalama projeleri yapıyor. Sualtı arkeolojisi yüksek lisansını tamamlıyor.",
+          "Doğuş Teknoloji ve SabancıDx gibi şirketlerde yazılım mimarı olarak çalıştı; bu deneyimini Dipnot'un teknoloji altyapısına taşıyor.",
         ],
         links: [
           {
@@ -110,9 +110,9 @@ module.exports = {
         summary:
           "Responsible for the iOS and Android apps, the admin panel and the website; designs and develops the overall technology architecture, and manages the cloud infrastructure, data security and the corporate identity system.",
         bio: [
-          "Diving since 2008 and a dive instructor since 2011, with 7,000+ dives, more than 1,000 of them on wrecks. Turkey's first GUE (Global Underwater Explorers) instructor and founder of GUE Turkey. Teaches fundamentals, technical and closed-circuit rebreather (CCR) diving between Turkey and Dubai.",
-          "Underwater cultural heritage is at the centre of the work: completing an MA in Mediterranean Underwater Cultural Heritage Studies at Akdeniz University, and in 2025 took part in archaeological research dives on wrecks at Adrasan, Kumluca and Fethiye. Coordinator of Ghost Diving Turkey and project diver for Project Baseline Marmara; works on cave survey and 3D photogrammetry.",
-          "Software architect and underwater cinematographer. Brand ambassador for Halcyon, Shearwater, SUEX and Big Blue.",
+          "Started diving in 2008 and has been a dive instructor since 2011. Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives.",
+          "Active in underwater projects: coordinates Ghost Diving Turkey's ghost-net projects, supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in archaeological research and runs cave survey projects. Completing an MA in underwater archaeology.",
+          "Has worked as a software architect at companies such as Doğuş Teknoloji and SabancıDx, and brings that experience to Dipnot's technology.",
         ],
         links: [
           {
