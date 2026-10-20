@@ -3553,60 +3553,85 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
   padding: 0;
   list-style: none;
 }
+/* Phones: small avatar beside name and role, text full width below.
+   Wide screens: big avatar in its own column, all text beside it. */
 .dn-team__card {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-areas:
+    "ring head"
+    "body body";
+  align-items: center;
+  gap: 1.25rem 1rem;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: var(--dn-radius-3xl);
+}
+.dn-team__head {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border-radius: var(--dn-radius-3xl);
+  gap: 0.35rem;
+  grid-area: head;
 }
 .dn-team__body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  grid-area: body;
   max-width: 46rem;
 }
-/* Wide screens: avatar on the left, text beside it */
 @media (min-width: 48rem) {
   .dn-team__card {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: clamp(2rem, 4vw, 3rem);
+    grid-template-columns: max-content minmax(0, 46rem);
+    grid-template-areas:
+      "ring head"
+      "ring body";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    gap: 0.75rem clamp(2rem, 4vw, 3rem);
   }
   .dn-team__card .dn-team__avatar {
-    flex: none;
     width: 8rem;
     height: 8rem;
     font-size: 2.25rem;
   }
 }
+
+/* Liquid-glass frame around the portrait: .dn-glass supplies the blur,
+   rim light, gradient edge and pointer sheen; this only sets the leaf
+   shape (round top-left and bottom-right, soft corners elsewhere) */
+/* Sized by the photo; never stretched by the grid (the % radius would
+   distort the shape) */
+.dn-team__ring {
+  display: block;
+  grid-area: ring;
+  justify-self: start;
+  align-self: start;
+  width: max-content;
+  padding: 0.5rem;
+  border-radius: 50% 10%;
+  line-height: 0;
+}
+.dn-team__ring picture {
+  display: block;
+}
 .dn-team__avatar {
   display: grid;
   place-items: center;
-  flex: none;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50% 10%;
   object-fit: cover;
   background: linear-gradient(
     160deg,
     color-mix(in oklch, var(--dn-teal-bright) 30%, transparent),
     color-mix(in oklch, var(--dn-teal) 12%, transparent)
   );
-  box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.4),
-    inset 0 -1px 0 oklch(0 0 0 / 0.1),
-    0 8px 20px -8px color-mix(in oklch, var(--dn-teal) 60%, transparent);
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.25);
   color: var(--dn-accent-text);
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.02em;
-}
-/* <picture> is the flex item; the <img> inside carries the avatar look */
-.dn-team__photo {
-  display: block;
-  flex: none;
-  line-height: 0;
 }
 .dn-team__name {
   margin: 0;
