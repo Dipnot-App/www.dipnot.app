@@ -8,6 +8,10 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-20
 
+- **Team page bios** — Every bio follows one order (personal, how
+  they started diving, diving expertise, expertise for their Dipnot
+  role) in a plainer voice; summaries say what each member is
+  responsible for. The toggle reads "Özgeçmiş" / "Bio".
 - **Release 2.0.7** — ships the team page and the Florya address
   (below).
 - **Team page** — New `ekip.html` / `en/team.html` ("Ekibimizle
