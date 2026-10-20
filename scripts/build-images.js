@@ -26,13 +26,13 @@ const JOBS = [
   {
     src: "team/nevcan.jpg",
     name: "team-nevcan",
-    extract: { left: 190, top: 20, width: 1200, height: 1200 },
+    extract: { left: 0, top: 0, width: 1600, height: 1600 },
     widths: [256, 384],
   },
   {
     src: "team/birgul.jpg",
     name: "team-birgul",
-    extract: { left: 410, top: 600, width: 1700, height: 1700 },
+    extract: { left: 68, top: 550, width: 2200, height: 2200 },
     widths: [256, 384],
   },
 ];

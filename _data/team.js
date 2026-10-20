@@ -44,7 +44,7 @@ module.exports = {
         summary:
           "iOS ve Android uygulamalarından, yönetim panelinden ve web sitesinden sorumlu; genel teknoloji mimarisini kurup geliştiriyor, bulut altyapısını, veri güvenliğini ve kurumsal kimlik sistemini yönetiyor.",
         bio: [
-          "2008'de dalmaya başladı, 2011'den bu yana dalış eğitmeni. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor.",
+          "2008'de dalmaya başladı, 2011'den bu yana dalış eğitmeni. Türkiye'nin ilk GUE (Global Underwater Explorers) eğitmeni ve GUE Türkiye temsilcisi; bugün GUE'de eğitmen yetiştiren Instructor Trainer seviyesinde. Kapalı devre solunum cihazı (CCR), mağara ve karışım gazla derin dalışlar yapıyor. Dünyanın en derin havuzu Deep Dive Dubai'de operasyon ve teknik ekiplerde çeşitli rollerde görev aldı.",
           "Sualtı projelerinde aktif: Ghost Diving Türkiye koordinatörü olarak hayalet ağ projeleri yürütüyor, Project Baseline'ın Ayvalık ve Marmara çalışmalarına destek veriyor, arkeolojik araştırmalara katılıyor ve mağara haritalama projeleri yapıyor. Sualtı arkeolojisi yüksek lisansını tamamlıyor.",
           "Doğuş Teknoloji ve SabancıDx gibi şirketlerde yazılım mimarı olarak çalıştı; bu deneyimini Dipnot'un teknoloji altyapısına taşıyor.",
         ],
@@ -82,6 +82,13 @@ module.exports = {
           "Lisansını arkeoloji bölümünde tamamladı, yüksek lisansında da aynı alanda derinleşiyor. İlgisinin odağında sualtı arkeolojisi var: denizin altında saklı kalan geçmişin izini sürmek, çalışmalarının merkezinde.",
           "TSSF/CMAS iki yıldızlı dalıcı olarak bu ilgiyi suyun altına da taşıyor. Arkeolojiyle dalışın buluştuğu Dipnot'ta hem arkeoloji yazıları kaleme alıyor hem de yazıların sosyal medyadaki sesi oluyor.",
         ],
+        links: [
+          {
+            icon: "brands:instagram",
+            label: "Birgül Eker, Instagram",
+            href: "https://www.instagram.com/birgul_eker/",
+          },
+        ],
       },
     ],
   },
@@ -117,7 +124,7 @@ module.exports = {
         summary:
           "Responsible for the iOS and Android apps, the admin panel and the website; designs and develops the overall technology architecture, and manages the cloud infrastructure, data security and the corporate identity system.",
         bio: [
-          "Started diving in 2008 and has been a dive instructor since 2011. Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives.",
+          "Started diving in 2008 and has been a dive instructor since 2011. Turkey's first GUE (Global Underwater Explorers) instructor and GUE's representative in Turkey, now at Instructor Trainer level, training GUE instructors. Dives closed-circuit rebreathers (CCR), caves and deep mixed-gas dives. Has held various roles in the operations and technical teams at Deep Dive Dubai, the world's deepest pool.",
           "Active in underwater projects: coordinates Ghost Diving Turkey's ghost-net projects, supports Project Baseline's work in Ayvalık and the Sea of Marmara, takes part in archaeological research and runs cave survey projects. Completing an MA in underwater archaeology.",
           "Has worked as a software architect at companies such as Doğuş Teknoloji and SabancıDx, and brings that experience to Dipnot's technology.",
         ],
@@ -154,6 +161,13 @@ module.exports = {
         bio: [
           "Took a degree in archaeology and is now going deeper into the field with a master's. Underwater archaeology is at the heart of the work: tracing the past the sea keeps hidden.",
           "As a TSSF/CMAS two-star diver, Birgül takes that interest below the surface too. At Dipnot, where archaeology meets diving, Birgül writes archaeology articles and is the voice of Dipnot's stories on social media.",
+        ],
+        links: [
+          {
+            icon: "brands:instagram",
+            label: "Birgül Eker on Instagram",
+            href: "https://www.instagram.com/birgul_eker/",
+          },
         ],
       },
     ],
