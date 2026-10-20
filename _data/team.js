@@ -28,7 +28,7 @@ module.exports = {
         initials: "HO",
         role: "Kurucu Ortak · Yayın Yönetmeni",
         summary:
-          "Dipnot'un yayın çizgisini belirliyor: konu seçiminden yazım, çeviri ve editörlüğe, yazıların yayına girişine kadar tüm içerik sürecini yönetiyor.",
+          "Dipnot'un yayın çizgisini belirliyor ve yayın akışını yönetiyor: konu seçiminden yazım, çeviri ve editörlüğe kadar tüm içerik süreci onun elinden geçiyor.",
         bio: [
           "Gazeteci ve editör. İstanbul Üniversitesi İletişim Fakültesi'nde eğitim aldı; NTV ve Habertürk'ün de aralarında olduğu haber dergileri, televizyon kanalları ve radyolarda muhabir ve editör olarak çalıştı.",
           "İlk romanı <em>Süleyman'ın Kuyuları</em> 2014'te Labirent Yayınları'ndan çıktı ve aynı yıl İzmir Saint Joseph Lisesi kitap günlerinde yılın kitabı seçildi.",
@@ -96,7 +96,7 @@ module.exports = {
         initials: "HO",
         role: "Co-founder · Editor-in-Chief",
         summary:
-          "Sets Dipnot's editorial line and runs the whole content process, from choosing topics to writing, translating and editing, through to publishing.",
+          "Sets Dipnot's editorial line and manages the publishing schedule: the whole content process, from choosing topics to writing, translating and editing, goes through Hesna.",
         bio: [
           "Journalist and editor. Studied at Istanbul University's Faculty of Communication and worked as a reporter and editor for Turkish news magazines, TV channels and radio stations, including NTV and Habertürk.",
           "First novel, <em>Süleyman'ın Kuyuları</em>, was published by Labirent in 2014 and named book of the year at the İzmir Saint Joseph High School book days that year.",
