@@ -8,6 +8,9 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-28
 
+- **`build:og` removed** — `scripts/build-og.js` rendered the
+  pre-canon all-white OG and would have overwritten the canon copy.
+  `img/og/` is copied from core-docs `assets/og/` instead.
 - **Release 2.0.8** — ships the brand teal (below).
 - **Brand teal `#13A3B9`** — Canon `color.md` → Primary accent
   ([dna-core-docs#214](https://github.com/Dipnot-App/dna-core-docs/pull/214)):
