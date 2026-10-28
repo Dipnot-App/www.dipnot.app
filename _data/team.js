@@ -14,6 +14,8 @@
 
 module.exports = {
   tr: {
+    // siz on purpose: "tanış" reads as an order (Nev, 2026-10-20).
+    // Voice stays "sen" elsewhere; not a pattern (core-docs, 2026-10-23).
     title: "Ekibimizle tanışın",
     lead: "Dipnot, dalıştan yayıncılığa, arkeolojiden teknolojiye farklı alanlardan profesyonellerin bir araya geldiği bir ekip.",
     more: "Özgeçmiş",
