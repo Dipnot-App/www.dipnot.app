@@ -73,7 +73,7 @@ Your personal data is obtained when the Dipnot registration form is filled in, t
 
 Your personal data is kept for as long as your account is open.
 
-**Deleting your account.** You can delete your account in the app or on the [Account Deletion](/hesap-silme.html) page. Your account is closed at once. Within 30 days you can reopen it by signing in to the app. At the end of the 30 days your data is erased or anonymised.
+**Deleting your account.** You can delete your account in the app or on the [Account Deletion](/en/delete-account.html) page. Your account is closed at once. Within 30 days you can reopen it by signing in to the app. At the end of the 30 days your data is erased or anonymised.
 
 **What is kept after deletion.** Once your account is deleted, the following is kept:
 
@@ -102,7 +102,7 @@ Under KVKK article 11 you have the following rights:
 
 **If it isn't resolved.** If your request is refused, you find our answer insufficient, or you receive no answer within 30 days, you can complain to the Personal Data Protection Board (Kişisel Verileri Koruma Kurulu) within 30 days of learning our answer, and in any case within 60 days of your request (KVKK art. 14). Your right to go to court is reserved.
 
-To delete your account and data without signing into the app, you can also use the form on the [Account Deletion](/hesap-silme.html) page.
+To delete your account and data without signing into the app, you can also use the form on the [Account Deletion](/en/delete-account.html) page.
 
 ## 7. Advertising and Marketing Emails
 

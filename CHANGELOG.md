@@ -6,6 +6,14 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-29
+
+- **Legal sync** — `legal/privacy-policy.md` re-copied from core-docs
+  (dna-core-docs#273): §5 and §6 link the EN deletion page
+  `/en/delete-account.html`, which landing flagged at release. Every
+  `legal/*.md` now matches canon with zero differences (the 29 October
+  dates landed in canon via dna-core-docs#271).
+
 ## 2026-10-28
 
 - **Release 2.1.0: legal release 2.0** — Privacy notice and terms
