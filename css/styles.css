@@ -2286,7 +2286,7 @@ main.container > .section > .content {
   border: 0;
   background: var(--dn-border);
 }
-.content .table {
+.content table {
   background: transparent;
 }
 
@@ -2488,30 +2488,30 @@ main.container > .section {
 
 /* Tables (privacy policies) — scroll sideways on phones instead of
    squeezing four columns into 300px */
-.content .table {
+.content table {
   width: 100%;
   border-collapse: collapse;
   color: var(--dn-fg);
   font-size: var(--dn-fs-small);
 }
-.content .table th,
-.content .table td {
+.content table th,
+.content table td {
   padding: 0.65rem 0.75rem;
   border-bottom: 1px solid var(--dn-border);
   text-align: left;
   vertical-align: top;
 }
-.content .table th {
+.content table th {
   font-weight: 600;
 }
-.content .table thead th {
+.content table thead th {
   border-bottom-width: 2px;
 }
-.content .table tbody tr:last-child td {
+.content table tbody tr:last-child td {
   border-bottom: 0;
 }
 @media (max-width: 767px) {
-  .content .table {
+  .content table {
     display: block;
     overflow-x: auto;
   }

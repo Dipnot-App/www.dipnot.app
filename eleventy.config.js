@@ -21,6 +21,8 @@ const FA_SVGS = path.join(
 );
 const iconCache = new Map();
 const GSAP_VERSION = require("gsap/package.json").version;
+// Legal texts carry HTML anchors for the change-history links.
+const legalMd = require("markdown-it")({ html: true });
 const iconSvg = (name) => {
   if (!iconCache.has(name)) {
     const [set, id] = name.includes(":") ? name.split(":") : ["solid", name];
@@ -78,6 +80,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy(".nojekyll");
   eleventyConfig.addPassthroughCopy("CNAME");
+
+  // {% legal "gizlilik-politikasi" %}: a legal text from legal/*.md, which
+  // are byte-for-byte copies of dna-core-docs/legal/ (the canon). Landing
+  // renders them as they are: sync by copying, never edit the wording here.
+  // Front matter is canon metadata, not page data, so it is cut off.
+  eleventyConfig.addShortcode("legal", (name) => {
+    const src = fs.readFileSync(
+      path.join(__dirname, "legal", `${name}.md`),
+      "utf8",
+    );
+    return legalMd.render(src.replace(/^---\n[\s\S]*?\n---\n/, ""));
+  });
+  eleventyConfig.addWatchTarget("legal/");
 
   // The same page in another language: the page's hreflang entry for
   // `lang` (as a root-relative path), else that language's home page.

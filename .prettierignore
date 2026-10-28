@@ -15,3 +15,6 @@ img/
 
 # esbuild output (minified bundle of src/shark3d.js + three.js)
 js/shark3d.js
+
+# Legal texts: byte-for-byte copies of dna-core-docs/legal/, never reformatted.
+legal/
