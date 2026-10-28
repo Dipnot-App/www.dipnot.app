@@ -3,12 +3,12 @@ id: privacy
 lang: tr
 version: 2
 revision: 0
-updated: 2026-10-28
+updated: 2026-10-29
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Gizlilik Politikası ve Aydınlatma Metni (KVKK)
 
-**Sürüm:** 2.0 · **Son Güncelleme:** 28 Ekim 2026
+**Sürüm:** 2.0 · **Son Güncelleme:** 29 Ekim 2026
 
 ## 1. Veri Sorumlusu
 

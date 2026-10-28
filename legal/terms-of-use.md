@@ -3,12 +3,12 @@ id: terms
 lang: en
 version: 2
 revision: 0
-updated: 2026-10-28
+updated: 2026-10-29
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Terms of Use
 
-**Version:** 2.0 · **Last updated:** 28 October 2026
+**Version:** 2.0 · **Last updated:** 29 October 2026
 
 **Note:** This English version is provided for convenience. The Turkish version, [Kullanım Koşulları](/kullanim-kosullari.html), is authoritative under Turkish law in case of any conflict.
 
