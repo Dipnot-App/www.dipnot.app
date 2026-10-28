@@ -67,8 +67,10 @@ async function confirm() {
       '<p class="title is-5">Talebiniz onaylandı</p>' +
         "<p>" +
         (data.message ||
-          "Hesap silme talebiniz onaylandı. Hesabınız 30 gün içinde kalıcı " +
-            "olarak silinecektir.") +
+          // Privacy notice §5: closed at once, reopenable for 30 days
+          "Hesabınız kapatıldı. 30 gün içinde uygulamaya giriş yaparak " +
+            "hesabınızı geri açabilirsiniz; bu sürenin sonunda verileriniz " +
+            "silinir veya anonim hale getirilir.") +
         "</p>",
       "success",
     );
