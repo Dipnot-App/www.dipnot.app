@@ -22,8 +22,6 @@
       nameEmpty: "Lütfen adını ve soyadını yaz.",
       messageEmpty: "Lütfen mesajını yaz.",
       messageShort: "Mesajın en az 10 karakter olmalı.",
-      termsRequired:
-        "Göndermek için kullanım koşullarını ve gizlilik politikasını kabul etmelisin.",
       sent: "Mesajın iletildi.",
       deletionSent:
         "Onay e-postası gönderildi. Hesabınızın silinmesi için e-postadaki bağlantıya tıklayın.",
@@ -40,8 +38,6 @@
       nameEmpty: "Please enter your full name.",
       messageEmpty: "Please write your message.",
       messageShort: "Your message needs at least 10 characters.",
-      termsRequired:
-        "Please accept the terms of use and the privacy policy to send.",
       sent: "Your message was sent.",
       deletionSent:
         "If an account exists for this email, we've sent a link to confirm the deletion. Please check your inbox.",

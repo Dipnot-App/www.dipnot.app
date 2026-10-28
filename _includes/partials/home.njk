@@ -385,22 +385,12 @@
             ></textarea>
           </div>
 
-          <div class="dn-field">
-            <label class="dn-check">
-              <input
-                id="contact-terms"
-                type="checkbox"
-                aria-describedby="contact-feedback"
-                required
-              />
-              <span>
-                {%- if h.contact.terms.pre %}{{ h.contact.terms.pre }} {% endif -%}
-                <a href="{{ t.url.terms }}" target="_blank" rel="noopener noreferrer">{{ h.contact.terms.terms }}</a>
-                {{ h.contact.terms.and }}
-                <a href="{{ t.url.privacy }}" target="_blank" rel="noopener noreferrer">{{ h.contact.terms.privacy }}</a>{{ glue(h.contact.terms.post) }}
-              </span>
-            </label>
-          </div>
+          {#- Notice link only: a privacy notice is acknowledged, never
+              accepted, so no checkbox (KVKK İlke Kararı 2026/347). -#}
+          <p class="dn-form-note">
+            {{ h.contact.notice.pre }}
+            <a class="dn-link" href="{{ t.url.privacy }}" target="_blank" rel="noopener noreferrer">{{ h.contact.notice.link }}</a>{{ glue(h.contact.notice.post) }}
+          </p>
 
           <button type="submit" class="dn-btn dn-btn--primary dn-btn--block">
             {{ h.contact.submit }}

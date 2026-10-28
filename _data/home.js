@@ -124,11 +124,10 @@ module.exports = {
       },
       message: "Mesaj",
       messagePh: "Mesajını buraya yaz",
-      terms: {
-        terms: "Kullanım koşulları",
-        and: "ve",
-        privacy: "Gizlilik politikası",
-        post: "bilgilendirme metinlerini okudum ve kabul ediyorum.",
+      notice: {
+        pre: "Gönderdiğin bilgileri mesajını yanıtlamak için işleriz. Ayrıntılar",
+        link: "Gizlilik Politikası ve Aydınlatma Metni",
+        post: "sayfasında.",
       },
       submit: "Gönder",
     },
@@ -228,11 +227,9 @@ module.exports = {
       },
       message: "Message",
       messagePh: "Write your message here",
-      terms: {
-        pre: "I have read and accept the",
-        terms: "Terms of use",
-        and: "and",
-        privacy: "Privacy policy",
+      notice: {
+        pre: "We use what you send to answer your message. Details are in our",
+        link: "Privacy Policy",
         post: ".",
       },
       submit: "Send",

@@ -125,7 +125,7 @@
   {% include "partials/footer.njk" %}
 
   {%- include "partials/lang-hint.njk" %}
-  {%- if site.analytics.enabled %}
+  {%- if site.analytics.enabled and not noAnalytics %}
   {% include "partials/consent.njk" %}
   {%- endif %}
 
@@ -133,7 +133,7 @@
   <script src="/js/messages.js?v={{ site.jsVersion }}"></script>
   <script src="/js/main.js?v={{ site.jsVersion }}"></script>
   <script src="/js/newsletter.js?v={{ site.jsVersion }}"></script>
-  {%- if site.analytics.enabled %}
+  {%- if site.analytics.enabled and not noAnalytics %}
   <script src="/js/consent.js?v={{ site.jsVersion }}" data-ga4="{{ site.analytics.ga4 }}"></script>
   {%- endif %}
   {%- if hasContactForm %}

@@ -77,7 +77,7 @@
         <li><a href="{{ t.url.competition }}"{% if (lang or "tr") != "tr" %} hreflang="tr"{% endif %}>{{ f.legal.competition }}</a></li>
         <li><a href="{{ t.url.deletion }}">{{ f.legal.deletion }}</a></li>
         <li><a href="{{ t.url.contact }}">{{ f.legal.contact }}</a></li>
-        {%- if site.analytics.enabled %}
+        {%- if site.analytics.enabled and not noAnalytics %}
         <li><button type="button" class="dn-linkbtn" data-consent-open>{{ f.cookies }}</button></li>
         {%- endif %}
       </ul>
