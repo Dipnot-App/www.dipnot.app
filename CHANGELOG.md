@@ -6,6 +6,15 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-10-28
+
+- **Dev dependencies: audit fix** — Lockfile-only patch bumps from
+  `npm audit fix` (no `--force`): body-parser 1.20.9, fast-uri 3.1.9,
+  ip-address 10.7.5, markdown-it 14.3.3, qs 6.16.2, undici 7.30.1,
+  zod 4.6.7. Build output is byte-identical. `npm audit` goes from 14
+  to 8, all of them in Lighthouse's tree (extract-zip, already
+  accepted, and zod 3 via chromium-bidi).
+
 ## 2026-10-20
 
 - **Team page layout** — Portraits sit in a liquid-glass frame (the
