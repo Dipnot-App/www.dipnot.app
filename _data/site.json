@@ -1,14 +1,14 @@
 {
   "title": "Dipnot",
   "baseUrl": "https://dipnot.app",
-  "cssVersion": "261028_2",
-  "jsVersion": "261014_1",
+  "cssVersion": "261028_3",
+  "jsVersion": "261028_1",
   "themeColor": "#13A3B9",
   "author": "Nevcan Uludaş",
   "ogImage": "https://dipnot.app/img/og/og-default.png",
   "twitterImage": "https://dipnot.app/img/og/og-horizontal.png",
   "analytics": {
-    "enabled": false,
+    "enabled": true,
     "ga4": "G-YSQJLFK4HZ"
   },
   "verification": {

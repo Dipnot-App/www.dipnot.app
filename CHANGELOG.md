@@ -8,6 +8,29 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-28
 
+- **Release 2.1.0: legal release 2.0** — Privacy notice and terms
+  version 2.0, competition rules 1.0, change history, GA4 (#204).
+- **Legal pages render canon** — The five legal pages render
+  `dna-core-docs/legal/*.md`, copied byte-for-byte into `legal/`
+  (core-docs @ `c0b0d36`) through a `{% legal %}` shortcode
+  (markdown-it). Sync is a file copy; the wording is never edited here
+  and `legal/` is Prettier-ignored. New change-history pages
+  [`degisiklik-gecmisi.html`](degisiklik-gecmisi.html) /
+  [`legal-changes.html`](legal-changes.html), in the sitemap and
+  pa11y. Internal canon files are never copied.
+- **Contact form** — The required "okudum ve kabul ediyorum" checkbox
+  is gone: a privacy notice is acknowledged, never accepted (KVKK İlke
+  Kararı 2026/347), and the form rests on legitimate interest. A short
+  line links the notice. The newsletter form stays as it is until
+  double opt-in ships (#205, Nev).
+- **Deletion pages** — Say what notice §5 says: the account closes at
+  once, can be reopened by signing in within 30 days, then is erased;
+  what is kept after deletion is in §5. The stale phone number and
+  "only legally required data" claims are gone.
+- **GA4 on** — `site.analytics.enabled` is true with the release
+  (consent banner, explicit opt-in). New `noAnalytics` page flag keeps
+  GA, the banner and the footer button off `hesap-silme-onayi.html`,
+  whose URL carries the deletion token (closes #157).
 - **`build:og` removed** — `scripts/build-og.js` rendered the
   pre-canon all-white OG and would have overwritten the canon copy.
   `img/og/` is copied from core-docs `assets/og/` instead.
