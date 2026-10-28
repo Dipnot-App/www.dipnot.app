@@ -5,6 +5,9 @@ title: "Hesap Silme Onayı | Dipnot App"
 description: "Dipnot hesap silme talebinizi onaylayın."
 robots: "noindex, nofollow"
 pageModule: account-deletion-confirm.js
+# The URL carries the deletion token: GA never loads on a page whose URL
+# holds a secret (core-docs consent gate). No banner, no consent.js.
+noAnalytics: true
 og:
   locale: tr_TR
   url: "https://dipnot.app/hesap-silme-onayi.html"
