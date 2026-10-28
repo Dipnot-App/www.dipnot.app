@@ -24,7 +24,6 @@
       (el) => el.value.trim().length >= 10,
       t("messageShort"),
     ],
-    ["contact-terms", (el) => el.checked, t("termsRequired")],
   ];
 
   const clearInvalid = (el) => {

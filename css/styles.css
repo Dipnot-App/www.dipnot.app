@@ -1999,27 +1999,13 @@ select.dn-input {
   cursor: pointer;
 }
 
-.dn-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+/* Small print under a form: the privacy-notice link */
+.dn-form-note {
+  margin: 0 0 1.25rem;
   color: var(--dn-fg-muted);
   font-size: var(--dn-fs-small);
   line-height: var(--dn-lh-normal);
-  cursor: pointer;
 }
-.dn-check input {
-  flex: none;
-  width: 1.15rem;
-  height: 1.15rem;
-  margin-top: 0.15rem;
-  accent-color: var(--dn-teal);
-}
-.dn-check input[aria-invalid="true"] {
-  outline: 2px solid oklch(0.6 0.2 27);
-  outline-offset: 2px;
-}
-.dn-check a,
 .dn-link {
   color: var(--dn-accent-text);
   font-weight: 500;
