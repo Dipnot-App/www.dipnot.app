@@ -1,9 +1,9 @@
 {
   "title": "Dipnot",
   "baseUrl": "https://dipnot.app",
-  "cssVersion": "261020_2",
+  "cssVersion": "261028_1",
   "jsVersion": "261014_1",
-  "themeColor": "#338596",
+  "themeColor": "#13A3B9",
   "author": "Nevcan Uludaş",
   "ogImage": "https://dipnot.app/img/og/og-default.png",
   "twitterImage": "https://dipnot.app/img/og/og-horizontal.png",
