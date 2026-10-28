@@ -5,7 +5,7 @@
 // voice.md); this is a curated public subset.
 
 const solo = [
-  { file: "logo", name: "Dipnot Teal", hex: "#338596", bg: "light" },
+  { file: "logo", name: "Dipnot Teal", hex: "#13A3B9", bg: "light" },
   { file: "logo-gold", name: "Gold", hex: "#C49B3A", bg: "light" },
   { file: "logo-white", name: "White", hex: "#FFFFFF", bg: "dark" },
   { file: "logo-black", name: "Black", hex: "#000000", bg: "light" },
@@ -41,20 +41,23 @@ const composed = [
 const colors = [
   {
     name: "Dipnot Teal",
-    hex: "#338596",
-    rgb: "51 133 150",
-    oklch: "oklch(0.547 0.076 210)",
+    hex: "#13A3B9",
+    rgb: "19 163 185",
+    oklch: "oklch(0.658 0.112 211.9)",
     role: {
-      tr: "Ana vurgu rengi, tüm yüzeylerde",
-      en: "Primary accent, every surface",
+      tr: "Ana vurgu rengi, iki temada da aynı. Üzerindeki yazı Sky Captain, asla beyaz değil",
+      en: "Primary accent, the same in both themes. Labels on it are Sky Captain, never white",
     },
   },
   {
-    name: "Dipnot Teal (dark)",
-    hex: "#6AD0E3",
-    rgb: "106 208 227",
-    oklch: "oklch(0.7 0.1 208)",
-    role: { tr: "Koyu temada ana vurgu", en: "Primary accent in dark mode" },
+    name: "Teal ink",
+    hex: "#018095",
+    rgb: "1 128 149",
+    oklch: "oklch(0.552 0.097 214.5)",
+    role: {
+      tr: "Açık temada küçük teal metin (linkler, etiketler)",
+      en: "Small teal text in light mode (links, labels)",
+    },
   },
   {
     name: "Sky Captain",
@@ -63,8 +66,8 @@ const colors = [
     cmyk: "50 29 0 85",
     pantone: "5605C",
     role: {
-      tr: "Yalnızca birleşik varlık arka planı",
-      en: "Composed-asset background only",
+      tr: "Birleşik varlık arka planı ve teal zemin üzerindeki yazı",
+      en: "Composed-asset background, and labels on teal",
     },
   },
   {

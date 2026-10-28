@@ -8,6 +8,23 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-10-28
 
+- **Release 2.0.8** — ships the brand teal (below).
+- **Brand teal `#13A3B9`** — Canon `color.md` → Primary accent
+  ([dna-core-docs#214](https://github.com/Dipnot-App/dna-core-docs/pull/214)):
+  one teal in both themes, teal ink `#018095` for small text in light,
+  Sky Captain labels on teal fills. `#338596` / `#6ad0e3` are gone.
+  **Visible change:** primary buttons are lighter teal with navy
+  labels; the light hero accent runs ink to `#006679`, since `#13A3B9`
+  is under 3:1 on the light water. `--dn-teal-bright` stays as a
+  glow-only tint. Brand book palette (TR + EN) and `theme-color`
+  follow. Logos `logo`, `logo-teal-on-sky-captain`,
+  `logo-white-on-teal` copied byte-for-byte from core-docs
+  `assets/logo/`, PNGs re-rendered at 708 px; `og-default.png` /
+  `og-horizontal.png` copied from `assets/og/`; `icon-round.svg` fill
+  changed and the six web icons re-rendered with `rsvg-convert`
+  (`favicon.ico` packs 16/32/48); brand pack zip rebuilt. Feature
+  icons get a softer glow and the how-it-works icons fill more of
+  their orb. Closes #174.
 - **Dev dependencies: audit fix** — Lockfile-only patch bumps from
   `npm audit fix` (no `--force`): body-parser 1.20.9, fast-uri 3.1.9,
   ip-address 10.7.5, markdown-it 14.3.3, qs 6.16.2, undici 7.30.1,
