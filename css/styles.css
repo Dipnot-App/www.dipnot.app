@@ -3696,6 +3696,108 @@ html[data-theme="light"]:has(.dn-nf) .dn-ocean::after {
 }
 
 /* --------------------------------------------------------------------------
+   17d. Competition candidates page (yarisma-aday-bilgilendirme): FAQ
+        inside a reading panel, share-kit previews, share text, QR
+   -------------------------------------------------------------------------- */
+
+/* The home FAQ's accordion, but on a panel that is already glass:
+   a quiet tint instead of a second glass layer */
+.content .dn-qa {
+  background: color-mix(in oklch, var(--dn-fg) 4%, transparent);
+  box-shadow: inset 0 0 0 1px var(--dn-border);
+}
+.content .dn-qa summary {
+  font-size: var(--dn-fs-body);
+}
+.content .notification ul {
+  margin-block: 0.75rem;
+}
+/* Store pills are buttons, not running-text links */
+.content .dn-store__btn {
+  color: var(--dn-fg);
+  text-decoration: none;
+}
+
+.dn-kit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-block: 1.5rem 2rem;
+}
+.dn-kit__item {
+  margin: 0;
+}
+.dn-kit__item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 22rem;
+  border-radius: var(--dn-radius-2xl);
+  box-shadow: var(--dn-glass-shadow);
+}
+.dn-kit__item figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.75rem;
+  color: var(--dn-fg-muted);
+  font-size: var(--dn-fs-small);
+}
+.dn-kit__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dn-share {
+  margin-bottom: 2rem;
+}
+.dn-share__text {
+  padding: 1rem 1.25rem;
+  border-radius: var(--dn-radius-xl);
+  background: color-mix(in oklch, var(--dn-fg) 4%, transparent);
+  box-shadow: inset 0 0 0 1px var(--dn-border);
+  user-select: all;
+}
+.dn-share__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dn-share__copy[hidden] {
+  display: none;
+}
+
+.dn-kit-app {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 2rem;
+}
+.dn-kit-app > div {
+  flex: 1 1 20rem;
+}
+.dn-kit-app__qr {
+  margin: 0;
+  text-align: center;
+}
+.dn-kit-app__qr img {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  border-radius: var(--dn-radius-xl);
+}
+.dn-kit-app__qr figcaption {
+  margin-top: 0.5rem;
+  color: var(--dn-fg-muted);
+  font-size: var(--dn-fs-small);
+}
+
+/* --------------------------------------------------------------------------
    18. Motion states (html.dn-motion is set before paint by base.njk only
        when motion is allowed; motion.js reveals everything)
    -------------------------------------------------------------------------- */
