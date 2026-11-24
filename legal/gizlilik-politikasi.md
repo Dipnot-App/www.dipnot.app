@@ -2,13 +2,13 @@
 id: privacy
 lang: tr
 version: 2
-revision: 0
-updated: 2026-10-29
+revision: 1
+updated: 2026-11-25
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Gizlilik Politikası ve Aydınlatma Metni (KVKK)
 
-**Sürüm:** 2.0 · **Son Güncelleme:** 29 Ekim 2026
+**Sürüm:** 2.1 · **Son Güncelleme:** 25 Kasım 2026
 
 ## 1. Veri Sorumlusu
 
@@ -27,7 +27,7 @@ Dipnot uygulamasına kaydolduğunuzda, uygulamayı ve dipnot.app web sitesini ku
 | İletişim Bilgisi | E-posta adresi | Hesap doğrulama (e-posta doğrulama), şifre yenileme, bildirim gönderme, kullanıcı ile iletişim | Sözleşmenin kurulması ve ifası |
 | Kullanım Verileri | Okunan makaleler ve okuma süreleri, beğeniler, kaydedilen içerikler, oturum süreleri | İçerik önerileri sunma, deneyimi iyileştirme, trend analizi, uygulamanın geliştirilmesine yön verme | Meşru menfaat |
 | Teknik Veriler | Cihaz ve uygulama bilgileri (ör. cihaz modeli, işletim sistemi ve uygulama sürümü, kurulum kimliği), IP adresi | Uygulamanın çalışmasını sağlama, hata ayıklama, güvenlik, kötüye kullanımın önlenmesi | Meşru menfaat |
-| Yarışma Verileri | Oy verdiğiniz dalış merkezlerinin listesi | Yarışma katılımının kaydedilmesi, aynı merkeze birden fazla oy verilmesinin önlenmesi, sonuçların hesaplanması | Meşru menfaat |
+| Yarışma Verileri | Oy verdiğiniz dalış merkezleri, oy verme ve geri alma zamanları | Yarışma katılımının kaydedilmesi, aynı merkeze birden fazla oy verilmesinin önlenmesi, oyların sabitlenmesi ve geri alma süresinin uygulanması, sonuçların hesaplanması | Meşru menfaat |
 | Hesap Güvenliği Verisi | E-posta adresinizden türetilen, geri çevrilemeyen bir özet | Aynı e-posta kutusuyla birden fazla hesap açılmasının ve geçici e-posta adresleriyle kayıt olunmasının önlenmesi | Meşru menfaat |
 | Bülten | E-posta adresi | Bülten gönderimi | Açık rıza |
 | İletişim Formu | Ad, e-posta, konu, mesaj; IP adresi ve tarayıcı bilgisi | Mesajınızı yanıtlama; kötüye kullanım ve spam önleme | Meşru menfaat |

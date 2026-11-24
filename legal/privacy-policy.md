@@ -2,13 +2,13 @@
 id: privacy
 lang: en
 version: 2
-revision: 0
-updated: 2026-10-29
+revision: 1
+updated: 2026-11-25
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Privacy Policy (KVKK)
 
-**Version:** 2.0 · **Last updated:** 29 October 2026
+**Version:** 2.1 · **Last updated:** 25 November 2026
 
 **Note:** This English version is provided for convenience. The Turkish version, [Gizlilik Politikası ve Aydınlatma Metni](/gizlilik-politikasi.html), is authoritative under Turkish law (KVKK) in case of any conflict.
 
@@ -29,7 +29,7 @@ When you register for and use the Dipnot application and the dipnot.app website,
 | Contact | Email address | Account verification (email verification), password reset, sending notifications, communicating with the user | Establishing and performing the contract |
 | Usage Data | Articles read and reading time, likes, saved content, session durations | Content recommendations, improving the experience, trend analysis, guiding the app's development | Legitimate interest |
 | Technical Data | Device and app information (e.g. device model, operating system and app version, install ID), IP address | Ensuring the app works, debugging, security, preventing abuse | Legitimate interest |
-| Competition Data | The list of dive centres you voted for | Recording competition participation, preventing more than one vote for the same centre, computing the results | Legitimate interest |
+| Competition Data | The dive centres you voted for, and when you cast or withdrew each vote | Recording competition participation, preventing more than one vote for the same centre, fixing votes and applying the withdrawal window, computing the results | Legitimate interest |
 | Account Security Data | A non-reversible digest derived from your e-mail address | Preventing several accounts on one inbox and sign-ups with disposable addresses | Legitimate interest |
 | Newsletter | Email address | Sending the newsletter | Explicit consent |
 | Contact Form | Name, email, subject, message; IP address and browser information | Answering your message; preventing abuse and spam | Legitimate interest |
