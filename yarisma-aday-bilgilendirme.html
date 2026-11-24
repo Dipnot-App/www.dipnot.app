@@ -1,0 +1,381 @@
+---
+layout: base.njk
+lang: tr
+title: "Yarışma Adayları İçin Bilgiler | Dipnot App"
+description: "Türkiye'nin En Sevilen Dalış Merkezi 2026 yarışmasında aday olan dalış merkezleri için: yarışmanın kuralları, sık sorulan sorular ve adaylığınızı duyurmak için görseller."
+keywords: "dipnot, yarışma, dalış merkezi, aday, en sevilen dalış merkezi 2026"
+pageModule: candidates.js
+# The info mail to the centres links here; Law 6563 keeps marketing
+# sign-ups and sponsor content off the page (admin ask, 2026-11-06).
+noNewsletter: true
+og:
+  locale: tr_TR
+  url: "https://dipnot.app/yarisma-aday-bilgilendirme.html"
+  description: "Türkiye'nin En Sevilen Dalış Merkezi 2026 adayları için kurallar, sorular ve duyuru kiti."
+---
+
+<!-- Competition candidates page (admin ask 2026-11-06). Facts follow
+     legal/yarisma-kosullari.md 1.1 (25 Nov 2026, canon a6ec2af); keep in step with
+     it. No per-centre vote counts, rankings, newsletter or sponsors here. -->
+
+<!-- HERO BANNER -->
+<section class="hero has-background-hero">
+  <div class="hero-body">
+    <div class="columns">
+      <div class="column">
+        <p class="title is-size-1 has-text-white mb-5">
+          Yarışma <span class="has-text-primary">Adayları</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN PAGE -->
+<main id="main" class="container py-6">
+  <section class="section">
+    <div class="content">
+      <h1>Türkiye'nin En Sevilen Dalış Merkezi 2026: adaylar için bilgiler</h1>
+      <p>
+        Bu sayfa, Dipnot'un düzenlediği
+        <strong>Türkiye'nin En Sevilen Dalış Merkezi 2026</strong> yarışmasında
+        aday olan dalış merkezleri içindir. Yarışmanın nasıl işlediğini ve
+        adaylığınızı müşterilerinize nasıl duyurabileceğinizi burada
+        bulabilirsiniz.
+      </p>
+      <p>
+        Bağlayıcı metin
+        <a href="/yarisma-kosullari.html">Yarışma Koşulları</a>'dır. Bu sayfa
+        onu özetler; bir fark olursa Yarışma Koşulları geçerlidir.
+      </p>
+    </div>
+
+    <div class="content" id="kurallar">
+      <h2>Önce kurallar</h2>
+      <div class="notification is-warning">
+        <p>
+          Şüpheli oy hareketleri otomatik analiz araçlarıyla tespit edilir ve
+          Dipnot ekibi tarafından incelenir.
+          <a href="/yarisma-kosullari.html">Yarışma Koşulları</a> Madde 9'a
+          göre:
+        </p>
+        <ul>
+          <li>
+            Sahte, otomatik veya çoklu hesaplarla verildiği tespit edilen oylar
+            geçersiz sayılır.
+          </li>
+          <li>
+            Bu tür oyları organize ettiği tespit edilen dalış merkezi yarışmadan
+            diskalifiye edilebilir.
+          </li>
+          <li>
+            Bir dalış merkezinin organize ettiği, sonucu etkilemeye yönelik
+            toplu hareketler (örneğin toplu oy taşıma, toplu hesap silip yeniden
+            açma) incelenir ve iptal edilebilir.
+          </li>
+        </ul>
+        <p>
+          Oy karşılığında indirim, hediye veya başka bir karşılık önermeyin. Oy,
+          kullanıcının kendi tercihi olmalıdır.
+        </p>
+      </div>
+    </div>
+
+    <div class="content" id="duyuru-kiti">
+      <h2>Duyuru kiti</h2>
+      <p>
+        Adaylığınızı duyurmak için aşağıdaki görselleri ve metni
+        kullanabilirsiniz. Görsellerdeki QR kod Dipnot'un indirme sayfasına
+        gider.
+      </p>
+
+      <div class="dn-kit">
+        <figure class="dn-kit__item">
+          <img
+            src="/img/kit/yarisma-2026-story-onizleme.webp"
+            width="360"
+            height="640"
+            loading="lazy"
+            alt="Story görseli: Biz de adayız! Türkiye'nin En Sevilen Dalış Merkezi 2026. Dipnot uygulamasında bize oy verebilirsiniz. QR kod ve oylama bitiş tarihi."
+          />
+          <figcaption>
+            <strong>Story</strong> · 1080 × 1920
+            <a
+              class="dn-kit__download"
+              href="/img/kit/yarisma-2026-story.png"
+              download
+              >{% icon "download" %} PNG indir</a
+            >
+          </figcaption>
+        </figure>
+        <figure class="dn-kit__item">
+          <img
+            src="/img/kit/yarisma-2026-post-onizleme.webp"
+            width="432"
+            height="540"
+            loading="lazy"
+            alt="Gönderi görseli: story görseliyle aynı metin, 4:5 oranında."
+          />
+          <figcaption>
+            <strong>Gönderi</strong> · 1080 × 1350
+            <a
+              class="dn-kit__download"
+              href="/img/kit/yarisma-2026-post.png"
+              download
+              >{% icon "download" %} PNG indir</a
+            >
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3>Paylaşım metni</h3>
+      <div class="dn-share">
+        <p id="share-text" class="dn-share__text">
+          Türkiye'nin En Sevilen Dalış Merkezi 2026 yarışmasında biz de adayız!
+          Dipnot uygulamasını indirip yarışma kartından bize oy verebilirsiniz.
+          Oylama 31 Aralık 2026'ya kadar sürüyor. Uygulama:
+          https://get.dipnot.app
+        </p>
+        <button
+          class="button is-primary dn-share__copy"
+          type="button"
+          data-copy="share-text"
+          hidden
+        >
+          {% icon "copy" %} Metni kopyala
+        </button>
+        <p class="help" role="status" aria-live="polite" data-copy-status></p>
+      </div>
+
+      <h3>Uygulama bağlantıları</h3>
+      <div class="dn-kit-app">
+        <div>
+          <p>
+            Dipnot, App Store ve Google Play'de ücretsizdir. Tek bir bağlantı
+            isterseniz
+            <a href="https://get.dipnot.app">get.dipnot.app</a> adresini
+            kullanın; telefonun işletim sistemine göre doğru mağazayı açar.
+          </p>
+          {% include "partials/store-buttons.njk" %}
+        </div>
+        <figure class="dn-kit-app__qr">
+          <img
+            src="/img/kit/dipnot-qr.svg"
+            width="160"
+            height="160"
+            loading="lazy"
+            alt="get.dipnot.app adresine giden QR kod"
+          />
+          <figcaption>
+            QR kod:
+            <a href="/img/kit/dipnot-qr.png" download>PNG</a> ·
+            <a href="/img/kit/dipnot-qr.svg" download>SVG</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3>Yarışma uygulamanın neresinde?</h3>
+      <p>
+        Uygulamada <strong>Anasayfa</strong> ve
+        <strong>Kategoriler</strong> sekmelerinin en üstünde
+        <strong>"Türkiye'nin En Sevilen Dalış Merkezi"</strong> kartı yer alır.
+        Karta dokununca aday merkezlerin listesi açılır. Merkezinizi
+        <strong>"Dalış merkezi ara"</strong> alanına adını yazarak
+        bulabilirsiniz.
+      </p>
+    </div>
+
+    <div class="content" id="fikirler">
+      <h2>Duyuru fikirleri</h2>
+      <ul>
+        <li>
+          <strong>Instagram:</strong> story veya gönderi görselini paylaşın,
+          story'yi öne çıkanlara ekleyin.
+        </li>
+        <li>
+          <strong>WhatsApp:</strong> paylaşım metnini müşteri ve dalış
+          gruplarınıza gönderin.
+        </li>
+        <li>
+          <strong>Afiş:</strong> gönderi görselini yazdırıp merkezinize veya
+          teknenize asın. QR kodu okutan kişi uygulamayı hemen indirebilir.
+        </li>
+        <li>
+          <strong>Brifing:</strong> dalış öncesi veya sonrası brifingde
+          yarışmadan kısaca bahsedin.
+        </li>
+      </ul>
+      <p>
+        Duyurunuzu yaparken tercihi dalgıçlara bırakın. Bu yarışma, sizinle
+        dalmış insanların sizi ne kadar sevdiğini göstermek için var.
+      </p>
+    </div>
+
+    <div class="content" id="sss">
+      <h2>Sık sorulan sorular</h2>
+      <div class="dn-accordion">
+        <details class="dn-qa">
+          <summary>
+            Adaylar nasıl belirlendi?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Aday listesi, Türkiye Sualtı Sporları Federasyonu'nun (TSSF)
+              faaliyetteki dalış merkezleri listesinin 15 Eylül 2026 tarihindeki
+              halidir. Başvuru yoktur, ücret alınmaz. Bu tarihten sonra TSSF
+              listesine eklenen merkezler yarışmaya dahil edilmez.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Kimler oy verebilir?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Dipnot uygulamasına kayıtlı ve e-posta adresini doğrulamış her
+              kullanıcı oy verebilir. Oy vermek ücretsizdir; satın alma veya
+              abonelik gerekmez (Madde 2).
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Oylar nasıl sayılıyor?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Oylar hesap bazında sayılır ve bir e-posta kutusuyla yalnızca bir
+              hesap açılabilir. Bir kullanıcı birden fazla merkeze oy verebilir,
+              ama aynı merkeze yalnızca bir kez. Oylama kapanınca 15 günlük bir
+              inceleme yapılır; geçersiz oylar düşüldükten sonra en çok geçerli
+              oyu alan merkez kazanır. Kura veya şans unsuru yoktur (Madde 2, 3,
+              6).
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Verilen oy geri alınabilir mi?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              30 Kasım 2026 saat 23:59'a (TSİ) kadar kullanıcılar oylarını
+              istedikleri zaman geri alabilir. 1 Aralık 2026 saat 00:00 (TSİ)
+              itibarıyla o ana kadar verilmiş tüm oylar sabitlenir. Bu saatten
+              sonra verilen bir oy 24 saat içinde geri alınabilir, sonra o da
+              sabitlenir. Hesabını silen kullanıcının oyları iptal edilir.
+              Ayrıntılar
+              <a href="/yarisma-kosullari.html">Yarışma Koşulları</a> Madde
+              3'te.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Bize kimin oy verdiğini görebilir miyiz?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Hayır. Uygulamada her merkezin yalnızca toplam oy sayısı görünür.
+              Hangi kullanıcının hangi merkeze oy verdiği kimseyle paylaşılmaz.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Takvim nasıl?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Oylama 10 Ekim 2026'da başladı ve 31 Aralık 2026 saat 23:59'da
+              (TSİ) biter. Oylar 1 Aralık 2026 saat 00:00'da (TSİ) sabitlenir.
+              İncelemenin ardından kazanan 15 Ocak 2027'de Dipnot'un Instagram
+              hesabında ve uygulamada yayımlanan bir makaleyle duyurulur.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Ödül nedir?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Kazanan merkez; uygulama içinde bir başarı rozeti, ödül belgesi ve
+              bir Shearwater Peregrine dalış bilgisayarı (690 € değerinde) alır.
+              Oylar eşit çıkarsa ödüllerin tamamı kazananların her birine ayrı
+              ayrı verilir. Duyurudan önce kazananla iletişime geçeriz; 7 gün
+              içinde yanıt vermeyen merkez kazanma hakkını kaybeder.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Yarışmadan nasıl ayrılırız?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Yarışma süresince istediğiniz zaman
+              <a href="mailto:info@dipnot.app">info@dipnot.app</a> adresine
+              yazarak aday listesinden çıkabilirsiniz. Listeden çıkan merkeze o
+              ana kadar verilmiş oylar geçersiz sayılır.
+            </p>
+          </div>
+        </details>
+        <details class="dn-qa">
+          <summary>
+            Merkezimizin bilgileri nasıl kullanılıyor?
+            <span class="dn-qa__icon" aria-hidden="true"
+              >{% icon "plus" %}</span
+            >
+          </summary>
+          <div class="dn-qa__body">
+            <p>
+              Merkezinizin adı, sicil numarası ve iletişim bilgileri TSSF'nin
+              kamuya açık listesinden alınır ve adaylığınızı bildirmek için
+              kullanılır. Ayrıntılar
+              <a href="/yarisma-kosullari.html">Yarışma Koşulları</a> Madde
+              10'da ve
+              <a href="/gizlilik-politikasi.html">Gizlilik Politikası</a>'nda
+              yer alır.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2>Sorularınız için</h2>
+      <p>
+        Yarışmayla ilgili her soru için
+        <a href="mailto:info@dipnot.app">info@dipnot.app</a> adresine
+        yazabilirsiniz. Tüm kurallar
+        <a href="/yarisma-kosullari.html">Yarışma Koşulları</a> sayfasındadır.
+      </p>
+    </div>
+  </section>
+</main>
