@@ -36,6 +36,10 @@
         </ul>
       </nav>
 
+      {#- Newsletter. `noNewsletter: true` drops it (and newsletter.js) on
+          pages that must carry no marketing sign-up, e.g. the competition
+          candidates page the informational mail links to (Law 6563). #}
+      {%- if not noNewsletter %}
       <!-- Newsletter -->
       <section class="dn-newsletter dn-glass" aria-label="{{ f.newsletter }}">
         <p class="dn-footer__title">{{ f.newsletter }}</p>
@@ -52,6 +56,7 @@
         </form>
 
       </section>
+      {%- endif %}
 
       <div class="dn-footer__contact">
         <p class="dn-footer__title">{{ f.contact }}</p>

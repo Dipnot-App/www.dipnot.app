@@ -1,7 +1,7 @@
 {
   "name": "www-dipnot-app",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Dipnot landing page — static site, built with Eleventy.",
   "engines": {
     "node": "^24"
@@ -20,23 +20,25 @@
     "check:links": "lychee --no-progress _site",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "audit": "npm audit --audit-level=critical"
+    "audit": "npm audit --audit-level=critical",
+    "build:kit": "node scripts/build-kit.js"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy": "^3.1.8",
     "@fortawesome/fontawesome-free": "7.3.1",
     "@gltf-transform/cli": "4.5.1",
-    "@lhci/cli": "^0.15.0",
+    "@lhci/cli": "^0.16.1",
     "esbuild": "0.28.2",
-    "gsap": "3.15.0",
-    "html-validate": "^11.17.0",
+    "gsap": "3.15.1",
+    "html-validate": "^11.21.1",
     "http-server": "^14.1.1",
     "lightningcss": "1.33.0",
-    "markdown-it": "14.3.3",
+    "markdown-it": "15.0.3",
     "pa11y-ci": "^5.0.0",
     "prettier": "^3.9.10",
+    "qrcode": "1.5.4",
     "sharp": "^0.35.5",
-    "three": "0.186.1",
+    "three": "0.187.0",
     "wait-on": "^9.5.1"
   },
   "overrides": {

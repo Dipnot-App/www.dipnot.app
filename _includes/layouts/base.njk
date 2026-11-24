@@ -132,7 +132,9 @@
   <!-- Scripts -->
   <script src="/js/messages.js?v={{ site.jsVersion }}"></script>
   <script src="/js/main.js?v={{ site.jsVersion }}"></script>
+  {%- if not noNewsletter %}
   <script src="/js/newsletter.js?v={{ site.jsVersion }}"></script>
+  {%- endif %}
   {%- if site.analytics.enabled and not noAnalytics %}
   <script src="/js/consent.js?v={{ site.jsVersion }}" data-ga4="{{ site.analytics.ga4 }}"></script>
   {%- endif %}

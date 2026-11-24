@@ -6,6 +6,22 @@ Format: reverse chronological, one heading per date (`## YYYY-MM-DD`),
 one bullet per change with a PR link when available. Keep entries
 terse — the commit message and PR body carry the full reasoning.
 
+## 2026-11-25
+
+- **Release 2.2.0: competition terms 1.1 + privacy 2.1** — Five legal
+  files re-copied from core-docs @ `a6ec2af`, zero differences:
+  competition terms 1.1 (votes fixed from 1 Dec 2026 00:00 TSİ, 24 h
+  window after; e-mail verification; review before the winner), privacy
+  notice 2.1 (TR + EN), both change histories (#218).
+- **Competition candidates page** —
+  [`yarisma-aday-bilgilendirme.html`](yarisma-aday-bilgilendirme.html)
+  for the candidate dive centres (admin ask): rules first, share kit
+  (story/post visuals, share text, QR to get.dipnot.app), ideas, FAQ.
+  Visuals from `npm run build:kit`; new `noNewsletter` page flag (#217).
+- **Deletion confirm page** — Server errors written with `textContent`,
+  token stripped from the URL before anything else runs (#216).
+- **Dependencies** — joi 18.3.2 (#215), Dependabot round #208–#213.
+
 ## 2026-10-29
 
 - **Legal sync** — `legal/privacy-policy.md` re-copied from core-docs
