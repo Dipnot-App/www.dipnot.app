@@ -18,6 +18,18 @@ terse — the commit message and PR body carry the full reasoning.
   for the candidate dive centres (admin ask): rules first, share kit
   (story/post visuals, share text, QR to get.dipnot.app), ideas, FAQ.
   Visuals from `npm run build:kit`; new `noNewsletter` page flag (#217).
+  Decisions: the footer sign-up is dropped there because the mail that
+  links to the page must stay informational (Law 6563, admin's ask). The
+  FAQ sits below the kit (Nev), since the kit is what a centre comes for
+  and the FAQ is reference. "No discounts or gifts for votes" is advice,
+  not a rule, because the terms don't list incentivised votes; making it
+  a rule is a core-docs change. The QR goes to get.dipnot.app, which
+  picks the right store. The leave/rejoin mailing-list pages from the
+  same ask are not built: functions has no endpoints and Nev deferred
+  the design (dna-functions#249). The mail waits for them.
+- **Security headers** — Admin's sweep item 3 (CSP `frame-ancestors`,
+  HSTS, nosniff) can't be set on GitHub Pages; options (proxy with a
+  KVKK entry, or another host) are in #221 for Nev's call.
 - **Deletion confirm page** — Server errors written with `textContent`,
   token stripped from the URL before anything else runs (#216).
 - **Dependencies** — joi 18.3.2 (#215), Dependabot round #208–#213.
