@@ -2,13 +2,13 @@
 id: privacy
 lang: en
 version: 2
-revision: 1
+revision: 2
 updated: 2026-11-25
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Privacy Policy (KVKK)
 
-**Version:** 2.1 · **Last updated:** 25 November 2026
+**Version:** 2.2 · **Last updated:** 25 November 2026
 
 **Note:** This English version is provided for convenience. The Turkish version, [Gizlilik Politikası ve Aydınlatma Metni](/gizlilik-politikasi.html), is authoritative under Turkish law (KVKK) in case of any conflict.
 
@@ -36,7 +36,7 @@ When you register for and use the Dipnot application and the dipnot.app website,
 
 **Competition.** Participation is optional. Results are published only as **total vote counts per dive centre**; which user voted for which centre is never disclosed publicly and is never shared with dive centres. To detect cheating, your vote records, together with your account, in-app activity and device information, may be reviewed and compared with other accounts by Dipnot team members holding an administrator role only. That processing rests on our legitimate interest in a fair outcome (KVKK art. 5/2-f). These records are kept for 3 months after the winner is announced, even if you delete your account. Details: clause 10 of the [Competition Rules](/yarisma-kosullari.html) (Turkish).
 
-**One account per inbox.** To prevent several accounts on one inbox and sign-ups with disposable addresses, a non-reversible digest of your e-mail address is kept. The digest does not contain your address itself, but can be matched with the same address. This processing relies on our legitimate interest in preventing abuse and keeping the competition fair (KVKK art. 5/2-f). The digest is deleted when the last account on that inbox is deleted; it is kept only in the deletion record in section 5, for the period stated there.
+**One account per inbox.** To prevent several accounts on one inbox and sign-ups with disposable addresses, a non-reversible digest of your e-mail address is kept. The digest does not contain your address itself, but can be matched with the same address. This processing relies on our legitimate interest in preventing abuse and keeping the competition fair (KVKK art. 5/2-f). The digest is deleted when the last account on that inbox is deleted; it is kept only in the deletion record and the competition records in section 5, for the periods stated there.
 
 **Usage statistics.** To see how the app is used and to guide its development, your usage data is processed by our analytics service. It is held under a pseudonymous identifier assigned to your device, not under your name or email address. It is not used for advertising and is not shared with ad networks.
 

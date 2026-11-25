@@ -2,13 +2,13 @@
 id: privacy
 lang: tr
 version: 2
-revision: 1
+revision: 2
 updated: 2026-11-25
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # Gizlilik Politikası ve Aydınlatma Metni (KVKK)
 
-**Sürüm:** 2.1 · **Son Güncelleme:** 25 Kasım 2026
+**Sürüm:** 2.2 · **Son Güncelleme:** 25 Kasım 2026
 
 ## 1. Veri Sorumlusu
 
@@ -34,7 +34,7 @@ Dipnot uygulamasına kaydolduğunuzda, uygulamayı ve dipnot.app web sitesini ku
 
 **Yarışma.** Katılım isteğe bağlıdır. Sonuçlar yalnızca **dalış merkezi başına toplam oy sayısı** olarak yayımlanır; hangi kullanıcının hangi merkeze oy verdiği kamuya açıklanmaz ve dalış merkezleriyle paylaşılmaz. Hile tespiti amacıyla oy kayıtlarınız; hesap, uygulama içi etkinlik ve cihaz bilgilerinizle birlikte, yalnızca yönetici yetkisine sahip Dipnot ekip üyeleri tarafından incelenip diğer hesaplarla karşılaştırılabilir. Bu işleme, yarışmanın adil sonuçlanmasına yönelik meşru menfaate dayanır (KVKK m. 5/2-f). Bu kayıtlar, hesabınızı silseniz dahi, kazananın ilanından itibaren 3 ay saklanır. Ayrıntılar: [Yarışma Koşulları](/yarisma-kosullari.html) Madde 10.
 
-**Tek hesap kontrolü.** Aynı e-posta kutusuyla birden fazla hesap açılmasını ve geçici e-posta adresleriyle kayıt olunmasını önlemek için e-posta adresinizden geri çevrilemeyen bir özet saklanır. Özet e-posta adresinizin kendisini içermez, ancak aynı adresle eşleştirilebilir. Bu işleme, kötüye kullanımın önlenmesine ve yarışmanın adil yürütülmesine yönelik meşru menfaatimize dayanır (KVKK m. 5/2-f). Özet, o e-posta kutusuna bağlı son hesap silindiğinde silinir; yalnızca Bölüm 5'teki silme kaydında, oradaki süre boyunca tutulur.
+**Tek hesap kontrolü.** Aynı e-posta kutusuyla birden fazla hesap açılmasını ve geçici e-posta adresleriyle kayıt olunmasını önlemek için e-posta adresinizden geri çevrilemeyen bir özet saklanır. Özet e-posta adresinizin kendisini içermez, ancak aynı adresle eşleştirilebilir. Bu işleme, kötüye kullanımın önlenmesine ve yarışmanın adil yürütülmesine yönelik meşru menfaatimize dayanır (KVKK m. 5/2-f). Özet, o e-posta kutusuna bağlı son hesap silindiğinde silinir; yalnızca Bölüm 5'teki silme kaydında ve yarışma kayıtlarında, oradaki süreler boyunca tutulur.
 
 **Kullanım istatistikleri.** Uygulamanın nasıl kullanıldığını görmek ve geliştirilmesine yön vermek için kullanım verileriniz analiz hizmetimizde işlenir. Bu veriler adınız veya e-posta adresinizle değil, cihazınıza atanmış takma bir kimlikle tutulur. Reklam amacıyla kullanılmaz ve reklam ağlarıyla paylaşılmaz.
 

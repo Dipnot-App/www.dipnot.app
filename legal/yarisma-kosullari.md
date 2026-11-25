@@ -2,13 +2,13 @@
 id: competition-2026
 lang: tr
 version: 1
-revision: 1
+revision: 2
 updated: 2026-11-25
 source: www.dipnot.app main @ 925df0a (2.0.7), imported verbatim 2026-10-24
 ---
 # 2026 Yarışma Koşulları
 
-**Sürüm:** 1.1 · **Son Güncelleme:** 25 Kasım 2026
+**Sürüm:** 1.2 · **Son Güncelleme:** 25 Kasım 2026
 
 ## 1. Yarışmanın Konusu ve Düzenleyen
 
@@ -21,7 +21,7 @@ Kazanan, **en çok oyu alan dalış merkezidir**. Kazananın belirlenmesinde kur
 - Dipnot mobil uygulamasına kayıtlı olan her kullanıcı oy kullanabilir.
 - Katılım **tamamen ücretsizdir**. Herhangi bir ücret, satın alma veya abonelik şartı yoktur.
 - Oy kullanabilmek için uygulamaya kayıt olmanız, hesabınıza giriş yapmanız ve **e-posta adresinizi doğrulamış olmanız** gerekir. Bu koşul yürürlüğe girmeden önce kullanılmış oylar geçerliliğini korur.
-- Oylar **hesap bazında** sayılır ve her hesap Madde 3'teki kurallara tabidir. Bir e-posta kutusuyla yalnızca bir hesap açılabilir; aynı kutuya ulaşan adres varyasyonları (örneğin "+" ile eklenen etiketler, e-posta sağlayıcısının yok saydığı noktalar veya aynı sağlayıcının farklı alan adları) aynı adres sayılır. Geçici (tek kullanımlık) e-posta servislerinin adresleriyle hesap açılamaz. Bu servislere ait olduğu sonradan tespit edilen hesapların oyları geçersiz sayılır.
+- Oylar **hesap bazında** sayılır ve her hesap Madde 3'teki kurallara tabidir. Bir e-posta kutusuyla yalnızca bir hesap açılabilir; aynı kutuya ulaşan adres varyasyonları (örneğin "+" ile eklenen etiketler, e-posta sağlayıcısının yok saydığı noktalar veya aynı sağlayıcının farklı alan adları) aynı adres sayılır. Geçici (tek kullanımlık) e-posta servislerinin adresleriyle hesap açılamaz. Bu servislere ait olduğu sonradan tespit edilen hesaplar Madde 9 kapsamında incelenir.
 - Kötüye kullanımı önlemek amacıyla bir cihazdan belirli bir süre içinde açılabilecek hesap sayısı sınırlandırılabilir.
 - Oy kullanmak için uygulamanın güncel sürümünün cihazınızda yüklü olması gerekir.
 
@@ -87,7 +87,7 @@ Yarışma'nın adil şekilde sonuçlanmasını sağlamak amacıyla Dipnot, aşa�
 
 Yarışma kapsamında işlenen kişisel verileriniz, [Gizlilik Politikası](/gizlilik-politikasi.html)'nda belirtilen esaslara tabidir. Oy sonuçları yalnızca toplam sayı olarak değerlendirilir; hangi kullanıcının hangi merkeze oy verdiği kamuya açıklanmaz.
 
-**Hile tespiti.** Madde 9 kapsamında sahte, otomatik veya çoklu hesap kullanımını tespit etmek amacıyla oy kayıtlarınız (hangi merkezlere oy verdiğiniz ile oy verme ve geri alma zamanları) ile hesap bilgileriniz (e-posta, ad-soyad, kayıt ve son giriş zamanları, giriş yöntemi), uygulama içi etkinlikleriniz (kaydettiğiniz ve beğendiğiniz içerikler) ve cihaz bilgileriniz (cihaz modeli, işletim sistemi, kurulum kimliği), yalnızca yönetici yetkisine sahip Dipnot ekip üyeleri tarafından incelenip diğer hesaplarla karşılaştırılabilir. Bu işleme, Yarışma'nın adil şekilde sonuçlanmasına yönelik meşru menfaate dayanır (KVKK m. 5/2-f). Oylama süresince oy kullanmış bir hesabın bu amaçla gerekli kayıtları (oy kayıtları ile hesap ve cihaz bilgileri), hesabınızı silmeniz halinde dahi, kazananın ilanından itibaren 3 ay saklanır ve ardından silinir.
+**Hile tespiti.** Madde 9 kapsamında sahte, otomatik veya çoklu hesap kullanımını tespit etmek amacıyla oy kayıtlarınız (hangi merkezlere oy verdiğiniz ile oy verme ve geri alma zamanları) ile hesap bilgileriniz (e-posta, ad-soyad, kayıt ve son giriş zamanları, giriş yöntemi), uygulama içi etkinlikleriniz (kaydettiğiniz ve beğendiğiniz içerikler) ve cihaz bilgileriniz (cihaz modeli, işletim sistemi, kurulum kimliği), yalnızca yönetici yetkisine sahip Dipnot ekip üyeleri tarafından incelenip diğer hesaplarla karşılaştırılabilir. Bu işleme, Yarışma'nın adil şekilde sonuçlanmasına yönelik meşru menfaate dayanır (KVKK m. 5/2-f). Oylama süresince oy kullanmış bir hesabın bu amaçla gerekli kayıtları (oy kayıtları ile hesap ve cihaz bilgileri), hesabınızı silmeniz halinde dahi, kazananın ilanından itibaren 3 ay saklanır ve ardından silinir. İlandan sonraki bu 3 aylık saklamanın amacı, olası itiraz ve uyuşmazlıklarda sonucun savunulmasıdır; bu saklama, bir hakkın tesisi, kullanılması veya korunması için zorunlu olmasına dayanır (KVKK m. 5/2-e).
 
 **Aday dalış merkezlerinin bilgileri.** Aday dalış merkezlerinin adı ve sicil numarası, TSSF'nin kamuya açık dalış merkezleri listesinde yer alan iletişim bilgileri ile aynı listede merkezle birlikte yer alan eğitmen ve rehber adları, TSSF'nin internet sitesinden alınır. İletişim bilgileri, merkeze adaylığını bildirmek ve e-posta listesinden ayrılma taleplerini yerine getirmek için kullanılır. Eğitmen ve rehber adları yalnızca Madde 9 kapsamında oy kayıtlarıyla karşılaştırılarak hile tespiti için kullanılır ve yalnızca yönetici yetkisine sahip Dipnot ekip üyeleri tarafından incelenir. Bu işleme, Yarışma'nın yürütülmesine ve adil şekilde sonuçlanmasına yönelik meşru menfaate dayanır (KVKK m. 5/2-f). Bu bilgiler veritabanımızda saklanır, reklam veya pazarlama için kullanılmaz ve kazananın ilanından itibaren 3 ay sonra silinir. Verilerin aktarıldığı hizmet sağlayıcılar ve KVKK m. 11 kapsamındaki haklarınız için [Gizlilik Politikası](/gizlilik-politikasi.html) Bölüm 3 ve 6'ya bakabilir, başvurunuzu [info@dipnot.app](mailto:info@dipnot.app) adresine iletebilirsiniz.
 
