@@ -19,6 +19,7 @@ lehinize olan güncellemeler, en yenisi üstte, sürüm numarasıyla.
 
 ## Gizlilik Politikası ve Aydınlatma Metni
 
+- **25.11.2026 · Sürüm 2.2** — E-posta adresinizden türetilen özetin, silme kaydının yanı sıra yarışma kayıtlarında da, oradaki süre boyunca tutulduğu yazıldı (Bölüm 2).
 - **25.11.2026 · Sürüm 2.1** — Yarışma verilerinde, oy verme ve geri alma zamanlarının da işlendiği ve bunların oyların sabitlenmesi ile geri alma süresinin uygulanması için kullanıldığı açıkça yazıldı (Bölüm 2).
 - **29.10.2026 · Sürüm 2.0** — Hesap bilgilerinin hukuki sebebi sözleşmenin kurulması ve ifası oldu; yarışma verilerininki meşru menfaat oldu; toplanmayan telefon numarası çıkarıldı. Tek hesap kontrolü, kullanım istatistikleri, bülten ve iletişim formu, web sitesi çerezleri ve hesap silme sayfalarındaki güvenlik çerezi eklendi (Bölüm 2, 4). Hizmet sağlayıcılar tek bir tabloda toplandı ve yurt dışına aktarım ifadesi düzeltildi (Bölüm 3). Hesabın 30 gün içinde geri açılabilmesi ve silindikten sonra saklananlar eklendi: 5 yıl saklanan silme kaydı, 14 ay saklanan kullanım istatistikleri (Bölüm 5). Başvuru ve şikâyet yolları açıklandı; iletişim adresi <info@dipnot.app> oldu (Bölüm 1, 6). Güncellemeler artık uygulama içinde gösteriliyor ve okuyup anladığınızı belirtmeniz isteniyor (Bölüm 9).
 
@@ -34,5 +35,6 @@ lehinize olan güncellemeler, en yenisi üstte, sürüm numarasıyla.
 
 ### 2026 Yarışması
 
+- **25.11.2026 · Sürüm 1.2** — Geçici e-posta servislerine ait olduğu sonradan anlaşılan hesapların oyları artık doğrudan geçersiz sayılmıyor; bu hesaplar Madde 9 kapsamında incelenir (Madde 2). Hile tespiti kayıtlarının kazananın ilanından sonraki 3 ay boyunca hangi amaçla ve hangi hukuki sebeple saklandığı eklendi (Madde 10).
 - **25.11.2026 · Sürüm 1.1** — 1 Aralık 2026 saat 00:00 (TSİ) itibarıyla o ana kadar verilmiş oylar sabitlenir; sonrasında verilen oylar 24 saat içinde geri alınabilir. Bu değişiklik 1 Aralık 2026 00:00 (TSİ) itibarıyla yürürlüğe girer (Madde 3, 4). Oy kullanmak için e-posta doğrulaması, e-posta adresi başına tek hesap ve geçici e-posta adreslerinin kabul edilmemesi açıkça yazıldı, sonradan geçici olduğu anlaşılan adreslerle açılmış hesapların oylarının geçersiz sayılacağı eklendi; oyların hesap bazında sayıldığı belirtildi (Madde 2). Bitiş anındaki oy dağılımının kayıt altına alınması ve sonucun geçersiz oylar düşüldükten sonra belirlenmesi (Madde 6) ve hesap silme ile geri açmanın oylara etkisi (Madde 3) açıklandı. Dondurulan hesapların oyları, organize toplu hareketler, görüş bildirme ve 15 günlük inceleme süresi eklendi (Madde 9). Aday dalış merkezlerinin TSSF listesinden alınan bilgilerinin neden ve ne kadar süreyle işlendiği eklendi; hile tespitinde kullanılan oy kayıtları ve saklama açıklandı (Madde 10).
 - **29.10.2026 · Sürüm 1.0** — Değişiklikler artık uygulamanın yarışma sayfasında duyuruluyor; Instagram duyurusu kaldırıldı (Madde 11).

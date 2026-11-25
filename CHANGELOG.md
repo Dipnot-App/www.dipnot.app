@@ -8,6 +8,16 @@ terse — the commit message and PR body carry the full reasoning.
 
 ## 2026-11-25
 
+- **Release 2.2.1: competition terms 1.2 + privacy 2.2** — Second legal
+  release of the day, fixes from core-docs' legal check (all in the
+  user's favour, dates stay 25 Nov). Five files re-copied from core-docs
+  @ `205fda3`, zero differences: Madde 2 now sends disposable-address
+  accounts to a Madde 9 review instead of voiding them; Madde 10 adds
+  the purpose and basis (KVKK m. 5/2-e) for the 3 months kept after the
+  announcement; privacy §2 single-account check also covers the
+  competition records (TR + EN); both change histories. The candidates
+  page FAQ needed no edit: it never said disposable-address votes are
+  voided, and its Madde 9 summary is unchanged.
 - **Release 2.2.0: competition terms 1.1 + privacy 2.1** — Five legal
   files re-copied from core-docs @ `a6ec2af`, zero differences:
   competition terms 1.1 (votes fixed from 1 Dec 2026 00:00 TSİ, 24 h
